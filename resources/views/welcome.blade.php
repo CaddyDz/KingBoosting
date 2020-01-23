@@ -39,7 +39,7 @@
             </v-system-bar>
             <app-bar-component></app-bar-component>
             <v-content>
-                <v-container fill-height>
+                <v-container fill-height fluid>
                     <v-row align="center" justify="center">
                         <v-img src="https://cdn.vuetifyjs.com/images/parallax/material2.jpg"
                             gradient="to top right, rgba(100,115,201,.33), rgba(25,32,72,.7)" max-width="400"
@@ -52,8 +52,10 @@
                         <v-btn class="ma-2" outlined color="white">League Ranked Accounts</v-btn>
                         <v-btn class="ma-2" outlined color="white">Coaching</v-btn>
                     </v-row>
+                    <v-row style="background: rgba(0, 0, 0, 0.5);">
+                        <video-section></video-section>
+                    </v-row>
                 </v-container>
-                <video-section></video-section>
             </v-content>
         </v-app>
     </div>
