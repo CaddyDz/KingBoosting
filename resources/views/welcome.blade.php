@@ -56,6 +56,7 @@
                         <video-section></video-section>
                     </v-row>
                 </v-container>
+                <services-circle></services-circle>
             </v-content>
         </v-app>
     </div>
