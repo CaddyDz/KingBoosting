@@ -57,6 +57,7 @@
                     </v-row>
                 </v-container>
                 <services-circle></services-circle>
+                <features></features>
             </v-content>
         </v-app>
     </div>

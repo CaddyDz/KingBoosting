@@ -1,9 +1,9 @@
 <template>
-<body class="is-centered-xy">
-	<div class="wrap is-circle is-centered-xy">
-		<div class="object is-a is-circle" v-for="service in services" :key="service"></div>
+	<div class="is-centered-xy">
+		<div class="wrap is-circle is-centered-xy">
+			<div class="object is-a is-circle" v-for="service in services" :key="service"></div>
+		</div>
 	</div>
-</body>
 </template>
 
 <script>
@@ -32,6 +32,8 @@ export default {
 
 <style scoped>
 .is-centered-xy {
+	margin-top: 10px;
+	margin-bottom: 10px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
