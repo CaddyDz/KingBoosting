@@ -57,7 +57,6 @@ export default {
 .object {
 	width: 60px;
 	height: 60px;
-	/* background-color: red; */
 	animation: rotate 50s linear infinite;
 	position: absolute;
 }
