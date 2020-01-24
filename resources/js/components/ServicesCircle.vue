@@ -1,7 +1,12 @@
 <template>
 	<div class="is-centered-xy">
 		<div class="wrap is-circle is-centered-xy">
-			<div class="object is-a is-circle" v-for="service in services" :key="service"></div>
+			<div
+				class="object is-a is-circle"
+				v-for="service in services"
+				:key="service"
+				:style="{ backgroundImage: service.name}"
+			></div>
 		</div>
 	</div>
 </template>
@@ -10,22 +15,8 @@
 export default {
 	data() {
 		return {
-			services: 1,
-			interval: {}
+			services: [{ name: "/img/circles/1.png" }, { name: "/img/jhghgyy.png" }]
 		};
-	},
-	watch: {
-		services: function(val) {
-			if (val == 10) {
-				clearInterval(this.interval);
-			}
-		}
-	},
-	mounted() {
-		this.interval = setInterval(
-			() => (this.services = this.services + 1),
-			2000
-		);
 	}
 };
 </script>
@@ -50,9 +41,9 @@ export default {
 }
 
 .object {
-	width: 30px;
-	height: 30px;
-	background: red;
+	width: 60px;
+	height: 60px;
+	background-color: red;
 	animation: rotate 50s linear infinite;
 	position: absolute;
 }
