@@ -1,12 +1,13 @@
 <template>
 	<div class="is-centered-xy">
 		<div class="wrap is-circle is-centered-xy">
-			<div
+			<img
+				:src="service.image"
+				alt
 				class="object is-a is-circle"
-				v-for="service in services"
-				:key="service"
-				:style="{ backgroundImage: service.name}"
-			></div>
+				v-for="(service, index) in services"
+				:key="index"
+			/>
 		</div>
 	</div>
 </template>
@@ -15,7 +16,16 @@
 export default {
 	data() {
 		return {
-			services: [{ name: "/img/circles/1.png" }, { name: "/img/jhghgyy.png" }]
+			services: [
+				{ image: "/img/circles/1.png", name: "somekhfdslkhfjd" },
+				{ image: "/img/jhghgyy.png" },
+				{ image: "/img/jhghgyy.png" },
+				{ image: "/img/jhghgyy.png" },
+				{ image: "/img/jhghgyy.png" },
+				{ image: "/img/jhghgyy.png" },
+				{ image: "/img/jhghgyy.png" },
+				{ image: "/img/jhghgyy.png" }
+			]
 		};
 	}
 };
@@ -43,7 +53,7 @@ export default {
 .object {
 	width: 60px;
 	height: 60px;
-	background-color: red;
+	/* background-color: red; */
 	animation: rotate 50s linear infinite;
 	position: absolute;
 }
