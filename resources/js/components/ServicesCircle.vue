@@ -1,13 +1,14 @@
 <template>
 	<div class="is-centered-xy">
 		<div class="wrap is-circle is-centered-xy">
-			<img
-				:src="service.image"
-				alt
+			<div
 				class="object is-a is-circle"
 				v-for="(service, index) in services"
 				:key="index"
-			/>
+				:style="{animationDelay: index*5 + 's'}"
+			>
+				<img :src="service.image" alt :style="{animationDelay: index*5 + 's'}" />
+			</div>
 		</div>
 	</div>
 </template>
@@ -49,7 +50,8 @@ export default {
 }
 
 .wrap {
-	background: blue;
+	background-color: transparent;
+	border: 2px solid purple;
 	width: 300px;
 	height: 300px;
 }
@@ -57,16 +59,42 @@ export default {
 .object {
 	width: 60px;
 	height: 60px;
-	animation: rotate 50s linear infinite;
+	animation-name: orbit;
+	animation-duration: 50s;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
 	position: absolute;
 }
 
-@keyframes rotate {
+.object:hover {
+	animation-play-state: paused;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+	position: absolute;
+	animation-name: rotate;
+	/* animation-direction: reverse; */
+	animation-duration: 50s;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+}
+
+@keyframes orbit {
 	from {
 		transform: rotate(0deg) translateX(150px);
 	}
 	to {
 		transform: rotate(360deg) translateX(150px);
+	}
+}
+@keyframes rotate {
+	from {
+		transform: rotate(360deg);
+	}
+	to {
+		transform: rotate(0deg);
 	}
 }
 </style>
