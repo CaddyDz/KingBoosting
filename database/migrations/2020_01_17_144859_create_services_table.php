@@ -18,7 +18,7 @@ class CreateServicesTable extends Migration
             $table->string('name');
             $table->string('image');
             $table->text('description');
-            $table->enum('status', ['Popular', 'New', 'Best Value']);
+            $table->enum('status', ['Popular', 'New', 'Best Value'])->nullable();
             $table->string('slug');
             $table->timestamps();
         });
