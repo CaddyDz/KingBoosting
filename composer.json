@@ -20,7 +20,8 @@
         "laravel/nova": "*",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^1.1",
-        "vyuldashev/nova-permission": "^2.4"
+        "vyuldashev/nova-permission": "^2.4",
+        "zoxta/nova-cloudflare-card": "^1.0"
     },
     "require-dev": {
         "facade/ignition": "^1.4",

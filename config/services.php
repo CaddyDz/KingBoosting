@@ -30,4 +30,10 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'cloudflare' => [
+        'email'   => env('CLOUDFLARE_EMAIL', ''),
+        'key'     => env('CLOUDFLARE_KEY', ''),
+        'zone_id' => env('CLOUDFLARE_ZONE_ID', ''),
+    ],
+
 ];

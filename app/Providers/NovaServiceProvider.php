@@ -6,6 +6,7 @@ use Laravel\Nova\Nova;
 use Illuminate\Support\Facades\Gate;
 use Anaseqal\NovaSidebarIcons\NovaSidebarIcons;
 use Laravel\Nova\NovaApplicationServiceProvider;
+use Zoxta\NovaCloudflareCard\NovaCloudflareCard;
 use Vyuldashev\NovaPermission\NovaPermissionTool;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
@@ -54,7 +55,9 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
      */
     protected function cards()
     {
-        return [];
+        return [
+            new NovaCloudflareCard(),
+        ];
     }
 
     /**
