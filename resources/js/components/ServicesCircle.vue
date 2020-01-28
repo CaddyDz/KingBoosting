@@ -1,14 +1,7 @@
 <template>
-	<div class="is-centered-xy">
-		<div class="wrap is-circle is-centered-xy">
-			<div
-				class="object is-a is-circle"
-				v-for="(service, index) in services"
-				:key="index"
-				:style="{animationDelay: index*5 + 's'}"
-			>
-				<img :src="service.image" alt :style="{animationDelay: index*5 + 's'}" />
-			</div>
+	<div id="container">
+		<div class="item" v-for="(service, index) in services" :key="index">
+			<img :src="service.image" :alt="service.name" />
 		</div>
 	</div>
 </template>
@@ -17,84 +10,78 @@
 export default {
 	data() {
 		return {
-			services: [
-				{ image: "/img/circles/1.png", name: "Account market" },
-				{ image: "/img/circles/2.png", name: "ELO Boosting Packs" },
-				{ image: "/img/circles/3.png", name: "Champion Mastery" },
-				{ image: "/imgg/circles/4.png", name: "TFT Boosting" },
-				{ image: "/img/circles/5.png", name: "League Boosting" },
-				{ image: "/img/circles/6.png", name: "Duo Queue Boosting" },
-				{ image: "/img/circles/7.png", name: "Account Leveling" },
-				{ image: "/img/circles/8.png", name: "Normal Matches" },
-				{ image: "/img/circles/9.png", name: "Placment Matches" },
-				{ image: "/img/circles/10.png", name: "Promotion Boosting" },
-				{ image: "/img/circles/11.png", name: "Buy Lol Smurf Account" },
-				{ image: "/img/circles/12.png", name: "Ranked Wins Boost" }
-			]
+			services: []
 		};
+	},
+	methods: {
+		fetchServices() {
+			axios
+				.get("/api/services")
+				.then(response => (this.services = response.data));
+		},
+		applyStyles() {
+			// Radius is usually half the width of the container
+			var radius = 250; // adjust to move out items in and out
+			var fields = document.getElementsByClassName("item");
+			var container = document.getElementById("container");
+			var width = container.offsetWidth;
+			var height = container.offsetHeight;
+			var angle = 0;
+			var step = (2 * Math.PI) / fields.length;
+			for (let field of fields) {
+				var x = Math.round(
+					width / 2 + radius * Math.cos(angle) - field.offsetWidth / 2
+				);
+				var y = Math.round(
+					height / 2 + radius * Math.sin(angle) - field.offsetHeight / 2
+				);
+				field.style.left = x + "px";
+				field.style.top = y + "px";
+				angle += step;
+			}
+		}
+	},
+	mounted() {
+		this.fetchServices();
+		setTimeout(() => {
+			this.applyStyles();
+		}, 200);
 	}
 };
 </script>
 
-<style scoped>
-.is-centered-xy {
-	margin-top: 10px;
-	margin-bottom: 10px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-
-.is-circle {
-	border-radius: 50%;
-}
-
-.wrap {
-	background-color: transparent;
+<style>
+#container {
+	width: 500px;
+	height: 500px;
+	margin: 100px auto;
 	border: 2px solid purple;
-	width: 300px;
-	height: 300px;
+	position: relative;
+	border-radius: 50%;
+	animation: spin 20s linear infinite;
 }
 
-.object {
-	width: 60px;
-	height: 60px;
-	animation-name: orbit;
-	animation-duration: 50s;
-	animation-iteration-count: infinite;
-	animation-timing-function: linear;
+.item {
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
 	position: absolute;
-}
-
-.object:hover {
-	animation-play-state: paused;
+	animation: spin 20s linear infinite reverse;
 }
 
 img {
 	max-width: 100%;
-	max-height: 100%;
-	position: absolute;
-	animation-name: rotate;
-	/* animation-direction: reverse; */
-	animation-duration: 50s;
-	animation-iteration-count: infinite;
-	animation-timing-function: linear;
+	min-width: 100%;
 }
 
-@keyframes orbit {
-	from {
-		transform: rotate(0deg) translateX(150px);
-	}
-	to {
-		transform: rotate(360deg) translateX(150px);
+@keyframes spin {
+	100% {
+		transform: rotate(1turn);
 	}
 }
-@keyframes rotate {
-	from {
-		transform: rotate(360deg);
-	}
-	to {
-		transform: rotate(0deg);
-	}
+
+#container:hover,
+#container:hover .item {
+	animation-play-state: paused;
 }
 </style>

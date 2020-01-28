@@ -5,20 +5,20 @@ namespace App\Http\Controllers;
 use App\Service;
 use Illuminate\Http\Request;
 
-class ServiceController extends Controller
+class ServicesController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the services.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        return Service::all();
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new service.
      *
      * @return \Illuminate\Http\Response
      */
@@ -28,7 +28,7 @@ class ServiceController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created service in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -39,7 +39,7 @@ class ServiceController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified service.
      *
      * @param  \App\Service  $service
      * @return \Illuminate\Http\Response
@@ -50,7 +50,7 @@ class ServiceController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the specified service.
      *
      * @param  \App\Service  $service
      * @return \Illuminate\Http\Response
@@ -61,7 +61,7 @@ class ServiceController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified service in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Service  $service
@@ -73,7 +73,7 @@ class ServiceController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified service from storage.
      *
      * @param  \App\Service  $service
      * @return \Illuminate\Http\Response
