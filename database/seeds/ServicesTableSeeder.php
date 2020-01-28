@@ -15,6 +15,6 @@ class ServicesTableSeeder extends Seeder
     {
         Storage::disk('public')->deleteDirectory('services');
         Storage::disk('public')->makeDirectory('services');
-        factory(Service::class, 50)->create();
+        factory(Service::class, 15)->create();
     }
 }
