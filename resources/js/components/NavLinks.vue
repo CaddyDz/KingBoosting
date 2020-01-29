@@ -1,5 +1,5 @@
 <template>
-	<div class="text-center">
+	<div>
 		<v-menu
 			transition="slide-y-transition"
 			bottom

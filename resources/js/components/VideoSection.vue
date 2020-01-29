@@ -3,7 +3,7 @@
 		<v-row>
 			<v-spacer></v-spacer>
 			<v-col md="2">
-				<div class="text-center">
+				<div>
 					<v-dialog v-model="dialog" width="500">
 						<template v-slot:activator="{ on }">
 							<v-icon color="white darken-2" size="150" v-on="on" light>mdi-play-circle-outline</v-icon>
