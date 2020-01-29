@@ -19,13 +19,13 @@
         "laravel/helpers": "^1.1",
         "laravel/nova": "*",
         "laravel/tinker": "^2.0",
-        "laravel/ui": "^1.1",
         "vyuldashev/nova-permission": "^2.4",
         "zoxta/nova-cloudflare-card": "^1.0"
     },
     "require-dev": {
         "facade/ignition": "^1.4",
         "fzaninotto/faker": "^1.4",
+        "laravel/ui": "^1.1",
         "mockery/mockery": "^1.0",
         "nunomaduro/collision": "^3.0",
         "phpunit/phpunit": "^8.0"

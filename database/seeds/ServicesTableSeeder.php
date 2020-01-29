@@ -17,11 +17,11 @@ class ServicesTableSeeder extends Seeder
         Storage::disk('public')->makeDirectory('services');
         $services = [
             [
-                'Ranked Wins Boost',
+                'Regular Boosting',
                 '12',
-                'Ranked wins boost allows our customers to buy the desired number of ranked wins. All you have to do is choose how many ranked wins you would like to have on.',
+                'Regular Boosting allows our customers to buy the desired number of ranked wins. All you have to do is choose how many ranked wins you would like to have on.',
                 'Popular',
-                'Ranked wins boost makes it possible to buy a guaranteed number of wins of your choice. We created ranked wins boost to be fast and easy, providing an efficient but high-quality service.',
+                'Regular Boosting makes it possible to buy a guaranteed number of wins of your choice. We created regular boosting to be fast and easy, providing an efficient but high-quality service.',
             ],
             [
                 'League Boosting',

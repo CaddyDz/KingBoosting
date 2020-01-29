@@ -13,33 +13,33 @@
 			dark
 		>
 			<template v-slot:activator="{ on }">
-				<a href="/regular-boosting" v-on="on">Boosting</a>
+				<a href="/regular-boosting" v-on="on" class="link">Boosting</a>
 			</template>
 			<v-row no-gutters class="dark">
 				<v-col md="3"></v-col>
 				<v-col md="3">
 					<v-row>
-						<img src="/images/tft.png" alt="Regular Boosting" class="hvr-glow" />
-					</v-row>
-					<v-row class="title">
-						<a href="/regular-boosting">Regular Boosting</a>
+						<a href="/regular-boosting" class="title">
+							<img src="/images/tft.png" alt="Regular Boosting" class="hvr-glow" />
+							<span>Regular Boosting</span>
+						</a>
 					</v-row>
 				</v-col>
 				<v-col md="3">
 					<v-row>
-						<img src="/images/tft.png" alt="TFT Boosting" class="hvr-glow" />
-					</v-row>
-					<v-row class="title">
-						<a href="/tft-boosting">TFT Boosting</a>
+						<a href="/tft-boosting" class="title">
+							<img src="/images/tft.png" alt="TFT Boosting" class="hvr-glow" />
+							<span>TFT Boosting</span>
+						</a>
 					</v-row>
 				</v-col>
 				<v-col md="3"></v-col>
 			</v-row>
 		</v-menu>
-		<a href="#" title="Coaching">Coaching</a>
-		<a href="#" title="Lol Accounts">Lol Accounts</a>
-		<a href="#" title="Boosters">Boosters</a>
-		<a href="#" title="More*">More*</a>
+		<a href="#" title="Coaching" class="link">Coaching</a>
+		<a href="#" title="Lol Accounts" class="link">Lol Accounts</a>
+		<a href="#" title="Boosters" class="link">Boosters</a>
+		<a href="#" title="More*" class="link">More*</a>
 	</div>
 </template>
 
@@ -56,33 +56,44 @@ export default {
 </script>
 
 <style scoped>
-.title {
-	justify-content: center;
-}
 img {
 	cursor: pointer;
-	margin-top: -20%;
-	margin-bottom: -20%;
 }
+
 img:hover {
-	box-shadow: inset 0 -10px 0 0 #400042;
+	background-image: url("/img/service_nav_bg.png");
+	background-position: center bottom;
 }
+
 .dark {
 	background-color: #000;
 }
+
 .col > .row {
 	margin-left: 10%;
 	margin-right: 10%;
 }
+
 .col {
 	padding: 25%;
 }
-a:not(.row) {
+
+.link {
 	text-decoration: none;
 	color: white;
 	padding-bottom: 6px;
 	border-bottom: 3px solid currentColor;
 	margin-right: 0.8rem;
 	text-align: center;
+}
+
+.title {
+	text-align: center;
+	text-decoration: none !important;
+}
+
+span {
+	position: relative;
+	bottom: 40px;
 }
 </style>

@@ -1,16 +1,14 @@
 <template>
-	<div>
-		<v-app-bar app color="purple darken-4" extended dense>
-			<div id="particles-js"></div>
-			<a href="/">
-				<img src="https://place-hold.it/240x52" alt="King Boosting" />
-			</a>
-			<v-spacer></v-spacer>
-			<nav-links></nav-links>
-			<v-spacer></v-spacer>
-			<v-btn class="ma-2" outlined color="white" href="/dashboard">Members Area</v-btn>
-		</v-app-bar>
-	</div>
+	<v-app-bar app color="purple darken-4" extended dense>
+		<div id="particles-js"></div>
+		<a href="/">
+			<img src="https://place-hold.it/240x52" alt="King Boosting" />
+		</a>
+		<v-spacer></v-spacer>
+		<nav-links></nav-links>
+		<v-spacer></v-spacer>
+		<v-btn class="ma-2" outlined color="white" href="/dashboard">Members Area</v-btn>
+	</v-app-bar>
 </template>
 
 <script>
@@ -32,11 +30,8 @@ export default {
 #particles-js canvas {
 	display: block;
 	vertical-align: bottom;
-	-webkit-transform: scale(1);
-	-ms-transform: scale(1);
 	transform: scale(1);
 	opacity: 1;
-	-webkit-transition: opacity 0.8s ease, -webkit-transform 1.4s ease;
 	transition: opacity 0.8s ease, transform 1.4s ease;
 }
 

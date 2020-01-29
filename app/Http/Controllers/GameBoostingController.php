@@ -2,23 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Service;
+use App\GameBoosting;
 use Illuminate\Http\Request;
 
-class ServicesController extends Controller
+class GameBoostingController extends Controller
 {
     /**
-     * Display a listing of the services.
+     * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        return Service::all();
+        //
     }
 
     /**
-     * Show the form for creating a new service.
+     * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
@@ -28,7 +28,7 @@ class ServicesController extends Controller
     }
 
     /**
-     * Store a newly created service in storage.
+     * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -39,46 +39,46 @@ class ServicesController extends Controller
     }
 
     /**
-     * Display the specified service.
+     * Display the specified resource.
      *
-     * @param  \App\Service  $service
+     * @param  \App\GameBoosting  $gameBoosting
      * @return \Illuminate\Http\Response
      */
-    public function show(Service $service)
-    {
-        return view('services.service', compact($service));
-    }
-
-    /**
-     * Show the form for editing the specified service.
-     *
-     * @param  \App\Service  $service
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Service $service)
+    public function show(GameBoosting $gameBoosting)
     {
         //
     }
 
     /**
-     * Update the specified service in storage.
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\GameBoosting  $gameBoosting
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(GameBoosting $gameBoosting)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Service  $service
+     * @param  \App\GameBoosting  $gameBoosting
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Service $service)
+    public function update(Request $request, GameBoosting $gameBoosting)
     {
         //
     }
 
     /**
-     * Remove the specified service from storage.
+     * Remove the specified resource from storage.
      *
-     * @param  \App\Service  $service
+     * @param  \App\GameBoosting  $gameBoosting
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Service $service)
+    public function destroy(GameBoosting $gameBoosting)
     {
         //
     }

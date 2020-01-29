@@ -8,7 +8,7 @@
 @import '~vuetify/dist/vuetify.min.css';
 @import '~@mdi/font/css/materialdesignicons.min.css';
 
-#app {
+.welcome {
     background: url(/img/kaisa.jpg) top/cover no-repeat #111415 !important;
 }
 
@@ -17,6 +17,12 @@ html {
     // has to be scroll, not auto;
     -webkit-overflow-scrolling: touch;
     scroll-behavior: smooth;
+}
+
+.services-section {
+    // margin-top: 20px;
+    // margin-bottom: 20px;
+    background-color: black;
 }
 
 .v-system-bar,
