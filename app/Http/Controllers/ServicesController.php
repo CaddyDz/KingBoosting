@@ -46,7 +46,7 @@ class ServicesController extends Controller
      */
     public function show(Service $service)
     {
-        return view('services.service', compact($service));
+        return view('services.service', compact('service'));
     }
 
     /**
