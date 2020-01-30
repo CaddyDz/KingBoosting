@@ -18,10 +18,8 @@
         <video-section></video-section>
     </v-row>
 </v-container>
-{{-- <v-container class="services-section" fluid>
+<v-container class="services-section" fluid>
     <services-circle></services-circle>
-</v-container> --}}
-{{-- <v-content>
-</v-content> --}}
-{{-- <features></features> --}}
+</v-container>
+<features></features>
 @stop
