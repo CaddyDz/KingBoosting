@@ -5,7 +5,7 @@ let hosts = process.env.APP_URL.split('//');
 mix.options({
     hmrOptions: {
         host: hosts[1],
-        port: '3000'
+        port: '8080'
     }
 });
 

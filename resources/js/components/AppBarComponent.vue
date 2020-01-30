@@ -2,7 +2,7 @@
 	<v-app-bar app color="purple darken-4" extended dense>
 		<div id="particles-js"></div>
 		<a href="/">
-			<img src="https://place-hold.it/240x52" alt="King Boosting" />
+			<img src="/img/placeholder_logo.gif" alt="King Boosting" />
 		</a>
 		<v-spacer></v-spacer>
 		<nav-links></nav-links>

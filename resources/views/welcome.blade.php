@@ -3,8 +3,8 @@
 @section('content')
 <v-container fluid class="welcome">
     <v-row align="center" justify="center">
-        <v-img src="https://cdn.vuetifyjs.com/images/parallax/material2.jpg"
-            gradient="to top right, rgba(100,115,201,.33), rgba(25,32,72,.7)" max-width="400" max-height="150">
+        <v-img src="/img/material2.jpg" gradient="to top right, rgba(100,115,201,.33), rgba(25,32,72,.7)"
+            max-width="400" max-height="150">
         </v-img>
     </v-row>
     <slogan-component></slogan-component>
@@ -18,9 +18,9 @@
         <video-section></video-section>
     </v-row>
 </v-container>
-<v-container class="services-section" fluid>
+{{-- <v-container class="services-section" fluid>
     <services-circle></services-circle>
-</v-container>
+</v-container> --}}
 {{-- <v-content>
 </v-content> --}}
 {{-- <features></features> --}}
