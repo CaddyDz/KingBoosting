@@ -15,4 +15,19 @@ class Service extends Model
     {
         return 'slug';
     }
+
+    /**
+     * Get service kind
+     *
+     * Retreive the related service kind model
+     *
+     * For example a service could be an "ELO Boosting" or "Account Selling"
+     * We need that text to show in the service page
+     *
+     * @return App\ServiceKind
+     **/
+    public function kind()
+    {
+        return $this->belongsTo(ServiceKind::class);
+    }
 }

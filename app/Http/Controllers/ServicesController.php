@@ -14,7 +14,7 @@ class ServicesController extends Controller
      */
     public function index()
     {
-        return Service::all();
+        return Service::with('kind:id,name')->get();
     }
 
     /**
