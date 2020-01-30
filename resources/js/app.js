@@ -29,10 +29,23 @@ files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-
 const app = new Vue({
     el: '#root',
-    vuetify: new Vuetify(),
+    vuetify: new Vuetify({
+        theme: {
+            themes: {
+                dark: {
+                    primary: '#673ab7',
+                    secondary: '#9c27b0',
+                    accent: '#673ab7',
+                    error: '#f44336',
+                    warning: '#ffeb3b',
+                    info: '#3f51b5',
+                    success: '#4caf50'
+                },
+            },
+        },
+    }),
 
     created() {
         this.$vuetify.theme.dark = true
