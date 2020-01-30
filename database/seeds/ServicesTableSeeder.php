@@ -133,6 +133,7 @@ class ServicesTableSeeder extends Seeder
                 'subtitle' => $service[4] ?? $service[2],
                 'slug' => sluggify($service[0]),
                 'kind_id' => isset($service[5]) ? $service[5] : 1,
+                'bg_img' => '/img/services/' . sluggify($service[0]) . '-top-bg.png',
             ]);
         }
     }
