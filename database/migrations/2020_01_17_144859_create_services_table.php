@@ -15,6 +15,8 @@ class CreateServicesTable extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('kind_id');
+            $table->foreign('kind_id')->references('id')->on('service_kinds')->onDelete('cascade');
             $table->unsignedBigInteger('type_id')->nullable();
             $table->foreign('type_id')->references('id')->on('service_types')->onDelete('cascade');
             $table->string('name');
@@ -23,6 +25,7 @@ class CreateServicesTable extends Migration
             $table->text('subtitle');
             $table->enum('status', ['Popular', 'New', 'Best Value'])->nullable();
             $table->string('slug');
+            $table->string('bg_img');
             $table->timestamps();
         });
     }

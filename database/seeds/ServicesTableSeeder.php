@@ -49,14 +49,16 @@ class ServicesTableSeeder extends Seeder
                 '11',
                 'You are able to buy from a high variety of unranked lol smurf accounts. All of them are level 30 and loaded with either blue essence or champions.',
                 null,
-                'Below, you can browse from different types of unranked smurf accounts. Select the one that meets your needs, and by completing your payment, you receive the account\'s log in details.'
+                'Below, you can browse from different types of unranked smurf accounts. Select the one that meets your needs, and by completing your payment, you receive the account\'s log in details.',
+                2,
             ],
             [
                 'Account market',
                 '1',
                 'You can browse through different LoL accounts. You can see the elo, number of champions and skins on each account.',
                 null,
-                'LoL accounts on sale. In this menu you can choose to buy different types of League of Legends accounts.'
+                'LoL accounts on sale. In this menu you can choose to buy different types of League of Legends accounts.',
+                3,
             ],
             [
                 'TFT Boosting',
@@ -130,6 +132,7 @@ class ServicesTableSeeder extends Seeder
                 'status' => $service[3],
                 'subtitle' => $service[4] ?? $service[2],
                 'slug' => sluggify($service[0]),
+                'kind_id' => isset($service[5]) ? $service[5] : 1,
             ]);
         }
     }
