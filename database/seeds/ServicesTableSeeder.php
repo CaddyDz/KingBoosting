@@ -26,7 +26,7 @@ class ServicesTableSeeder extends Seeder
             [
                 'League Boosting',
                 '5',
-                'At Boostroyal.com, we sell guaranteed tier and division boosts of your choice. You just have to pick a tier and a division that you desire and our task is to do the rest.',
+                'At Kingboosting.com, we sell guaranteed tier and division boosts of your choice. You just have to pick a tier and a division that you desire and our task is to do the rest.',
                 null,
                 'League boosting allow the customer to purchase guaranteed tier and division boosts. We designed league boosting to be the fastest option but at the same time providing high-quality service.'
             ],
