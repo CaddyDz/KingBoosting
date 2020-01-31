@@ -2,8 +2,7 @@
 	<div>
 		<v-container fluid :style="{background: 'url(' + this.service.bg_img + ') top/cover'}">
 			<div id="particles"></div>
-			<v-row justify="center">
-				<v-spacer></v-spacer>
+			<v-row justify="end" align="center">
 				<v-col md="8">
 					<services-slider></services-slider>
 					<!-- <img :src="this.service.image" :alt="this.service.name" /> -->
