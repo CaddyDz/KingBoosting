@@ -2,12 +2,16 @@
 	<div>
 		<v-container fluid :style="{background: 'url(' + this.service.bg_img + ') top/cover'}">
 			<div id="particles"></div>
-			<v-row justify="end" align="center">
-				<v-col md="8">
-					<services-slider></services-slider>
-					<!-- <img :src="this.service.image" :alt="this.service.name" /> -->
+			<v-row justify="center" align="center">
+				<v-col md="8" style="text-align: center;">
+					{{ kind }}
+					<br />
+					<p class="display-2 font-weight-bold">{{ this.service.name }}</p>
+					<br />
+					{{ this.service.description }}
 				</v-col>
 			</v-row>
+			<services-slider :service="service"></services-slider>
 		</v-container>
 		<div class="checkout">
 			<v-container>
@@ -31,8 +35,16 @@ export default {
 			type: Object
 		}
 	},
+	data() {
+		return {
+			kind: ""
+		};
+	},
 	mounted() {
 		particlesJS.load("particles", "/particlesjs-config.json");
+		axios
+			.get(`/api/services/${this.service.id}/kind`)
+			.then(response => (this.kind = response.data));
 	}
 };
 </script>

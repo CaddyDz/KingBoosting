@@ -17,3 +17,4 @@ use Illuminate\Http\Request;
 //     return $request->user();
 // });
 Route::get('/services', 'ServicesController@index');
+Route::get('/services/{id}/kind', 'ServicesController@getKind');

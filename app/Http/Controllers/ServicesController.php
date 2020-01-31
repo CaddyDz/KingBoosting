@@ -82,4 +82,9 @@ class ServicesController extends Controller
     {
         //
     }
+
+    public function getKind($id = 1)
+    {
+        return Service::find($id)->kind->name;
+    }
 }
