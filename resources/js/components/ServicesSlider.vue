@@ -2,7 +2,7 @@
 	<v-row justify="end" align="end">
 		<v-col md="12">
 			<v-sheet min-width="100%" color="transparent" tile>
-				<v-slide-group v-model="model" class="pa-4" center-active mandatory @click="magic">
+				<v-slide-group v-model="model" class="pa-4" center-active mandatory>
 					<!-- This is a hack to center the first element -->
 					<v-slide-item v-for="n in 3" :key="n">
 						<v-card color="transparent" height="210" class="ma-4" width="150" outlined :ripple="false">
