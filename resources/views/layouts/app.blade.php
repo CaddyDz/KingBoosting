@@ -18,7 +18,6 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
     <link rel="canonical" href="{{ config('app.url') }}">
     <link rel="alternate" hreflang="en-us" href="{{ config('app.url') }}">
     <link rel="alternate" hreflang="x-default" href="{{ config('app.url') }}">
