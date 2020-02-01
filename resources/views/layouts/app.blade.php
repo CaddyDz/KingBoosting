@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <title>Buy LOL ELO Boost &amp; Premium LOL Boosting | {{ studly_case(request()->getHost()) }}</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="description"
         content="Buy high quality ELO Boosting and LoL Boost services. 100% Safety and Privacy. The best ELO &amp; League Boost experience. Available on all servers.">
     <meta name="keywords"
