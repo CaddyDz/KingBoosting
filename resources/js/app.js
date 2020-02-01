@@ -7,7 +7,7 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
-import '@mdi/font/css/materialdesignicons.css' // Ensure you are using css-loader
+import '@mdi/font/css/materialdesignicons.css'
 import Vuetify from 'vuetify';
 import FlagIcon from 'vue-flag-icon'
 Vue.use(FlagIcon);
