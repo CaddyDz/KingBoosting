@@ -62,7 +62,6 @@ export default {
 }
 #particles canvas {
 	display: block;
-	vertical-align: bottom;
 	transform: scale(1);
 	opacity: 1;
 	transition: opacity 0.8s ease, transform 1.4s ease;
