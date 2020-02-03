@@ -7,7 +7,7 @@
 				<v-container>
 					<v-row align="center" justify="center">
 						<v-col md="3">
-							<img :src="this.division.image" :alt="tier.name" loading="lazy" />
+							<img :src="division.image" :alt="tier.name" loading="lazy" />
 						</v-col>
 						<v-col md="9">
 							<v-row>
@@ -21,7 +21,7 @@
 										item-value="id"
 									></v-select>
 								</v-col>
-								<v-col>
+								<v-col v-if="this.hasDivisions">
 									<v-select
 										:items="tier.divisions"
 										label="Current division"
@@ -58,13 +58,19 @@ export default {
 			division: {}, // Currently selected division
 			tiers: [], // List of all tiers
 			selectedTierID: 1, // Pretty self explanatory
-			selectedDivisionID: 1 // Same ooh, ooh same ooh
+			selectedDivisionID: 1, // Same ooh, ooh same ooh
+			hasDivisions: true
 		};
 	},
 	watch: {
 		selectedTierID(tierId) {
 			this.tier = _.find(this.tiers, ["id", tierId]);
-			this.selectedDivisionID = this.tier.divisions[0].id;
+			if (!_.isEmpty(this.tier.divisions)) {
+				this.hasDivisions = true;
+				this.selectedDivisionID = this.tier.divisions[0].id;
+			} else {
+				this.hasDivisions = false;
+			}
 		},
 		selectedDivisionID(divisionId) {
 			this.division = _.find(this.tier.divisions, ["id", divisionId]);
