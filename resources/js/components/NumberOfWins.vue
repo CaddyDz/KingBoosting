@@ -1,57 +1,38 @@
 <template>
-	<v-slider
-		min="1"
-		max="10"
-		thumb-label="always"
-		:color="'purple'"
-		v-model="number_of_wins"
-		thumb-size="50"
-	>
-		<template v-slot:thumb-label :style="{top: '50px'}">{{ plural(number_of_wins, "Win") }}</template>
-	</v-slider>
+	<v-stepper-content step="1">
+		<v-card raised class="mb-4" elevation="24">
+			<v-container>
+				<v-row justify="center" align="center">
+					<v-col md="2"></v-col>
+					<v-col md="8">
+						<wins-slider :wins="wins"></wins-slider>
+					</v-col>
+					<v-col md="2"></v-col>
+				</v-row>
+				<v-row>
+					<v-col md="3"></v-col>
+					<v-col md="6">
+						<v-radio-group row v-model="radios">
+							<v-icon>mdi-account</v-icon>
+							<v-radio label="Solo/Duo" value="solo"></v-radio>
+							<v-icon>mdi-account-group</v-icon>
+							<v-radio label="Flex 5v5" value="flex"></v-radio>
+						</v-radio-group>
+					</v-col>
+					<v-col md="3"></v-col>
+				</v-row>
+			</v-container>
+		</v-card>
+	</v-stepper-content>
 </template>
 
 <script>
 export default {
-	props: {
-		wins: {
-			type: Number,
-			required: true
-		}
-	},
 	data() {
 		return {
-			number_of_wins: this.wins
+			wins: 1,
+			radios: "solo"
 		};
-	},
-	computed: {
-		plural(count, noun) {
-			return (count, noun) => `${count} ${noun}${count !== 1 ? "s" : ""}`;
-		}
 	}
 };
 </script>
-
-<style lang="scss">
-$slider-track-border-radius: 3px !default;
-$slider-track-border-radius: 10 !default;
-$slider-track-width: 2px !default;
-// $slider-vertical-min-height: 150px !default;
-$chip-group-no-color-opacity: 50 !default;
-$slider-horizontal-margin-bottom: 0px !default;
-$slider-horizontal-margin-top: 50px !default;
-
-.v-slider--horizontal .v-slider__track-container {
-	height: 20px;
-}
-.v-slider__track-fill {
-	border-radius: 50px 0px 0px 50px;
-}
-.v-slider__track-background {
-	border-radius: 0px 50px 50px 0px;
-}
-.v-input.v-input--is-label-active.v-input--is-dirty.theme--dark.v-input__slider {
-	margin-top: 40px !important;
-	margin-bottom: -40px !important;
-}
-</style>
