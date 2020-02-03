@@ -164,7 +164,6 @@ class TiersTableSeeder extends Seeder
                 'box_shadow' => "inset 60px 0 120px rgba({$tier[1]},.2), 0 0 9px 0 rgba(0,0,0,.6)"
             ]);
             if (isset($tier[2])) {
-                info('reached');
                 foreach ($tier[2] as $division) {
                     $tierModel->divisions()->create(
                         [
