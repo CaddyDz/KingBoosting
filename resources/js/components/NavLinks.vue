@@ -74,4 +74,7 @@ p {
 	padding-bottom: 6px;
 	border-bottom: 3px solid currentColor;
 }
+.v-menu__content {
+	box-shadow: none !important;
+}
 </style>
