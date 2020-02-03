@@ -12,14 +12,14 @@
 					<v-row align="center" justify="center">
 						<v-col md="3">
 							<a href="/regular-boosting">
-								<img src="/images/tft.png" alt />
+								<img src="/img/tft.png" alt />
 								<!-- Vuetify Built-in class -->
 								<p class="text-center">Regular Boosting</p>
 							</a>
 						</v-col>
 						<v-col md="3">
 							<a href="/regular-boosting">
-								<img src="/images/tft.png" alt />
+								<img src="/img/tft.png" alt />
 								<p class="text-center">Regular Boosting</p>
 							</a>
 						</v-col>
