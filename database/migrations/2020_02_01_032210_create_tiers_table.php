@@ -17,6 +17,7 @@ class CreateTiersTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->text('box_shadow');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

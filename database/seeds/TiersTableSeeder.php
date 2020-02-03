@@ -148,22 +148,28 @@ class TiersTableSeeder extends Seeder
             [
                 'Master',
                 '128,29,161',
+                '/img/divisions/master.webp'
             ],
             [
                 'Grandmaster',
-                '161,29,29'
+                '161,29,29',
+                '/img/divisions/grandmaster.webp'
             ],
             [
                 'Challenger',
-                '161,113,29'
+                '161,113,29',
+                '/img/divisions/challenger.webp'
             ]
         ];
         foreach ($tiers as $tier) {
-            $tierModel = Tier::create([
-                'name' => $tier[0],
-                'box_shadow' => "inset 60px 0 120px rgba({$tier[1]},.2), 0 0 9px 0 rgba(0,0,0,.6)"
-            ]);
-            if (isset($tier[2])) {
+            $hasDivisions = is_array($tier[2]);
+            $image = !$hasDivisions ? $tier[2] : null;
+            $tierModel = new Tier();
+            $tierModel->name = $tier[0];
+            $tierModel->box_shadow = "inset 60px 0 120px rgba({$tier[1]},.2), 0 0 9px 0 rgba(0,0,0,.6)";
+            $tierModel->image = $image;
+            $tierModel->save();
+            if ($hasDivisions) {
                 foreach ($tier[2] as $division) {
                     $tierModel->divisions()->create(
                         [
