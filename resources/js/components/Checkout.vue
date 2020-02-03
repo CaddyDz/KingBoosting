@@ -7,7 +7,7 @@
 				<v-container>
 					<v-row align="center" justify="center">
 						<v-col md="3">
-							<img :src="division.image" :alt="tier.name" loading="lazy" />
+							<img :src="division.image || tier.image" :alt="tier.name" loading="lazy" />
 						</v-col>
 						<v-col md="9">
 							<v-row>
@@ -69,6 +69,9 @@ export default {
 				this.hasDivisions = true;
 				this.selectedDivisionID = this.tier.divisions[0].id;
 			} else {
+				// Set division to an empty object with null image to pass coalesce in template
+				this.division = { image: null };
+				// Remove the divisions select from the DOM
 				this.hasDivisions = false;
 			}
 		},
