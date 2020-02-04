@@ -9,8 +9,8 @@
 					<v-row no-gutters>
 						<v-col md="6">
 							<v-checkbox label="Specific champions at +20% cost" prepend-icon="mdi-account-group"></v-checkbox>
-							<v-checkbox label="Priority order (2x speed) at +25% cost" prepend-icon="mdi-account-group"></v-checkbox>
-							<v-checkbox label="With Streaming +15% cost" prepend-icon="mdi-account-group"></v-checkbox>
+							<v-checkbox label="Priority order (2x speed) at +25% cost" prepend-icon="mdi-flash"></v-checkbox>
+							<v-checkbox label="With Streaming +15% cost" prepend-icon="mdi-video"></v-checkbox>
 						</v-col>
 						<v-col md="6">
 							<!-- ETA -->
