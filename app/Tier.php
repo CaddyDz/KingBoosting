@@ -10,4 +10,9 @@ class Tier extends Model
     {
         return $this->hasMany(Division::class);
     }
+
+    public function wins()
+    {
+        return $this->hasMany(WinBoosting::class);
+    }
 }

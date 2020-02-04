@@ -14,9 +14,9 @@ class TiersTableSeeder extends Seeder
     {
         $tiers = [
             [
-                'Iron',
-                '152,129,108',
-                [
+                'tier' => 'Iron',
+                'box_shadow' => '152,129,108',
+                'divisions' => [
                     [
                         'Division IV',
                         '/img/divisions/iron/IV.webp'
@@ -34,11 +34,53 @@ class TiersTableSeeder extends Seeder
                         '/img/divisions/iron/I.png'
                     ],
                 ],
+                'wins' => [
+                    [
+                        'number_of_wins' => 1,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'number_of_wins' => 2,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'number_of_wins' => 3,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'number_of_wins' => 4,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'number_of_wins' => 5,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'number_of_wins' => 6,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'number_of_wins' => 7,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'number_of_wins' => 8,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'number_of_wins' => 9,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'number_of_wins' => 10,
+                        'eta' => '1-2 days'
+                    ],
+                ]
             ],
             [
-                'Bronze',
-                '89,60,28',
-                [
+                'tier' => 'Bronze',
+                'box_shadow' => '89,60,28',
+                'division' => [
                     [
                         'Division IV',
                         '/img/divisions/bronze/IV.png'
@@ -56,11 +98,53 @@ class TiersTableSeeder extends Seeder
                         '/img/divisions/bronze/I.png'
                     ],
                 ],
+                'wins' => [
+                    [
+                        'number_of_wins' => 1,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'number_of_wins' => 2,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'number_of_wins' => 3,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'number_of_wins' => 4,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'number_of_wins' => 5,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'number_of_wins' => 6,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'number_of_wins' => 7,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'number_of_wins' => 8,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'number_of_wins' => 9,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'number_of_wins' => 10,
+                        'eta' => '1-2 days'
+                    ],
+                ]
             ],
             [
-                'Silver',
-                '119,134,131',
-                [
+                'tier' => 'Silver',
+                'box_shadow' => '119,134,131',
+                'divisions' => [
                     [
                         'Division IV',
                         '/img/divisions/silver/IV.webp'
@@ -78,10 +162,52 @@ class TiersTableSeeder extends Seeder
                         '/img/divisions/silver/I.webp'
                     ],
                 ],
+                'wins' => [
+                    [
+                        'number_of_wins' => 1,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'number_of_wins' => 2,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'number_of_wins' => 3,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'number_of_wins' => 4,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'number_of_wins' => 5,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'number_of_wins' => 6,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'number_of_wins' => 7,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'number_of_wins' => 8,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'number_of_wins' => 9,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'number_of_wins' => 10,
+                        'eta' => '1-2 days'
+                    ],
+                ]
             ],
             [
-                'Gold',
-                '228,189,62',
+                'tier' => 'Gold',
+                'box_shadow' => '228,189,62',
                 [
                     [
                         'Division IV',
@@ -170,6 +296,7 @@ class TiersTableSeeder extends Seeder
             $tierModel->image = $image;
             $tierModel->save();
             if ($hasDivisions) {
+                // tier[2] is an array, can't seed wins ETA here
                 foreach ($tier[2] as $division) {
                     $tierModel->divisions()->create(
                         [
@@ -178,6 +305,20 @@ class TiersTableSeeder extends Seeder
                         ]
                     );
                 }
+            }
+            // Call $tierModel->wins
+            // ETA: 1-2 days from iron to gold (5 wins or more)
+            // ETA: 2-3 days for platinum (5 wins or more)
+            // ETA: 3-5 days for Diamond (5 wins or more)
+            // ETA: 4-6 days for Master (5 wins or more)
+            // ETA: 5-8 days for Grandmaster and Challenger (5 wins or more)
+            if (isset($tier[3])) {
+                $tierModel->wins()->create(
+                    [
+                        'wins' => $tier[3]['number_of_wins'],
+                        'eta' => $tier[3]['eta'],
+                    ]
+                );
             }
         }
     }
