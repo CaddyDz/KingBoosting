@@ -45,7 +45,7 @@ export default {
 		this.fetchServices();
 		setTimeout(() => {
 			this.applyStyles();
-		}, 800);
+		}, 2000);
 	}
 };
 </script>
@@ -66,7 +66,7 @@ export default {
 	height: 100px;
 	border-radius: 50%;
 	position: absolute;
-	animation-delay: 800ms;
+	animation-delay: 2000ms;
 	animation: spin 50s linear infinite reverse;
 }
 
