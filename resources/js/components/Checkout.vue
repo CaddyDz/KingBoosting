@@ -31,7 +31,7 @@
 									></v-select>
 								</v-col>
 							</v-row>
-							<!-- <v-select :items="tiersNames" label="Select your server" :value="tiersNames[0]"></v-select> -->
+							<v-select :items="servers" label="Select your server" item-text="region" :value="servers[0]"></v-select>
 						</v-col>
 					</v-row>
 				</v-container>
@@ -59,7 +59,8 @@ export default {
 			tiers: [], // List of all tiers
 			selectedTierID: 1, // Pretty self explanatory
 			selectedDivisionID: 1, // Same ooh, ooh same ooh
-			hasDivisions: true
+			hasDivisions: true,
+			servers: []
 		};
 	},
 	watch: {
@@ -91,6 +92,7 @@ export default {
 			// Division IV
 			this.division = _.first(this.tier.divisions);
 		});
+		axios.get("/api/servers").then(response => (this.servers = response.data));
 	}
 };
 </script>

@@ -5,20 +5,20 @@ namespace App\Http\Controllers;
 use App\Server;
 use Illuminate\Http\Request;
 
-class ServerController extends Controller
+class ServersController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the servers.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Database\Eloquent\Collection
      */
     public function index()
     {
-        //
+        return Server::all();
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new server.
      *
      * @return \Illuminate\Http\Response
      */
@@ -28,7 +28,7 @@ class ServerController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created server in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -39,7 +39,7 @@ class ServerController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified server.
      *
      * @param  \App\Server  $server
      * @return \Illuminate\Http\Response
@@ -50,7 +50,7 @@ class ServerController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the specified server.
      *
      * @param  \App\Server  $server
      * @return \Illuminate\Http\Response
@@ -61,7 +61,7 @@ class ServerController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified server in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Server  $server
@@ -73,7 +73,7 @@ class ServerController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified server from storage.
      *
      * @param  \App\Server  $server
      * @return \Illuminate\Http\Response
