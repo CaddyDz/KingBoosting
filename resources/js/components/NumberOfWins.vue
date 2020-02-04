@@ -30,7 +30,7 @@
 export default {
 	data() {
 		return {
-			wins: 1,
+			wins: 4,
 			radios: "solo"
 		};
 	}
