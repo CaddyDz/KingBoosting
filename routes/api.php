@@ -20,3 +20,4 @@ Route::post('/tiers', 'TiersController@index');
 Route::get('/servers', 'ServersController@index');
 Route::get('/services', 'ServicesController@index');
 Route::get('/services/{id}/kind', 'ServicesController@getKind');
+Route::get('/features', 'FeaturesController@index');
