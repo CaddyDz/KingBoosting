@@ -1,10 +1,10 @@
 <dropdown-trigger class="h-9 flex items-center">
-    @isset($user->email)
+    {{-- @isset($user->email)
         <img
             src="https://secure.gravatar.com/avatar/{{ md5($user->email) }}?size=512"
-            class="rounded-full w-8 h-8 mr-3"
-        />
-    @endisset
+    class="rounded-full w-8 h-8 mr-3"
+    />
+    @endisset --}}
 
     <span class="text-90">
         {{ $user->name ?? $user->email ?? __('Nova User') }}
@@ -19,10 +19,8 @@
             </a>
         </li>
         <li>
-            <nova-dark-theme-toggle
-                label="{{ __('Dark Theme') }}"
-            ></nova-dark-theme-toggle>
+            <nova-dark-theme-toggle label="{{ __('Dark Theme') }}"></nova-dark-theme-toggle>
         </li>
-        
+
     </ul>
 </dropdown-menu>

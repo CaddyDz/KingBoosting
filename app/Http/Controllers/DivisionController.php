@@ -2,24 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Tier;
-use App\Service;
+use App\Division;
 use Illuminate\Http\Request;
 
-class TiersController extends Controller
+class DivisionController extends Controller
 {
     /**
-     * Display a listing of the tier.
+     * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Service $service)
+    public function index()
     {
-        return Tier::with('divisions', 'wins')->get();
+        //
     }
 
     /**
-     * Show the form for creating a new tier.
+     * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
@@ -29,7 +28,7 @@ class TiersController extends Controller
     }
 
     /**
-     * Store a newly created tier in storage.
+     * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -40,46 +39,46 @@ class TiersController extends Controller
     }
 
     /**
-     * Display the specified tier.
+     * Display the specified resource.
      *
-     * @param  \App\Tier  $tier
+     * @param  \App\Division  $division
      * @return \Illuminate\Http\Response
      */
-    public function show(Tier $tier)
+    public function show(Division $division)
     {
         //
     }
 
     /**
-     * Show the form for editing the specified tier.
+     * Show the form for editing the specified resource.
      *
-     * @param  \App\Tier  $tier
+     * @param  \App\Division  $division
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tier $tier)
+    public function edit(Division $division)
     {
         //
     }
 
     /**
-     * Update the specified tier in storage.
+     * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Tier  $tier
+     * @param  \App\Division  $division
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tier $tier)
+    public function update(Request $request, Division $division)
     {
         //
     }
 
     /**
-     * Remove the specified tier from storage.
+     * Remove the specified resource from storage.
      *
-     * @param  \App\Tier  $tier
+     * @param  \App\Division  $division
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tier $tier)
+    public function destroy(Division $division)
     {
         //
     }

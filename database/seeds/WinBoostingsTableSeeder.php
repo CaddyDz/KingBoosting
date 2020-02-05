@@ -12,7 +12,7 @@ class WinBoostingsTableSeeder extends Seeder
      */
     public function run()
     {
-        WinBoosting::create(['wins_available' => 10]);
-        WinBoosting::create(['wins_available' => 7]);
+        // WinBoosting::create(['wins_available' => 10]);
+        // WinBoosting::create(['wins_available' => 7]);
     }
 }

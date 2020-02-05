@@ -1,7 +1,7 @@
 <template>
 	<v-slider
 		min="1"
-		max="10"
+		:max="max"
 		thumb-label="always"
 		:color="'purple'"
 		v-model="number_of_wins"
@@ -14,19 +14,26 @@
 <script>
 export default {
 	props: {
-		wins: {
-			type: Number,
-			required: true
+		max: {
+			required: true,
+			type: Number
 		}
 	},
 	data() {
 		return {
-			number_of_wins: this.wins
+			// Should be passed from parent component
+			number_of_wins: 4
 		};
 	},
 	computed: {
 		plural(count, noun) {
 			return (count, noun) => `${count} ${noun}${count !== 1 ? "s" : ""}`;
+		}
+	},
+	watch: {
+		number_of_wins(value) {
+			// Update price
+			console.log(value);
 		}
 	}
 };

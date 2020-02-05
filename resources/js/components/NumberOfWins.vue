@@ -5,7 +5,7 @@
 				<v-row justify="center" align="center">
 					<v-col md="2"></v-col>
 					<v-col md="8">
-						<wins-slider :wins="wins"></wins-slider>
+						<wins-slider :max="max"></wins-slider>
 					</v-col>
 					<v-col md="2"></v-col>
 				</v-row>
@@ -28,9 +28,14 @@
 
 <script>
 export default {
+	props: {
+		max: {
+			required: true,
+			type: Number
+		}
+	},
 	data() {
 		return {
-			wins: 4,
 			radios: "solo"
 		};
 	}

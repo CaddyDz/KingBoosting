@@ -39,7 +39,7 @@
 		</v-stepper-content>
 		<!-- Don't put the stepper step in the component after it because it removes the vertical line between the steps -->
 		<v-stepper-step step="2">Select Your Number Of Wins</v-stepper-step>
-		<number-of-wins></number-of-wins>
+		<number-of-wins :max="max"></number-of-wins>
 		<payment-section></payment-section>
 	</v-stepper>
 </template>
@@ -54,18 +54,20 @@ export default {
 	data() {
 		return {
 			e6: 1, // Stepper stupid model value, can't be hardcoded
-			tier: {}, // Currently selected tier
+			tier: { wins: [] }, // Currently selected tier
 			division: {}, // Currently selected division
 			tiers: [], // List of all tiers
 			selectedTierID: 1, // Pretty self explanatory
 			selectedDivisionID: 1, // Same ooh, ooh same ooh
 			hasDivisions: true,
-			servers: []
+			servers: [],
+			max: 10
 		};
 	},
 	watch: {
 		selectedTierID(tierId) {
 			this.tier = _.find(this.tiers, ["id", tierId]);
+			this.max = _.maxBy(this.tier.wins, "wins").wins;
 			if (!_.isEmpty(this.tier.divisions)) {
 				this.hasDivisions = true;
 				this.selectedDivisionID = this.tier.divisions[0].id;
@@ -87,6 +89,8 @@ export default {
 			this.tiers = response.data;
 			// The first tier
 			this.tier = _.first(response.data);
+			// Get the maximum number of wins in the tier
+			this.max = _.maxBy(this.tier.wins, "wins").wins;
 			// Divisions of the first tier
 			this.divisions = this.tier.divisions;
 			// Division IV

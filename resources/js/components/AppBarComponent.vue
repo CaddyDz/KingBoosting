@@ -15,7 +15,7 @@
 require("particles.js");
 export default {
 	mounted() {
-		particlesJS.load("particles-js", "/particlesjs-config.json");
+		// particlesJS.load("particles-js", "/particlesjs-config.json");
 	}
 };
 </script>
