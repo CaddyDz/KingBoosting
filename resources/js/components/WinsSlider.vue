@@ -3,7 +3,7 @@
 		min="1"
 		:max="max"
 		thumb-label="always"
-		:color="'purple'"
+		color="purple"
 		v-model="number_of_wins"
 		thumb-size="50"
 	>
