@@ -59,7 +59,9 @@ export default {
 	},
 	mounted() {
 		// Default value for ETA is the tier's ETA for 4 wins
-		this.eta = _.find(this.tier.wins, ["wins", 4]).eta;
+		setTimeout(() => {
+			this.eta = _.find(this.tier.wins, ["wins", 4]).eta;
+		}, 2000);
 		this.$root.$on("wins_changed", value => {
 			this.eta = _.find(this.tier.wins, ["wins", value]).eta;
 		});
