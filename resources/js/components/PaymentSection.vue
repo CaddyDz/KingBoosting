@@ -14,7 +14,7 @@
 						</v-col>
 						<v-col md="6">
 							<!-- ETA -->
-							<p class="text-right">Approximate completion time: 0-1 days</p>
+							<p class="text-right">Approximate completion time: {{ eta }}</p>
 						</v-col>
 					</v-row>
 					<v-row>
@@ -43,3 +43,24 @@
 		</v-stepper-content>
 	</div>
 </template>
+
+<script>
+export default {
+	props: {
+		tier: {
+			type: Object,
+			required: true
+		}
+	},
+	data() {
+		return {
+			eta: ""
+		};
+	},
+	mounted() {
+		this.$root.$on("wins_changed", value => {
+			this.eta = _.find(this.tier.wins, ["wins", value]).eta;
+		});
+	}
+};
+</script>

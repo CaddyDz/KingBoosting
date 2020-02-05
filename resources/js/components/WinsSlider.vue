@@ -32,8 +32,8 @@ export default {
 	},
 	watch: {
 		number_of_wins(value) {
-			// Update price
-			console.log(value);
+			// Update eta & price
+			this.$root.$emit("wins_changed", value);
 		}
 	}
 };
