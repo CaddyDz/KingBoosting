@@ -18,61 +18,61 @@ class TiersTableSeeder extends Seeder
                 'box_shadow' => '152,129,108',
                 'divisions' => [
                     [
-                        'Division IV',
-                        '/img/divisions/iron/IV.webp'
+                        'name' => 'Division IV',
+                        'image' => '/img/divisions/iron/IV.webp'
                     ],
                     [
-                        'Division III',
-                        '/img/divisions/iron/III.png'
+                        'name' => 'Division III',
+                        'image' => '/img/divisions/iron/III.png'
                     ],
                     [
-                        'Division II',
-                        '/img/divisions/iron/II.png'
+                        'name' => 'Division II',
+                        'image' => '/img/divisions/iron/II.png'
                     ],
                     [
-                        'Division I',
-                        '/img/divisions/iron/I.png'
+                        'name' => 'Division I',
+                        'image' => '/img/divisions/iron/I.png'
                     ],
                 ],
                 'wins' => [
                     [
-                        'number_of_wins' => 1,
+                        'wins' => 1,
                         'eta' => '0-1 day'
                     ],
                     [
-                        'number_of_wins' => 2,
+                        'wins' => 2,
                         'eta' => '0-1 day'
                     ],
                     [
-                        'number_of_wins' => 3,
+                        'wins' => 3,
                         'eta' => '0-1 day'
                     ],
                     [
-                        'number_of_wins' => 4,
+                        'wins' => 4,
                         'eta' => '0-1 day'
                     ],
                     [
-                        'number_of_wins' => 5,
+                        'wins' => 5,
                         'eta' => '1-2 days'
                     ],
                     [
-                        'number_of_wins' => 6,
+                        'wins' => 6,
                         'eta' => '1-2 days'
                     ],
                     [
-                        'number_of_wins' => 7,
+                        'wins' => 7,
                         'eta' => '1-2 days'
                     ],
                     [
-                        'number_of_wins' => 8,
+                        'wins' => 8,
                         'eta' => '1-2 days'
                     ],
                     [
-                        'number_of_wins' => 9,
+                        'wins' => 9,
                         'eta' => '1-2 days'
                     ],
                     [
-                        'number_of_wins' => 10,
+                        'wins' => 10,
                         'eta' => '1-2 days'
                     ],
                 ]
@@ -82,61 +82,61 @@ class TiersTableSeeder extends Seeder
                 'box_shadow' => '89,60,28',
                 'division' => [
                     [
-                        'Division IV',
-                        '/img/divisions/bronze/IV.png'
+                        'name' => 'Division IV',
+                        'image' => '/img/divisions/bronze/IV.png'
                     ],
                     [
-                        'Division III',
-                        '/img/divisions/bronze/III.png'
+                        'name' => 'Division III',
+                        'image' => '/img/divisions/bronze/III.png'
                     ],
                     [
-                        'Division II',
-                        '/img/divisions/bronze/II.png'
+                        'name' => 'Division II',
+                        'image' => '/img/divisions/bronze/II.png'
                     ],
                     [
-                        'Division I',
-                        '/img/divisions/bronze/I.png'
+                        'name' => 'Division I',
+                        'image' => '/img/divisions/bronze/I.png'
                     ],
                 ],
                 'wins' => [
                     [
-                        'number_of_wins' => 1,
+                        'wins' => 1,
                         'eta' => '0-1 day'
                     ],
                     [
-                        'number_of_wins' => 2,
+                        'wins' => 2,
                         'eta' => '0-1 day'
                     ],
                     [
-                        'number_of_wins' => 3,
+                        'wins' => 3,
                         'eta' => '0-1 day'
                     ],
                     [
-                        'number_of_wins' => 4,
+                        'wins' => 4,
                         'eta' => '0-1 day'
                     ],
                     [
-                        'number_of_wins' => 5,
+                        'wins' => 5,
                         'eta' => '1-2 days'
                     ],
                     [
-                        'number_of_wins' => 6,
+                        'wins' => 6,
                         'eta' => '1-2 days'
                     ],
                     [
-                        'number_of_wins' => 7,
+                        'wins' => 7,
                         'eta' => '1-2 days'
                     ],
                     [
-                        'number_of_wins' => 8,
+                        'wins' => 8,
                         'eta' => '1-2 days'
                     ],
                     [
-                        'number_of_wins' => 9,
+                        'wins' => 9,
                         'eta' => '1-2 days'
                     ],
                     [
-                        'number_of_wins' => 10,
+                        'wins' => 10,
                         'eta' => '1-2 days'
                     ],
                 ]
@@ -146,61 +146,61 @@ class TiersTableSeeder extends Seeder
                 'box_shadow' => '119,134,131',
                 'divisions' => [
                     [
-                        'Division IV',
-                        '/img/divisions/silver/IV.webp'
+                        'name' => 'Division IV',
+                        'image' => '/img/divisions/silver/IV.webp'
                     ],
                     [
-                        'Division III',
-                        '/img/divisions/silver/III.webp'
+                        'name' => 'Division III',
+                        'image' => '/img/divisions/silver/III.webp'
                     ],
                     [
-                        'Division II',
-                        '/img/divisions/silver/II.webp'
+                        'name' => 'Division II',
+                        'image' => '/img/divisions/silver/II.webp'
                     ],
                     [
-                        'Division I',
-                        '/img/divisions/silver/I.webp'
+                        'name' => 'Division I',
+                        'image' => '/img/divisions/silver/I.webp'
                     ],
                 ],
                 'wins' => [
                     [
-                        'number_of_wins' => 1,
+                        'wins' => 1,
                         'eta' => '0-1 day'
                     ],
                     [
-                        'number_of_wins' => 2,
+                        'wins' => 2,
                         'eta' => '0-1 day'
                     ],
                     [
-                        'number_of_wins' => 3,
+                        'wins' => 3,
                         'eta' => '0-1 day'
                     ],
                     [
-                        'number_of_wins' => 4,
+                        'wins' => 4,
                         'eta' => '0-1 day'
                     ],
                     [
-                        'number_of_wins' => 5,
+                        'wins' => 5,
                         'eta' => '1-2 days'
                     ],
                     [
-                        'number_of_wins' => 6,
+                        'wins' => 6,
                         'eta' => '1-2 days'
                     ],
                     [
-                        'number_of_wins' => 7,
+                        'wins' => 7,
                         'eta' => '1-2 days'
                     ],
                     [
-                        'number_of_wins' => 8,
+                        'wins' => 8,
                         'eta' => '1-2 days'
                     ],
                     [
-                        'number_of_wins' => 9,
+                        'wins' => 9,
                         'eta' => '1-2 days'
                     ],
                     [
-                        'number_of_wins' => 10,
+                        'wins' => 10,
                         'eta' => '1-2 days'
                     ],
                 ]
@@ -208,117 +208,302 @@ class TiersTableSeeder extends Seeder
             [
                 'tier' => 'Gold',
                 'box_shadow' => '228,189,62',
-                [
+                'divisions' => [
                     [
-                        'Division IV',
-                        '/img/divisions/gold/IV.webp'
+                        'name' => 'Division IV',
+                        'image' => '/img/divisions/gold/IV.webp'
                     ],
                     [
-                        'Division III',
-                        '/img/divisions/gold/III.webp'
+                        'name' => 'Division III',
+                        'image' => '/img/divisions/gold/III.webp'
                     ],
                     [
-                        'Division II',
-                        '/img/divisions/gold/II.webp'
+                        'name' => 'Division II',
+                        'image' => '/img/divisions/gold/II.webp'
                     ],
                     [
-                        'Division I',
-                        '/img/divisions/gold/I.webp'
-                    ],
-                ],
-            ],
-            [
-                'Platinum',
-                '57,123,135',
-                [
-                    [
-                        'Division IV',
-                        '/img/divisions/platinum/IV.webp'
-                    ],
-                    [
-                        'Division III',
-                        '/img/divisions/platinum/III.webp'
-                    ],
-                    [
-                        'Division II',
-                        '/img/divisions/platinum/II.webp'
-                    ],
-                    [
-                        'Division I',
-                        '/img/divisions/platinum/I.webp'
+                        'name' => 'Division I',
+                        'image' => '/img/divisions/gold/I.webp'
                     ],
                 ],
+                'wins' => [
+                    [
+                        'wins' => 1,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'wins' => 2,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'wins' => 3,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'wins' => 4,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'wins' => 5,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 6,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 7,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 8,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 9,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 10,
+                        'eta' => '1-2 days'
+                    ],
+                ]
             ],
             [
-                'Diamond',
-                '48,113,222',
-                [
+                'tier' => 'Platinum',
+                'box_shadow' => '57,123,135',
+                'divisions' => [
                     [
-                        'Division IV',
-                        '/img/divisions/diamond/IV.webp'
+                        'name' => 'Division IV',
+                        'image' => '/img/divisions/platinum/IV.webp'
                     ],
                     [
-                        'Division III',
-                        '/img/divisions/diamond/III.webp'
+                        'name' => 'Division III',
+                        'image' => '/img/divisions/platinum/III.webp'
                     ],
                     [
-                        'Division II',
-                        '/img/divisions/diamond/II.webp'
+                        'name' => 'Division II',
+                        'image' => '/img/divisions/platinum/II.webp'
                     ],
                     [
-                        'Division I',
-                        '/img/divisions/diamond/I.webp'
+                        'name' => 'Division I',
+                        'image' => '/img/divisions/platinum/I.webp'
                     ],
                 ],
+                'wins' => [
+                    [
+                        'wins' => 1,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'wins' => 2,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'wins' => 3,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 4,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 5,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 6,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 7,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 8,
+                        'eta' => '2-3 days'
+                    ],
+                    [
+                        'wins' => 9,
+                        'eta' => '2-3 days'
+                    ],
+                    [
+                        'wins' => 10,
+                        'eta' => '2-3 days'
+                    ],
+                ]
             ],
             [
-                'Master',
-                '128,29,161',
-                '/img/divisions/master.webp'
+                'tier' => 'Diamond',
+                'box_shadow' => '48,113,222',
+                'divisions' => [
+                    [
+                        'name' => 'Division IV',
+                        'image' => '/img/divisions/diamond/IV.webp'
+                    ],
+                    [
+                        'name' => 'Division III',
+                        'image' => '/img/divisions/diamond/III.webp'
+                    ],
+                    [
+                        'name' => 'Division II',
+                        'image' => '/img/divisions/diamond/II.webp'
+                    ],
+                    [
+                        'name' => 'Division I',
+                        'image' => '/img/divisions/diamond/I.webp'
+                    ],
+                ],
+                'wins' => [
+                    [
+                        'wins' => 1,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'wins' => 2,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 3,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 4,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 5,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 6,
+                        'eta' => '2-3 days'
+                    ],
+                    [
+                        'wins' => 7,
+                        'eta' => '2-3 days'
+                    ],
+                ]
             ],
             [
-                'Grandmaster',
-                '161,29,29',
-                '/img/divisions/grandmaster.webp'
+                'tier' => 'Master',
+                'box_shadow' => '128,29,161',
+                'image' => '/img/divisions/master.webp',
+                'wins' => [
+                    [
+                        'wins' => 1,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'wins' => 2,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 3,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 4,
+                        'eta' => '2-3 days'
+                    ],
+                    [
+                        'wins' => 5,
+                        'eta' => '2-3 days'
+                    ],
+                    [
+                        'wins' => 6,
+                        'eta' => '2-3 days'
+                    ],
+                    [
+                        'wins' => 7,
+                        'eta' => '3-5 days'
+                    ],
+                ]
             ],
             [
-                'Challenger',
-                '161,113,29',
-                '/img/divisions/challenger.webp'
+                'tier' => 'Grandmaster',
+                'box_shadow' => '161,29,29',
+                'image' => '/img/divisions/grandmaster.webp',
+                'wins' => [
+                    [
+                        'wins' => 1,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'wins' => 2,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 3,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 4,
+                        'eta' => '2-3 days'
+                    ],
+                    [
+                        'wins' => 5,
+                        'eta' => '2-3 days'
+                    ],
+                    [
+                        'wins' => 6,
+                        'eta' => '3-5 days'
+                    ],
+                    [
+                        'wins' => 7,
+                        'eta' => '3-5 days'
+                    ],
+                ]
+            ],
+            [
+                'tier' => 'Challenger',
+                'box_shadow' => '161,113,29',
+                'image' => '/img/divisions/challenger.webp',
+                'wins' => [
+                    [
+                        'wins' => 1,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 2,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 3,
+                        'eta' => '2-3 days'
+                    ],
+                    [
+                        'wins' => 4,
+                        'eta' => '2-3 days'
+                    ],
+                    [
+                        'wins' => 5,
+                        'eta' => '3-5 days'
+                    ],
+                    [
+                        'wins' => 6,
+                        'eta' => '3-5 days'
+                    ],
+                    [
+                        'wins' => 7,
+                        'eta' => '4-6 days'
+                    ],
+                ]
             ]
         ];
         foreach ($tiers as $tier) {
-            $hasDivisions = is_array($tier[2]);
-            $image = !$hasDivisions ? $tier[2] : null;
             $tierModel = new Tier();
-            $tierModel->name = $tier[0];
-            $tierModel->box_shadow = "inset 60px 0 120px rgba({$tier[1]},.2), 0 0 9px 0 rgba(0,0,0,.6)";
-            $tierModel->image = $image;
-            $tierModel->save();
-            if ($hasDivisions) {
-                // tier[2] is an array, can't seed wins ETA here
-                foreach ($tier[2] as $division) {
-                    $tierModel->divisions()->create(
-                        [
-                            'name' => $division[0],
-                            'image' => $division[1],
-                        ]
-                    );
-                }
+            $tierModel->name = $tier['tier'];
+            $tierModel->box_shadow = "inset 60px 0 120px rgba({$tier['box_shadow']},.2), 0 0 9px 0 rgba(0,0,0,.6)";
+            if (isset($tier['image'])) { // if tier has an image
+                $tierModel->image = $tier['image'];
             }
-            // Call $tierModel->wins
-            // ETA: 1-2 days from iron to gold (5 wins or more)
-            // ETA: 2-3 days for platinum (5 wins or more)
-            // ETA: 3-5 days for Diamond (5 wins or more)
-            // ETA: 4-6 days for Master (5 wins or more)
-            // ETA: 5-8 days for Grandmaster and Challenger (5 wins or more)
-            if (isset($tier[3])) {
-                $tierModel->wins()->create(
-                    [
-                        'wins' => $tier[3]['number_of_wins'],
-                        'eta' => $tier[3]['eta'],
-                    ]
-                );
+            $tierModel->save();
+            if (isset($tier['divisions'])) {
+                $tierModel->divisions()->createMany($tier['divisions']);
+            }
+            if (isset($tier['wins'])) {
+                $tierModel->wins()->createMany($tier['wins']);
             }
         }
     }
