@@ -9,9 +9,6 @@ require('./bootstrap');
 window.Vue = require('vue');
 import '@mdi/font/css/materialdesignicons.css'
 import Vuetify from 'vuetify';
-import FlagIcon from 'vue-flag-icon'
-Vue.use(FlagIcon);
-
 Vue.use(Vuetify);
 /**
  * The following block of code may be used to automatically register your

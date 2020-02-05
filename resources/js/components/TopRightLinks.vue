@@ -11,19 +11,13 @@
 			<a href="/loyalty-program">Loyalty Program</a>
 		</span>
 		<v-dialog v-model="shown" width="fit-content" hide-overlay content-class="languages">
-			<template v-slot:activator="{ on }">
-				<span class="language-selector" @mouseover="showLanguages">
-					Language
-					<flag :iso="current" />
-				</span>
+			<template v-slot:default>
+				<span class="language-selector" @mouseover="showLanguages">Language</span>
 			</template>
 
 			<v-list @mouseleave="close">
-				<v-list-item v-for="(language,index) in languages" :key="index" @click>
-					<v-list-item-icon>
-						<flag :iso="index" />
-					</v-list-item-icon>
-
+				<v-list-item v-for="(language,index) in languages" :key="index">
+					<v-list-item-icon></v-list-item-icon>
 					<v-list-item-content>
 						<v-list-item-title v-text="language"></v-list-item-title>
 					</v-list-item-content>
