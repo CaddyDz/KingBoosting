@@ -14,7 +14,7 @@ class ServicesController extends Controller
      */
     public function index()
     {
-        return Service::with('kind:id,name')->get();
+        return Service::select('name', 'slug', 'image', 'kind_id')->with('kind:id,name')->get();
     }
 
     /**
