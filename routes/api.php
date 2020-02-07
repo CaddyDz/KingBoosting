@@ -21,3 +21,4 @@ Route::get('/servers', 'ServersController@index');
 Route::get('/services', 'ServicesController@index');
 Route::get('/services/{id}/kind', 'ServicesController@getKind');
 Route::get('/features', 'FeaturesController@index');
+Route::get('/priorities', 'PrioritiesController@index');
