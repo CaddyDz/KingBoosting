@@ -9,7 +9,46 @@ require('./bootstrap');
 window.Vue = require('vue');
 import '@mdi/font/css/materialdesignicons.css'
 import Vuetify from 'vuetify';
+import Vuex from 'vuex'
+Vue.use(Vuex)
 Vue.use(Vuetify);
+
+const store = new Vuex.Store({
+    state: {
+        price: 1.9,
+        currentlySelectedTier: {
+            wins: []
+        },
+        currentlySelectedDivision: {},
+        currentlySelectedNumberOfWins: 1,
+        maximumNumberOfWins: 0,
+        eta: '',
+    },
+    mutations: {
+        updatePrice(state, newPrice) {
+            state.price = newPrice;
+        },
+        updateCurrentlySelectedTier(state, payload) {
+            state.currentlySelectedTier = payload;
+        },
+        updateCurrentlySelectedDivision(state, payload) {
+            state.currentlySelectedDivision = payload;
+        },
+        updateMaximumNumberOfWins(state, payload) {
+            state.maximumNumberOfWins = payload;
+        },
+        updateETA(payload) {
+            state.eta = payload;
+        }
+    },
+    actions: {
+        increment(context) {
+            context.commit('increment')
+        }
+    }
+})
+window.store = store;
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -29,6 +68,9 @@ files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(
  */
 const app = new Vue({
     el: '#root',
+    // provide the store using the "store" option.
+    // this will inject the store instance to all child components.
+    store,
     vuetify: new Vuetify({
         theme: {
             themes: {
@@ -49,3 +91,5 @@ const app = new Vue({
         this.$vuetify.theme.dark = true
     }
 });
+
+window.app = app;
