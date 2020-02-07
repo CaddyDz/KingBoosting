@@ -2,13 +2,13 @@
 
 namespace App\Nova;
 
+use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Code;
-use Laravel\Nova\Fields\Heading;
-use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Http\Requests\NovaRequest;
+use Laravel\Nova\Fields\Image;
+use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\Heading;
 
 class Tier extends Resource
 {
@@ -43,7 +43,7 @@ class Tier extends Resource
      */
     public function fields(Request $request)
     {
-        return [
+        $fields = [
             ID::make()->sortable(),
             Text::make('Name'),
             Code::make('Background Color', 'box_shadow')->language('sass'),
@@ -54,6 +54,11 @@ class Tier extends Resource
                 return $value;
             })
         ];
+        $priceField = Number::make('Price')->min(1)->max(1000)->step(0.01);
+        if ($this->model()->price) {
+            array_push($fields, $priceField);
+        }
+        return $fields;
     }
 
     /**
