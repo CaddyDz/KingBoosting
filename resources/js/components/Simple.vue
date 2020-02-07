@@ -175,8 +175,9 @@ export default {
 		selectedTierID(tierId) {
 			this.tier = _.find(this.tiers, ["id", tierId]);
 			this.max = _.maxBy(this.tier.wins, "wins").wins;
-			this.eta = _.find(this.tier.wins, ["wins", value]).eta;
+			this.eta = _.find(this.tier.wins, ["wins", this.number_of_wins]).eta;
 			if (!_.isEmpty(this.tier.divisions)) {
+				// Divisions not empty, therefor less than master
 				this.hasDivisions = true;
 				this.selectedDivisionID = this.tier.divisions[0].id;
 			} else {
@@ -184,10 +185,12 @@ export default {
 				this.division = { image: null };
 				// Remove the divisions select from the DOM
 				this.hasDivisions = false;
+				// Set price to tier's price
+				this.price = parseFloat(this.tier.price);
 			}
 		},
 		selectedDivisionID(divisionId) {
-			this.eta = _.find(this.tier.wins, ["wins", value]).eta;
+			this.eta = _.find(this.tier.wins, ["wins", this.number_of_wins]).eta;
 			this.division = _.find(this.tier.divisions, ["id", divisionId]);
 		},
 		number_of_wins(value) {
