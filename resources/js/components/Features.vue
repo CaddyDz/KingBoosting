@@ -1,46 +1,41 @@
 <template>
-    <v-container class="features-section container--fluid">
-        <v-row class="">
-            <v-col md="4" class="relative-box d-flex justify-start align-end ">
-				<img height="auto" class="bg-img" src="img/features/bg.png" alt="">
-                <h1 class="our-features-button ">Our Features</h1>
-
-            </v-col>
-            <v-col class="fix-index" md="8">
-                <v-row>
-                    <v-col v-for="(feature, index) in featuresData" :key="index" cols="6">
-                        <h2 class="feature-title"> {{feature.title}} </h2>
+	<v-container class="features-section container--fluid">
+		<v-row class>
+			<v-col md="4" class="relative-box d-flex justify-start align-end">
+				<img height="auto" class="bg-img" src="/img/features/bg.png" alt="Our Features" />
+				<h1 class="our-features-button">Our Features</h1>
+			</v-col>
+			<v-col class="fix-index" md="8">
+				<v-row>
+					<v-col v-for="(feature, index) in featuresData" :key="index" cols="6">
+						<h2 class="feature-title">{{ feature.title }}</h2>
 						<v-row>
 							<v-col cols="2" class="d-flex justify-center align-center">
 								<v-icon>mdi-star</v-icon>
 							</v-col>
-							<v-col  cols="10">
-								<p class="feature-description"> {{ feature.description }} </p>
+							<v-col cols="10">
+								<p class="feature-description">{{ feature.description }}</p>
 							</v-col>
 						</v-row>
-                    </v-col>
-                </v-row>
-            </v-col>
-        </v-row>
-    </v-container>
+					</v-col>
+				</v-row>
+			</v-col>
+		</v-row>
+	</v-container>
 </template>
 <script>
 export default {
-	data(){
+	data() {
 		return {
-			featuresData : []
-		}
+			featuresData: []
+		};
 	},
-	methods: {
-		fetchFeaturesData(){
-			axios.get('api/features')
-			.then(response => (this.featuresData = response.data ) );
-		},
-	},
-	mounted(){
-		this.fetchFeaturesData()
+	mounted() {
+		axios
+			.get("/api/features")
+			.then(response => (this.featuresData = response.data));
 	}
-}
+};
 </script>
 <style scoped>
 .fix-index {
@@ -61,27 +56,26 @@ export default {
 }
 
 .our-features-button {
-	background-image: linear-gradient(to right, #D45151, #FD905C);
+	background-image: linear-gradient(to right, #d45151, #fd905c);
 	padding: 10px 20px;
 	z-index: 1;
 }
 
 .features-section {
- background-color: #202224;
- padding: 0 12px;
+	background-color: #202224;
+	padding: 0 12px;
 }
 
-.feature-title  {
+.feature-title {
 	font-size: 18px;
 	font-weight: bold;
 }
 
 .feature-description {
 	font-size: 14px;
-	color: #76787A;
+	color: #76787a;
 	font-weight: bold;
 	text-align: justify;
 }
-
 </style>
 
