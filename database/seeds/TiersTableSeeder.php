@@ -151,15 +151,18 @@ class TiersTableSeeder extends Seeder
                     ],
                     [
                         'name' => 'Division III',
-                        'image' => '/img/divisions/silver/III.webp'
+                        'image' => '/img/divisions/silver/III.webp',
+                        'price' => 2.9
                     ],
                     [
                         'name' => 'Division II',
-                        'image' => '/img/divisions/silver/II.webp'
+                        'image' => '/img/divisions/silver/II.webp',
+                        'price' => 2.9
                     ],
                     [
                         'name' => 'Division I',
-                        'image' => '/img/divisions/silver/I.webp'
+                        'image' => '/img/divisions/silver/I.webp',
+                        'price' => 3.9
                     ],
                 ],
                 'wins' => [
@@ -211,19 +214,23 @@ class TiersTableSeeder extends Seeder
                 'divisions' => [
                     [
                         'name' => 'Division IV',
-                        'image' => '/img/divisions/gold/IV.webp'
+                        'image' => '/img/divisions/gold/IV.webp',
+                        'price' => 3.9
                     ],
                     [
                         'name' => 'Division III',
-                        'image' => '/img/divisions/gold/III.webp'
+                        'image' => '/img/divisions/gold/III.webp',
+                        'price' => 4.9
                     ],
                     [
                         'name' => 'Division II',
-                        'image' => '/img/divisions/gold/II.webp'
+                        'image' => '/img/divisions/gold/II.webp',
+                        'price' => 4.9
                     ],
                     [
                         'name' => 'Division I',
-                        'image' => '/img/divisions/gold/I.webp'
+                        'image' => '/img/divisions/gold/I.webp',
+                        'price' => 5.9
                     ],
                 ],
                 'wins' => [
@@ -275,19 +282,23 @@ class TiersTableSeeder extends Seeder
                 'divisions' => [
                     [
                         'name' => 'Division IV',
-                        'image' => '/img/divisions/platinum/IV.webp'
+                        'image' => '/img/divisions/platinum/IV.webp',
+                        'price' => 6.9
                     ],
                     [
                         'name' => 'Division III',
-                        'image' => '/img/divisions/platinum/III.webp'
+                        'image' => '/img/divisions/platinum/III.webp',
+                        'price' => 6.9
                     ],
                     [
                         'name' => 'Division II',
-                        'image' => '/img/divisions/platinum/II.webp'
+                        'image' => '/img/divisions/platinum/II.webp',
+                        'price' => 7.9
                     ],
                     [
                         'name' => 'Division I',
-                        'image' => '/img/divisions/platinum/I.webp'
+                        'image' => '/img/divisions/platinum/I.webp',
+                        'price' => 9.9
                     ],
                 ],
                 'wins' => [
@@ -339,19 +350,23 @@ class TiersTableSeeder extends Seeder
                 'divisions' => [
                     [
                         'name' => 'Division IV',
-                        'image' => '/img/divisions/diamond/IV.webp'
+                        'image' => '/img/divisions/diamond/IV.webp',
+                        'price' => 12.9
                     ],
                     [
                         'name' => 'Division III',
-                        'image' => '/img/divisions/diamond/III.webp'
+                        'image' => '/img/divisions/diamond/III.webp',
+                        'price' => 16.9
                     ],
                     [
                         'name' => 'Division II',
-                        'image' => '/img/divisions/diamond/II.webp'
+                        'image' => '/img/divisions/diamond/II.webp',
+                        'price' => 21.9
                     ],
                     [
                         'name' => 'Division I',
-                        'image' => '/img/divisions/diamond/I.webp'
+                        'image' => '/img/divisions/diamond/I.webp',
+                        'price' => 22.9
                     ],
                 ],
                 'wins' => [
@@ -389,6 +404,7 @@ class TiersTableSeeder extends Seeder
                 'tier' => 'Master',
                 'box_shadow' => '128,29,161',
                 'image' => '/img/divisions/master.webp',
+                'price' => 26.9,
                 'wins' => [
                     [
                         'wins' => 1,
@@ -424,6 +440,7 @@ class TiersTableSeeder extends Seeder
                 'tier' => 'Grandmaster',
                 'box_shadow' => '161,29,29',
                 'image' => '/img/divisions/grandmaster.webp',
+                'price' => 29.9,
                 'wins' => [
                     [
                         'wins' => 1,
@@ -459,6 +476,7 @@ class TiersTableSeeder extends Seeder
                 'tier' => 'Challenger',
                 'box_shadow' => '161,113,29',
                 'image' => '/img/divisions/challenger.webp',
+                'price' => 32.9,
                 'wins' => [
                     [
                         'wins' => 1,
@@ -495,6 +513,7 @@ class TiersTableSeeder extends Seeder
             $tierModel = new Tier();
             $tierModel->name = $tier['tier'];
             $tierModel->box_shadow = "inset 60px 0 120px rgba({$tier['box_shadow']},.2), 0 0 9px 0 rgba(0,0,0,.6)";
+            $tierModel->price = isset($tier['price']) ? $tier['price'] : null;
             if (isset($tier['image'])) { // if tier has an image
                 $tierModel->image = $tier['image'];
             }
