@@ -6,8 +6,8 @@ window._ = require('lodash');
  */
 
 window.axios = require('axios');
-
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+// Triggers a preflight which causes CORS policy blocking requests
+// window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
