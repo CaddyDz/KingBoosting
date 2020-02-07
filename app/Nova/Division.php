@@ -2,9 +2,12 @@
 
 namespace App\Nova;
 
-use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Http\Requests\NovaRequest;
+use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Image;
+use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\BelongsTo;
 
 class Division extends Resource
 {
@@ -41,6 +44,14 @@ class Division extends Resource
     {
         return [
             ID::make()->sortable(),
+            BelongsTo::make('Tier')->rules('required')->sortable()->searchable(),
+            Text::make('Name')->rules('required')->sortable(),
+            Image::make('Image')->thumbnail(function ($value) {
+                return $value;
+            })->preview(function ($value) {
+                return $value;
+            }),
+            Number::make('Price')->min(1)->max(1000)->step(0.01)
         ];
     }
 
