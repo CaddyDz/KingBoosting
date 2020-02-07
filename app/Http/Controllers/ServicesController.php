@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Service;
+use App\ServiceKind;
 use Illuminate\Http\Request;
 
 class ServicesController extends Controller
@@ -85,6 +86,7 @@ class ServicesController extends Controller
 
     public function getKind($id = 1)
     {
-        return Service::find($id)->kind->name;
+        // Brings three but who cares, they're all the same
+        return ServiceKind::select('name')->where('id', $id)->first()->name;
     }
 }
