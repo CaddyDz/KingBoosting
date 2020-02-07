@@ -18,6 +18,7 @@ class CreateTiersTable extends Migration
             $table->string('name');
             $table->text('box_shadow');
             $table->string('image')->nullable();
+            $table->decimal('price')->nullable();
             $table->timestamps();
         });
     }
