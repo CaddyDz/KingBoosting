@@ -78,9 +78,17 @@
 					<!-- Checkboxes and ETA -->
 					<v-row no-gutters>
 						<v-col md="6">
-							<v-checkbox label="Specific champions at +20% cost" prepend-icon="mdi-account-group"></v-checkbox>
-							<v-checkbox label="Priority order (2x speed) at +25% cost" prepend-icon="mdi-flash"></v-checkbox>
-							<v-checkbox label="With Streaming +15% cost" prepend-icon="mdi-video"></v-checkbox>
+							<v-checkbox
+								label="Specific champions at +20% cost"
+								prepend-icon="mdi-account-group"
+								v-model="specificChampions"
+							></v-checkbox>
+							<v-checkbox
+								label="Priority order (2x speed) at +25% cost"
+								prepend-icon="mdi-flash"
+								v-model="priorityOrder"
+							></v-checkbox>
+							<v-checkbox label="With Streaming +15% cost" prepend-icon="mdi-video" v-model="streaming"></v-checkbox>
 						</v-col>
 						<v-col md="6">
 							<!-- ETA -->
@@ -93,7 +101,7 @@
 								<s>€24.00($26.66)</s>
 							</strong>
 							<br />
-							€{{ price }} (${{ priceUSD }}) OR 1,390
+							€{{ price.toFixed(2) }} (${{ priceUSD }}) OR 1,390
 						</v-col>
 						<v-col md="4">
 							<v-text-field
@@ -137,8 +145,31 @@ export default {
 			number_of_wins: 4,
 			eta: "",
 			price: 1.9,
-			exchangeRate: 1.1003
+			exchangeRate: 1.1003,
+			specificChampions: false,
+			priorityOrder: false,
+			streaming: false
 		};
+	},
+	computed: {
+		plural(count, noun) {
+			return (count, noun) => `${count} ${noun}${count !== 1 ? "s" : ""}`;
+		},
+		priceUSD() {
+			return (this.price * this.exchangeRate).toFixed(2);
+		}
+	},
+	methods: {
+		pricePlusPercent(percent) {
+			return (
+				this.price + this.division.price * (percent / 100) * this.number_of_wins
+			);
+		},
+		priceMinusPercent(percent) {
+			return (
+				this.price - this.division.price * (percent / 100) * this.number_of_wins
+			);
+		}
 	},
 	watch: {
 		selectedTierID(tierId) {
@@ -162,15 +193,34 @@ export default {
 		number_of_wins(value) {
 			// Update eta & price
 			this.eta = _.find(this.tier.wins, ["wins", value]).eta;
-			this.price = (this.division.price * value).toFixed(2);
-		}
-	},
-	computed: {
-		plural(count, noun) {
-			return (count, noun) => `${count} ${noun}${count !== 1 ? "s" : ""}`;
+			this.price = this.division.price * value;
 		},
-		priceUSD() {
-			return (this.price * this.exchangeRate).toFixed(2);
+		specificChampions(value) {
+			if (value) {
+				// If checked
+				this.price = this.pricePlusPercent(20);
+			} else {
+				// If unchecked
+				this.price = this.priceMinusPercent(20);
+			}
+		},
+		priorityOrder(value) {
+			if (value) {
+				// If checked
+				this.price = this.pricePlusPercent(25);
+			} else {
+				// If unchecked
+				this.price = this.priceMinusPercent(25);
+			}
+		},
+		streaming(value) {
+			if (value) {
+				// If checked
+				this.price = this.pricePlusPercent(15);
+			} else {
+				// If unchecked
+				this.price = this.priceMinusPercent(15);
+			}
 		}
 	},
 	mounted() {
@@ -194,7 +244,7 @@ export default {
 			this.division = _.first(this.tier.divisions);
 			// ETA
 			this.eta = _.find(this.tier.wins, ["wins", 4]).eta;
-			this.price = (this.division.price * this.number_of_wins).toFixed(2);
+			this.price = this.division.price * this.number_of_wins;
 		});
 		axios.get("/api/servers").then(response => (this.servers = response.data));
 	}
