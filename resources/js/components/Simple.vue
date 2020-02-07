@@ -136,7 +136,8 @@ export default {
 			radios: "solo",
 			number_of_wins: 4,
 			eta: "",
-			price: 1.9
+			price: 1.9,
+			exchangeRate: 1.1003
 		};
 	},
 	watch: {
@@ -161,7 +162,7 @@ export default {
 		number_of_wins(value) {
 			// Update eta & price
 			this.eta = _.find(this.tier.wins, ["wins", value]).eta;
-			this.price = (this.division.price * value).toPrecision(3);
+			this.price = (this.division.price * value).toFixed(2);
 		}
 	},
 	computed: {
@@ -169,10 +170,16 @@ export default {
 			return (count, noun) => `${count} ${noun}${count !== 1 ? "s" : ""}`;
 		},
 		priceUSD() {
-			return (this.price * 1.13).toPrecision(3);
+			return (this.price * this.exchangeRate).toFixed(2);
 		}
 	},
 	mounted() {
+		// Get live USD to EUR exchange rate
+		axios
+			.get("https://api.exchangeratesapi.io/latest?symbols=USD")
+			.then(response => {
+				this.exchangeRate = response.data.rates.USD;
+			});
 		// Get list of tiers objects from db
 		axios.post("/api/tiers", { service: this.service.slug }).then(response => {
 			// The tiers array is that list
@@ -187,7 +194,7 @@ export default {
 			this.division = _.first(this.tier.divisions);
 			// ETA
 			this.eta = _.find(this.tier.wins, ["wins", 4]).eta;
-			this.price = (this.division.price * this.number_of_wins).toPrecision(3);
+			this.price = (this.division.price * this.number_of_wins).toFixed(2);
 		});
 		axios.get("/api/servers").then(response => (this.servers = response.data));
 	}
