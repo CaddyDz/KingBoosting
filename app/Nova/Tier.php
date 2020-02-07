@@ -43,7 +43,7 @@ class Tier extends Resource
      */
     public function fields(Request $request)
     {
-        $fields = [
+        return [
             ID::make()->sortable(),
             Text::make('Name'),
             Code::make('Background Color', 'box_shadow')->language('sass'),
@@ -52,13 +52,25 @@ class Tier extends Resource
                 return $value;
             })->preview(function ($value) {
                 return $value;
-            })
+            })->hideFromIndex(function () {
+                return $this->model()->divisions->isNotEmpty();
+            })->hideFromDetail(function () {
+                return $this->model()->divisions->isNotEmpty();
+            })->hideWhenCreating(function () {
+                return $this->model()->divisions->isNotEmpty();
+            })->hideWhenUpdating(function () {
+                return $this->model()->divisions->isNotEmpty();
+            }),
+            Number::make('Price')->min(1)->max(1000)->step(0.01)->hideFromIndex(function () {
+                return $this->model()->divisions->isNotEmpty();
+            })->hideFromDetail(function () {
+                return $this->model()->divisions->isNotEmpty();
+            })->hideWhenCreating(function () {
+                return $this->model()->divisions->isNotEmpty();
+            })->hideWhenUpdating(function () {
+                return $this->model()->divisions->isNotEmpty();
+            }),
         ];
-        $priceField = Number::make('Price')->min(1)->max(1000)->step(0.01);
-        if ($this->model()->price) {
-            array_push($fields, $priceField);
-        }
-        return $fields;
     }
 
     /**
