@@ -22,4 +22,5 @@
     <services-circle></services-circle>
 </v-container>
 <features></features>
+<why-us></why-us>
 @stop
