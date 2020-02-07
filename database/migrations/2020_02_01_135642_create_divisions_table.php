@@ -18,6 +18,7 @@ class CreateDivisionsTable extends Migration
             $table->unsignedBigInteger('tier_id');
             $table->foreign('tier_id')->references('id')->on('tiers')->onDelete('cascade');
             $table->string('image');
+            $table->decimal('price')->default(1.90);
             $table->string('name');
             $table->timestamps();
         });
