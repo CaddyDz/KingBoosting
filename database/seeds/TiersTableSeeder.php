@@ -80,7 +80,7 @@ class TiersTableSeeder extends Seeder
             [
                 'tier' => 'Bronze',
                 'box_shadow' => '89,60,28',
-                'division' => [
+                'divisions' => [
                     [
                         'name' => 'Division IV',
                         'image' => '/img/divisions/bronze/IV.png'
