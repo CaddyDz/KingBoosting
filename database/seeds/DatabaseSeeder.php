@@ -18,8 +18,8 @@ class DatabaseSeeder extends Seeder
         $this->call(ServiceTypesTableSeeder::class);
         $this->call(ServersTableSeeder::class);
         $this->call(WinBoostingsTableSeeder::class);
-        $this->call(UsersTableSeeder::class);
         $this->call(RolesAndPermissionsTablesSeeder::class);
+        $this->call(UsersTableSeeder::class);
         $this->call(ServicesTableSeeder::class);
     }
 }
