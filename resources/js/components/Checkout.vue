@@ -1,13 +1,12 @@
 <template>
 	<v-stepper vertical non-linear>
 		<v-stepper-step step="1">Select Your Current League</v-stepper-step>
-
 		<v-stepper-content step="1">
 			<v-card raised class="mb-4" :style="{boxShadow: tier.box_shadow}">
 				<v-container>
 					<v-row align="center" justify="center">
 						<v-col md="3">
-							<img :src="division.image || tier.image" :alt="tier.name" loading="lazy" />
+							<img :src="division.image || tier.image" :alt="tier.name" />
 						</v-col>
 						<v-col md="9">
 							<v-row>
@@ -39,7 +38,7 @@
 		</v-stepper-content>
 		<!-- Don't put the stepper step in the component after it because it removes the vertical line between the steps -->
 		<v-stepper-step step="2">Select Your Number Of Wins</v-stepper-step>
-		<number-of-wins :max="max"></number-of-wins>
+		<number-of-wins></number-of-wins>
 		<payment-section :tier="this.tier"></payment-section>
 	</v-stepper>
 </template>
@@ -54,48 +53,69 @@ export default {
 	data() {
 		return {
 			e6: 1, // Stepper stupid model value, can't be hardcoded
-			tier: { wins: [] }, // Currently selected tier
-			division: {}, // Currently selected division
-			tiers: [], // List of all tiers
+			tiers: [], // List of all tiers,
+			divisions: [], // List of all divisions in a tier
 			selectedTierID: 1, // Pretty self explanatory
 			selectedDivisionID: 1, // Same ooh, ooh same ooh
 			hasDivisions: true,
-			servers: [],
-			max: 10
+			servers: []
 		};
+	},
+	computed: {
+		tier() {
+			return this.$store.state.currentlySelectedTier; // Currently selected tier
+		},
+		division() {
+			return this.$store.state.currentlySelectedDivision; // Currently selected division
+		}
 	},
 	watch: {
 		selectedTierID(tierId) {
-			this.tier = _.find(this.tiers, ["id", tierId]);
-			this.max = _.maxBy(this.tier.wins, "wins").wins;
+			// User selected a tier, let's commit it to store
+			this.$store.commit(
+				"updateCurrentlySelectedTier",
+				_.find(this.tiers, ["id", tierId])
+			);
 			if (!_.isEmpty(this.tier.divisions)) {
+				// If the selected tier has divisions
 				this.hasDivisions = true;
 				this.selectedDivisionID = this.tier.divisions[0].id;
 			} else {
 				// Set division to an empty object with null image to pass coalesce in template
-				this.division = { image: null };
+				this.$store.state.currentlySelectedDivision = { image: null };
 				// Remove the divisions select from the DOM
 				this.hasDivisions = false;
 			}
 		},
 		selectedDivisionID(divisionId) {
-			this.division = _.find(this.tier.divisions, ["id", divisionId]);
+			this.$store.commit(
+				"updateCurrentlySelectedDivision",
+				_.find(this.tier.divisions, ["id", divisionId])
+			);
 		}
 	},
 	mounted() {
 		// Get list of tiers objects from db
 		axios.post("/api/tiers", { service: this.service.slug }).then(response => {
-			// The tiers array is that list
+			// The tiers array is the service
 			this.tiers = response.data;
-			// The first tier
-			this.tier = _.first(response.data);
-			// Get the maximum number of wins in the tier
-			this.max = _.maxBy(this.tier.wins, "wins").wins;
 			// Divisions of the first tier
-			this.divisions = this.tier.divisions;
+			this.divisions = _.first(this.tiers).divisions;
+			// Commit the first tier as the currently selected Tier
+			this.$store.commit("updateCurrentlySelectedTier", _.first(this.tiers));
 			// Division IV
-			this.division = _.first(this.tier.divisions);
+			this.$store.commit(
+				"updateCurrentlySelectedDivision",
+				// this.tier is the computed property
+				_.first(this.tier.divisions)
+			);
+			// Get the maximum number of wins in the tier, commit it to the store
+			this.$store.commit(
+				"updateMaximumNumberOfWins",
+				_.maxBy(this.tier.wins, "wins").wins
+			);
 		});
+		// Get servers from API
 		axios.get("/api/servers").then(response => (this.servers = response.data));
 	}
 };

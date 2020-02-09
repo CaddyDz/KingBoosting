@@ -22,7 +22,8 @@
 							<strong class="red--text text--lighten-1">
 								<s>€24.00($26.66)</s>
 							</strong>
-							<br />€13.90 ($15.44) OR 1,390
+							<br />
+							€{{ price }} ($15.44) OR 1,390
 						</v-col>
 						<v-col md="4">
 							<v-text-field
@@ -46,24 +47,28 @@
 
 <script>
 export default {
-	props: {
-		tier: {
-			type: Object,
-			required: true
-		}
-	},
 	data() {
 		return {
 			eta: ""
+			// price: 1.9
 		};
+	},
+	computed: {
+		price() {
+			return this.$store.state.price;
+		}
 	},
 	mounted() {
 		// Default value for ETA is the tier's ETA for 4 wins
+		// Default value for Price is the tier's division price for 4 wins
 		setTimeout(() => {
+			// this.price = _.find(this.tier.divisions); // Get currently selected division using VueX
 			this.eta = _.find(this.tier.wins, ["wins", 4]).eta;
 		}, 2000);
 		this.$root.$on("wins_changed", value => {
+			// Get eta from the store
 			this.eta = _.find(this.tier.wins, ["wins", value]).eta;
+			// this.price = (this.price * value).toFixed();
 		});
 	}
 };

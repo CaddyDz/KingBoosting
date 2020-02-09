@@ -50,10 +50,12 @@ export default {
 			required: true
 		}
 	},
-	data: () => ({
-		model: null,
-		services: []
-	}),
+	data() {
+		return {
+			model: null,
+			services: []
+		};
+	},
 	methods: {
 		visit(slug) {
 			window.location = "/" + slug;
@@ -73,13 +75,11 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+$card-border-radius: 50% !default;
+
 .active {
 	background-image: url("/img/service_nav_bg.png");
 	background-position: center bottom;
 }
-</style>
-
-<style lang="scss">
-$card-border-radius: 50% !default;
 </style>

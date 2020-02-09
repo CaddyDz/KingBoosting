@@ -13,12 +13,6 @@
 
 <script>
 export default {
-	props: {
-		max: {
-			required: true,
-			type: Number
-		}
-	},
 	data() {
 		return {
 			// Should be passed from parent component
@@ -28,10 +22,14 @@ export default {
 	computed: {
 		plural(count, noun) {
 			return (count, noun) => `${count} ${noun}${count !== 1 ? "s" : ""}`;
+		},
+		max() {
+			return this.$store.state.maximumNumberOfWins;
 		}
 	},
 	watch: {
 		number_of_wins(value) {
+			this.$store.commit("updatePrice", 10);
 			// Update eta & price
 			this.$root.$emit("wins_changed", value);
 		}
