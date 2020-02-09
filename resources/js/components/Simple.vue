@@ -177,8 +177,52 @@
 													<v-btn text>Cancel</v-btn>
 												</v-stepper-content>
 												<v-stepper-content key="2-content" :step="2">
-													<v-card class="mb-12" color="grey lighten-1" height="200px"></v-card>
-													<v-btn color="primary" @click="nextStep(2)">Continue</v-btn>
+													<v-form v-model="valid">
+														<v-container>
+															<v-row>
+																<!-- Summoner -->
+																<v-col cols="12" md="6">
+																	<v-text-field
+																		v-model="nickname"
+																		label="Nickname *"
+																		required
+																		placeholder="Your in-game name"
+																	></v-text-field>
+																</v-col>
+																<!-- Select Booster -->
+																<v-col class="d-flex" cols="12" sm="6">
+																	<v-select :items="boosters" label="Your Booster" :loading="boostersLoading"></v-select>
+																</v-col>
+															</v-row>
+															<v-row>
+																<v-col cols="12" md="6">
+																	<v-text-field
+																		v-model="comment"
+																		label="Comments NOT REQUIRED"
+																		placeholder="Your comments"
+																		required
+																	></v-text-field>
+																</v-col>
+															</v-row>
+															<v-row>
+																<v-col cols="12" md="6">
+																	<v-checkbox
+																		label="Appear Offline on Chat"
+																		prepend-icon="mdi-account"
+																		v-model="offline"
+																	></v-checkbox>
+																</v-col>
+															</v-row>
+															<v-row>
+																<v-col cols="12" md="6">
+																	<v-icon>mdi-information-outline</v-icon>
+																	<span>Further information will be requested after payment</span>
+																</v-col>
+															</v-row>
+														</v-container>
+													</v-form>
+													<v-btn text @click="sendResetPasswordEmail">Forgotten Password?</v-btn>
+													<v-btn color="primary" @click="login">Continue</v-btn>
 													<v-btn text>Cancel</v-btn>
 												</v-stepper-content>
 												<v-stepper-content key="3-content" :step="3">
@@ -208,6 +252,7 @@ export default {
 	},
 	data() {
 		return {
+			// Stepper for services tabs
 			e6: 1, // Stepper stupid model value, can't be hardcoded
 			tier: { wins: [] }, // Currently selected tier, wins is an empty array because it's used in template
 			division: {}, // Currently selected division
@@ -221,13 +266,16 @@ export default {
 			number_of_wins: 4,
 			eta: "",
 			price: 1.9,
+			// Default exchange rate, to be changed by API call
 			exchangeRate: 1.1003,
 			specificChampions: false,
 			priorityOrder: false,
 			streaming: false,
 			dialog: false,
+			// Modal stepper
 			e1: 1,
 			steps: 3,
+			// Login form data
 			valid: false,
 			email: "",
 			emailRules: [
@@ -238,7 +286,13 @@ export default {
 			passwordRules: [
 				v => !!v || "Password is required",
 				v => v.length > 8 || "Password must be longer than 8 characters"
-			]
+			],
+			// Details form data
+			nickname: "",
+			comment: "",
+			offline: false,
+			boosters: [], // Get it from local API call,
+			boostersLoading: false
 		};
 	},
 	computed: {
@@ -285,10 +339,20 @@ export default {
 				.post("/login", { email: this.email, password: this.password })
 				.then(response => {
 					alert(response.data.status);
+					this.nextStep(1);
+					// Make API call to get boosters
+					this.getBoostersList();
 				})
 				.catch(error => {
 					alert(error.response.data.errors);
 				});
+		},
+		getBoostersList() {
+			this.boostersLoading = true;
+			axios.get("/api/getBoostersNames").then(response => {
+				this.boosters = response.data;
+				this.boostersLoading = false;
+			});
 		}
 	},
 	watch: {
