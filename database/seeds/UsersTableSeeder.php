@@ -12,13 +12,12 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        $god = User::create([
+        User::create([
             'name' => 'Admin',
             'email' => 'admin@kingboosting.com',
             'email_verified_at' => now(),
             'password' => bcrypt('*iUJA2m%Ey67')
         ]);
-        // Grant Super Admin role to god
         // Create 50 members
         factory(User::class, 50)->create()->each(function ($user) {
             $user->assignRole('Member');
