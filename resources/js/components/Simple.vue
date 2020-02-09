@@ -47,10 +47,12 @@
 								min="1"
 								:max="max"
 								thumb-label="always"
-								color="purple"
+								:height="50"
+								:loader-height="4"
 								v-model="number_of_wins"
-								thumb-size="50"
+								:thumb-size="50"
 							>
+								<template v-slot:progress>wach koukou!!</template>
 								<template v-slot:thumb-label :style="{top: '50px'}">{{ plural(number_of_wins, "Win") }}</template>
 							</v-slider>
 						</v-col>
@@ -112,11 +114,79 @@
 							></v-text-field>
 						</v-col>
 						<v-col md="4">
-							<v-btn class="float-right" outlined color="purple">BOOST ME</v-btn>
+							<div class="text-center">
+								<v-dialog v-model="dialog" width="940">
+									<template v-slot:activator="{ on }">
+										<v-btn class="float-right" outlined color="purple" dark v-on="on">BOOST ME</v-btn>
+									</template>
+									<!-- Entire stepper -->
+									<v-stepper v-model="e1">
+										<template>
+											<v-stepper-header>
+												<!-- 3 templates here -->
+												<template>
+													<v-stepper-step key="login" :complete="e1 > 1" :step="1" editable>Login</v-stepper-step>
+													<v-divider v-if="1 !== steps" :key="1"></v-divider>
+												</template>
+												<template>
+													<v-stepper-step key="details" :complete="e1 > 2" :step="2" editable>Details</v-stepper-step>
+													<v-divider v-if="2 !== steps" :key="2"></v-divider>
+												</template>
+												<template>
+													<v-stepper-step key="pay" :complete="e1 > 3" :step="3" editable>Pay</v-stepper-step>
+													<v-divider v-if="3 !== steps" :key="3"></v-divider>
+												</template>
+											</v-stepper-header>
+											<v-stepper-items>
+												<v-stepper-content key="1-content" :step="1">
+													<v-form v-model="valid">
+														<v-container>
+															<v-row>
+																<v-col cols="12" md="6">
+																	<v-text-field
+																		v-model="email"
+																		:rules="emailRules"
+																		label="E-mail address *"
+																		required
+																		placeholder="Your email address"
+																	></v-text-field>
+																</v-col>
+															</v-row>
+															<v-row>
+																<v-col cols="12" md="6">
+																	<v-text-field
+																		type="password"
+																		v-model="password"
+																		:rules="passwordRules"
+																		:counter="10"
+																		label="Password *"
+																		required
+																	></v-text-field>
+																</v-col>
+															</v-row>
+														</v-container>
+													</v-form>
+													<v-btn text @click="sendResetPasswordEmail">Forgotten Password?</v-btn>
+													<v-btn color="primary" @click="nextStep(1)">Continue</v-btn>
+													<v-btn text>Cancel</v-btn>
+												</v-stepper-content>
+												<v-stepper-content key="2-content" :step="2">
+													<v-card class="mb-12" color="grey lighten-1" height="200px"></v-card>
+													<v-btn color="primary" @click="nextStep(2)">Continue</v-btn>
+													<v-btn text>Cancel</v-btn>
+												</v-stepper-content>
+												<v-stepper-content key="3-content" :step="3">
+													<v-card class="mb-12" color="grey lighten-1" height="200px"></v-card>
+													<v-btn color="primary" @click="nextStep(3)">Continue</v-btn>
+													<v-btn text>Cancel</v-btn>
+												</v-stepper-content>
+											</v-stepper-items>
+										</template>
+									</v-stepper>
+								</v-dialog>
+							</div>
 						</v-col>
 					</v-row>
-					<!-- Price and discount -->
-					<v-row></v-row>
 				</v-container>
 			</v-card>
 		</v-stepper-content>
@@ -148,7 +218,21 @@ export default {
 			exchangeRate: 1.1003,
 			specificChampions: false,
 			priorityOrder: false,
-			streaming: false
+			streaming: false,
+			dialog: false,
+			e1: 1,
+			steps: 3,
+			valid: false,
+			email: "",
+			emailRules: [
+				v => !!v || "E-mail is required",
+				v => /.+@.+/.test(v) || "E-mail must be valid"
+			],
+			password: "",
+			passwordRules: [
+				v => !!v || "Password is required",
+				v => v.length > 8 || "Password must be longer than 8 characters"
+			]
 		};
 	},
 	computed: {
@@ -169,6 +253,26 @@ export default {
 			return (
 				this.price - this.division.price * (percent / 100) * this.number_of_wins
 			);
+		},
+		onInput(val) {
+			this.steps = parseInt(val);
+		},
+		nextStep(n) {
+			if (n === this.steps) {
+				this.e1 = 1;
+			} else {
+				this.e1 = n + 1;
+			}
+		},
+		sendResetPasswordEmail() {
+			axios
+				.post("password/email", { email: this.email })
+				.then(response => {
+					alert(response.data.status);
+				})
+				.catch(error => {
+					alert(error.response.data.errors.email[0]);
+				});
 		}
 	},
 	watch: {
@@ -224,6 +328,11 @@ export default {
 				// If unchecked
 				this.price = this.priceMinusPercent(15);
 			}
+		},
+		steps(val) {
+			if (this.e1 > val) {
+				this.e1 = val;
+			}
 		}
 	},
 	mounted() {
@@ -255,22 +364,6 @@ export default {
 </script>
 
 <style lang="scss">
-$slider-track-border-radius: 3px !default;
-$slider-track-border-radius: 10 !default;
-$slider-track-width: 2px !default;
-$chip-group-no-color-opacity: 50 !default;
-$slider-horizontal-margin-bottom: 0px !default;
-$slider-horizontal-margin-top: 50px !default;
-
-.v-slider--horizontal .v-slider__track-container {
-	height: 20px;
-}
-.v-slider__track-fill {
-	border-radius: 50px 0px 0px 50px;
-}
-.v-slider__track-background {
-	border-radius: 0px 50px 50px 0px;
-}
 .v-input.v-input--is-label-active.v-input--is-dirty.theme--dark.v-input__slider {
 	margin-top: 40px !important;
 	margin-bottom: -40px !important;
