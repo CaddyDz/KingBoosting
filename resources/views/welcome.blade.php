@@ -23,4 +23,5 @@
 </v-container>
 <features></features>
 <why-us></why-us>
+<customer></customer>
 @stop

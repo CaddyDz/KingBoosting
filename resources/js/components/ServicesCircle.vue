@@ -50,7 +50,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 #container {
 	width: 500px;
 	height: 500px;
