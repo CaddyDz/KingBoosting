@@ -1,9 +1,10 @@
 <?php
 
 use Laravel\Nova\Actions\ActionResource;
-use Laravel\Nova\Http\Middleware\Authenticate;
 use Laravel\Nova\Http\Middleware\Authorize;
 use Laravel\Nova\Http\Middleware\BootTools;
+use Laravel\Nova\Http\Middleware\Authenticate;
+use Vyuldashev\NovaPermission\ForgetCachedPermissions;
 use Laravel\Nova\Http\Middleware\DispatchServingNovaEvent;
 
 return [
@@ -90,6 +91,7 @@ return [
         DispatchServingNovaEvent::class,
         BootTools::class,
         Authorize::class,
+        ForgetCachedPermissions::class,
     ],
 
     /*
