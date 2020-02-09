@@ -6,7 +6,13 @@
 				<v-container>
 					<v-row align="center" justify="center">
 						<v-col md="3">
-							<img :src="division.image || tier.image" :alt="tier.name" loading="lazy" />
+							<img
+								:src="division.image || tier.image"
+								:alt="tier.name"
+								loading="lazy"
+								width="280"
+								height="320"
+							/>
 						</v-col>
 						<v-col md="9">
 							<v-row>
@@ -167,7 +173,7 @@
 														</v-container>
 													</v-form>
 													<v-btn text @click="sendResetPasswordEmail">Forgotten Password?</v-btn>
-													<v-btn color="primary" @click="nextStep(1)">Continue</v-btn>
+													<v-btn color="primary" @click="login">Continue</v-btn>
 													<v-btn text>Cancel</v-btn>
 												</v-stepper-content>
 												<v-stepper-content key="2-content" :step="2">
@@ -272,6 +278,16 @@ export default {
 				})
 				.catch(error => {
 					alert(error.response.data.errors.email[0]);
+				});
+		},
+		login() {
+			axios
+				.post("/login", { email: this.email, password: this.password })
+				.then(response => {
+					alert(response.data.status);
+				})
+				.catch(error => {
+					alert(error.response.data.errors);
 				});
 		}
 	},
