@@ -145,36 +145,60 @@
 											</v-stepper-header>
 											<v-stepper-items>
 												<v-stepper-content key="1-content" :step="1">
-													<v-form v-model="valid">
-														<v-container>
-															<v-row>
-																<v-col cols="12" md="6">
-																	<v-text-field
-																		v-model="email"
-																		:rules="emailRules"
-																		label="E-mail address *"
-																		required
-																		placeholder="Your email address"
-																	></v-text-field>
-																</v-col>
-															</v-row>
-															<v-row>
-																<v-col cols="12" md="6">
-																	<v-text-field
-																		type="password"
-																		v-model="password"
-																		:rules="passwordRules"
-																		:counter="10"
-																		label="Password *"
-																		required
-																	></v-text-field>
-																</v-col>
-															</v-row>
-														</v-container>
-													</v-form>
-													<v-btn text @click="sendResetPasswordEmail">Forgotten Password?</v-btn>
-													<v-btn color="primary" @click="login">Continue</v-btn>
-													<v-btn text>Cancel</v-btn>
+													<v-row>
+														<v-col md="8">
+															<v-form v-model="valid">
+																<v-container>
+																	<v-row>
+																		<v-text-field
+																			v-model="email"
+																			:rules="emailRules"
+																			label="E-mail address *"
+																			required
+																			placeholder="Your email address"
+																		></v-text-field>
+																	</v-row>
+																	<v-row>
+																		<v-text-field
+																			type="password"
+																			v-model="password"
+																			:rules="passwordRules"
+																			:counter="10"
+																			label="Password *"
+																			required
+																		></v-text-field>
+																	</v-row>
+																</v-container>
+															</v-form>
+															<v-btn text @click="sendResetPasswordEmail">Forgotten Password?</v-btn>
+															<v-btn color="primary" @click="login">Continue</v-btn>
+															<v-btn text>Cancel</v-btn>
+														</v-col>
+														<v-col md="4">
+															<v-card color="black">
+																<v-card-title>
+																	<v-icon>mdi-account-edit</v-icon>New Customers
+																</v-card-title>
+																<v-card-text>
+																	<v-btn color="blue" block>
+																		<v-icon color="white">mdi-facebook-box</v-icon>Login with Facebook
+																	</v-btn>
+																	<br />
+																	<v-btn color="red" block>
+																		<v-icon color="white">mdi-google-plus</v-icon>Sign in with Google+
+																	</v-btn>
+																	<br />
+																	<v-btn color="green" block>
+																		<v-icon color="white">mdi-email</v-icon>Register with email
+																	</v-btn>
+																	<br />
+																	<v-btn color="grey" block>
+																		<v-icon color="white">mdi-account-circle</v-icon>Continue as Guest
+																	</v-btn>
+																</v-card-text>
+															</v-card>
+														</v-col>
+													</v-row>
 												</v-stepper-content>
 												<v-stepper-content key="2-content" :step="2">
 													<v-form v-model="valid">
