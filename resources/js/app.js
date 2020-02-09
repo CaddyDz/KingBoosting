@@ -12,6 +12,7 @@ import Vuetify from 'vuetify';
 import Vuex from 'vuex'
 Vue.use(Vuex)
 Vue.use(Vuetify);
+Vue.config.productionTip = false;
 
 const store = new Vuex.Store({
     state: {
