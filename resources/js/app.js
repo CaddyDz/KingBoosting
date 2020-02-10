@@ -22,7 +22,7 @@ const store = new Vuex.Store({
         },
         currentlySelectedDivision: {},
         currentlySelectedNumberOfWins: 1,
-        maximumNumberOfWins: 0,
+        maximumNumberOfWins: undefined,
         eta: '',
     },
     mutations: {
