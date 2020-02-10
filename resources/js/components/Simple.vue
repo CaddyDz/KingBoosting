@@ -180,7 +180,7 @@
 																	<v-icon>mdi-account-edit</v-icon>New Customers
 																</v-card-title>
 																<v-card-text>
-																	<v-btn color="blue" block>
+																	<v-btn color="blue" block href="/login/facebook">
 																		<v-icon color="white">mdi-facebook-box</v-icon>Login with Facebook
 																	</v-btn>
 																	<br />
