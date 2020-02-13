@@ -33,7 +33,10 @@ export default {
 			// Update eta & price
 			this.$root.$emit("wins_changed", value);
 		}
-	}
+	},
+	mounted() {
+		
+	},
 };
 </script>
 

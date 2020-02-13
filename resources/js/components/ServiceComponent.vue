@@ -18,7 +18,7 @@
 				<v-row>
 					<v-col md="9">
 						<simple :service="service"></simple>
-						<!-- <checkout :service="service"></checkout> -->
+						<checkout :service="service"></checkout>
 					</v-col>
 					<v-col md="3">Verified Customer Reviews</v-col>
 				</v-row>

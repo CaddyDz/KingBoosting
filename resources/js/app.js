@@ -14,21 +14,144 @@ Vue.use(Vuex)
 Vue.use(Vuetify);
 Vue.config.productionTip = false;
 
-const store = new Vuex.Store({
+// CHECKOUT MODULE 
+const tierList = {
+    namespaced : true,
     state: {
-        price: 1.9,
-        currentlySelectedTier: {
-            wins: []
-        },
-        currentlySelectedDivision: {},
-        currentlySelectedNumberOfWins: 1,
-        maximumNumberOfWins: undefined,
-        eta: '',
+        servers: [],
+        eta : undefined,
+        price : 'not yet set',
+
+        // TIERS props
+        allTiers : [], // List of all tiers
+        selectedTier : { wins: [] }, // Currently selected tier, wins is an empty array because it's used in template
+        selectedTierID : 1, // Pretty self explanatory
+
+        // DIVISIONS props
+        allDivisions : [], // LIST OF DIVISIONS
+        selectedDivision : {}, // Currently selected division
+        selectedDivisionID : 1, // Same ooh, ooh same ooh
+        hasDivisions : true,
+
+        hako : "hako from store module",
+
+        maxNumberOfWins : 'undefined',
+        numberOfWins : undefined,
+
     },
     mutations: {
+        consoleIt(state){
+            console.log('consoled from module')
+        },
+        // UPDATE OF TIERS
+        updateAllTiers(state, payload){
+            state.allTiers = payload
+        },
+        updateSelectedTier(state, payload) {
+            state.selectedTier = payload;
+        },
+        updateSelectedTierID(state, payload){
+            state.selectedTierID = payload
+        },
+
+        // UPDATES OF DIVISIONS
+        updateAllDivisions(state, payload){
+            state.allDivisions = payload
+        },
+        updateSelectedDivision(state, payload) {
+            state.selectedDivision = payload;
+        },
+        updateSelectedDivisionID(state, payload){
+            state.selectedDivisionID = payload
+        },
+        updateHasDivisions(state, payload){
+            state.hasDivisions = payload
+        },
+        // UPDATE MAX NUMBER OF WINS
+        updateMaxNumberOfWins(state, payload){
+            state.maxNumberOfWins = payload;
+        },
+        // UPDATE OF WINS
+        updateNumberOfWins(state, payload) {
+            state.numberOfWins = payload;
+        },
+
+        // ETA
+        updateETA(state, payload) {
+            state.eta = payload;
+        },
+        // UPDATE PRICE
         updatePrice(state, newPrice) {
             state.price = newPrice;
         },
+    },
+    getters: {
+        // Tiers Mutations
+        gethako(state){
+            return state.hako
+        },
+        getAllTiers(state){
+            return state.allTiers //console.log('from all tiers store')
+        },
+        getSelectedTier(state){
+            return state.selectedTier
+        },
+        getSelectedTierID(state){
+            return state.selectedTierID
+        },
+        // Divions Mutations
+        getAllDivisions(state){
+            return state.allDivisions
+        },
+        getSelectedDivision(state){
+            return state.selectedDivision
+        },
+        getSelectedDivisionId(state){
+            return state.selectedDivisionID
+        },
+
+        // OTHER MUTATIONS
+
+        getMaxNumberOfWins(state){
+            return state.maxNumberOfWins
+        },
+
+        getNumberOfWins(state) {
+            return state.numberOfWins;
+        },
+        getETA(state){
+            return state.eta
+        },
+        getPrice(state){
+            return state.price
+        },
+    },
+    actions: {},
+}
+
+const store = new Vuex.Store({
+    state: {
+        price: 60000,
+        //PROPS OF TIER 
+        Tiers : [],
+        currentlySelectedTier: {
+            wins: []
+        },
+        currentlySelectedDivision: {
+           
+        },
+        currentlySelectedNumberOfWins: 1,
+        maximumNumberOfWins: undefined,
+        //
+        eta: '',
+    },
+    getters: {
+        getMaxNumberOfwins(state){
+            return _.maxBy(state.currentlySelectedTier.wins, "wins")
+        }
+    },
+    mutations: {
+        // FUNCTIONS OF TIER 
         updateCurrentlySelectedTier(state, payload) {
             state.currentlySelectedTier = payload;
         },
@@ -38,14 +161,21 @@ const store = new Vuex.Store({
         updateMaximumNumberOfWins(state, payload) {
             state.maximumNumberOfWins = payload;
         },
+        //
         updateETA(payload) {
             state.eta = payload;
-        }
+        },
+        updatePrice(state, newPrice) {
+            state.price = newPrice;
+        },
     },
     actions: {
         increment(context) {
             context.commit('increment')
         }
+    },
+    modules: {
+        tierList
     }
 })
 window.store = store;
