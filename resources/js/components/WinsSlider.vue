@@ -1,13 +1,13 @@
 <template>
 	<v-slider
 		min="1"
-		:max="max"
+		:max="maxNumberOfWins"
 		thumb-label="always"
 		color="purple"
-		v-model="number_of_wins"
+		v-model="defaultNumberOfWins"
 		thumb-size="50"
 	>
-		<template v-slot:thumb-label :style="{top: '50px'}">{{ plural(number_of_wins, "Win") }}</template>
+		<template v-slot:thumb-label :style="{top: '50px'}">{{ plural(defaultNumberOfWins, "Win") }}</template>
 	</v-slider>
 </template>
 
@@ -15,27 +15,26 @@
 export default {
 	data() {
 		return {
-			// Should be passed from parent component
-			number_of_wins: 4
+			defaultNumberOfWins: 4,
 		};
 	},
 	computed: {
 		plural(count, noun) {
 			return (count, noun) => `${count} ${noun}${count !== 1 ? "s" : ""}`;
 		},
-		max() {
-			return this.$store.state.maximumNumberOfWins;
-		}
+		maxNumberOfWins() {
+			return this.$store.getters['tierList/getMaxNumberOfWins'];
+		},
 	},
 	watch: {
-		number_of_wins(value) {
-			this.$store.commit("updatePrice", 10);
+		defaultNumberOfWins(value) {
+			this.$store.commit("tierList/updatePrice", 10);
 			// Update eta & price
 			this.$root.$emit("wins_changed", value);
 		}
 	},
 	mounted() {
-		
+		this.defaultNumberOfWins = this.$store.getters['tierList/getDefaultNumberOfWins'];
 	},
 };
 </script>

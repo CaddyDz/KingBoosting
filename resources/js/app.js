@@ -20,23 +20,24 @@ const tierList = {
     state: {
         servers: [],
         eta : undefined,
-        price : 'not yet set',
-
-        // TIERS props
+        price : undefined,
+        exchangeRate : 1.1003,
+        specificChampions : false,
+        priorityOrder : false,
+        streaming : false,
+        // TIERS 
         allTiers : [], // List of all tiers
         selectedTier : { wins: [] }, // Currently selected tier, wins is an empty array because it's used in template
-        selectedTierID : 1, // Pretty self explanatory
-
-        // DIVISIONS props
+        selectedTierID : 1, // SELECTED TIER ID
+        // DIVISIONS 
         allDivisions : [], // LIST OF DIVISIONS
         selectedDivision : {}, // Currently selected division
-        selectedDivisionID : 1, // Same ooh, ooh same ooh
+        selectedDivisionID : 1, // SELECTED DIVISION ID
         hasDivisions : true,
 
-        hako : "hako from store module",
-
-        maxNumberOfWins : 'undefined',
-        numberOfWins : undefined,
+        //WINS 
+        maxNumberOfWins : undefined, //FROM THE API
+        defaultNumberOfWins : 4, // FROM USER SLIDER
 
     },
     mutations: {
@@ -72,8 +73,8 @@ const tierList = {
             state.maxNumberOfWins = payload;
         },
         // UPDATE OF WINS
-        updateNumberOfWins(state, payload) {
-            state.numberOfWins = payload;
+        updateDefaultNumberOfWins(state, payload) {
+            state.defaultNumberOfWins = payload;
         },
 
         // ETA
@@ -81,8 +82,8 @@ const tierList = {
             state.eta = payload;
         },
         // UPDATE PRICE
-        updatePrice(state, newPrice) {
-            state.price = newPrice;
+        updatePrice(state, payload) {
+            state.price = payload;
         },
     },
     getters: {
@@ -116,11 +117,14 @@ const tierList = {
             return state.maxNumberOfWins
         },
 
-        getNumberOfWins(state) {
-            return state.numberOfWins;
+        getDefaultNumberOfWins(state) {
+            return state.defaultNumberOfWins;
         },
         getETA(state){
             return state.eta
+        },
+        getDefaultETA(state){
+            return state.selectedTier.wins[3].eta
         },
         getPrice(state){
             return state.price

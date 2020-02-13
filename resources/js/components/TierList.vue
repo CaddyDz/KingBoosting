@@ -66,20 +66,24 @@ export default {
         selectedDivisionID: 1, // Same ooh, ooh same ooh
         hasDivisions: true,
 
-        wantedNumberOfWins: undefined,
-        numberOfWins: undefined,
-
+        maxNumberOfWins: undefined,
+        defaultNumberOfWins: undefined
     };
   },
   methods: {},
   computed: {},
   watch: {
-    // WE STOPED HERE
-    #######################
     selectedTierID(tierID){
-			this.tier = _.find(this.tiers, ["id", tierID]);
-			this.max = _.maxBy(this.tier.wins, "wins").wins;
-			this.eta = _.find(this.tier.wins, ["wins", this.number_of_wins]).eta;
+
+      this.$store.commit("tierList/updateSelectedTier", _.find(this.tiers, ["id", tierID]));
+      this.tier = this.$store.getters['tierList/getSelectedTier'];
+      
+      this.$store.commit("tierList/updateMaxNumberOfWins", (_.maxBy(this.tier.wins, "wins").wins) );
+      this.maxNumberOfWins = this.$store.getters['tierList/getMaxNumberOfWins'];
+      
+      this.$store.commit('tierList/updateETA', (_.find(this.tier.wins, ['wins', this.defaultNumberOfWins]).eta ) );
+      this.eta = this.$store.getters['tierList/getETA'];
+      
 			if (!_.isEmpty(this.tier.divisions)) {
 				// Divisions not empty, therefor less than master
 				this.hasDivisions = true;
@@ -91,10 +95,22 @@ export default {
 				this.hasDivisions = false;
 				// Set price to tier's price
 				this.price = parseFloat(this.tier.price);
-			}
-    }
+      }
+      // CHNAGE ETA WHEN TIER CHANGED
+      this.$root.$emit('change', this.$store.getters['tierList/getETA'])
+
+    },
+    selectedDivisionID(divisionId) {
+      // UPDATE ETA
+      this.eta = _.find(this.tier.wins, ['wins', this.maxNumberOfWins] ).eta;
+      this.$store.commit('tierList/updateETA', (_.find(this.tier.wins, ['wins', this.maxNumberOfWins]).eta ) );
+
+      // UPDATE DIVISION
+      this.division = _.find(this.tier.divisions, ["id", divisionId]);
+      this.$store.commit('tierList/updateSelectedDivision', _.find(this.tier.divisions, ["id", divisionId]) );
+    },
   },
-  mounted() {
+  beforeMount(){
     // Get list of tiers objects from db
     axios.post("/api/tiers", { service: this.service.slug }).then(response => {
         // The tiers array is the service
@@ -110,34 +126,76 @@ export default {
         this.selectedTierID = _.first(this.tiers).id;
         this.$store.commit('tierList/updateSelectedTierID', (_.first(this.tiers).id) )
         
-        // UPDATE DIVISIONS
+        // UPDATE DIVISIONS of TIER
         this.divisions = this.tier.divisions;
         this.$store.commit("tierList/updateAllDivisions", this.tier.divisions);
 
-        // UPDATE DIVISION
+        // UPDATE SELECTED DIVISION
         this.division = _.first(this.tier.divisions);
         this.$store.commit("tierList/updateSelectedDivision", (_.first(this.tier.divisions)) );
 
-        // UPDATE NUMBER OF WINS
-        this.numberOfWins = _.maxBy(this.tier.wins, "wins");
-        this.$store.commit("tierList/updateNumberOfWins", (_.maxBy(this.tier.wins, "wins")) );
+        // UPDATE MAX NUMBER OF WINS IN THE TIER
+        this.maxNumberOfWins = _.maxBy(this.tier.wins, "wins").wins;
+        this.$store.commit("tierList/updateMaxNumberOfWins", (_.maxBy(this.tier.wins, "wins").wins) );
 
+        // UPDATE THE DEFAULT NUMBER OF WINS
+        this.defaultNumberOfWins = _.find(this.tier.wins, ["wins", this.$store.getters['tierList/getDefaultNumberOfWins']]).wins;
+        this.$store.commit("tierList/updateDefaultNumberOfWins", (_.find(this.tier.wins, ["wins", this.$store.getters['tierList/getDefaultNumberOfWins']]).wins) );
         // UPDATE ETA
-			  this.eta = _.find(this.tier.wins, this.numberOfWins).eta;
-        this.$store.commit('tierList/updateETA', (_.find(this.tier.wins, this.numberOfWins).eta) );
+			  this.eta = _.find(this.tier.wins, ['wins', this.defaultNumberOfWins] ).eta;
+        this.$store.commit('tierList/updateETA', (_.find(this.tier.wins, ['wins', this.defaultNumberOfWins]).eta ) );
 
         // UPDATE PRICE
-			  this.price = this.division.price * this.numberOfWins.wins;
-        this.$store.commit('tierList/updatePrice', (this.division.price * this.numberOfWins.wins))
+			  this.price = this.division.price * this.maxNumberOfWins;
+        this.$store.commit('tierList/updatePrice', (this.division.price * this.maxNumberOfWins))
 
-        console.log(this.tiers)
-        console.log(this.$store.getters['tierList/getSelectedDivision'])
+        //console.log(_.find(this.tier.wins, ["wins", this.$store.getters['tierList/getDefaultNumberOfWins']]).wins) 
 
     });
     // Get servers from API
     axios.get("/api/servers").then(response => (this.servers = response.data));
+  },
+  mounted() {
+    // Get list of tiers objects from db
+    /*axios.post("/api/tiers", { service: this.service.slug }).then(response => {
+        // The tiers array is the service
+        // UPDATE TIERS
+        this.tiers = response.data;
+        this.$store.commit("tierList/updateAllTiers", this.tiers);
 
-    console.log(this.$store)
+        // UPDATE TIER 
+        this.tier = _.first(this.tiers);
+        this.$store.commit("tierList/updateSelectedTier", this.tier);
+
+        // UPDATE TIER ID
+        this.selectedTierID = _.first(this.tiers).id;
+        this.$store.commit('tierList/updateSelectedTierID', (_.first(this.tiers).id) )
+        
+        // UPDATE DIVISIONS of TIER
+        this.divisions = this.tier.divisions;
+        this.$store.commit("tierList/updateAllDivisions", this.tier.divisions);
+
+        // UPDATE SELECTED DIVISION
+        this.division = _.first(this.tier.divisions);
+        this.$store.commit("tierList/updateSelectedDivision", (_.first(this.tier.divisions)) );
+
+        // UPDATE MAX NUMBER OF WINS IN THE TIER
+        this.maxNumberOfWins = _.maxBy(this.tier.wins, "wins").wins;
+        this.$store.commit("tierList/updateMaxNumberOfWins", (_.maxBy(this.tier.wins, "wins").wins) );
+
+        // UPDATE ETA
+			  this.eta = _.find(this.tier.wins, ['wins', this.maxNumberOfWins] ).eta;
+        this.$store.commit('tierList/updateETA', (_.find(this.tier.wins, ['wins', this.maxNumberOfWins]).eta ) );
+
+        // UPDATE PRICE
+			  this.price = this.division.price * this.maxNumberOfWins;
+        this.$store.commit('tierList/updatePrice', (this.division.price * this.maxNumberOfWins))
+
+    });
+    // Get servers from API
+    axios.get("/api/servers").then(response => (this.servers = response.data));*/
+
+    // console.log(this.$store)
   }
 };
 </script>

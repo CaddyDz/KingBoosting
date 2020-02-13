@@ -41,10 +41,10 @@
 
 		<!-- Don't put the stepper step in the component after it because it removes the vertical line between the steps -->
 		<v-stepper-step step="2">Select Your Number Of Wins</v-stepper-step>
-		<!-- <number-of-wins></number-of-wins> -->
+		<number-of-wins></number-of-wins>
 		
 		<v-stepper-step step="3">Checkout</v-stepper-step>
-		<!-- <payment-section :tier="this.tier"></payment-section> -->
+		<payment-section ></payment-section>
 
 	</v-stepper>
 </template>
