@@ -80,14 +80,34 @@ export default {
       
       this.$store.commit("tierList/updateMaxNumberOfWins", (_.maxBy(this.tier.wins, "wins").wins) );
       this.maxNumberOfWins = this.$store.getters['tierList/getMaxNumberOfWins'];
-      
-      this.$store.commit('tierList/updateETA', (_.find(this.tier.wins, ['wins', this.defaultNumberOfWins]).eta ) );
-      this.eta = this.$store.getters['tierList/getETA'];
+      this.$root.$emit('change', this.$store.getters['tierList/getETA'])
+
+      if((this.tier.wins.length > 7)){
+          // TIERS WITH MORE THAN 7 WINS
+          this.$store.commit('tierList/updateETA', (_.find(this.tier.wins, ['wins', this.$store.getters['tierList/getSelectedNumberOfWins']]).eta ) );
+          this.eta = this.$store.getters['tierList/getETA'];
+          this.$store.commit('tierList/updatePrice', this.$store.getters['tierList/getSelectedDivision'].price)
+          
+          // CHNAGE ETA WHEN TIER CHANGED
+          this.$root.$emit('change', this.$store.getters['tierList/getETA'])
+          this.$root.$emit('price_updated', this.$store.getters['tierList/getPrice'])
+      }else {
+          // TIERS THAT GOT LESS THAN 7 WINS
+          this.$store.commit('tierList/updateSelectedNumberOfWins', 7); //
+          this.$store.commit('tierList/updateETA', (_.find(this.tier.wins, ['wins', this.$store.getters['tierList/getSelectedNumberOfWins']]).eta ) );
+          this.eta = this.$store.getters['tierList/getETA'];
+          this.$store.commit('tierList/updatePrice', this.$store.getters['tierList/getSelectedTier'].price)
+
+          // CHNAGE ETA WHEN TIER CHANGED
+          this.$root.$emit('price_updated', this.$store.getters['tierList/getPrice'])
+      }
+
       
 			if (!_.isEmpty(this.tier.divisions)) {
 				// Divisions not empty, therefor less than master
 				this.hasDivisions = true;
-				this.selectedDivisionID = this.tier.divisions[0].id;
+        this.selectedDivisionID = this.tier.divisions[0].id;
+        
 			} else {
 				// Set division to an empty object with null image to pass coalesce in template
 				this.division = { image: null };
@@ -96,8 +116,6 @@ export default {
 				// Set price to tier's price
 				this.price = parseFloat(this.tier.price);
       }
-      // CHNAGE ETA WHEN TIER CHANGED
-      this.$root.$emit('change', this.$store.getters['tierList/getETA'])
 
     },
     selectedDivisionID(divisionId) {
@@ -121,7 +139,7 @@ export default {
         // UPDATE TIER 
         this.tier = _.first(this.tiers);
         this.$store.commit("tierList/updateSelectedTier", this.tier);
-
+        console.log((this.tiers))
         // UPDATE TIER ID
         this.selectedTierID = _.first(this.tiers).id;
         this.$store.commit('tierList/updateSelectedTierID', (_.first(this.tiers).id) )
@@ -141,13 +159,14 @@ export default {
         // UPDATE THE DEFAULT NUMBER OF WINS
         this.defaultNumberOfWins = _.find(this.tier.wins, ["wins", this.$store.getters['tierList/getDefaultNumberOfWins']]).wins;
         this.$store.commit("tierList/updateDefaultNumberOfWins", (_.find(this.tier.wins, ["wins", this.$store.getters['tierList/getDefaultNumberOfWins']]).wins) );
+
         // UPDATE ETA
 			  this.eta = _.find(this.tier.wins, ['wins', this.defaultNumberOfWins] ).eta;
         this.$store.commit('tierList/updateETA', (_.find(this.tier.wins, ['wins', this.defaultNumberOfWins]).eta ) );
 
         // UPDATE PRICE
 			  this.price = this.division.price * this.maxNumberOfWins;
-        this.$store.commit('tierList/updatePrice', (this.division.price * this.maxNumberOfWins))
+        this.$store.commit('tierList/updatePrice', (this.division.price * this.defaultNumberOfWins))
 
         //console.log(_.find(this.tier.wins, ["wins", this.$store.getters['tierList/getDefaultNumberOfWins']]).wins) 
 

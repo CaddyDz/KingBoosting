@@ -20,7 +20,7 @@ const tierList = {
     state: {
         servers: [],
         eta : undefined,
-        price : undefined,
+        price : 1.9,
         exchangeRate : 1.1003,
         specificChampions : false,
         priorityOrder : false,
@@ -37,7 +37,8 @@ const tierList = {
 
         //WINS 
         maxNumberOfWins : undefined, //FROM THE API
-        defaultNumberOfWins : 4, // FROM USER SLIDER
+        selectedNumberOfWins : 4, // SELECTED NUMBER OF WINS BY THE USER 
+        defaultNumberOfWins : 4, // SELF EXPLANATORY
 
     },
     mutations: {
@@ -76,14 +77,34 @@ const tierList = {
         updateDefaultNumberOfWins(state, payload) {
             state.defaultNumberOfWins = payload;
         },
-
+        updateSelectedNumberOfWins(state, payload){
+            state.selectedNumberOfWins = payload;
+        },
         // ETA
         updateETA(state, payload) {
             state.eta = payload;
         },
         // UPDATE PRICE
-        updatePrice(state, payload) {
+        updatePrice(state, payload){
             state.price = payload;
+        },
+        updatePricePlusPercent(state, percent) {
+            console.log(state.price = state.selectedDivision.price * (percent / 100) * state.selectedNumberOfWins)
+        },
+        updatePriceMinusPercent(state, percent) {
+            state.price - state.selectedDivision.price * (percent / 100) * state.selectedNumberOfWins
+        },
+        updateExhangeRate(state, payload){
+            state.exchangeRate = payload;
+        },
+        updatespecificChampions(state, payload){
+            state.exchangeRate = payload;
+        },
+        updatePriorityOrder(state, payload){
+            state.priorityOrder = payload;
+        },
+        updateStreaming(state, payload){
+            state.exchangeRate = payload;
         },
     },
     getters: {
@@ -119,6 +140,9 @@ const tierList = {
 
         getDefaultNumberOfWins(state) {
             return state.defaultNumberOfWins;
+        },
+        getSelectedNumberOfWins(state){
+            return state.selectedNumberOfWins;
         },
         getETA(state){
             return state.eta

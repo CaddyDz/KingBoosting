@@ -28,13 +28,31 @@ export default {
 	},
 	watch: {
 		defaultNumberOfWins(value) {
-			this.$store.commit("tierList/updatePrice", 10);
-			// Update eta & price
-			this.$root.$emit("wins_changed", value);
-		}
+			// UPDATE PRICE BASED ON WANTED WINS
+			this.$store.commit("tierList/updatePrice", (this.$store.getters['tierList/getSelectedDivision'].price * value) );
+			//console.log(this.$store.getters['tierList/getPrice'])
+			// UPDATE DEFAULT NUMBER OF WINS SINCE IT IS THE MODEL OF SLIDER IN LOCAL AND STORE STATE
+			this.defaultNumberOfWins = value
+			this.$store.commit('tierList/updateSelectedNumberOfWins', value)
+
+			// GET ETA BASED ON NUMBER OF WINS SELECTED BY USER AND STORE IT IN THE BELLOW VAR
+			var etaBasedOnSelectedValue = _.find(this.$store.getters['tierList/getSelectedTier'].wins, ["wins", value]).eta
+
+			// Update ETA ON STORE
+			this.$store.commit('tierList/updateETA', etaBasedOnSelectedValue )
+
+			// SEND AN EVENT TO THE ROOT COMPONENT WITH CURRENT ETA
+			this.$root.$emit("wins_changed", etaBasedOnSelectedValue);
+			console.log(this.defaultNumberOfWins)
+		},
+
 	},
 	mounted() {
 		this.defaultNumberOfWins = this.$store.getters['tierList/getDefaultNumberOfWins'];
+		setTimeout(()=> {
+		console.log(this.$store.getters['tierList/getSelectedTier'])			
+
+		},2000)
 	},
 };
 </script>
