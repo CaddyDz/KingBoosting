@@ -58,7 +58,7 @@
                                     >
                                 </template>
                                 <!-- Entire stepper -->
-                                <checkout-dialog ></checkout-dialog>
+                                <!-- <checkout-dialog ></checkout-dialog> -->
                             </v-dialog>
                         </div>
                     </v-col>
