@@ -1,6 +1,6 @@
 <template>
 	<v-stepper vertical non-linear>
-		<!--<v-stepper-step step="1">Select Your Current League</v-stepper-step>
+		<v-stepper-step step="1">Select Your Current League</v-stepper-step>
 		<v-stepper-content step="1">
 			<v-card raised class="mb-4" :style="{boxShadow: tier.box_shadow}">
 				<v-container>
@@ -35,17 +35,11 @@
 					</v-row>
 				</v-container>
 			</v-card>
-		</v-stepper-content>-->
-		<v-stepper-step step="1">Select Your Current League</v-stepper-step>
-		<tier-list :service="this.service" ></tier-list>
-
+		</v-stepper-content>
 		<!-- Don't put the stepper step in the component after it because it removes the vertical line between the steps -->
 		<v-stepper-step step="2">Select Your Number Of Wins</v-stepper-step>
 		<number-of-wins></number-of-wins>
-		
-		<v-stepper-step step="3">Checkout</v-stepper-step>
-		<payment-section ></payment-section>
-
+		<payment-section :tier="this.tier"></payment-section>
 	</v-stepper>
 </template>
 <script>
@@ -54,31 +48,28 @@ export default {
 		service: {
 			type: Object,
 			required: true
-		},
+		}
 	},
 	data() {
 		return {
-			/*
 			e6: 1, // Stepper stupid model value, can't be hardcoded
 			tiers: [], // List of all tiers,
 			divisions: [], // List of all divisions in a tier
 			selectedTierID: 1, // Pretty self explanatory
 			selectedDivisionID: 1, // Same ooh, ooh same ooh
 			hasDivisions: true,
-			servers: [],
-			*/
+			servers: []
 		};
 	},
 	computed: {
-		/*tier() {
+		tier() {
 			return this.$store.state.currentlySelectedTier; // Currently selected tier
 		},
 		division() {
 			return this.$store.state.currentlySelectedDivision; // Currently selected division
-		}*/
+		}
 	},
 	watch: {
-		/*
 		selectedTierID(tierId) {
 			// User selected a tier, let's commit it to store
 			this.$store.commit(
@@ -102,10 +93,8 @@ export default {
 				_.find(this.tier.divisions, ["id", divisionId])
 			);
 		}
-		*/
 	},
 	mounted() {
-		/*
 		// Get list of tiers objects from db
 		axios.post("/api/tiers", { service: this.service.slug }).then(response => {
 			// The tiers array is the service
@@ -128,7 +117,6 @@ export default {
 		});
 		// Get servers from API
 		axios.get("/api/servers").then(response => (this.servers = response.data));
-		*/
 	}
 };
 </script>

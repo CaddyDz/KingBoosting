@@ -295,7 +295,6 @@ export default {
 			specificChampions: false,
 			priorityOrder: false,
 			streaming: false,
-			//THE FUCKIN DIALOG
 			dialog: false,
 			// Modal stepper
 			e1: 1,
@@ -450,7 +449,6 @@ export default {
 			});
 		// Get list of tiers objects from db
 		axios.post("/api/tiers", { service: this.service.slug }).then(response => {
-			//console.log(response.data)
 			// The tiers array is that list
 			this.tiers = response.data;
 			// The first tier
@@ -464,9 +462,6 @@ export default {
 			// ETA
 			this.eta = _.find(this.tier.wins, ["wins", 4]).eta;
 			this.price = this.division.price * this.number_of_wins;
-
-			// console.log(_.find(this.tier.wins, ["wins", 4]).eta);
-			// console.log(this.tier.wins);
 		});
 		axios.get("/api/servers").then(response => (this.servers = response.data));
 	}
