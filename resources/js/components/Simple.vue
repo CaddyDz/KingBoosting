@@ -184,11 +184,11 @@
 																		<v-icon color="white">mdi-facebook-box</v-icon>Login with Facebook
 																	</v-btn>
 																	<br />
-																	<v-btn color="red" block>
+																	<v-btn color="red" block href="/login/google">
 																		<v-icon color="white">mdi-google-plus</v-icon>Sign in with Google+
 																	</v-btn>
 																	<br />
-																	<v-btn color="green" block>
+																	<v-btn color="green" block @click="register = true">
 																		<v-icon color="white">mdi-email</v-icon>Register with email
 																	</v-btn>
 																	<br />
@@ -317,7 +317,8 @@ export default {
 			comment: "",
 			offline: false,
 			boosters: [], // Get it from local API call,
-			boostersLoading: false
+			boostersLoading: false,
+			register: false
 		};
 	},
 	computed: {

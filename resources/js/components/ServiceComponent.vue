@@ -42,9 +42,9 @@ export default {
 		};
 	},
 	mounted() {
-		particlesJS.load("particles", "/particlesjs-config.json");
+		// particlesJS.load("particles", "/particlesjs-config.json");
 		axios
-			.get(`/api/services/${this.service.id}/kind`)
+			.get(`/api/services/${this.service.kind_id}/kind`)
 			.then(response => (this.kind = response.data));
 	}
 };
