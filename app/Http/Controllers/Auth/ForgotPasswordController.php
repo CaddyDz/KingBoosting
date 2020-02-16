@@ -34,4 +34,16 @@ class ForgotPasswordController extends Controller
             'status' => 'We have sent an email to reset your password'
         ], 200);
     }
+
+    /**
+     * Return 404 when accessing password reset page.
+     *
+     * Password reset modal is custom provided by the application
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showLinkRequestForm()
+    {
+        return abort(404);
+    }
 }
