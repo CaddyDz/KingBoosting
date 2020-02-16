@@ -70,4 +70,16 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
+
+    /**
+     * Return 404 when accessing register page.
+     *
+     * Register page is custom provided by the application
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showRegistrationForm()
+    {
+        return abort(404);
+    }
 }
