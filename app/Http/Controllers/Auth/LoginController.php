@@ -93,7 +93,7 @@ class LoginController extends Controller
     /**
      * Return 404 when accessing login page.
      *
-     * Login page is custom provided by the application
+     * Login modal is custom provided by the application
      *
      * @return \Illuminate\Http\Response
      */

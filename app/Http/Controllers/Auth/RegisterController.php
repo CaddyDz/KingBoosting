@@ -74,7 +74,7 @@ class RegisterController extends Controller
     /**
      * Return 404 when accessing register page.
      *
-     * Register page is custom provided by the application
+     * Register modal is custom provided by the application
      *
      * @return \Illuminate\Http\Response
      */
