@@ -89,4 +89,16 @@ class LoginController extends Controller
         info($id);
         info($nickname);
     }
+
+    /**
+     * Return 404 when accessing login page.
+     *
+     * Login page is custom provided by the application
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showLoginForm()
+    {
+        return abort(404);
+    }
 }
