@@ -10,15 +10,11 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::view('/', 'welcome');
-
-Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('login/{provider}', 'Auth\LoginController@redirectToProvider');
 Route::get('login/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
 
 // Wildcard should be the last, this helps for SEO
 Route::get('{service}', 'ServicesController@show')
-	->name('service')->where('service', '^(?!dashboard)[a-zA-Z0-9-_]*$');
+    ->name('service')->where('service', '^(?!dashboard)[a-zA-Z0-9-_]*$');

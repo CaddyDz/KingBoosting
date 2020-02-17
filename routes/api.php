@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -13,9 +11,7 @@ use Illuminate\Http\Request;
 |
 */
 
-// Route::middleware('auth:api')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
+Auth::routes(['verify' => true]);
 Route::post('/tiers', 'TiersController@index');
 Route::get('/servers', 'ServersController@index');
 Route::get('/services', 'ServicesController@index');
