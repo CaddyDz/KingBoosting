@@ -109,7 +109,7 @@
 								<s>€24.00($26.66)</s>
 							</strong>
 							<br />
-							€{{ price.toFixed(2) }} (${{ priceUSD }}) OR 1,390
+							€{{ price.toFixed(2) }} (${{ priceUSD }})
 						</v-col>
 						<v-col md="4">
 							<v-text-field

@@ -23,7 +23,7 @@
 								<s>€24.00($26.66)</s>
 							</strong>
 							<br />
-							€{{ price }} ($15.44) OR 1,390
+							€{{ price }} ($15.44)
 						</v-col>
 						<v-col md="4">
 							<v-text-field
