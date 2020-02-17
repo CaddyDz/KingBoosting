@@ -54,7 +54,7 @@ class LoginController extends Controller
 
         return $this->authenticated($request, $this->guard()->user())
             ?: response([
-                'status' => 'You are now logged in'
+                'status' => __('You are now logged in')
             ], 200);
     }
 
