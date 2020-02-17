@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
+use App\Http\Requests\SetPasswordRequest;
 use Illuminate\Foundation\Auth\VerifiesEmails;
 
 class VerificationController extends Controller
@@ -26,7 +27,7 @@ class VerificationController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = '/set-password';
 
     /**
      * Create a new controller instance.
@@ -38,5 +39,37 @@ class VerificationController extends Controller
         $this->middleware('auth');
         $this->middleware('signed')->only('verify');
         $this->middleware('throttle:6,1')->only('verify', 'resend');
+    }
+
+    /**
+     * Show the email verification notice.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Request $request)
+    {
+        return $request->user()->hasVerifiedEmail()
+            ? response([
+                'status' => 'already verified'
+            ])
+            : response([
+                'status' => 'Please verify your email'
+            ]);
+    }
+
+    public function showPasswordSettingForm()
+    {
+        return view('auth.passwords.setPassword');
+    }
+
+    public function setPassword(SetPasswordRequest $request)
+    {
+        auth()->user()->password = bcrypt($request->password);
+        auth()->user()->save();
+        return response([
+            'status' => __('success'),
+            'message' => __('Your password has been successfully set'),
+        ], 201);
     }
 }
