@@ -87,4 +87,14 @@ class Order extends Resource
     {
         return [];
     }
+
+    /**
+     * The icon of the resource.
+     *
+     * @return string
+     */
+    public static function icon()
+    {
+        return view('nova::svg.icon-order')->render();
+    }
 }
