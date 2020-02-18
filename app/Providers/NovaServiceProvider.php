@@ -2,12 +2,15 @@
 
 namespace App\Providers;
 
+use App\Nova\Order;
 use Laravel\Nova\Nova;
 use Illuminate\Support\Facades\Gate;
 use Anaseqal\NovaSidebarIcons\NovaSidebarIcons;
 use Laravel\Nova\NovaApplicationServiceProvider;
 use Zoxta\NovaCloudflareCard\NovaCloudflareCard;
 use Vyuldashev\NovaPermission\NovaPermissionTool;
+use DigitalCreative\CollapsibleResourceManager\Resources\TopLevelResource;
+use DigitalCreative\CollapsibleResourceManager\CollapsibleResourceManager;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
@@ -81,6 +84,16 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
         return [
             new NovaSidebarIcons,
             NovaPermissionTool::make(),
+            new CollapsibleResourceManager([
+                'navigation' => [
+                    TopLevelResource::make([
+                        // 'label' => 'Resources',
+                        'resources' => [
+                            Order::class,
+                        ]
+                    ]),
+                ]
+            ])
         ];
     }
 
