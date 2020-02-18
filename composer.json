@@ -11,6 +11,7 @@
         "php": "^7.2",
         "anaseqal/nova-sidebar-icons": "^0.0.3",
         "david-griffiths/nova-dark-theme": "^1.0",
+        "digital-creative/collapsible-resource-manager": "^1.2",
         "digital-creative/resource-navigation-tab": "^0.2.5",
         "ebess/nova-collapsible-sidebar": "^0.1.2",
         "fideloper/proxy": "^4.0",
