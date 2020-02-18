@@ -18,6 +18,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
      */
     public function boot()
     {
+        Nova::script('menuFix', __DIR__ . '/../../resources/js/fixMenu.js');
         parent::boot();
     }
 
