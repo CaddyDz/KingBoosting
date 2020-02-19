@@ -19,7 +19,7 @@ class CreateOrdersTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             // $table->unsignedBigInteger('booster_id');
             // $table->foreign('booster_id')->references('id')->on('boosters');
-            $table->enum('status', ['progress', 'pending', 'completed', 'paused']);
+            $table->enum('status', ['pending', 'progress', 'paused', 'completed']);
             $table->string('puchase');
             $table->decimal('price', 3, 2);
             $table->timestamps();
