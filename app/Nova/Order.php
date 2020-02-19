@@ -2,9 +2,11 @@
 
 namespace App\Nova;
 
-use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
+use Illuminate\Http\Request;
+use App\Nova\Metrics\MyOrders;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use App\Nova\Lenses\MyOrders as LensesMyOrders;
 
 class Order extends Resource
 {
@@ -52,7 +54,12 @@ class Order extends Resource
      */
     public function cards(Request $request)
     {
-        return [];
+        return [
+            (new MyOrders)->route(
+                'lens',
+                ['resourceName' => 'orders', 'lens' => 'my-orders']
+            ),
+        ];
     }
 
     /**
@@ -74,7 +81,9 @@ class Order extends Resource
      */
     public function lenses(Request $request)
     {
-        return [];
+        return [
+            new LensesMyOrders,
+        ];
     }
 
     /**
