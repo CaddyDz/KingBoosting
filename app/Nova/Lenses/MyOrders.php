@@ -20,8 +20,7 @@ class MyOrders extends Lens
     public static function query(LensRequest $request, $query)
     {
         return $request->withOrdering($request->withFilters(
-            $query
-            // $query->where('user_id', auth()->id())
+            $query->where('user_id', auth()->id())
         ));
     }
 
