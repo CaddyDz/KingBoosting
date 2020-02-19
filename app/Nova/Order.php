@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Nova\Metrics\MyOrders;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use App\Nova\Lenses\MyOrders as LensesMyOrders;
+use App\Nova\Lenses\PendingOrders as LensesPendingOrders;
+use App\Nova\Metrics\PendingOrders;
 
 class Order extends Resource
 {
@@ -59,6 +61,10 @@ class Order extends Resource
                 'lens',
                 ['resourceName' => 'orders', 'lens' => 'my-orders']
             ),
+            (new PendingOrders)->route(
+                'lens',
+                ['resourceName' => 'orders', 'lens' => 'pending-orders']
+            ),
         ];
     }
 
@@ -83,6 +89,7 @@ class Order extends Resource
     {
         return [
             new LensesMyOrders,
+            new LensesPendingOrders,
         ];
     }
 
