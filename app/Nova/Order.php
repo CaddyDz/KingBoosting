@@ -11,6 +11,9 @@ use Laravel\Nova\Http\Requests\NovaRequest;
 use App\Nova\Lenses\MyOrders as LensesMyOrders;
 use App\Nova\Lenses\PendingOrders as LensesPendingOrders;
 use App\Nova\Lenses\WatchedOrders as LensesWatchedOrders;
+use Laravel\Nova\Fields\Currency;
+use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\Status;
 
 class Order extends Resource
 {
@@ -46,7 +49,9 @@ class Order extends Resource
     public function fields(Request $request)
     {
         return [
+            Status::make('Status'),
             ID::make()->sortable(),
+            Number::make('Price')
         ];
     }
 
