@@ -5,12 +5,12 @@ namespace App\Nova;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use App\Nova\Metrics\MyOrders;
+use App\Nova\Metrics\PendingOrders;
+use App\Nova\Metrics\WatchedOrders;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use App\Nova\Lenses\MyOrders as LensesMyOrders;
 use App\Nova\Lenses\PendingOrders as LensesPendingOrders;
 use App\Nova\Lenses\WatchedOrders as LensesWatchedOrders;
-use App\Nova\Metrics\PendingOrders;
-use App\Nova\Metrics\WatchedOrders;
 
 class Order extends Resource
 {
