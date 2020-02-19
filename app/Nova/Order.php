@@ -5,15 +5,14 @@ namespace App\Nova;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use App\Nova\Metrics\MyOrders;
+use Laravel\Nova\Fields\Status;
 use App\Nova\Metrics\PendingOrders;
 use App\Nova\Metrics\WatchedOrders;
+use Vyuldashev\NovaMoneyField\Money;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use App\Nova\Lenses\MyOrders as LensesMyOrders;
 use App\Nova\Lenses\PendingOrders as LensesPendingOrders;
 use App\Nova\Lenses\WatchedOrders as LensesWatchedOrders;
-use Laravel\Nova\Fields\Currency;
-use Laravel\Nova\Fields\Number;
-use Laravel\Nova\Fields\Status;
 
 class Order extends Resource
 {
@@ -51,7 +50,7 @@ class Order extends Resource
         return [
             Status::make('Status'),
             ID::make()->sortable(),
-            Number::make('Price')
+            Money::make('Price')
         ];
     }
 
