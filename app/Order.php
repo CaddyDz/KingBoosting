@@ -10,4 +10,9 @@ class Order extends Model
     {
         return $this->belongsTo(User::class, 'id', 'client_id');
     }
+
+    public function booster()
+    {
+        return $this->belongsTo(User::class, 'booster_id');
+    }
 }

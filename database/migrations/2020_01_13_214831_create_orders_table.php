@@ -17,8 +17,8 @@ class CreateOrdersTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('client_id');
             $table->foreign('client_id')->references('id')->on('users');
-            // $table->unsignedBigInteger('booster_id');
-            // $table->foreign('booster_id')->references('id')->on('boosters');
+            $table->unsignedBigInteger('booster_id');
+            $table->foreign('booster_id')->references('id')->on('users');
             $table->enum('status', ['pending', 'progress', 'paused', 'completed', 'suspended']);
             $table->decimal('price', 5, 2);
             $table->timestamps();

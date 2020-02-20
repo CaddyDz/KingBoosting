@@ -8,6 +8,7 @@ use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
 use App\Nova\Metrics\MyOrders;
+use Laravel\Nova\Fields\DateTime;
 use App\Nova\Metrics\PendingOrders;
 use App\Nova\Metrics\WatchedOrders;
 use Vyuldashev\NovaMoneyField\Money;
@@ -97,6 +98,12 @@ class Order extends Resource
                 return 'Something weird';
             }),
             Money::make('Price'),
+            DateTime::make('Creation', function () {
+                return $this->created_at;
+            }),
+            Text::make('Employee', function () {
+                return $this->booster->username;
+            })
         ];
     }
 
