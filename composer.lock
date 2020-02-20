@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ed3555dccc3e34156ee4f92c453c3d38",
+    "content-hash": "1e904de511973befc6f66d10aae5677e",
     "packages": [
         {
             "name": "anaseqal/nova-sidebar-icons",
@@ -2967,6 +2967,56 @@
             "time": "2019-06-26T14:56:10+00:00"
         },
         {
+            "name": "scadini/nova-icon",
+            "version": "v0.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/scadini/nova-icon.git",
+                "reference": "5bda076c7650482be6fee4c36e8c68e8ea1dfc99"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/scadini/nova-icon/zipball/5bda076c7650482be6fee4c36e8c68e8ea1dfc99",
+                "reference": "5bda076c7650482be6fee4c36e8c68e8ea1dfc99",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "NovaIcon\\FieldServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "NovaIcon\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "João Santos",
+                    "email": "joaoecoceanus@gmail.com"
+                }
+            ],
+            "description": "A Laravel Nova icon field.",
+            "keywords": [
+                "field",
+                "icon",
+                "laravel",
+                "nova",
+                "svg"
+            ],
+            "time": "2019-09-22T10:51:07+00:00"
+        },
+        {
             "name": "spatie/laravel-permission",
             "version": "3.5.0",
             "source": {
@@ -4615,6 +4665,47 @@
             "description": "CssToInlineStyles is a class that enables you to convert HTML-pages/files into HTML-pages/files with inline styles. This is very useful when you're sending emails.",
             "homepage": "https://github.com/tijsverkoyen/CssToInlineStyles",
             "time": "2019-10-24T08:53:34+00:00"
+        },
+        {
+            "name": "timothyasp/nova-badge-field",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/timothyasp/nova-badge-field.git",
+                "reference": "5549f24bc155e7269daf63559476b77e2975eeab"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/timothyasp/nova-badge-field/zipball/5549f24bc155e7269daf63559476b77e2975eeab",
+                "reference": "5549f24bc155e7269daf63559476b77e2975eeab",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Timothyasp\\Badge\\FieldServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Timothyasp\\Badge\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A Laravel Nova field.",
+            "keywords": [
+                "laravel",
+                "nova"
+            ],
+            "time": "2019-11-03T21:57:56+00:00"
         },
         {
             "name": "vlucas/phpdotenv",

@@ -2,10 +2,12 @@
 
 namespace App\Nova;
 
+use NovaIcon\Icon;
+use Timothyasp\Badge\Badge;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Text;
 use App\Nova\Metrics\MyOrders;
-use Laravel\Nova\Fields\Status;
 use App\Nova\Metrics\PendingOrders;
 use App\Nova\Metrics\WatchedOrders;
 use Vyuldashev\NovaMoneyField\Money;
@@ -48,9 +50,53 @@ class Order extends Resource
     public function fields(Request $request)
     {
         return [
-            Status::make('Status'),
+            Icon::make('')
+                ->icon(function () {
+                    switch ($this->status) {
+                        case 'pending':
+                            return 'entypo:circular-graph';
+                        case 'progress':
+                            return 'entypo:controller-play';
+                        case 'paused':
+                            return 'entypo:controller-paus';
+                        case 'completed':
+                            return 'entypo:check';
+                        case 'suspended':
+                            return 'entypo:circle-with-cross';
+                        default:
+                            return 'entypo:controller-play';
+                    }
+                })->css(function () {
+                    $options = [
+                        'pending' => 'text-info',
+                        'progress'   => 'text-warning-dark',
+                        'paused'   => 'text-success',
+                        'completed'   => 'text-success',
+                        'suspended'   => 'text-danger',
+                    ];
+
+                    return $options[$this->status];
+                }),
+            Badge::make('Status')
+                ->options([
+                    'pending' => __('Awaiting for booster'),
+                    'progress' => __('In Progress'),
+                    'paused' => __('Paused'),
+                    'completed' => __('Complete'),
+                    'suspended' => __('Suspended'),
+                ])
+                ->colors([
+                    'pending' => '#64cedb',
+                    'progress' => '#d68842',
+                    'paused' => '#000',
+                    'completed' => '#42d6a9',
+                    'suspended' => '#ca404d',
+                ])->displayUsingLabels(),
             ID::make()->sortable(),
-            Money::make('Price')
+            Text::make('Purchase', function () {
+                return 'Something weird';
+            }),
+            Money::make('Price'),
         ];
     }
 
