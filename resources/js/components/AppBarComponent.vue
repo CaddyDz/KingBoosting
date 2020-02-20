@@ -7,7 +7,8 @@
 		<v-spacer></v-spacer>
 		<nav-links></nav-links>
 		<v-spacer></v-spacer>
-		<v-btn class="ma-2" outlined color="white" href="/dashboard">Members Area</v-btn>
+		<!-- <v-btn class="ma-2" outlined color="white" href="/dashboard">Members Area</v-btn> -->
+		<Login></Login>
 	</v-app-bar>
 </template>
 
