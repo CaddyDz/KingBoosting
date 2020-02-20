@@ -11,6 +11,7 @@ use Zoxta\NovaCloudflareCard\NovaCloudflareCard;
 use Vyuldashev\NovaPermission\NovaPermissionTool;
 use DigitalCreative\CollapsibleResourceManager\Resources\TopLevelResource;
 use DigitalCreative\CollapsibleResourceManager\CollapsibleResourceManager;
+use Laravel\Nova\Events\ServingNova;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
@@ -22,6 +23,9 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     public function boot()
     {
         Nova::script('menuFix', __DIR__ . '/../../resources/js/fixMenu.js');
+        Nova::serving(function (ServingNova $event) {
+            Nova::style('blueflix', __DIR__ . '/../../resources/css/theme.css');
+        });
         parent::boot();
     }
 

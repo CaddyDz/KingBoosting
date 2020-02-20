@@ -1,0 +1,80 @@
+:root {
+    --transparent: transparent;
+    --black: #22292f;
+    --white: white;
+    --white-50: rgba(255, 255, 255, 0.5);
+    --danger: #7F64CA;
+    --success: #7F64CA;
+    --warning: #7F64CA;
+    --info: #7F64CA;
+    --primary: #8774BB;
+    --primary-dark: #8774BB;
+    --primary-70: rgba(135, 116, 187, 0.7);
+    --primary-50: rgba(135, 116, 187, 0.5);
+    --primary-30: rgba(135, 116, 187, 0.3);
+    --primary-10: rgba(135, 116, 187, 0.1);
+    --logo: ;
+    --sidebar-icon: #b3c1d1;
+    --20: #f6fbff;
+    --30: #f4f7fa;
+    --40: #eef1f4;
+    --50: #e3e7eb;
+    --60: #bacad6;
+    --70: #b3b9bf;
+    --80: #7c858e;
+    --90: #252d37;
+    --90-half: rgba(40, 54, 61, 0.5);
+}
+
+.bg-grad-sidebar {
+    background: #1b2438;
+    /* margin: 20px 10px 0px 30px; */
+}
+
+.bg-40 {
+    background-color: #353d53;
+}
+
+.bg-white {
+    background-color: #1b2438;
+}
+
+.text-90 {
+    color: var(--primary);
+}
+
+.card {
+    background-color: #232b41;
+}
+
+.table td {
+    font-weight: 300;
+    color: var(--primary);
+    font-weight: 800;
+    border-bottom-width: .5px;
+    border-color: #666;
+    padding-left: .75rem;
+    padding-right: .75rem;
+    height: 3.8125rem;
+    background-color: #272727;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+pre {
+    color: var(--primary);
+}
+
+.table th {
+    background-color: #333;
+    color: #fff;
+}
+
+.text-90-half {
+    color: #fff;
+}
