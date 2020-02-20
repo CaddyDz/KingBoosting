@@ -2,10 +2,13 @@
 
 namespace App\Nova\Lenses;
 
+use NovaIcon\Icon;
 use Laravel\Nova\Fields\ID;
+use Timothyasp\Badge\Badge;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Lenses\Lens;
+use Laravel\Nova\Fields\DateTime;
+use Vyuldashev\NovaMoneyField\Money;
 use Laravel\Nova\Http\Requests\LensRequest;
 
 class MyOrders extends Lens
@@ -33,7 +36,52 @@ class MyOrders extends Lens
     public function fields(Request $request)
     {
         return [
-            ID::make('ID', 'id')->sortable(),
+            Icon::make('')->icon(function () {
+                switch ($this->status) {
+                    case 'pending':
+                        return 'entypo:circular-graph';
+                    case 'progress':
+                        return 'entypo:controller-play';
+                    case 'paused':
+                        return 'entypo:controller-paus';
+                    case 'completed':
+                        return 'entypo:check';
+                    case 'suspended':
+                        return 'entypo:circle-with-cross';
+                    default:
+                        return 'entypo:controller-play';
+                }
+            })->css(function () {
+                $options = [
+                    'pending' => 'text-info',
+                    'progress'   => 'text-warning-dark',
+                    'paused'   => 'text-black',
+                    'completed'   => 'text-success',
+                    'suspended'   => 'text-danger',
+                ];
+
+                return $options[optional($this->resource)->status ?? 'paused'];
+            }),
+            Badge::make('Status')
+                ->options([
+                    'pending' => __('Awaiting for booster'),
+                    'progress' => __('In Progress'),
+                    'paused' => __('Paused'),
+                    'completed' => __('Complete'),
+                    'suspended' => __('Suspended'),
+                ])
+                ->colors([
+                    'pending' => '#64cedb',
+                    'progress' => '#d68842',
+                    'paused' => '#000',
+                    'completed' => '#42d6a9',
+                    'suspended' => '#ca404d',
+                ])->displayUsingLabels(),
+            ID::make()->sortable(),
+            Text::make('Purchase', fn (): string => 'Something weird'),
+            Money::make('Price'),
+            DateTime::make('Creation', fn (): string => $this->resource->created_at),
+            Text::make('Employee', fn () => $this->resource->booster->username),
         ];
     }
 

@@ -151,7 +151,7 @@ class Order extends Resource
     public function lenses(Request $request)
     {
         return [
-            new LensesMyOrders,
+            new LensesMyOrders(static::newModel()),
             new LensesPendingOrders,
             new LensesWatchedOrders,
         ];

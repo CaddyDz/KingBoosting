@@ -1,6 +1,6 @@
 :root {
     --transparent: transparent;
-    --black: #22292f;
+    --black: #000;
     --white: white;
     --white-50: rgba(255, 255, 255, 0.5);
     --danger: #ca404d;
