@@ -58,7 +58,7 @@ class Order extends Resource
                     $options = [
                         'pending' => 'text-info',
                         'progress'   => 'text-warning-dark',
-                        'paused'   => 'text-success',
+                        'paused'   => 'text-black',
                         'completed'   => 'text-success',
                         'suspended'   => 'text-danger',
                     ];
