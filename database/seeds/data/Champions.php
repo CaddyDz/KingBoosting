@@ -1717,7 +1717,7 @@ trait Champions
         [
             "name" => "Vel'Koz",
             "identifier" => "Velkoz",
-            "image" => "Velkoz.png",
+            "image" => "VelKoz.png",
             "tags" => [
                 "Mage"
             ],
