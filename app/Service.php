@@ -4,6 +4,40 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Service
+ *
+ * @property int $id
+ * @property int $kind_id
+ * @property int|null $type_id
+ * @property string $name
+ * @property string $image
+ * @property string $description
+ * @property string $subtitle
+ * @property string|null $status
+ * @property string $slug
+ * @property string $bg_img
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\ServiceKind $kind
+ * @property-read \App\ServiceType|null $type
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Service newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Service newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Service query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Service whereBgImg($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Service whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Service whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Service whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Service whereImage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Service whereKindId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Service whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Service whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Service whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Service whereSubtitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Service whereTypeId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Service whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
 class Service extends Model
 {
     /**
