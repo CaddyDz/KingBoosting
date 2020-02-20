@@ -6,6 +6,8 @@ use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Lenses\Lens;
+use Laravel\Nova\Fields\DateTime;
+use Vyuldashev\NovaMoneyField\Money;
 use Laravel\Nova\Http\Requests\LensRequest;
 
 class PendingOrders extends Lens
@@ -20,7 +22,7 @@ class PendingOrders extends Lens
     public static function query(LensRequest $request, $query)
     {
         return $request->withOrdering($request->withFilters(
-            $query
+            $query->where('status', 'pending')
         ));
     }
 
@@ -33,7 +35,17 @@ class PendingOrders extends Lens
     public function fields(Request $request)
     {
         return [
-            ID::make('ID', 'id')->sortable(),
+            ID::make()->sortable(),
+            Text::make('Purchase', function () {
+                return 'Something weird';
+            }),
+            Money::make('Price'),
+            DateTime::make('Creation', function () {
+                return $this->created_at;
+            }),
+            Text::make('Employee', function () {
+                return $this->booster->username;
+            }),
         ];
     }
 
