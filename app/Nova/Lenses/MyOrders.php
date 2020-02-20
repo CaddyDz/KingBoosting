@@ -37,20 +37,7 @@ class MyOrders extends Lens
     {
         return [
             Icon::make('')->icon(function () {
-                switch ($this->status) {
-                    case 'pending':
-                        return 'entypo:circular-graph';
-                    case 'progress':
-                        return 'entypo:controller-play';
-                    case 'paused':
-                        return 'entypo:controller-paus';
-                    case 'completed':
-                        return 'entypo:check';
-                    case 'suspended':
-                        return 'entypo:circle-with-cross';
-                    default:
-                        return 'entypo:controller-play';
-                }
+                return $this->icon;
             })->css(function () {
                 $options = [
                     'pending' => 'text-info',
