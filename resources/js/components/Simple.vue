@@ -131,7 +131,7 @@
 											<v-stepper-header>
 												<!-- 3 templates here -->
 												<template>
-													<v-stepper-step key="login" :complete="e1 > 1" :step="1" editable>Login</v-stepper-step>
+													<v-stepper-step key="login" :complete="isLoggedIn" :step="1">Login</v-stepper-step>
 													<v-divider v-if="1 !== steps" :key="1"></v-divider>
 												</template>
 												<template>
@@ -145,60 +145,8 @@
 											</v-stepper-header>
 											<v-stepper-items>
 												<v-stepper-content key="1-content" :step="1">
-													<v-row>
-														<v-col md="8">
-															<v-form v-model="valid">
-																<v-container>
-																	<v-row>
-																		<v-text-field
-																			v-model="email"
-																			:rules="emailRules"
-																			label="E-mail address *"
-																			required
-																			placeholder="Your email address"
-																		></v-text-field>
-																	</v-row>
-																	<v-row>
-																		<v-text-field
-																			type="password"
-																			v-model="password"
-																			:rules="passwordRules"
-																			:counter="10"
-																			label="Password *"
-																			required
-																		></v-text-field>
-																	</v-row>
-																</v-container>
-															</v-form>
-															<v-btn text @click="sendResetPasswordEmail">Forgotten Password?</v-btn>
-															<v-btn color="primary" @click="login">Continue</v-btn>
-															<v-btn text>Cancel</v-btn>
-														</v-col>
-														<v-col md="4">
-															<v-card color="black">
-																<v-card-title>
-																	<v-icon>mdi-account-edit</v-icon>New Customers
-																</v-card-title>
-																<v-card-text>
-																	<v-btn color="blue" block href="/login/facebook">
-																		<v-icon color="white">mdi-facebook-box</v-icon>Login with Facebook
-																	</v-btn>
-																	<br />
-																	<v-btn color="red" block href="/login/google">
-																		<v-icon color="white">mdi-google-plus</v-icon>Sign in with Google+
-																	</v-btn>
-																	<br />
-																	<v-btn color="green" block @click="register = true">
-																		<v-icon color="white">mdi-email</v-icon>Register with email
-																	</v-btn>
-																	<br />
-																	<v-btn color="grey" block>
-																		<v-icon color="white">mdi-account-circle</v-icon>Continue as Guest
-																	</v-btn>
-																</v-card-text>
-															</v-card>
-														</v-col>
-													</v-row>
+													<!-- If user is already logged in, this step should be skipped -->
+													<LoginComponent></LoginComponent>
 												</v-stepper-content>
 												<v-stepper-content key="2-content" :step="2">
 													<v-form v-model="valid">
@@ -326,6 +274,9 @@ export default {
 		},
 		priceUSD() {
 			return (this.price * this.exchangeRate).toFixed(2);
+		},
+		isLoggedIn() {
+			return this.$store.getters.isLoggedIn;
 		}
 	},
 	methods: {
@@ -464,6 +415,10 @@ export default {
 			this.price = this.division.price * this.number_of_wins;
 		});
 		axios.get("/api/servers").then(response => (this.servers = response.data));
+		// Jump to second step if user is already logged in
+		if (this.isLoggedIn) {
+			this.e1 = 2;
+		}
 	}
 };
 </script>
