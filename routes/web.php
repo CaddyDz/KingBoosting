@@ -10,8 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::view('/', 'welcome');
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 Route::get('login/{provider}', 'Auth\LoginController@redirectToProvider');
 Route::get('login/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
 
