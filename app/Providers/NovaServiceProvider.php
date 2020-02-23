@@ -5,13 +5,13 @@ namespace App\Providers;
 use App\Nova\Order;
 use Laravel\Nova\Nova;
 use Illuminate\Support\Facades\Gate;
+use Laravel\Nova\Events\ServingNova;
 use Anaseqal\NovaSidebarIcons\NovaSidebarIcons;
 use Laravel\Nova\NovaApplicationServiceProvider;
 use Zoxta\NovaCloudflareCard\NovaCloudflareCard;
 use Vyuldashev\NovaPermission\NovaPermissionTool;
 use DigitalCreative\CollapsibleResourceManager\Resources\TopLevelResource;
 use DigitalCreative\CollapsibleResourceManager\CollapsibleResourceManager;
-use Laravel\Nova\Events\ServingNova;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {

@@ -7,7 +7,7 @@
 		<v-spacer></v-spacer>
 		<nav-links></nav-links>
 		<v-spacer></v-spacer>
-		<v-btn class="ma-2" outlined color="white" href="/dashboard">Members Area</v-btn>
+		<LoginComponent></LoginComponent>
 	</v-app-bar>
 </template>
 

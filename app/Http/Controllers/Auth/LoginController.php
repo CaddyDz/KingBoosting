@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\User;
+use Exception;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
@@ -54,7 +56,8 @@ class LoginController extends Controller
 
         return $this->authenticated($request, $this->guard()->user())
             ?: response([
-                'status' => __('You are now logged in')
+                'status' => 'success',
+                'message' => __('You are now logged in'),
             ], 200);
     }
 
@@ -75,19 +78,24 @@ class LoginController extends Controller
      */
     public function handleProviderCallback($provider)
     {
-        $user = Socialite::driver($provider)->user();
-        $id = $user->getId();
-        $nickname = $user->getNickname();
-        $name = $user->getName();
-        $email = $user->getEmail();
-        $avatar = $user->getAvatar();
-        info($name);
-        // Didn't get this one
-        info($email);
-        // To download
-        info($avatar);
-        info($id);
-        info($nickname);
+        try {
+            $user = Socialite::driver($provider)->user();
+            $email = $user->getEmail();
+            $user = User::where('email', $email)->first();
+            if ($user === null) {
+                return response([
+                    'status' => 'failed',
+                    'message' => 'No such user registered',
+                ], 403);
+            }
+            auth()->login($user);
+        } catch (Exception $ex) {
+            logger()->error($ex->getMessage());
+            return response([
+                'status' => 'failed',
+                'message' => $ex->getMessage(),
+            ], 500);
+        }
     }
 
     /**
