@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should mount without crashing 1`] = `
+exports[`AppBar renders 1`] = `
 VueWrapper {
   "_emitted": Object {},
   "_emittedByOrder": Array [],
