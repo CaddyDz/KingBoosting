@@ -7,48 +7,22 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
-import '@mdi/font/css/materialdesignicons.css'
-import Vuetify from 'vuetify';
-import Vuex from 'vuex'
-Vue.use(Vuex)
-Vue.use(Vuetify);
+
 Vue.config.productionTip = false;
 
-const store = new Vuex.Store({
-    state: {
-        price: 1.9,
-        currentlySelectedTier: {
-            wins: []
-        },
-        currentlySelectedDivision: {},
-        currentlySelectedNumberOfWins: 1,
-        maximumNumberOfWins: undefined,
-        eta: '',
-    },
-    mutations: {
-        updatePrice(state, newPrice) {
-            state.price = newPrice;
-        },
-        updateCurrentlySelectedTier(state, payload) {
-            state.currentlySelectedTier = payload;
-        },
-        updateCurrentlySelectedDivision(state, payload) {
-            state.currentlySelectedDivision = payload;
-        },
-        updateMaximumNumberOfWins(state, payload) {
-            state.maximumNumberOfWins = payload;
-        },
-        updateETA(payload) {
-            state.eta = payload;
-        }
-    },
-    actions: {
-        increment(context) {
-            context.commit('increment')
-        }
-    }
-})
-window.store = store;
+import {
+    store
+} from './store';
+
+import '@mdi/font/css/materialdesignicons.css'
+import Vuetify from 'vuetify';
+Vue.use(Vuetify);
+
+import VueI18n from 'vue-i18n'
+const i18n = new VueI18n({
+    locale: document.documentElement.lang
+});
+
 
 /**
  * The following block of code may be used to automatically register your
@@ -72,6 +46,7 @@ const app = new Vue({
     // provide the store using the "store" option.
     // this will inject the store instance to all child components.
     store,
+    i18n,
     vuetify: new Vuetify({
         theme: {
             themes: {
@@ -89,7 +64,8 @@ const app = new Vue({
     }),
 
     created() {
-        this.$vuetify.theme.dark = true
+        this.$vuetify.theme.dark = true;
+        this.$store.commit("setAuthUser", window.auth_user);
     }
 });
 

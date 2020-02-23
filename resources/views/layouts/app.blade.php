@@ -29,6 +29,7 @@
 <body>
     <div id="root">
         <v-app>
+            <notification-component></notification-component>
             <v-system-bar lights-out app>
                 <social-component></social-component>
                 <v-spacer></v-spacer>
@@ -40,6 +41,7 @@
             </v-content>
         </v-app>
     </div>
+    @yield('scripts')
 </body>
 
 </html>
