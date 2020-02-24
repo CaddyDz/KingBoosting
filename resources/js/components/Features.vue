@@ -33,7 +33,10 @@ export default {
 	mounted() {
 		axios
 			.get("/api/features")
-			.then(response => (this.featuresData = response.data));
+			.then(response => (this.featuresData = response.data))
+			.catch(errors => {
+				console.log(errors.response.data);
+			});
 	}
 };
 </script>
