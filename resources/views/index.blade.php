@@ -24,9 +24,3 @@
 <why-us></why-us>
 <customer></customer>
 @stop
-
-@section('scripts')
-<script>
-    window.auth_user = {!! json_encode($auth_user); !!};
-</script>
-@stop

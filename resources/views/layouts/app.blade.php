@@ -41,7 +41,9 @@
             </v-content>
         </v-app>
     </div>
-    @yield('scripts')
+    <script>
+        window.auth_user = {!! json_encode($auth_user); !!};
+    </script>
 </body>
 
 </html>
