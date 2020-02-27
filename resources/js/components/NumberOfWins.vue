@@ -14,9 +14,9 @@
 					<v-col md="6">
 						<v-radio-group row v-model="radios">
 							<v-icon>mdi-account</v-icon>
-							<v-radio label="Solo/Duo" value="solo"></v-radio>
+							<v-radio :label="$t('Solo/Duo')" value="solo"></v-radio>
 							<v-icon>mdi-account-group</v-icon>
-							<v-radio label="Flex 5v5" value="flex"></v-radio>
+							<v-radio :label="$t('Flex 5v5')" value="flex"></v-radio>
 						</v-radio-group>
 					</v-col>
 					<v-col md="3"></v-col>
@@ -35,3 +35,11 @@ export default {
 	}
 };
 </script>
+<i18n>
+{
+	"en": {
+	  	"Solo/Duo": "Solo/Duo",
+		"Flex 5v5": "Flex 5v5"
+	}
+}
+</i18n>
