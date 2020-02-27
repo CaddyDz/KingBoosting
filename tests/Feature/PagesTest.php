@@ -25,6 +25,8 @@ class PagesTest extends TestCase
      */
     public function testAdminPage()
     {
+        $this->withExceptionHandling();
+
         $response = $this->get(config('nova.path'));
 
         $response->assertStatus(302);
