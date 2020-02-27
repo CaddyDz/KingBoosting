@@ -78,9 +78,9 @@ export default {
 	"en": {
 		"Specific champions at +20% cost": "Specific champions at +20% cost",
 		"Priority order (2x speed) at +25% cost": "Priority order (2x speed) at +25% cost",
-		"'With Streaming +15% cost": "'With Streaming +15% cost",
-		"Discount Code": "Discount Code",
-		"Discount Code": "Discount Code",	
+		"With Streaming +15% cost": "With Streaming +15% cost",
+		"Discount Code": "Discount Code"
+
 	}
 }
 </i18n>
