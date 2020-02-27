@@ -80,7 +80,7 @@ export default {
 <i118>
 {
 	"en":{
-		"Verified Customer Reviews</v-col": "Verified Customer Reviews</v-col"
+		"Verified Customer Reviews": "Verified Customer Reviews"
 	}
 }
 </i18n>
