@@ -8,7 +8,8 @@ class BoostersController extends Controller
 {
     public function getBoostersNames()
     {
-        $boostersNames = User::role('Booster')->select('name')->pluck('name'); // Returns only users with the role 'Booster'
+        // Returns only users with the role 'Booster'
+        $boostersNames = User::role('Booster')->select('username')->pluck('username');
         return $boostersNames;
     }
 }
