@@ -25,9 +25,3 @@
 <why-us></why-us>
 <blogs></blogs>
 @stop
-
-@section('scripts')
-<script>
-    window.auth_user = {!! json_encode($auth_user); !!};
-</script>
-@stop
