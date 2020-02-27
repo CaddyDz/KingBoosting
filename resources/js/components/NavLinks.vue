@@ -7,36 +7,36 @@
 			<v-col md="2">
 				<v-menu transition="slide-y-transition" min-width="100%" open-on-hover>
 					<template v-slot:activator="{on}">
-						<a href="/regular-boosting" v-on="on" class="link">Boosting</a>
+						<a href="/regular-boosting" v-on="on" class="link">{{ $t('Boosting') }}</a>
 					</template>
 					<v-row align="center" justify="center">
 						<v-col md="3">
 							<a href="/regular-boosting">
 								<img src="/img/tft.png" alt />
 								<!-- Vuetify Built-in class -->
-								<p class="text-center">Regular Boosting</p>
+								<p class="text-center">{{ $t('Regular Boosting') }}</p>
 							</a>
 						</v-col>
 						<v-col md="3">
 							<a href="/regular-boosting">
 								<img src="/img/tft.png" alt />
-								<p class="text-center">Regular Boosting</p>
+								<p class="text-center">{{ $t('Regular Boosting') }}</p>
 							</a>
 						</v-col>
 					</v-row>
 				</v-menu>
 			</v-col>
 			<v-col md="2">
-				<a href="#" title="Coaching" class="link">Coaching</a>
+				<a href="#" :title="$t('Coaching')" class="link">{{ $t('Coaching') }}</a>
 			</v-col>
 			<v-col md="2">
-				<a href="#" title="Lol Accounts" class="link">Lol Accounts</a>
+				<a href="#" :title="$t('Lol Accounts')" class="link">{{ $t('Lol Accounts') }}</a>
 			</v-col>
 			<v-col md="2">
-				<a href="#" title="Boosters" class="link">Boosters</a>
+				<a href="#" :title="$t('Boosters')" class="link">{{ $t('Boosters') }}</a>
 			</v-col>
 			<v-col md="2">
-				<a href="#" title="More*" class="link">More*</a>
+				<a href="#" :title="$t('More*')" class="link">{{ $t('More*') }}</a>
 			</v-col>
 		</v-row>
 	</v-container>
@@ -78,3 +78,16 @@ p {
 	box-shadow: none !important;
 }
 </style>
+
+<i18n>
+{
+	"en": {
+		"Boosting": "Boosting",
+		"Regular Boosting": "Regular Boosting",
+		"Coaching": "Coaching",
+		"Lol Accounts": "Lol Accounts",
+		"Boosters": "Boosters",
+		"More*": "More*"	
+	}
+}
+</i18n>
