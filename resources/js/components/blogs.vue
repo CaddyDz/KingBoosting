@@ -25,16 +25,16 @@
                 cycle
                 show-arrows-on-hover
                 hide-delimiter-background
-                delimiter-icon="mdi-minus"
+                hide-delimiters
                 height="300"
                 class="carousel"
                 v-on:change="handelChange"
+                progress
+                progress-color="#fd905c"
               >
                   <v-carousel-item 
                     v-for="(item,i) in blogPosts" 
                     :key="i" :src="item.src"
-                    reverse-transition="fade-transition"
-                    transition="fade-transition"
                   >
                   </v-carousel-item>
 
@@ -90,7 +90,7 @@
 
 <style>
   .blogPosts-container{
-    /* margin-top: 60px; */
+    background-image: url('../../../public/img/blogPosts/blog-bg.webp');
     height: 80vh;
     display: flex;
     align-items: center;
