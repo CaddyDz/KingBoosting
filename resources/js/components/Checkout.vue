@@ -1,6 +1,6 @@
 <template>
 	<v-stepper vertical non-linear>
-		<v-stepper-step step="1">Select Your Current League</v-stepper-step>
+		<v-stepper-step step="1">{{ $t('Select Your Current League') }}</v-stepper-step>
 		<v-stepper-content step="1">
 			<v-card raised class="mb-4" :style="{boxShadow: tier.box_shadow}">
 				<v-container>
@@ -14,7 +14,7 @@
 									<v-select
 										:items="tiers"
 										name="tier"
-										label="Current tier"
+										:label="$t('Current tier')"
 										v-model="selectedTierID"
 										item-text="name"
 										item-value="id"
@@ -23,21 +23,21 @@
 								<v-col v-if="this.hasDivisions">
 									<v-select
 										:items="tier.divisions"
-										label="Current division"
+										:label="$t('Current division')"
 										item-text="name"
 										v-model="selectedDivisionID"
 										item-value="id"
 									></v-select>
 								</v-col>
 							</v-row>
-							<v-select :items="servers" label="Select your server" item-text="region" :value="servers[0]"></v-select>
+							<v-select :items="servers" :label="$t('Select your server')" item-text="region" :value="servers[0]"></v-select>
 						</v-col>
 					</v-row>
 				</v-container>
 			</v-card>
 		</v-stepper-content>
 		<!-- Don't put the stepper step in the component after it because it removes the vertical line between the steps -->
-		<v-stepper-step step="2">Select Your Number Of Wins</v-stepper-step>
+		<v-stepper-step step="2">{{ $t('Select Your Number Of Wins') }}</v-stepper-step>
 		<number-of-wins></number-of-wins>
 		<payment-section :tier="this.tier"></payment-section>
 	</v-stepper>
@@ -120,3 +120,16 @@ export default {
 	}
 };
 </script>
+
+<i18n>
+{
+        "en": {
+            "Select Your Current League": "Select Your Current League",
+            "Curent tier": "Curent tier",
+			"Curent division": "Curent division",
+			"Select your server": "Select your server",
+			"Select Your Number Of Wins": "Select Your Number Of Wins",
+			"Loyalty Program": "Loyalty Program"	
+        }
+    }
+</i18n>
