@@ -14,7 +14,7 @@
 									<v-select
 										:items="tiers"
 										name="tier"
-										:label=" $t('Current tier')"
+										:label="$t('Current tier')"
 										v-model="selectedTierID"
 										item-text="name"
 										item-value="id"
@@ -23,14 +23,14 @@
 								<v-col v-if="this.hasDivisions">
 									<v-select
 										:items="tier.divisions"
-										:label=" $t('Current division')"
+										:label="$t('Current division')"
 										item-text="name"
 										v-model="selectedDivisionID"
 										item-value="id"
 									></v-select>
 								</v-col>
 							</v-row>
-							<v-select :items="servers" :label=" $t('Select your server')" item-text="region" :value="servers[0]"></v-select>
+							<v-select :items="servers" :label="$t('Select your server')" item-text="region" :value="servers[0]"></v-select>
 						</v-col>
 					</v-row>
 				</v-container>
@@ -122,12 +122,14 @@ export default {
 </script>
 
 <i18n>
-    {
+{
         "en": {
             "Select Your Current League": "Select Your Current League",
-            "Center": "Center",
-            "Loyalty Program": "Loyalty Program",
-			"Language": "Language"	
+            "Curent tier": "Curent tier",
+			"Curent division": "Curent division",
+			"Select your server": "Select your server",
+			"Select Your Number Of Wins": "Select Your Number Of Wins",
+			"Loyalty Program": "Loyalty Program"	
         }
     }
 </i18n>
