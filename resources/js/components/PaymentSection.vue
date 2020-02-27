@@ -8,9 +8,9 @@
 					<!-- Checkboxes and ETA -->
 					<v-row no-gutters>
 						<v-col md="6">
-							<v-checkbox label="Specific champions at +20% cost" prepend-icon="mdi-account-group"></v-checkbox>
-							<v-checkbox label="Priority order (2x speed) at +25% cost" prepend-icon="mdi-flash"></v-checkbox>
-							<v-checkbox label="With Streaming +15% cost" prepend-icon="mdi-video"></v-checkbox>
+							<v-checkbox :label="$t('Specific champions at +20% cost')" prepend-icon="mdi-account-group"></v-checkbox>
+							<v-checkbox :label="$t('Priority order (2x speed) at +25% cost')" prepend-icon="mdi-flash"></v-checkbox>
+							<v-checkbox :label="$t('With Streaming +15% cost')" prepend-icon="mdi-video"></v-checkbox>
 						</v-col>
 						<v-col md="6">
 							<!-- ETA -->
@@ -27,14 +27,14 @@
 						</v-col>
 						<v-col md="4">
 							<v-text-field
-								label="Discount Code"
-								placeholder="Discount Code"
+								:label="$t('Discount Code')"
+								:placeholder="$t('Discount Code')"
 								outlined
 								append-icon="mdi-check-bold"
 							></v-text-field>
 						</v-col>
 						<v-col md="4">
-							<v-btn class="float-right" outlined color="purple">BOOST ME</v-btn>
+							<v-btn class="float-right" outlined color="purple">{{ $t('BOOST ME') }}</v-btn>
 						</v-col>
 					</v-row>
 					<!-- Price and discount -->
@@ -73,3 +73,14 @@ export default {
 	}
 };
 </script>
+<i18n>
+{
+	"en": {
+		"Specific champions at +20% cost": "Specific champions at +20% cost",
+		"Priority order (2x speed) at +25% cost": "Priority order (2x speed) at +25% cost",
+		"'With Streaming +15% cost": "'With Streaming +15% cost",
+		"Discount Code": "Discount Code",
+		"Discount Code": "Discount Code",	
+	}
+}
+</i18n>
