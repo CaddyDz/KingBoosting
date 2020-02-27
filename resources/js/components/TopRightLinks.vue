@@ -79,12 +79,12 @@ span {
 </style>
 
 <i18n>
-    {
-        "en": {
-            "Mobile Pay": "Mobile Pay",
-            "Contact": "Contact",
-            "Loyalty Program": "Loyalty Program",
-			"Language": "Language"	
-        }
-    }
+{
+	"en": {
+		"Mobile Pay": "Mobile Pay",
+		"Contact": "Contact",
+		"Loyalty Program": "Loyalty Program",
+		"Language": "Language"	
+	}
+}
 </i18n>
