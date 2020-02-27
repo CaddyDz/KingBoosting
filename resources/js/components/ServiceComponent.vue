@@ -20,7 +20,7 @@
 						<simple :service="service"></simple>
 						<!-- <checkout :service="service"></checkout> -->
 					</v-col>
-					<v-col md="3">Verified Customer Reviews</v-col>
+					<v-col md="3">{{ $t('Verified Customer Reviews</v-col')>
 				</v-row>
 			</v-container>
 		</div>
@@ -76,3 +76,11 @@ export default {
 	left: 0;
 }
 </style>
+
+<i18n>
+{
+	"en":{
+		"Verified Customer Reviews": "Verified Customer Reviews"
+	}
+}
+</i18n>
