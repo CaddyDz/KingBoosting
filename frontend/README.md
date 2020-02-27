@@ -1,4 +1,4 @@
-# frontend
+# King Boosting
 
 > ELO Boosting Site
 

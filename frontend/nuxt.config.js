@@ -6,7 +6,7 @@ export default {
    ** Headers of the page
    */
   head: {
-    titleTemplate: '%s | ' + process.env.npm_package_name,
+    titleTemplate: '%s | ' + 'King Boosting',
     title: 'Buy LOL ELO Boost & Premium LOL Boosting' || '',
     meta: [{
         charset: 'utf-8'
