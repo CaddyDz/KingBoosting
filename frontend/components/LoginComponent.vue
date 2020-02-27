@@ -1,0 +1,47 @@
+<template>
+	<div>
+		<v-btn class="ma-2" outlined color="white" href="/dashboard" v-if="auth">{{ $t('Members Area') }}</v-btn>
+		<v-dialog max-width="800px" v-model="dialog" v-else>
+			<template v-slot:activator="{ on }">
+				<v-btn class="ma-2" outlined color="white" v-on="on">{{ $t('Members Area') }}</v-btn>
+			</template>
+			<v-card class="px-5" color="#303030">
+				<v-container>
+					<v-row>
+						<v-col cols="7">
+							<LoginForm></LoginForm>
+						</v-col>
+						<v-col cols="5">
+							<SocialLogin></SocialLogin>
+						</v-col>
+					</v-row>
+				</v-container>
+			</v-card>
+		</v-dialog>
+	</div>
+</template>
+
+<script>
+export default {
+	data() {
+		return {
+			auth: false,
+			dialog: false
+		};
+	}
+};
+</script>
+
+<style scoped>
+.v-btn:hover:before {
+	content: none;
+}
+</style>
+
+<i18n>
+{
+  "en": {
+    "Members Area": "Members Area"
+  }
+}
+</i18n>

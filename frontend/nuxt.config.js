@@ -1,4 +1,5 @@
-import colors from 'vuetify/es5/util/colors'
+import webpack from 'webpack';
+import colors from 'vuetify/es5/util/colors';
 
 export default {
   mode: 'universal',
@@ -40,12 +41,25 @@ export default {
   /*
    ** Global CSS
    */
-  css: [],
+  css: [
+    '~/css/main.css'
+  ],
+  render: {
+    bundleRenderer: {
+      shouldPreload: (file, type) => {
+        return ['script', 'style', 'font'].includes(type)
+      }
+    }
+  },
+  router: {
+    middleware: 'i18n'
+  },
   /*
    ** Plugins to load before mounting the App
    */
   plugins: [
-    '~plugins/globals'
+    '~plugins/globals',
+    '~plugins/i18n'
   ],
   /*
    ** Nuxt.js dev-modules
@@ -69,7 +83,13 @@ export default {
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
-  axios: {},
+  axios: {
+    // proxyHeaders: false,
+    prefix: '/api',
+    host: 'kingboosting.dev',
+    port: 443,
+    https: true,
+  },
   /*
    ** vuetify module configuration
    ** https://github.com/nuxt-community/vuetify-module
@@ -98,6 +118,19 @@ export default {
     /*
      ** You can extend webpack config here
      */
-    extend(config, ctx) {}
+    extend(config, ctx) {
+      // ..
+      config.module.rules.push({
+        resourceQuery: /blockType=i18n/,
+        type: 'javascript/auto',
+        loader: '@kazupon/vue-i18n-loader'
+      })
+    },
+    plugins: [
+      new webpack.ProvidePlugin({
+        // global modules
+        '_': 'lodash'
+      })
+    ]
   }
 }

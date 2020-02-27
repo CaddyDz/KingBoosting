@@ -18,6 +18,7 @@ Route::post('/tiers', 'TiersController@index');
 Route::get('/servers', 'ServersController@index');
 // List all services
 Route::get('/services', 'ServicesController@index');
+Route::get('/services/{service}', 'ServicesController@show');
 // Get the kind of a service by the service id
 Route::get('/services/{id}/kind', 'ServicesController@getKind');
 // Get all features
