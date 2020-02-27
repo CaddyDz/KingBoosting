@@ -77,7 +77,7 @@ export default {
 }
 </style>
 
-<i118>
+<i18n>
 {
 	"en":{
 		"Verified Customer Reviews": "Verified Customer Reviews"
