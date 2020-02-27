@@ -21,8 +21,9 @@
     <services-circle></services-circle>
 </v-container>
 <features></features>
-<why-us></why-us>
 <customer></customer>
+<why-us></why-us>
+<blogs></blogs>
 @stop
 
 @section('scripts')
