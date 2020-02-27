@@ -81,6 +81,12 @@ class LoginController extends Controller
         try {
             $user = Socialite::driver($provider)->user();
             $email = $user->getEmail();
+            if (!$email) {
+                return response([
+                    'status' => 'failed',
+                    'message' => 'No email address associated with this account',
+                ]);
+            }
             $user = User::where('email', $email)->first();
             if ($user === null) {
                 return response([
