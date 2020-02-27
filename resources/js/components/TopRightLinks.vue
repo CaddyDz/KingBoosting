@@ -2,17 +2,17 @@
 	<div>
 		<span>
 			<v-icon color="white">mdi-cellphone-iphone</v-icon>
-			<a href="/pay-with-mobile">Mobile Pay</a>
+			<a href="/pay-with-mobile">{{ $t('Mobile Pay') }}</a>
 		</span>
 		<span>
-			<a href="/contact">Contact</a>
+			<a href="/contact">{{ $t('Contact') }}</a>
 		</span>
 		<span>
-			<a href="/loyalty-program">Loyalty Program</a>
+			<a href="/loyalty-program">{{ $t('Loyalty Program') }}</a>
 		</span>
 		<v-dialog v-model="shown" width="fit-content" hide-overlay content-class="languages">
 			<template v-slot:default>
-				<span class="language-selector" @mouseover="showLanguages">Language</span>
+				<span class="language-selector" @mouseover="showLanguages">{{ $t('Language') }}</span>
 			</template>
 
 			<v-list @mouseleave="close">
@@ -77,3 +77,14 @@ span {
 	border-radius: 1px;
 }
 </style>
+
+<i18n>
+{
+	"en": {
+		"Mobile Pay": "Mobile Pay",
+		"Contact": "Contact",
+		"Loyalty Program": "Loyalty Program",
+		"Language": "Language"	
+	}
+}
+</i18n>
