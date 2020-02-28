@@ -27,3 +27,7 @@ Route::get('/features', 'FeaturesController@index');
 Route::get('/priorities', 'PrioritiesController@index');
 // List an array of boosters usernames
 Route::get('/getBoostersNames', 'BoostersController@getBoostersNames');
+
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
+});

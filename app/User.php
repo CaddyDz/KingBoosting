@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Laravel\Passport\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -53,6 +54,7 @@ class User extends Authenticatable implements MustVerifyEmail
 {
     use HasRoles;
     use Notifiable;
+    use HasApiTokens;
 
     /**
      * The attributes that are mass assignable.

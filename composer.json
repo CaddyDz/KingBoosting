@@ -19,6 +19,7 @@
         "laravel/framework": "^6.2",
         "laravel/helpers": "^1.1",
         "laravel/nova": "*",
+        "laravel/passport": "^8.4",
         "laravel/socialite": "^4.3",
         "laravel/tinker": "^2.0",
         "saintsystems/nova-linkable-metrics": "^0.0.6",
