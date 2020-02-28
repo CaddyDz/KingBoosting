@@ -45,7 +45,7 @@ export default {
 
 <style scoped>
 .container{
-	margin-top: 30px; 
+	margin-top: 50px; 
 	margin-bottom: 30px;
 }
 .icons{
@@ -55,8 +55,6 @@ export default {
     -webkit-text-fill-color: transparent;
 }
 .why-us {
-	/* border-top: 5px solid gray; */
-	margin-top : 60px;
 	background-color: #212224;
 	position: relative;
 }
