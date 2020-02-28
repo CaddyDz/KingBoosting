@@ -58,7 +58,7 @@
 								v-model="number_of_wins"
 								:thumb-size="50"
 							>
-								<template v-slot:thumb-label :style="{top: '50px'}">{{ plural(number_of_wins, "Win") }}</template>
+								<template v-slot:thumb-label :style="{top: '50px'}">{{ plural(number_of_wins, "$t('Win')") }}</template>
 							</v-slider>
 						</v-col>
 						<v-col md="2"></v-col>
@@ -198,7 +198,7 @@
 												</v-stepper-content>
 												<v-stepper-content key="3-content" :step="3">
 													<v-card class="mb-12" color="grey lighten-1" height="200px"></v-card>
-													<v-btn color="primary" @click="nextStep(3)">{{ $t('Continue')</v-btn>
+													<v-btn color="primary" @click="nextStep(3)">{{ $t('Continue') }}</v-btn>
 													<v-btn text>{{ $t('Cancel') }}</v-btn>
 												</v-stepper-content>
 											</v-stepper-items>
@@ -443,7 +443,6 @@ export default {
 	}
 };
 </script>
- 
 <style lang="scss">
 .v-input.v-input--is-label-active.v-input--is-dirty.theme--dark.v-input__slider {
 	margin-top: 40px !important;
@@ -452,12 +451,12 @@ export default {
 </style>
 <i18n>
 {
-	"en" {
+	"en": {
 		"Select Your Current League": "Select Your Current League",
 		"Current tier": "Current tier",
 		"Select Your Number Of Wins": "Select Your Number Of Wins",
 		"Solo/Duo": "Solo/Duo",
-		"Flex 5v5')": "Flex 5v5",
+		"Flex 5v5)": "Flex 5v5",
 		"Checkout": "Checkout",
 		"Specific champions at +20% cost": "Specific champions at +20% cost",
 		"Priority order (2x speed) at +25% cost": "Priority order (2x speed) at +25% cost",
@@ -480,6 +479,6 @@ export default {
 		"Password is required": "Password is required",
 		"password must be longer than 8 characters": "Password must be longer than 8 characters" 
 	}
-	}
+}
 </i18n>
 
