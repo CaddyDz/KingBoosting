@@ -456,7 +456,7 @@ export default {
 		"Current tier": "Current tier",
 		"Select Your Number Of Wins": "Select Your Number Of Wins",
 		"Solo/Duo": "Solo/Duo",
-		"Flex 5v5)": "Flex 5v5",
+		"Flex 5v5": "Flex 5v5",
 		"Checkout": "Checkout",
 		"Specific champions at +20% cost": "Specific champions at +20% cost",
 		"Priority order (2x speed) at +25% cost": "Priority order (2x speed) at +25% cost",

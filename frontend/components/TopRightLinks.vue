@@ -35,8 +35,8 @@ export default {
 			current: "gb",
 			languages: {
 				gb: "English",
-				it: "Italian",
-				fr: "French"
+				it: "Italiano",
+				fr: "Français"
 			}
 		};
 	},
