@@ -13,9 +13,9 @@ $factory->define(Article::class, function (Faker $faker) {
         'body' => $faker->paragraphs(3, true),
         'excerpt' => $faker->sentences(3, true),
         'image' => $faker->randomElement([
-            '/img/blogPosts/Champion-Balance-blog.png',
-            '/img/blogPosts/Mistakes-blog.jpg',
-            '/img/blogPosts/Tarzaned-The-booster-blog.png'
+            '/articles/Champion-Balance-blog.png',
+            '/articles/Mistakes-blog.jpg',
+            '/articles/Tarzaned-The-booster-blog.png'
         ])
     ];
 });
