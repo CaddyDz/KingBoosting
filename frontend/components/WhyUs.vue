@@ -1,7 +1,7 @@
 <template>
 	<div class="why-us">
 		<div class="section-name">
-			<h1>Why Us</h1>
+			<h1>{{ $t('Why Us') }}</h1>
 		</div>
 		<v-container class="container">
 			<v-row>
@@ -103,3 +103,11 @@ p {
 	opacity: 0.8;
 }
 </style>
+
+<i18n>
+{
+  "en": {
+    "Why Us": "Why Us"
+  }
+}
+</i18n>
