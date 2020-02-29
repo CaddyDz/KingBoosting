@@ -23,8 +23,8 @@ export default {
   },
   data () {
     return {
-      pageNotFound: '404 Not Found',
-      otherError: 'An error occurred'
+      pageNotFound: this.$i18n.$t('404 Not Found'),
+      otherError: this.i18n.$t('An error occurred')
     }
   },
   head () {
@@ -42,3 +42,11 @@ h1 {
   font-size: 20px;
 }
 </style>
+<i18n>
+{
+  "en":{
+    "404 Not Found": "404 Not Found",
+    "An error occurred": "An error occurred"
+  }
+}
+</i18n>
