@@ -3,8 +3,8 @@
 		<div class="customer-container-title">
 			<v-icon class="shield-icon have-linear-gradient">mdi-message-text-outline</v-icon>
 			<span class="display-1 font-weight-bold">
-				Customer
-				<span class="have-linear-gradient">Voice</span>
+				{{ $t('Customer') }}
+				<span class="have-linear-gradient">{{ $t('Voice') }}</span>
 			</span>
 			<span class="headline font-weight-bold have-linear-gradient">Excellent</span>
 			<span class="d-block">
@@ -91,3 +91,12 @@ export default {
 	font-size: 120px;
 }
 </style>
+
+<i18n>
+{
+  "en": {
+    "Customer": "Customer",
+    "Voice": "Voice"
+  }
+}
+</i18n>
