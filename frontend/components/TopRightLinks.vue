@@ -35,8 +35,16 @@ export default {
 			current: "gb",
 			languages: {
 				gb: "English",
-				it: "Italian",
-				fr: "French"
+				fr: "Français",
+				de: "Deutsche",
+				at: "Deutsche",
+				swiss: "Français",
+				es: "Español",
+				nl: "Nederlands",
+				it: "Italiano",
+				se: "Svenska",
+				no: "Norsk",
+				dk: "Dansk"
 			}
 		};
 	},
@@ -84,7 +92,7 @@ span {
 		"Mobile Pay": "Mobile Pay",
 		"Contact": "Contact",
 		"Loyalty Program": "Loyalty Program",
-		"Language": "Language"	
+		"Language": "Language"
 	}
 }
 </i18n>

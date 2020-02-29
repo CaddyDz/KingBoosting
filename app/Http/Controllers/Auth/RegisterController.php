@@ -3,13 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Auth\Events\Registered;
 use App\Providers\RouteServiceProvider;
-use App\Http\Requests\RegisterAccountRequest;
-use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
@@ -34,16 +31,6 @@ class RegisterController extends Controller
     protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('guest');
-    }
-
-    /**
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
@@ -61,22 +48,6 @@ class RegisterController extends Controller
     }
 
     /**
-     * Handle a registration request for the application.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function register(RegisterAccountRequest $request)
-    {
-        // Dispatch registered event
-        event(new Registered($user = $this->create($request->validated())));
-        // Log user in
-        $this->guard()->login($user);
-        // Dispatch callback to return response
-        return $this->registered($request, $user);
-    }
-
-    /**
      * Get the guard to be used during registration.
      *
      * @return \Illuminate\Contracts\Auth\StatefulGuard
@@ -84,22 +55,6 @@ class RegisterController extends Controller
     protected function guard()
     {
         return Auth::guard();
-    }
-
-    /**
-     * The user has been registered.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  mixed  $user
-     * @return mixed
-     */
-    protected function registered(Request $request, $user)
-    {
-        return response([
-            'status' => 'success',
-            'notice' => __('please verify your email'),
-            'user' => $user
-        ]);
     }
 
     /**

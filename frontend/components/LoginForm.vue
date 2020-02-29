@@ -127,7 +127,7 @@ export default {
     "Password is required": "Password is required",
     "Password must be at least 8 characters": "Password must be at least 8 characters",
     "Please fill out email field to reset your password": "Please fill out email field to reset your password",
-    "We have sent you an email to reset your password": "",
+    "We have sent you an email to reset your password": "We have sent you an email to reset your password",
     "Something went wrong": "Something went wrong"
   }
 }

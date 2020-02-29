@@ -57,4 +57,9 @@ class Order extends Model
                 return 'entypo:controller-play';
         }
     }
+
+    public function details()
+    {
+        return $this->hasOne(OrderDetails::class);
+    }
 }

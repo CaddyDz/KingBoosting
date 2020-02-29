@@ -1,6 +1,6 @@
 <template>
 	<v-stepper vertical non-linear>
-		<v-stepper-step step="1">Select Your Current League</v-stepper-step>
+		<v-stepper-step step="1">{{ $t('Select Your Current League') }}</v-stepper-step>
 		<v-stepper-content step="1">
 			<v-card raised class="mb-4" :style="{boxShadow: tier.box_shadow}">
 				<v-container>
@@ -20,7 +20,7 @@
 									<v-select
 										:items="tiers"
 										name="tier"
-										label="Current tier"
+										:label="$t('Current tier')"
 										v-model="selectedTierID"
 										item-text="name"
 										item-value="id"
@@ -42,7 +42,7 @@
 				</v-container>
 			</v-card>
 		</v-stepper-content>
-		<v-stepper-step step="2">Select Your Number Of Wins</v-stepper-step>
+		<v-stepper-step step="2">{{ $t('Select Your Number Of Wins') }}</v-stepper-step>
 		<v-stepper-content step="1">
 			<v-card raised class="mb-4" elevation="24">
 				<v-container>
@@ -58,8 +58,7 @@
 								v-model="number_of_wins"
 								:thumb-size="50"
 							>
-								<template v-slot:progress>wach koukou!!</template>
-								<template v-slot:thumb-label :style="{top: '50px'}">{{ plural(number_of_wins, "Win") }}</template>
+								<template v-slot:thumb-label :style="{top: '50px'}">{{ plural(number_of_wins, "$t('Win')") }}</template>
 							</v-slider>
 						</v-col>
 						<v-col md="2"></v-col>
@@ -69,9 +68,9 @@
 						<v-col md="6">
 							<v-radio-group row v-model="radios">
 								<v-icon>mdi-account</v-icon>
-								<v-radio label="Solo/Duo" value="solo"></v-radio>
+								<v-radio :label="$t('Solo/Duo')" value="solo"></v-radio>
 								<v-icon>mdi-account-group</v-icon>
-								<v-radio label="Flex 5v5" value="flex"></v-radio>
+								<v-radio :label="$t('Flex 5v5')" value="flex"></v-radio>
 							</v-radio-group>
 						</v-col>
 						<v-col md="3"></v-col>
@@ -79,7 +78,7 @@
 				</v-container>
 			</v-card>
 		</v-stepper-content>
-		<v-stepper-step step="3">Checkout</v-stepper-step>
+		<v-stepper-step step="3">{{ $t('Checkout') }}</v-stepper-step>
 		<v-stepper-content step="1">
 			<v-card color="black lighten-1" class="mb-12" outlined>
 				<v-container>
@@ -87,20 +86,20 @@
 					<v-row no-gutters>
 						<v-col md="6">
 							<v-checkbox
-								label="Specific champions at +20% cost"
+								:label="$t('Specific champions at +20% cost')"
 								prepend-icon="mdi-account-group"
 								v-model="specificChampions"
 							></v-checkbox>
 							<v-checkbox
-								label="Priority order (2x speed) at +25% cost"
+								:label="$t('Priority order (2x speed) at +25% cost')"
 								prepend-icon="mdi-flash"
 								v-model="priorityOrder"
 							></v-checkbox>
-							<v-checkbox label="With Streaming +15% cost" prepend-icon="mdi-video" v-model="streaming"></v-checkbox>
+							<v-checkbox :label="$t('With Streaming +15% cost')" prepend-icon="mdi-video" v-model="streaming"></v-checkbox>
 						</v-col>
 						<v-col md="6">
 							<!-- ETA -->
-							<p class="text-right">Approximate completion time: {{ eta }}</p>
+							<p class="text-right">{{ $t('Approximate completion time:') }} {{ eta }}</p>
 						</v-col>
 					</v-row>
 					<v-row>
@@ -113,8 +112,8 @@
 						</v-col>
 						<v-col md="4">
 							<v-text-field
-								label="Discount Code"
-								placeholder="Discount Code"
+								:label="$t('Discount Code')"
+								:placeholder="$t('Discount Code')"
 								outlined
 								append-icon="mdi-check-bold"
 							></v-text-field>
@@ -123,7 +122,7 @@
 							<div class="text-center">
 								<v-dialog v-model="dialog" width="940">
 									<template v-slot:activator="{ on }">
-										<v-btn class="float-right" outlined color="purple" dark v-on="on">BOOST ME</v-btn>
+										<v-btn class="float-right" outlined color="purple" dark v-on="on">{{ $t('BOOST ME') }}</v-btn>
 									</template>
 									<!-- Entire stepper -->
 									<v-stepper v-model="e1">
@@ -131,11 +130,11 @@
 											<v-stepper-header>
 												<!-- 3 templates here -->
 												<template>
-													<v-stepper-step key="login" :complete="isLoggedIn" :step="1">Login</v-stepper-step>
+													<v-stepper-step key="login" :complete="isLoggedIn" :step="1">{{ $t('Login') }}</v-stepper-step>
 													<v-divider v-if="1 !== steps" :key="1"></v-divider>
 												</template>
 												<template>
-													<v-stepper-step key="details" :complete="e1 > 2" :step="2" editable>Details</v-stepper-step>
+													<v-stepper-step key="details" :complete="e1 > 2" :step="2" editable>{{ $t('Details') }}</v-stepper-step>
 													<v-divider v-if="2 !== steps" :key="2"></v-divider>
 												</template>
 												<template>
@@ -156,9 +155,9 @@
 																<v-col cols="12" md="6">
 																	<v-text-field
 																		v-model="nickname"
-																		label="Nickname *"
+																		:label="$t('Nickname *')"
 																		required
-																		placeholder="Your in-game name"
+																		:placeholder="$t('Your in-game name')"
 																	></v-text-field>
 																</v-col>
 																<!-- Select Booster -->
@@ -170,8 +169,8 @@
 																<v-col cols="12" md="6">
 																	<v-text-field
 																		v-model="comment"
-																		label="Comments NOT REQUIRED"
-																		placeholder="Your comments"
+																		:label="$t('Comments NOT REQUIRED')"
+																		:placeholder="$t('Your comments')"
 																		required
 																	></v-text-field>
 																</v-col>
@@ -179,7 +178,7 @@
 															<v-row>
 																<v-col cols="12" md="6">
 																	<v-checkbox
-																		label="Appear Offline on Chat"
+																		:label="$t('Appear Offline on Chat')"
 																		prepend-icon="mdi-account"
 																		v-model="offline"
 																	></v-checkbox>
@@ -188,19 +187,19 @@
 															<v-row>
 																<v-col cols="12" md="6">
 																	<v-icon>mdi-information-outline</v-icon>
-																	<span>Further information will be requested after payment</span>
+																	<span>{{ $t('Further information will be requested after payment') }}</span>
 																</v-col>
 															</v-row>
 														</v-container>
 													</v-form>
-													<v-btn text @click="sendResetPasswordEmail">Forgotten Password?</v-btn>
-													<v-btn color="primary" @click="login">Continue</v-btn>
-													<v-btn text>Cancel</v-btn>
+													<v-btn text @click="sendResetPasswordEmail">{{ $t('Forgotten Password?') }}</v-btn>
+													<v-btn color="primary" @click="login">{{ $t('Continue') }}</v-btn>
+													<v-btn text>{{ $t('Cancel') }}</v-btn>
 												</v-stepper-content>
 												<v-stepper-content key="3-content" :step="3">
 													<v-card class="mb-12" color="grey lighten-1" height="200px"></v-card>
-													<v-btn color="primary" @click="nextStep(3)">Continue</v-btn>
-													<v-btn text>Cancel</v-btn>
+													<v-btn color="primary" @click="nextStep(3)">{{ $t('Continue') }}</v-btn>
+													<v-btn text>{{ $t('Cancel') }}</v-btn>
 												</v-stepper-content>
 											</v-stepper-items>
 										</template>
@@ -251,13 +250,13 @@ export default {
 			valid: false,
 			email: "",
 			emailRules: [
-				v => !!v || "E-mail is required",
-				v => /.+@.+/.test(v) || "E-mail must be valid"
+				v => !!v || this.i18n.t("E-mail is required"),
+				v => /.+@.+/.test(v) || this.i18n.t("E-mail must be valid")
 			],
 			password: "",
 			passwordRules: [
-				v => !!v || "Password is required",
-				v => v.length > 8 || "Password must be longer than 8 characters"
+				v => !!v || this.i18n.t("Password is required"),
+				v => v.length > 8 || this18n.t("Password must be longer than 8 characters")
 			],
 			// Details form data
 			nickname: "",
@@ -270,7 +269,7 @@ export default {
 	},
 	computed: {
 		plural(count, noun) {
-			return (count, noun) => `${count} ${noun}${count !== 1 ? "s" : ""}`;
+			return (count, noun) => count + noun + count !== 1 ? 's' : '';
 		},
 		priceUSD() {
 			return (this.price * this.exchangeRate).toFixed(2);
@@ -444,10 +443,42 @@ export default {
 	}
 };
 </script>
-
 <style lang="scss">
 .v-input.v-input--is-label-active.v-input--is-dirty.theme--dark.v-input__slider {
 	margin-top: 40px !important;
 	margin-bottom: -40px !important;
 }
 </style>
+<i18n>
+{
+	"en": {
+		"Select Your Current League": "Select Your Current League",
+		"Current tier": "Current tier",
+		"Select Your Number Of Wins": "Select Your Number Of Wins",
+		"Solo/Duo": "Solo/Duo",
+		"Flex 5v5": "Flex 5v5",
+		"Checkout": "Checkout",
+		"Specific champions at +20% cost": "Specific champions at +20% cost",
+		"Priority order (2x speed) at +25% cost": "Priority order (2x speed) at +25% cost",
+		"With Streaming +15% cost": "With Streaming +15% cost",
+		"Approximate completion time:": "Approximate completion time:",
+		"Discount Code": "Discount Code",
+		"BOOST ME": "BOOST ME",
+		"Details": "Details",
+		"Nickname": "Nickname",
+		"Your in-game name": "Your in-game name",
+		"Comments NOT REQUIRED": "Comments NOT REQUIRED",
+		"Your Comments": "Your Comments",
+		"Appear Offline on Chat": "Appear Offline on Chat",
+		"Further information will be requested after payment": "Further information will be requested after payment",
+		"Forgotten Password?": "Forgotten Password?",
+		"Continue": "Continue",
+		"Cancel":"Cancel",
+		"E-mail is required": "E-mail is required",
+		"E-mail must be valid": "E-mail must be valid",
+		"Password is required": "Password is required",
+		"password must be longer than 8 characters": "Password must be longer than 8 characters" 
+	}
+}
+</i18n>
+
