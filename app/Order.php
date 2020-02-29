@@ -62,4 +62,9 @@ class Order extends Model
     {
         return $this->hasOne(OrderDetails::class);
     }
+
+    public function service()
+    {
+        return $this->belongsTo(Service::class);
+    }
 }
