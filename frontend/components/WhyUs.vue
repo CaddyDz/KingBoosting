@@ -9,7 +9,7 @@
 			<v-row >
 				<v-card class="card" align-self="center" v-for="(item ,index) in whyUsData" :key="index">
 					<v-col  >
-						<v-icon size="120px" class="icons">{{icons[index]}}</v-icon>
+						<v-icon size="100px" class="icons">{{icons[index]}}</v-icon>
 						<v-card-title>
 							<h2>{{ item.title }}</h2>
 						</v-card-title>
@@ -57,6 +57,11 @@ export default {
 .why-us {
 	background-color: #212224;
 	position: relative;
+	background-image: url('/img/backgrounds/priorities-bg.webp');
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
 }
 
 h1 {
@@ -91,5 +96,6 @@ p {
   .card {
 	  margin-top: 20px;
 	  margin-bottom: 20px;
+	  opacity: .8;
   }
 </style>
