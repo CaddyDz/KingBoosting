@@ -86,7 +86,7 @@ export default {
   axios: {
     // proxyHeaders: false,
     prefix: '/api',
-    host: 'kingboosting.test',
+    host: 'kingboosting.dev',
     port: 443,
     https: true,
   },
