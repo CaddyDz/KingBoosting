@@ -3,7 +3,10 @@
 namespace Tests\Unit;
 
 use App\Order;
+use App\Service;
+use App\ServiceKind;
 use Tests\TestCase;
+use Spatie\Permission\Models\Role;
 
 class MetricsTest extends TestCase
 {
@@ -25,6 +28,9 @@ class MetricsTest extends TestCase
 
     public function createUserOrder(): void
     {
+        Role::create(['name' => 'Booster']);
+        $kind = ServiceKind::create(['name' => 'ELO BOOST']);
+        create(Service::class, ['kind_id' => $kind->id]);
         create(Order::class, [
             'client_id' => auth()->id(),
             'booster_id' => auth()->id()
