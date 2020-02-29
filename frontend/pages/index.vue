@@ -12,6 +12,7 @@
 import Blogs from '~/components/Blogs.vue'
 import WhyUs from '~/components/WhyUs.vue'
 import CustomerVoice from '~/components/CustomerVoice.vue'
+// import HowToBuy from '~/components/HowToBuy.vue'
 
 export default {
   components: {
