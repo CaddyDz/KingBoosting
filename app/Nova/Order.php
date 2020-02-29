@@ -12,7 +12,6 @@ use Laravel\Nova\Fields\DateTime;
 use App\Nova\Metrics\PendingOrders;
 use App\Nova\Metrics\WatchedOrders;
 use Vyuldashev\NovaMoneyField\Money;
-use Laravel\Nova\Http\Requests\NovaRequest;
 use App\Nova\Lenses\MyOrders as LensesMyOrders;
 use App\Nova\Lenses\PendingOrders as LensesPendingOrders;
 use App\Nova\Lenses\WatchedOrders as LensesWatchedOrders;
@@ -82,7 +81,7 @@ class Order extends Resource
                 ])->displayUsingLabels(),
             ID::make()->sortable(),
             Text::make('Purchase', function () {
-                return 'Something weird';
+                return $this->details;
             }),
             Money::make('Price'),
             DateTime::make('Creation', function () {
