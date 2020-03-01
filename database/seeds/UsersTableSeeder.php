@@ -8,7 +8,7 @@ class UsersTableSeeder extends Seeder
     private $roles = [
         'Moderator' => 5,
         'Booster' => 100,
-        'Member' => 1000,
+        'Member' => 500,
     ];
 
     /**
