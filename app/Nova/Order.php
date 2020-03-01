@@ -83,7 +83,7 @@ class Order extends Resource
                 ])->displayUsingLabels(),
             ID::make()->sortable(),
             Text::make('Purchase', function () {
-                return "{$this->service->name} <br>" . country_flag($this->client->country);
+                return country_flag($this->client->country) . "{$this->service->name} <br>";
             })->asHtml(),
             Money::make('Price'),
             DateTime::make('Creation', function () {
