@@ -49,13 +49,13 @@ class Order extends Resource
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
-    public function fields(Request $request)
+    public function fields(Request $request): array
     {
         return [
             Icon::make('')
-                ->icon(function () {
-                    return $this->icon;
-                })->css(function () {
+                ->icon(
+                    fn (): string => $this->icon
+                )->css(function () {
                     $options = [
                         'pending' => 'text-info',
                         'progress'   => 'text-warning-dark',
