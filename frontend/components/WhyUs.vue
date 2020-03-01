@@ -29,15 +29,14 @@ export default {
 			icons: [
 				"mdi-school",
 				"mdi-google-circles-communities",
-				"mdi-chart-bubble",
-				"mdi-lock-open-outline"
+				"mdi-chart-bubble"
 			]
 		};
 	},
 	methods: {
 		fetchWhyUsData() {
-			this.$axios.$get("/priorities").then(Response => {
-				this.whyUsData = Response;
+			this.$axios.get("/priorities").then(Response => {
+				this.whyUsData = Response.data;
 			});
 		}
 	},

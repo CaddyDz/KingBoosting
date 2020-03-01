@@ -6,12 +6,12 @@
 		<v-row no-gutters>
 			<v-col class="description-col" align-self="center">
 				<h1 class="headline mb-1">
-					#{{ article.id }}
+					<current-blog-number> #{{ article.id }} </current-blog-number>
 					{{ article.title }}
 				</h1>
 				<p class="description-txt">{{ article.excerpt }}</p>
-				<v-btn color="#fd905c">READ MORE</v-btn>
-				<v-btn color="#fd905c" outlined>GO TO BLOG</v-btn>
+				<v-btn color="#673ab7">READ MORE</v-btn>
+				<v-btn color="#673ab7" outlined>GO TO BLOG</v-btn>
 			</v-col>
 			<v-col>
 				<v-carousel
@@ -23,9 +23,9 @@
 					class="carousel"
 					v-on:change="handleChange"
 					progress
-					progress-color="#fd905c"
+					progress-color="#673ab7"
 				>
-					<v-carousel-item v-for="n in articlesCount" :key="n" :src="article.image"></v-carousel-item>
+					<v-carousel-item v-for="n in articlesCount" :key="n.id" :src="article.image"></v-carousel-item>
 				</v-carousel>
 			</v-col>
 		</v-row>
@@ -43,8 +43,8 @@ export default {
 	},
 	methods: {
 		handleChange(e) {
-			axios
-				.get(`/api/blog/${e + 1}`)
+			this.$axios
+				.get(`/blog/${e + 1}`)
 				.then(response => {
 					this.article = response.data;
 				})
@@ -54,18 +54,18 @@ export default {
 		}
 	},
 	mounted() {
-		axios
-			.get("/api/blog/first")
+		this.$axios
+			.get("/blog/first")
 			.then(response => {
-				this.article = response.data;
+				this.article = response;
 			})
 			.catch(errors => {
 				console.log(errors.response.data.errors);
 			});
-		axios
-			.get("/api/blog/count")
+		this.$axios
+			.get("/blog/count")
 			.then(response => {
-				this.articlesCount = response.data;
+				this.articlesCount = response;
 			})
 			.catch(errors => {
 				console.log(errors.response.data.errors);
@@ -96,7 +96,7 @@ export default {
 h1 current-blog-number {
 	font-size: 4rem;
 	font-weight: bold;
-	background: -webkit-linear-gradient(#d45151, #fd905c);
+	background: -webkit-linear-gradient(#673ab7, #9c27b0);
 	background-clip: text;
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
@@ -107,7 +107,7 @@ h1 current-blog-number {
 	justify-content: center;
 	width: 200px;
 	height: 60px;
-	background: linear-gradient(#d45151, #fd905c);
+	background: linear-gradient(#673ab7, #9c27b0);
 	z-index: 1;
 	position: absolute;
 	top: -30px;
