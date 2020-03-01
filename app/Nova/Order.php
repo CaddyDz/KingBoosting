@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Nova;
 
 use NovaIcon\Icon;
@@ -81,8 +83,8 @@ class Order extends Resource
                 ])->displayUsingLabels(),
             ID::make()->sortable(),
             Text::make('Purchase', function () {
-                return $this->details;
-            }),
+                return "{$this->service->name} <br>" . country_flag($this->client->country);
+            })->asHtml(),
             Money::make('Price'),
             DateTime::make('Creation', function () {
                 return $this->created_at;

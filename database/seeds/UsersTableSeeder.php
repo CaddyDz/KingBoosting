@@ -32,7 +32,8 @@ class UsersTableSeeder extends Seeder
             'last_name' => 'Boosting',
             'email' => 'admin@kingboosting.com',
             'email_verified_at' => now(),
-            'password' => bcrypt('*iUJA2m%Ey67')
+            'password' => bcrypt('*iUJA2m%Ey67'),
+            'country' => 'TR',
         ])->assignRole('Super Admin');
     }
 

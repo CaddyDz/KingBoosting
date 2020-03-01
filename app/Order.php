@@ -32,7 +32,7 @@ class Order extends Model
 {
     public function client()
     {
-        return $this->belongsTo(User::class, 'id', 'client_id');
+        return $this->belongsTo(User::class, 'client_id', 'id');
     }
 
     public function booster()
