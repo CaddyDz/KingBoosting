@@ -20,5 +20,13 @@ use Illuminate\Database\Eloquent\Model;
  */
 class DivisionBoosting extends Model
 {
-    //
+    public function type()
+    {
+        return $this->belongsTo(ServiceType::class);
+    }
+
+    public function tier()
+    {
+        return $this->hasOne(ServiceType::class);
+    }
 }

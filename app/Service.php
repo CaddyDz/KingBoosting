@@ -66,16 +66,16 @@ class Service extends Model
     }
 
     /**
-     * Get service type
+     * Get service types
      *
-     * Retreive the related service type model
+     * Retreive the related service type models
      *
-     * For example a service could be a "Division Boosting" or "Wins Boosting"
+     * For example a service could be a "Division Boosting" or "Wins Boosting" or both
      * We need that to determine second section in the service page
      *
      * @return App\ServiceType
      **/
-    public function type()
+    public function types()
     {
         return $this->belongsToMany(ServiceType::class);
     }

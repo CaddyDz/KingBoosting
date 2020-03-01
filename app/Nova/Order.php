@@ -40,7 +40,7 @@ class Order extends Resource
      * @var array
      */
     public static $search = [
-        'id',
+        'id', 'purchase'
     ];
 
     /**
@@ -83,7 +83,7 @@ class Order extends Resource
                 ])->displayUsingLabels(),
             ID::make()->sortable(),
             Text::make('Purchase', function () {
-                return country_flag($this->client->country) . "{$this->service->name} <br>";
+                return "$this->purchase <br>" . country_flag($this->client->country) . $this->service->name;
             })->asHtml(),
             Money::make('Price'),
             DateTime::make('Creation', function () {

@@ -23,6 +23,7 @@ class CreateOrdersTable extends Migration
             $table->foreign('booster_id')->references('id')->on('users');
             $table->enum('status', ['pending', 'progress', 'paused', 'completed', 'suspended']);
             $table->decimal('price', 5, 2);
+            $table->string('purchase');
             $table->timestamps();
         });
     }

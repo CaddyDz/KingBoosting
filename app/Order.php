@@ -67,4 +67,11 @@ class Order extends Model
     {
         return $this->belongsTo(Service::class);
     }
+
+    public function getTypeAttribute()
+    {
+        if ($this->service->name === 'League Boosting') {
+            return 'What the fuck';
+        }
+    }
 }
