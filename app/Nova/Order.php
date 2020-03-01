@@ -90,7 +90,7 @@ class Order extends Resource
                 return $this->created_at;
             }),
             Text::make('Employee', function () {
-                return $this->booster->username;
+                return optional($this->booster)->username;
             })
         ];
     }
