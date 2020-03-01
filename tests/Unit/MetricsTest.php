@@ -30,10 +30,11 @@ class MetricsTest extends TestCase
     {
         Role::create(['name' => 'Booster']);
         $kind = ServiceKind::create(['name' => 'ELO BOOST']);
-        create(Service::class, ['kind_id' => $kind->id]);
+        $service = create(Service::class, ['kind_id' => $kind->id]);
         create(Order::class, [
             'client_id' => auth()->id(),
-            'booster_id' => auth()->id()
+            'booster_id' => auth()->id(),
+            'service_id' => $service->id,
         ], 'create', 8);
     }
 }

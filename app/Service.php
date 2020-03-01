@@ -77,7 +77,7 @@ class Service extends Model
      **/
     public function type()
     {
-        return $this->belongsTo(ServiceType::class);
+        return $this->belongsToMany(ServiceType::class);
     }
 
     public function orders()

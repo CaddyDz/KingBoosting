@@ -68,7 +68,7 @@ class MyOrders extends Lens
             Text::make('Purchase', fn (): string => 'Something weird'),
             Money::make('Price'),
             DateTime::make('Creation', fn (): string => $this->resource->created_at),
-            Text::make('Employee', fn () => $this->resource->booster->username),
+            Text::make('Employee', fn () => optional($this->resource->booster)->username),
         ];
     }
 

@@ -11,6 +11,6 @@ $factory->define(Order::class, function (Faker $faker) {
         'price' => $faker->randomFloat(2, 1, 99),
         'booster_id' => $faker->optional()->passthrough(rand(6, 100)),
         'client_id' => rand(1, 600),
-        'service_id' => rand(1, 15),
+        'service_id' => rand(1, 14),
     ];
 });
