@@ -59,7 +59,8 @@ export default {
    */
   plugins: [
     '~plugins/globals',
-    '~plugins/i18n'
+    '~plugins/i18n',
+    '~plugins/storage'
   ],
   /*
    ** Nuxt.js dev-modules
@@ -86,7 +87,7 @@ export default {
   axios: {
     // proxyHeaders: false,
     prefix: '/api',
-    host: 'kingboosting.dev',
+    host: process.env.HOST_URL || 'kingboosting.dev',
     port: 443,
     https: true,
   },
