@@ -83,6 +83,7 @@ class Order extends Resource
                 ])->displayUsingLabels(),
             ID::make()->sortable(),
             Text::make('Purchase', function () {
+                // If it's DuoQ boosting it has 3 types, how are we going to tell which one it is
                 return "$this->purchase <br>" . country_flag($this->client->country) . $this->service->name;
             })->asHtml(),
             Money::make('Price'),

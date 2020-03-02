@@ -1,15 +1,25 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Unit;
 
 use App\Order;
 use App\Service;
-use App\ServiceKind;
+use DatabaseSeeder;
 use Tests\TestCase;
+use App\ServiceKind;
+use App\ServiceType;
+use TiersTableSeeder;
 use Spatie\Permission\Models\Role;
 
 class MetricsTest extends TestCase
 {
+    public function setUp(): void
+    {
+        parent::setUp();
+        app(DatabaseSeeder::class)->call(TiersTableSeeder::class);
+    }
     /**
      * Test MyOrders are counted
      *
@@ -30,11 +40,15 @@ class MetricsTest extends TestCase
     {
         Role::create(['name' => 'Booster']);
         $kind = ServiceKind::create(['name' => 'ELO BOOST']);
+        // Create a service type factory
+        $service_type = create(ServiceType::class);
         $service = create(Service::class, ['kind_id' => $kind->id]);
+        $service->types()->attach($service_type);
+        // Attach the newly created service to the service type
         create(Order::class, [
             'client_id' => auth()->id(),
             'booster_id' => auth()->id(),
-            'service_id' => $service->id,
+            'service_service_type_id' => $service->id,
         ], 'create', 8);
     }
 }

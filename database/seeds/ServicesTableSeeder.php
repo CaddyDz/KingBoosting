@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use App\Service;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Storage;
@@ -11,7 +13,7 @@ class ServicesTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
         Storage::disk('public')->deleteDirectory('services');
         Storage::disk('public')->makeDirectory('services');
@@ -50,7 +52,7 @@ class ServicesTableSeeder extends Seeder
                 null,
                 'This type of ELO boost makes it possible for the client to stay active playing LoL.By purchasing it, we provide a professional ELO booster who will play duo queue ranked games with the customer.',
                 null,
-                [2, 3, 1]
+                [2 => 'DuoQueue Division Boosting', 3, 1]
             ],
             [
                 'Buy lol smurf account',
@@ -144,7 +146,7 @@ class ServicesTableSeeder extends Seeder
             ]
         ];
         foreach ($services as $service) {
-            Service::create([
+            $serviceModel = Service::create([
                 'name' => $service[0],
                 'image' => "img/circles/$service[1].png",
                 'description' => $service[2],
@@ -153,7 +155,17 @@ class ServicesTableSeeder extends Seeder
                 'slug' => sluggify($service[0]),
                 'kind_id' => isset($service[5]) ? $service[5] : 1,
                 'bg_img' => '/img/services/' . sluggify($service[0]) . '-top-bg.png',
-            ])->types()->attach($service[6]);
+            ]);
+            if (is_array($service[6])) {
+                info('it is an array');
+                foreach ($service[6] as $key => $value) {
+                    info($value);
+                    $serviceModel->types()->attach($key, ['name' => $value ?? $service[0]]);
+                }
+            } else {
+                info('it is not an array');
+                $serviceModel->types()->attach($service[6]);
+            }
         }
     }
 }

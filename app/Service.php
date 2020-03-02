@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 /**
  * App\Service
@@ -73,15 +74,14 @@ class Service extends Model
      * For example a service could be a "Division Boosting" or "Wins Boosting" or both
      * We need that to determine second section in the service page
      *
-     * @return App\ServiceType
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      **/
-    public function types()
+    public function types(): BelongsToMany
     {
-        return $this->belongsToMany(ServiceType::class);
-    }
-
-    public function orders()
-    {
-        return $this->hasMany(Order::class);
+        return $this->belongsToMany(ServiceType::class)
+            ->using(ServiceTypePivot::class)
+            ->withPivot([
+                'name',
+            ]);
     }
 }

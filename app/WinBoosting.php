@@ -29,6 +29,16 @@ use Illuminate\Database\Eloquent\Model;
  */
 class WinBoosting extends Model
 {
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['wins', 'eta'];
+
+    /**
+     * Get the tier that owns the division.
+     */
     public function tier()
     {
         return $this->belongsTo(Tier::class);
