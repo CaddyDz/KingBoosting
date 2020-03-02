@@ -34,11 +34,11 @@
 
 <script>
 export default {
+	props: ["firstArticle", "articlesCount"],
 	data() {
 		return {
 			currentSlide: 1,
-			articlesCount: 0,
-			article: {}
+			article: this.$props.firstArticle
 		};
 	},
 	methods: {
@@ -55,30 +55,6 @@ export default {
 					});
 				});
 		}
-	},
-	mounted() {
-		this.$axios
-			.get("/blog/first")
-			.then(response => {
-				this.article = response;
-			})
-			.catch(errors => {
-				this.$store.commit("openNotification", {
-					text: errors.response.data.errors,
-					mode: "error"
-				});
-			});
-		this.$axios
-			.get("/blog/count")
-			.then(response => {
-				this.articlesCount = response.data;
-			})
-			.catch(errors => {
-				this.$store.commit("openNotification", {
-					text: errors.response.data.errors,
-					mode: "error"
-				});
-			});
 	}
 };
 </script>

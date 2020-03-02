@@ -8,17 +8,8 @@
 
 <script>
 export default {
-	data() {
-		return {
-			services: []
-		};
-	},
+	props: ["services"],
 	methods: {
-		fetchServices() {
-			this.$axios
-				.get("/services")
-				.then(response => (this.services = response.data));
-		},
 		applyStyles() {
 			// Radius is usually half the width of the container
 			var radius = 250; // adjust to move out items in and out
@@ -42,10 +33,7 @@ export default {
 		}
 	},
 	mounted() {
-		this.fetchServices();
-		setTimeout(() => {
-			this.applyStyles();
-		}, 2000);
+		this.applyStyles();
 	}
 };
 </script>
