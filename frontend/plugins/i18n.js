@@ -12,10 +12,6 @@ export default ({
   app.i18n = new VueI18n({
     locale: store.state.locale,
     fallbackLocale: 'en',
-    // messages: {
-    //   en: require('~/locales/en.json'),
-    //   fr: require('~/locales/fr.json')
-    // }
   })
 
   app.i18n.path = (link) => {
