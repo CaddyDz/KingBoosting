@@ -59,7 +59,7 @@ export default {
 
 <style scoped>
 .customer {
-	background-color: #141618;
+	background-color: #212224;
 	padding: 50px;
 }
 .card-customer {

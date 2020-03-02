@@ -77,6 +77,10 @@ export default {
 <style>
 .blogPosts-container {
 	background-image: url("/img/blogPosts/blog-bg.webp");
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
 	height: 80vh;
 	display: flex;
 	align-items: center;
