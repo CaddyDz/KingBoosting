@@ -14,6 +14,13 @@ class DatabaseSeeder extends Seeder
         $this->call(PermissionsTableSeeder::class);
         $this->call(RolesTableSeeder::class);
         $this->call(UsersTableSeeder::class);
+        // Kinds are needed to seed services
+        $this->call(ServiceKindsTableSeeder::class);
+        $this->call(ServiceTypesTableSeeder::class);
+        // Services are needed to seed orders
+        $this->call(ServicesTableSeeder::class);
+        // Tiers are needed to seed orders
+        $this->call(TiersTableSeeder::class);
         $this->call(OrdersTableSeeder::class);
         $this->call(ArticlesTableSeeder::class);
         $this->call(ChampionRolesTableSeeder::class);
@@ -21,11 +28,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ChampionsTableSeeder::class);
         $this->call(PrioritiesTableSeeder::class);
         $this->call(FeaturesTableSeeder::class);
-        $this->call(TiersTableSeeder::class);
-        $this->call(ServiceKindsTableSeeder::class);
-        $this->call(ServiceTypesTableSeeder::class);
         $this->call(ServersTableSeeder::class);
         $this->call(WinBoostingsTableSeeder::class);
-        $this->call(ServicesTableSeeder::class);
     }
 }

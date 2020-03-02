@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use App\Service;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Storage;
@@ -11,7 +13,7 @@ class ServicesTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
         Storage::disk('public')->deleteDirectory('services');
         Storage::disk('public')->makeDirectory('services');
@@ -22,13 +24,17 @@ class ServicesTableSeeder extends Seeder
                 'Regular Boosting allows our customers to buy the desired number of ranked wins. All you have to do is choose how many ranked wins you would like to have on.',
                 'Popular',
                 'Regular Boosting makes it possible to buy a guaranteed number of wins of your choice. We created regular boosting to be fast and easy, providing an efficient but high-quality service.',
+                null,
+                1,
             ],
             [
                 'League Boosting',
                 '5',
                 'At Kingboosting.com, we sell guaranteed tier and division boosts of your choice. You just have to pick a tier and a division that you desire and our task is to do the rest.',
                 null,
-                'League boosting allow the customer to purchase guaranteed tier and division boosts. We designed league boosting to be the fastest option but at the same time providing high-quality service.'
+                'League boosting allow the customer to purchase guaranteed tier and division boosts. We designed league boosting to be the fastest option but at the same time providing high-quality service.',
+                null,
+                2,
             ],
             [
                 'LOR Boosting',
@@ -36,13 +42,17 @@ class ServicesTableSeeder extends Seeder
                 'Reach the highest ranks in the game before anybody else! Hire Master professionals to boost your tier and division in Runeterra.',
                 'New',
                 null,
+                null,
+                2,
             ],
             [
                 'Duo Queue Boosting',
                 '6',
                 'With Duo Queue, you can stay interactive while you are being elo boosted. By purchasing, you will get boosted while playing duo with a high lol ELO booster.',
                 null,
-                'This type of ELO boost makes it possible for the client to stay active playing LoL.By purchasing it, we provide a professional ELO booster who will play duo queue ranked games with the customer.'
+                'This type of ELO boost makes it possible for the client to stay active playing LoL.By purchasing it, we provide a professional ELO booster who will play duo queue ranked games with the customer.',
+                null,
+                [2 => 'DuoQueue Division Boosting', 3, 1]
             ],
             [
                 'Buy lol smurf account',
@@ -51,6 +61,7 @@ class ServicesTableSeeder extends Seeder
                 null,
                 'Below, you can browse from different types of unranked smurf accounts. Select the one that meets your needs, and by completing your payment, you receive the account\'s log in details.',
                 2,
+                4,
             ],
             [
                 'Account market',
@@ -59,6 +70,7 @@ class ServicesTableSeeder extends Seeder
                 null,
                 'LoL accounts on sale. In this menu you can choose to buy different types of League of Legends accounts.',
                 3,
+                4,
             ],
             [
                 'TFT Boosting',
@@ -66,6 +78,8 @@ class ServicesTableSeeder extends Seeder
                 'TFT Boosting allows the client to get any ranked rewards in Teamfight Tactics, with the help of professional boosters in the form of a high-quality service.',
                 null,
                 null,
+                null,
+                [2, 1, 5],
             ],
             [
                 'Champion Mastery',
@@ -73,13 +87,17 @@ class ServicesTableSeeder extends Seeder
                 'Want to look good with all of your champions independently? Champion mastery boost is here to get any of your champions to tier 7 from 0 at no time.',
                 null,
                 'Champion mastery boost makes it possible to reach tier 7 with each champion you desire. All you have to do is to choose the champion and we will do the rest.',
+                null,
+                6,
             ],
             [
                 'Placement matches',
                 '9',
                 'Placement matches are here to give you the perfect start. By boosting your 10 placement games, you will be able to start the season with the highest lol elo possible.',
                 null,
-                'Placement matches are here to give you the perfect start. By choosing the division where you finished last season and the number of wins you want us to complete, we can give you some serious results to start with.'
+                'Placement matches are here to give you the perfect start. By choosing the division where you finished last season and the number of wins you want us to complete, we can give you some serious results to start with.',
+                null,
+                5,
             ],
             [
                 'Clash Boosting',
@@ -87,13 +105,8 @@ class ServicesTableSeeder extends Seeder
                 'Start winning your Clash games! Hire Challenger players to boost your team\'s performance in LoL Clashes.',
                 'New',
                 null,
-            ],
-            [
-                'ELO boosting packs',
-                '2',
-                'ELO boosting packs make it possible to buy lol elo boost at a discounted price. There is a variety of lol elo boosting packs you can choose from, with different starting and goal tiers.',
-                'Best Value',
-                'Below, you can see the range of ELO boosting packs we offer. You just have to choose the one that suits you and the best and then proceed to checkout. After buying the ELO boosting pack, you just put in your log-in details and our ELO booster will do the rest.'
+                null,
+                8,
             ],
             [
                 'Promotion boosting',
@@ -101,6 +114,8 @@ class ServicesTableSeeder extends Seeder
                 'One of the most valuable ELO boost service. Promotion boosting is the best option for League players, who are looking for a simple way to win their promotion series.',
                 null,
                 'If you are only one step away from your desired rank, Promotion boosting makes sure that your long-awaited promotion is in good hands.',
+                null,
+                9,
             ],
             [
                 'Account leveling',
@@ -108,13 +123,17 @@ class ServicesTableSeeder extends Seeder
                 'Account leveling lol boosting service makes it possible to reach LoL level you desire. Want to start playing ranked quickly? Don\'t hesitate.',
                 null,
                 'Account leveling service makes it possible to reach the LoL level you desire.',
+                null,
+                7,
             ],
             [
                 'Normal matches',
                 '8',
                 'Normal matches boost is a great way to reach level 30 super-fast. It also works great to erase the ranked restriction games while we are gathering blue essence.',
                 null,
-                'Normal matches boosts allow you to purchase progress in the normal game mode. You can choose from normal games or normal wins, both providing fast and significant results.'
+                'Normal matches boosts allow you to purchase progress in the normal game mode. You can choose from normal games or normal wins, both providing fast and significant results.',
+                null,
+                [3, 1],
             ],
             [
                 'Coaching',
@@ -122,10 +141,12 @@ class ServicesTableSeeder extends Seeder
                 'Coaching is an efficient way to improve your skills and mindset in LoL. We provide experienced high elo players for your service.',
                 null,
                 null,
+                null,
+                10,
             ]
         ];
         foreach ($services as $service) {
-            Service::create([
+            $serviceModel = Service::create([
                 'name' => $service[0],
                 'image' => "img/circles/$service[1].png",
                 'description' => $service[2],
@@ -135,6 +156,16 @@ class ServicesTableSeeder extends Seeder
                 'kind_id' => isset($service[5]) ? $service[5] : 1,
                 'bg_img' => '/img/services/' . sluggify($service[0]) . '-top-bg.png',
             ]);
+            if (is_array($service[6])) {
+                info('it is an array');
+                foreach ($service[6] as $key => $value) {
+                    info($value);
+                    $serviceModel->types()->attach($key, ['name' => $value ?? $service[0]]);
+                }
+            } else {
+                info('it is not an array');
+                $serviceModel->types()->attach($service[6]);
+            }
         }
     }
 }

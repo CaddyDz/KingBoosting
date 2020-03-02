@@ -19,7 +19,10 @@ class ServiceTypesTableSeeder extends Seeder
             'Account Selling',
             'Placement Matches',
             'Champion Boosting',
-            'Account Leveling'
+            'Account Leveling',
+            'Clash Boosting',
+            'Promotion Boosting',
+            'Coaching',
         ];
         foreach ($types as $type) {
             ServiceType::create([
