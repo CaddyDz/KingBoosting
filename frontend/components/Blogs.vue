@@ -25,7 +25,7 @@
 					progress
 					progress-color="#673ab7"
 				>
-					<v-carousel-item v-for="n in articlesCount" :key="n.id" :src="article.image"></v-carousel-item>
+					<v-carousel-item v-for="n in articlesCount" :key="n" :src="article.image"></v-carousel-item>
 				</v-carousel>
 			</v-col>
 		</v-row>
