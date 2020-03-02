@@ -6,7 +6,6 @@
 		<v-row class>
 			<v-col md="4" class="relative-box d-flex justify-start align-end">
 				<img height="auto" class="bg-img" src="/img/features/bg.png" alt="Our Features" />
-				<!-- <h1 class="our-features-button">Our Features</h1> -->
 			</v-col>
 			<v-col class="fix-index" md="8">
 				<v-row>
