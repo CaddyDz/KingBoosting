@@ -60,7 +60,8 @@ export default {
   plugins: [
     '~plugins/globals',
     '~plugins/i18n',
-    '~plugins/storage'
+    '~plugins/storage',
+    '~plugins/axios'
   ],
   /*
    ** Nuxt.js dev-modules
@@ -86,10 +87,7 @@ export default {
    */
   axios: {
     // proxyHeaders: false,
-    prefix: '/api',
-    host: process.env.HOST_URL || 'kingboosting.dev',
-    port: 443,
-    https: true,
+    debug: true
   },
   /*
    ** vuetify module configuration
@@ -120,7 +118,7 @@ export default {
      ** You can extend webpack config here
      */
     extend(config, ctx) {
-      // ..
+      // Configure i18n custom block
       config.module.rules.push({
         resourceQuery: /blockType=i18n/,
         type: 'javascript/auto',
@@ -128,6 +126,7 @@ export default {
       })
     },
     plugins: [
+      // Expose lodash globally
       new webpack.ProvidePlugin({
         // global modules
         '_': 'lodash'
