@@ -18,19 +18,19 @@ class TiersTableSeeder extends Seeder
                 'box_shadow' => '152,129,108',
                 'divisions' => [
                     [
-                        'name' => 'Division IV',
+                        'name' => 'IV',
                         'image' => '/img/divisions/iron/IV.webp'
                     ],
                     [
-                        'name' => 'Division III',
+                        'name' => 'III',
                         'image' => '/img/divisions/iron/III.png'
                     ],
                     [
-                        'name' => 'Division II',
+                        'name' => 'II',
                         'image' => '/img/divisions/iron/II.png'
                     ],
                     [
-                        'name' => 'Division I',
+                        'name' => 'I',
                         'image' => '/img/divisions/iron/I.png'
                     ],
                 ],
@@ -82,19 +82,19 @@ class TiersTableSeeder extends Seeder
                 'box_shadow' => '89,60,28',
                 'divisions' => [
                     [
-                        'name' => 'Division IV',
+                        'name' => 'IV',
                         'image' => '/img/divisions/bronze/IV.png'
                     ],
                     [
-                        'name' => 'Division III',
+                        'name' => 'III',
                         'image' => '/img/divisions/bronze/III.png'
                     ],
                     [
-                        'name' => 'Division II',
+                        'name' => 'II',
                         'image' => '/img/divisions/bronze/II.png'
                     ],
                     [
-                        'name' => 'Division I',
+                        'name' => 'I',
                         'image' => '/img/divisions/bronze/I.png'
                     ],
                 ],
@@ -146,21 +146,21 @@ class TiersTableSeeder extends Seeder
                 'box_shadow' => '119,134,131',
                 'divisions' => [
                     [
-                        'name' => 'Division IV',
+                        'name' => 'IV',
                         'image' => '/img/divisions/silver/IV.webp'
                     ],
                     [
-                        'name' => 'Division III',
+                        'name' => 'III',
                         'image' => '/img/divisions/silver/III.webp',
                         'price' => 2.9
                     ],
                     [
-                        'name' => 'Division II',
+                        'name' => 'II',
                         'image' => '/img/divisions/silver/II.webp',
                         'price' => 2.9
                     ],
                     [
-                        'name' => 'Division I',
+                        'name' => 'I',
                         'image' => '/img/divisions/silver/I.webp',
                         'price' => 3.9
                     ],
@@ -213,22 +213,22 @@ class TiersTableSeeder extends Seeder
                 'box_shadow' => '228,189,62',
                 'divisions' => [
                     [
-                        'name' => 'Division IV',
+                        'name' => 'IV',
                         'image' => '/img/divisions/gold/IV.webp',
                         'price' => 3.9
                     ],
                     [
-                        'name' => 'Division III',
+                        'name' => 'III',
                         'image' => '/img/divisions/gold/III.webp',
                         'price' => 4.9
                     ],
                     [
-                        'name' => 'Division II',
+                        'name' => 'II',
                         'image' => '/img/divisions/gold/II.webp',
                         'price' => 4.9
                     ],
                     [
-                        'name' => 'Division I',
+                        'name' => 'I',
                         'image' => '/img/divisions/gold/I.webp',
                         'price' => 5.9
                     ],
@@ -281,22 +281,22 @@ class TiersTableSeeder extends Seeder
                 'box_shadow' => '57,123,135',
                 'divisions' => [
                     [
-                        'name' => 'Division IV',
+                        'name' => 'IV',
                         'image' => '/img/divisions/platinum/IV.webp',
                         'price' => 6.9
                     ],
                     [
-                        'name' => 'Division III',
+                        'name' => 'III',
                         'image' => '/img/divisions/platinum/III.webp',
                         'price' => 6.9
                     ],
                     [
-                        'name' => 'Division II',
+                        'name' => 'II',
                         'image' => '/img/divisions/platinum/II.webp',
                         'price' => 7.9
                     ],
                     [
-                        'name' => 'Division I',
+                        'name' => 'I',
                         'image' => '/img/divisions/platinum/I.webp',
                         'price' => 9.9
                     ],
@@ -349,22 +349,22 @@ class TiersTableSeeder extends Seeder
                 'box_shadow' => '48,113,222',
                 'divisions' => [
                     [
-                        'name' => 'Division IV',
+                        'name' => 'IV',
                         'image' => '/img/divisions/diamond/IV.webp',
                         'price' => 12.9
                     ],
                     [
-                        'name' => 'Division III',
+                        'name' => 'III',
                         'image' => '/img/divisions/diamond/III.webp',
                         'price' => 16.9
                     ],
                     [
-                        'name' => 'Division II',
+                        'name' => 'II',
                         'image' => '/img/divisions/diamond/II.webp',
                         'price' => 21.9
                     ],
                     [
-                        'name' => 'Division I',
+                        'name' => 'I',
                         'image' => '/img/divisions/diamond/I.webp',
                         'price' => 22.9
                     ],

@@ -6,7 +6,6 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Providers\RouteServiceProvider;
-use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
@@ -44,6 +43,7 @@ class RegisterController extends Controller
             'last_name' => $data['last_name'],
             'email' => $data['email'],
             'social' => $data['social'] ?? null,
+            'country' => $this->getClientCountry(),
         ]);
     }
 
@@ -67,5 +67,10 @@ class RegisterController extends Controller
     public function showRegistrationForm()
     {
         return abort(404);
+    }
+
+    public function getClientCountry()
+    {
+        return isset($_SERVER["HTTP_CF_IPCOUNTRY"]) ? $_SERVER["HTTP_CF_IPCOUNTRY"] : 'US';
     }
 }

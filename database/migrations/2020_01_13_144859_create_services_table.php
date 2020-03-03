@@ -17,8 +17,6 @@ class CreateServicesTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('kind_id');
             $table->foreign('kind_id')->references('id')->on('service_kinds')->onDelete('cascade');
-            $table->unsignedBigInteger('type_id')->nullable();
-            $table->foreign('type_id')->references('id')->on('service_types')->onDelete('cascade');
             $table->string('name');
             $table->string('image');
             $table->text('description');

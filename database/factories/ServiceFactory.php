@@ -13,5 +13,7 @@ $factory->define(Service::class, function (Faker $faker) {
         'description' => $faker->sentences(3, true),
         'status' => $faker->randomElement(['Popular', 'New', 'Best Value', null]),
         'slug' => sluggify($name),
+        'subtitle' => $faker->sentences(3, true),
+        'bg_img' => '',
     ];
 });

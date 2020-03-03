@@ -1,12 +1,12 @@
 <template>
 	<div>
-		<a href="https://facebook.com/kingboosting" target="_blank">
+		<a href="https://facebook.com/kingboosting" target="_blank" rel="noopener">
 			<v-icon color="white">mdi-facebook</v-icon>
 		</a>
-		<a href="https://www.instagram.com/kingboosting_official/" target="_blank">
+		<a href="https://www.instagram.com/kingboosting_official/" target="_blank" rel="noopener">
 			<v-icon color="white">mdi-instagram</v-icon>
 		</a>
-		<a href="https://twitter.com/kingboosting" target="_blank">
+		<a href="https://twitter.com/kingboosting" target="_blank" rel="noopener">
 			<v-icon color="white">mdi-twitter</v-icon>
 		</a>
 		<a href="skype:">

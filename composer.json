@@ -25,6 +25,7 @@
         "laravel/tinker": "^2.0",
         "saintsystems/nova-linkable-metrics": "^0.0.6",
         "scadini/nova-icon": "^0.2.1",
+        "stidges/laravel-country-flags": "^1.0",
         "timothyasp/nova-badge-field": "^1.0",
         "vyuldashev/nova-money-field": "^1.3",
         "vyuldashev/nova-permission": "^2.4",

@@ -1,8 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 /**
  * App\Order
@@ -30,12 +34,12 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Order extends Model
 {
-    public function client()
+    public function client(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'id', 'client_id');
+        return $this->belongsTo(User::class, 'client_id', 'id');
     }
 
-    public function booster()
+    public function booster(): BelongsTo
     {
         return $this->belongsTo(User::class, 'booster_id');
     }
@@ -58,8 +62,20 @@ class Order extends Model
         }
     }
 
-    public function details()
+    public function details(): HasOne
     {
         return $this->hasOne(OrderDetails::class);
+    }
+
+    public function getTypeAttribute(): string
+    {
+        if ($this->service->name === 'League Boosting') {
+            return 'What the fuck';
+        }
+    }
+
+    public function service(): BelongsTo
+    {
+        return $this->belongsTo(ServiceTypePivot::class, 'service_service_type_id', 'id');
     }
 }

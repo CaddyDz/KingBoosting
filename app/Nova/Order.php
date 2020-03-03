@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Nova;
 
 use NovaIcon\Icon;
@@ -38,7 +40,7 @@ class Order extends Resource
      * @var array
      */
     public static $search = [
-        'id',
+        'id', 'purchase'
     ];
 
     /**
@@ -47,13 +49,13 @@ class Order extends Resource
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
-    public function fields(Request $request)
+    public function fields(Request $request): array
     {
         return [
             Icon::make('')
-                ->icon(function () {
-                    return $this->icon;
-                })->css(function () {
+                ->icon(
+                    fn (): string => $this->icon
+                )->css(function () {
                     $options = [
                         'pending' => 'text-info',
                         'progress'   => 'text-warning-dark',
@@ -81,14 +83,15 @@ class Order extends Resource
                 ])->displayUsingLabels(),
             ID::make()->sortable(),
             Text::make('Purchase', function () {
-                return $this->details;
-            }),
+                // If it's DuoQ boosting it has 3 types, how are we going to tell which one it is
+                return "$this->purchase <br>" . country_flag($this->client->country) . $this->service->name;
+            })->asHtml(),
             Money::make('Price'),
             DateTime::make('Creation', function () {
                 return $this->created_at;
             }),
             Text::make('Employee', function () {
-                return $this->booster->username;
+                return optional($this->booster)->username;
             })
         ];
     }
