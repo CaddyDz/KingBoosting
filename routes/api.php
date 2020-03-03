@@ -40,5 +40,5 @@ Route::get('/blog/first', 'ArticlesController@getFirstArticle');
 Route::get('/blog/count', 'ArticlesController@getArticlesCount');
 Route::get('/blog/{article}', 'ArticlesController@show')->name('article');
 Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+    return auth()->user();
 });
