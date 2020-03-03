@@ -15,6 +15,7 @@
         "digital-creative/resource-navigation-tab": "^1.0",
         "ebess/nova-collapsible-sidebar": "^0.1.2",
         "fideloper/proxy": "^4.0",
+        "fruitcake/laravel-cors": "^1.0",
         "gregoriohc/laravel-nova-theme-responsive": "^0.8.0",
         "laravel/framework": "^6.2",
         "laravel/helpers": "^1.1",
