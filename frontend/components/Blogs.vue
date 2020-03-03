@@ -48,9 +48,9 @@ export default {
 				.then(response => {
 					this.article = response.data;
 				})
-				.catch(errors => {
-					this.$store.commit("openNotification", {
-						text: errors.response.data.errors,
+				.catch(() => {
+					this.$store.commit("notification/open", {
+						text: this.$i18n.t("Something went wrong"),
 						mode: "error"
 					});
 				});
@@ -108,7 +108,8 @@ h1 current-blog-number {
   "en": {
     "Blogs": "Blogs",
     "READ MORE": "READ MORE",
-    "GO TO BLOG": "GO TO BLOG"
+    "GO TO BLOG": "GO TO BLOG",
+    "Something went wrong": "Something went wrong"
   }
 }
 </i18n>
