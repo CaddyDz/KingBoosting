@@ -1,7 +1,7 @@
 <template>
 	<div class="blogPosts-container">
 		<div class="section-name">
-			<h1>Blogs</h1>
+			<h1>{{ $t('Blogs') }}</h1>
 		</div>
 		<v-row no-gutters>
 			<v-col class="description-col" align-self="center">
@@ -10,8 +10,8 @@
 					{{ article.title }}
 				</h1>
 				<p class="description-txt">{{ article.excerpt }}</p>
-				<v-btn color="#fd905c">READ MORE</v-btn>
-				<v-btn color="#fd905c" outlined>GO TO BLOG</v-btn>
+				<v-btn color="#673ab7">{{ $t('READ MORE') }}</v-btn>
+				<v-btn color="#673ab7" outlined>{{ $t('GO TO BLOG') }}</v-btn>
 			</v-col>
 			<v-col>
 				<v-carousel
@@ -23,9 +23,9 @@
 					class="carousel"
 					v-on:change="handleChange"
 					progress
-					progress-color="#fd905c"
+					progress-color="#673ab7"
 				>
-					<v-carousel-item v-for="n in articlesCount" :key="n" :src="article.image"></v-carousel-item>
+					<v-carousel-item v-for="index in articlesCount" :key="index" :src="$asset(article.image)"></v-carousel-item>
 				</v-carousel>
 			</v-col>
 		</v-row>
@@ -34,42 +34,27 @@
 
 <script>
 export default {
+	props: ["firstArticle", "articlesCount"],
 	data() {
 		return {
 			currentSlide: 1,
-			articlesCount: 0,
-			article: {}
+			article: this.$props.firstArticle
 		};
 	},
 	methods: {
 		handleChange(e) {
-			axios
-				.get(`/api/blog/${e + 1}`)
+			this.$axios
+				.get(`/blog/${e + 1}`)
 				.then(response => {
 					this.article = response.data;
 				})
 				.catch(errors => {
-					console.log(errors.response.data.errors);
+					this.$store.commit("openNotification", {
+						text: errors.response.data.errors,
+						mode: "error"
+					});
 				});
 		}
-	},
-	mounted() {
-		axios
-			.get("/api/blog/first")
-			.then(response => {
-				this.article = response.data;
-			})
-			.catch(errors => {
-				console.log(errors.response.data.errors);
-			});
-		axios
-			.get("/api/blog/count")
-			.then(response => {
-				this.articlesCount = response.data;
-			})
-			.catch(errors => {
-				console.log(errors.response.data.errors);
-			});
 	}
 };
 </script>
@@ -77,6 +62,7 @@ export default {
 <style>
 .blogPosts-container {
 	background-image: url("/img/blogPosts/blog-bg.webp");
+	background-size: cover;
 	height: 80vh;
 	display: flex;
 	align-items: center;
@@ -96,7 +82,7 @@ export default {
 h1 current-blog-number {
 	font-size: 4rem;
 	font-weight: bold;
-	background: -webkit-linear-gradient(#d45151, #fd905c);
+	background: -webkit-linear-gradient(#673ab7, #9c27b0);
 	background-clip: text;
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
@@ -107,7 +93,7 @@ h1 current-blog-number {
 	justify-content: center;
 	width: 200px;
 	height: 60px;
-	background: linear-gradient(#d45151, #fd905c);
+	background: linear-gradient(#673ab7, #9c27b0);
 	z-index: 1;
 	position: absolute;
 	top: -30px;
@@ -116,3 +102,13 @@ h1 current-blog-number {
 	margin: 0;
 }
 </style>
+
+<i18n>
+{
+  "en": {
+    "Blogs": "Blogs",
+    "READ MORE": "READ MORE",
+    "GO TO BLOG": "GO TO BLOG"
+  }
+}
+</i18n>

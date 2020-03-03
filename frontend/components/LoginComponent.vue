@@ -1,6 +1,12 @@
 <template>
 	<div>
-		<v-btn class="ma-2" outlined color="white" href="/dashboard" v-if="auth">{{ $t('Members Area') }}</v-btn>
+		<v-btn
+			class="ma-2"
+			outlined
+			color="white"
+			:href="`${process.env.HOST_URL}/dashboard`"
+			v-if="auth"
+		>{{ $t('Members Area') }}</v-btn>
 		<v-dialog max-width="800px" v-model="dialog" v-else>
 			<template v-slot:activator="{ on }">
 				<v-btn class="ma-2" outlined color="white" v-on="on">{{ $t('Members Area') }}</v-btn>
@@ -9,7 +15,7 @@
 				<v-container>
 					<v-row>
 						<v-col cols="7">
-							<LoginForm></LoginForm>
+							<LoginForm @close="dialog = false"></LoginForm>
 						</v-col>
 						<v-col cols="5">
 							<SocialLogin></SocialLogin>

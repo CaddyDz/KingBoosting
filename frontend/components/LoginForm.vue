@@ -24,7 +24,7 @@
 				<v-row dark class="ml-2 mt-2">
 					<v-btn text small @click="requestPasswordReset">{{ $t('Forgotten Password?') }}</v-btn>
 					<v-btn color="#673AB7" small @click="login" :disabled="!valid">{{ $t('Continue') }}</v-btn>
-					<v-btn text small @click="dialog = false">{{ $t('Cancel') }}</v-btn>
+					<v-btn text small @click="close">{{ $t('Cancel') }}</v-btn>
 				</v-row>
 			</v-flex>
 		</v-layout>
@@ -65,7 +65,7 @@ export default {
 						text: response.data.message,
 						mode: "success"
 					});
-					window.location = "/dashboard";
+					window.location = process.env.DASHBOARD_URL;
 				})
 				.catch(errors => {
 					this.$store.commit("openNotification", {
@@ -104,6 +104,9 @@ export default {
 						});
 					});
 			}
+		},
+		close() {
+			this.$emit("close");
 		}
 	},
 	mounted() {
