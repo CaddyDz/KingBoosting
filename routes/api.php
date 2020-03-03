@@ -12,6 +12,14 @@
 */
 
 Auth::routes(['verify' => true]);
+Route::get('login/{provider}', 'Auth\LoginController@redirectToProvider');
+Route::get('login/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
+
+// Routes to set password for the user who just verified their email
+Route::middleware(['auth', 'verified', 'nopassword'])->name('password.')->group(function () {
+    Route::get('set-password', 'Auth\VerificationController@showPasswordSettingForm')->name('show');
+    Route::post('set-password', 'Auth\VerificationController@setPassword')->name('store');
+});
 // List all tiers
 Route::post('/tiers', 'TiersController@index');
 // List all servers
