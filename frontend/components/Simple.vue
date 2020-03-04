@@ -281,7 +281,7 @@ export default {
 	methods: {
 		// Get list of tiers objects from db
 		async getTiers() {
-			const response = await this.$axios.$post("/tiers", {
+			const response = await this.$axios.post("/tiers", {
 				service: this.service.slug
 			});
 			console.log("hello");
@@ -321,8 +321,8 @@ export default {
 			}
 		},
 		sendResetPasswordEmail() {
-			axios
-				.post("password/email", { email: this.email })
+			this.$axios
+				.post("/password/email", { email: this.email })
 				.then(response => {
 					alert(response.data.status);
 				})
@@ -331,7 +331,7 @@ export default {
 				});
 		},
 		login() {
-			axios
+			this.$axios
 				.post("/login", { email: this.email, password: this.password })
 				.then(response => {
 					alert(response.data.status);
@@ -344,7 +344,7 @@ export default {
 				});
 		},
 		async getBoostersList() {
-			const boosters = await this.$axios.$get("getBoostersNames");
+			const boosters = await this.$axios.get("/getBoostersNames");
 			this.boosters = boosters;
 			this.boostersLoading = true;
 		}
