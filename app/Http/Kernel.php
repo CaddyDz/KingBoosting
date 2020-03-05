@@ -14,6 +14,7 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $middleware = [
+        \Fruitcake\Cors\HandleCors::class,
         \App\Http\Middleware\TrustProxies::class,
         \App\Http\Middleware\CheckForMaintenanceMode::class,
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
@@ -28,6 +29,8 @@ class Kernel extends HttpKernel
      */
     protected $middlewareGroups = [
         'web' => [
+            \Fruitcake\Cors\HandleCors::class,
+
             \App\Http\Middleware\EncryptCookies::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
             \Illuminate\Session\Middleware\StartSession::class,
@@ -38,11 +41,11 @@ class Kernel extends HttpKernel
         ],
 
         'api' => [
+            \Fruitcake\Cors\HandleCors::class,
+
             'accept.json',
             'throttle:600,1',
             'bindings',
-            \App\Http\Middleware\Cors::class,
-            \App\Http\Middleware\API::class,
         ],
     ];
 
@@ -54,7 +57,9 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
-        'accept.json' => \App\Http\Middleware\ApiMiddleware::class,
+        \Fruitcake\Cors\HandleCors::class,
+
+        'accept.json' => \App\Http\Middleware\API::class,
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
@@ -76,6 +81,8 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $middlewarePriority = [
+        \Fruitcake\Cors\HandleCors::class,
+
         \Illuminate\Session\Middleware\StartSession::class,
         \Illuminate\View\Middleware\ShareErrorsFromSession::class,
         \App\Http\Middleware\Authenticate::class,

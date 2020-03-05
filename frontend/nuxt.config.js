@@ -59,7 +59,9 @@ export default {
    */
   plugins: [
     '~plugins/globals',
-    '~plugins/i18n'
+    '~plugins/i18n',
+    '~plugins/storage',
+    '~plugins/axios'
   ],
   /*
    ** Nuxt.js dev-modules
@@ -85,10 +87,7 @@ export default {
    */
   axios: {
     // proxyHeaders: false,
-    prefix: '/api',
-    host: 'kingboosting.test',
-    port: 443,
-    https: true,
+    debug: true
   },
   /*
    ** vuetify module configuration
@@ -100,15 +99,15 @@ export default {
       dark: true,
       themes: {
         dark: {
-          primary: colors.blue.darken2,
-          accent: colors.grey.darken3,
-          secondary: colors.amber.darken3,
-          info: colors.teal.lighten1,
-          warning: colors.amber.base,
-          error: colors.deepOrange.accent4,
-          success: colors.green.accent3
-        }
-      }
+          primary: '#673ab7',
+          secondary: '#9c27b0',
+          accent: '#673ab7',
+          error: '#f44336',
+          warning: '#ffeb3b',
+          info: '#3f51b5',
+          success: '#4caf50'
+        },
+      },
     }
   },
   /*
@@ -119,7 +118,7 @@ export default {
      ** You can extend webpack config here
      */
     extend(config, ctx) {
-      // ..
+      // Configure i18n custom block
       config.module.rules.push({
         resourceQuery: /blockType=i18n/,
         type: 'javascript/auto',
@@ -127,6 +126,7 @@ export default {
       })
     },
     plugins: [
+      // Expose lodash globally
       new webpack.ProvidePlugin({
         // global modules
         '_': 'lodash'

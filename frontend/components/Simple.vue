@@ -6,13 +6,7 @@
 				<v-container>
 					<v-row align="center" justify="center">
 						<v-col md="3">
-							<img
-								:src="division.image || tier.image"
-								:alt="tier.name"
-								loading="lazy"
-								width="280"
-								height="320"
-							/>
+							<img :src="division.image || tier.image" :alt="tier.name" loading="lazy" width="200" />
 						</v-col>
 						<v-col md="9">
 							<v-row>
@@ -27,16 +21,21 @@
 									></v-select>
 								</v-col>
 								<v-col v-if="this.hasDivisions">
-									<!-- <v-select
+									<v-select
 										:items="tier.divisions"
-										label="Current division"
+										:label="$t('Current division')"
 										item-text="name"
 										v-model="selectedDivisionID"
 										item-value="id"
-									></v-select>-->
+									></v-select>
 								</v-col>
 							</v-row>
-							<!-- <v-select :items="servers" label="Select your server" item-text="region" :value="servers[0]"></v-select> -->
+							<v-select
+								:items="servers"
+								:label="$t('Select your server')"
+								item-text="region"
+								:value="servers[0]"
+							></v-select>
 						</v-col>
 					</v-row>
 				</v-container>
@@ -58,7 +57,7 @@
 								v-model="number_of_wins"
 								:thumb-size="50"
 							>
-								<template v-slot:thumb-label :style="{top: '50px'}">{{ plural(number_of_wins, "$t('Win')") }}</template>
+								<template v-slot:thumb-label :style="{top: '50px'}">{{ plural(number_of_wins, $t('Win')) }}</template>
 							</v-slider>
 						</v-col>
 						<v-col md="2"></v-col>
@@ -95,7 +94,11 @@
 								prepend-icon="mdi-flash"
 								v-model="priorityOrder"
 							></v-checkbox>
-							<v-checkbox :label="$t('With Streaming +15% cost')" prepend-icon="mdi-video" v-model="streaming"></v-checkbox>
+							<v-checkbox
+								:label="$t('With Streaming +15% cost')"
+								prepend-icon="mdi-video"
+								v-model="streaming"
+							></v-checkbox>
 						</v-col>
 						<v-col md="6">
 							<!-- ETA -->
@@ -162,7 +165,7 @@
 																</v-col>
 																<!-- Select Booster -->
 																<v-col class="d-flex" cols="12" sm="6">
-																	<!-- <v-select :items="boosters" label="Your Booster" :loading="boostersLoading"></v-select> -->
+																	<v-select :items="boosters" :label="$t('Your Booster')" :loading="boostersLoading"></v-select>
 																</v-col>
 															</v-row>
 															<v-row>
@@ -250,13 +253,15 @@ export default {
 			valid: false,
 			email: "",
 			emailRules: [
-				v => !!v || this.i18n.t("E-mail is required"),
-				v => /.+@.+/.test(v) || this.i18n.t("E-mail must be valid")
+				v => !!v || this.$i18n.t("E-mail is required"),
+				v => /.+@.+/.test(v) || this.$i18n.t("E-mail must be valid")
 			],
 			password: "",
 			passwordRules: [
-				v => !!v || this.i18n.t("Password is required"),
-				v => v.length > 8 || this18n.t("Password must be longer than 8 characters")
+				v => !!v || this.$i18n.t("Password is required"),
+				v =>
+					v.length > 8 ||
+					this.$i18n.t("Password must be longer than 8 characters")
 			],
 			// Details form data
 			nickname: "",
@@ -269,7 +274,7 @@ export default {
 	},
 	computed: {
 		plural(count, noun) {
-			return (count, noun) => count + noun + count !== 1 ? 's' : '';
+			return (count, noun) => `${count} ${noun}${count !== 1 ? "s" : ""}`;
 		},
 		priceUSD() {
 			return (this.price * this.exchangeRate).toFixed(2);
@@ -284,8 +289,6 @@ export default {
 			const response = await this.$axios.post("/tiers", {
 				service: this.service.slug
 			});
-			console.log("hello");
-			console.log(response);
 			// The tiers array is that list
 			this.tiers = response;
 			// The first tier
@@ -412,33 +415,20 @@ export default {
 	mounted() {
 		this.getTiers();
 		// Get live USD to EUR exchange rate
-		// axios
-		// 	.get("https://api.exchangeratesapi.io/latest?symbols=USD")
-		// 	.then(response => {
-		// 		this.exchangeRate = response.data.rates.USD;
-		// 	});
-		// // Get list of tiers objects from db
-		// axios.post("/api/tiers", { service: this.service.slug }).then(response => {
-		// 	// The tiers array is that list
-		// 	this.tiers = response.data;
-		// 	// The first tier
-		// 	this.tier = _.first(response.data);
-		// 	// Get the maximum number of wins in the tier
-		// 	this.max = _.maxBy(this.tier.wins, "wins").wins;
-		// 	// Divisions of the first tier
-		// 	this.divisions = this.tier.divisions;
-		// 	// Division IV
-		// 	this.division = _.first(this.tier.divisions);
-		// 	// ETA
-		// 	this.eta = _.find(this.tier.wins, ["wins", 4]).eta;
-		// 	this.price = this.division.price * this.number_of_wins;
-		// });
-		// axios.get("/servers").then(response => (this.servers = response.data));
+		this.$axios
+			.get("https://api.exchangeratesapi.io/latest?symbols=USD")
+			.then(response => {
+				this.exchangeRate = response.data.rates.USD;
+			});
+		this.$axios.$get("/servers").then(servers => (this.servers = servers));
 		// Jump to second step if user is already logged in
 		if (this.isLoggedIn) {
+			console.log("Logged in");
 			this.e1 = 2;
 			// Get boosters list
 			this.getBoostersList();
+		} else {
+			console.log("Logged out");
 		}
 	}
 };
@@ -465,10 +455,10 @@ export default {
 		"Discount Code": "Discount Code",
 		"BOOST ME": "BOOST ME",
 		"Details": "Details",
-		"Nickname": "Nickname",
+		"Nickname *": "Nickname *",
 		"Your in-game name": "Your in-game name",
 		"Comments NOT REQUIRED": "Comments NOT REQUIRED",
-		"Your Comments": "Your Comments",
+		"Your comments": "Your comments",
 		"Appear Offline on Chat": "Appear Offline on Chat",
 		"Further information will be requested after payment": "Further information will be requested after payment",
 		"Forgotten Password?": "Forgotten Password?",
@@ -477,8 +467,12 @@ export default {
 		"E-mail is required": "E-mail is required",
 		"E-mail must be valid": "E-mail must be valid",
 		"Password is required": "Password is required",
-		"password must be longer than 8 characters": "Password must be longer than 8 characters" 
+    "Password must be longer than 8 characters": "Password must be longer than 8 characters",
+    "Login": "Login",
+    "Select your server": "Select your server",
+    "Current division": "Current division",
+    "Win": "Win",
+    "Your Booster": "Your Booster"
 	}
 }
 </i18n>
-

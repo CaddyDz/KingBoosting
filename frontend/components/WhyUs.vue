@@ -5,7 +5,7 @@
 		</div>
 		<v-container class="container">
 			<v-row>
-				<v-card class="card" align-self="center" v-for="(item ,index) in whyUsData" :key="index">
+				<v-card class="card" align-self="center" v-for="(item, index) in priorities" :key="index">
 					<v-col>
 						<v-icon size="100px" class="icons">{{icons[index]}}</v-icon>
 						<v-card-title>
@@ -23,25 +23,15 @@
 
 <script>
 export default {
+	props: ["priorities"],
 	data() {
 		return {
-			whyUsData: [],
 			icons: [
 				"mdi-school",
 				"mdi-google-circles-communities",
 				"mdi-chart-bubble"
 			]
 		};
-	},
-	methods: {
-		fetchWhyUsData() {
-			this.$axios.get("/priorities").then(Response => {
-				this.whyUsData = Response.data;
-			});
-		}
-	},
-	mounted() {
-		this.fetchWhyUsData();
 	}
 };
 </script>
