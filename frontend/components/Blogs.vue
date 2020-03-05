@@ -6,7 +6,7 @@
 		<v-row no-gutters>
 			<v-col class="description-col" align-self="center">
 				<h1 class="headline mb-1">
-					#{{ article.id }}
+					<current-blog-number> #{{ article.id }} </current-blog-number>
 					{{ article.title }}
 				</h1>
 				<p class="description-txt">{{ article.excerpt }}</p>
