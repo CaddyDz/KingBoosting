@@ -6,7 +6,7 @@
 				<div>
 					<v-dialog v-model="dialog" width="500">
 						<template v-slot:activator="{ on }">
-							<v-icon color="white darken-2" size="150" v-on="on" light>mdi-play-circle-outline</v-icon>
+							<v-icon color="white darken-2" size="650%" v-on="on" light>mdi-play-circle-outline</v-icon>
 						</template>
 						<iframe
 							width="560"

@@ -1,7 +1,7 @@
 <template>
 	<v-container class="features-section container--fluid">
 		<div class="section-name">
-			<h1>Features</h1>
+			<h1>{{ $t('Features') }}</h1>
 		</div>
 		<v-row class>
 			<v-col md="4" class="relative-box d-flex justify-start align-end">
@@ -9,7 +9,7 @@
 			</v-col>
 			<v-col class="fix-index" md="8">
 				<v-row>
-					<v-col v-for="(feature, index) in featuresData" :key="index" cols="6">
+					<v-col v-for="(feature, index) in features" :key="index" cols="6">
 						<h2 class="feature-title">{{ feature.title }}</h2>
 						<v-row>
 							<v-col cols="2" class="d-flex justify-center align-center">
@@ -27,21 +27,11 @@
 </template>
 <script>
 export default {
+	props: ["features"],
 	data() {
 		return {
-			featuresData: [],
-			icons: ['','mdi-timer','mdi-monitor','mdi-shield-outline']
+			icons: ["", "mdi-timer", "mdi-monitor", "mdi-shield-outline"]
 		};
-	},
-	mounted() {
-		this.$axios
-			.get("/features")
-			.then(response => {
-				this.featuresData = response.data;
-			})
-			.catch(errors => {
-				console.log(errors.response.data);
-			});
 	}
 };
 </script>
@@ -87,7 +77,7 @@ export default {
 	font-weight: bold;
 	text-align: justify;
 }
-.section-name{
+.section-name {
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -109,3 +99,10 @@ export default {
 }
 </style>
 
+<i18n>
+{
+  "en": {
+    "Features": "Features"
+  }
+}
+</i18n>

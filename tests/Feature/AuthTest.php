@@ -4,7 +4,6 @@ namespace Tests\Feature;
 
 use App\User;
 use Tests\TestCase;
-use Illuminate\Support\Arr;
 use Laravel\Passport\Client;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Auth\Events\Verified;
@@ -49,7 +48,7 @@ class AuthTest extends TestCase
     {
         $user = create(User::class, [], 'make')->toArray(); // Make an in memory user data array
         // Remove verification timestamp to force verification email
-        $user = Arr::except($user, 'email_verified_at');
+        $user = array_except($user, 'email_verified_at');
         $credentials = ['password' => 'password', 'password_confirmation' => 'password'];
         $response = $this->post('/api/register', array_merge($user, $credentials));
         $response = sanitize($response);
@@ -79,8 +78,8 @@ class AuthTest extends TestCase
         $user = create(User::class, [], 'make')->toArray(); // Make an in memory user data array
         $secondUser = create(User::class, [], 'make')->toArray(); // Make an in memory user data array
         // Remove verification timestamp to force verification email
-        $user = Arr::except($user, 'email_verified_at');
-        $secondUser = Arr::except($secondUser, 'email_verified_at');
+        $user = array_except($user, 'email_verified_at');
+        $secondUser = array_except($secondUser, 'email_verified_at');
         $credentials = ['password' => 'password', 'password_confirmation' => 'password'];
         $secondCredentials = ['password' => 'password', 'password_confirmation' => 'password'];
         $token = $this->post('/api/register', array_merge($user, $credentials));
@@ -111,7 +110,7 @@ class AuthTest extends TestCase
     {
         $user = create(User::class, [], 'make')->toArray(); // Make an in memory user data array
         // Remove verification timestamp to force verification email
-        $user = Arr::except($user, 'email_verified_at');
+        $user = array_except($user, 'email_verified_at');
         $credentials = ['password' => 'password', 'password_confirmation' => 'password'];
         $token = $this->post('/api/register', array_merge($user, $credentials));
         // Get login token
