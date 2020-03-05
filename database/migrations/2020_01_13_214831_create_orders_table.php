@@ -23,7 +23,7 @@ class CreateOrdersTable extends Migration
             $table->foreign('client_id')->references('id')->on('users');
             $table->unsignedBigInteger('booster_id')->nullable();
             $table->foreign('booster_id')->references('id')->on('users');
-            $table->enum('status', ['pending', 'progress', 'paused', 'completed', 'suspended']);
+            $table->enum('status', ['pending', 'progress', 'paused', 'completed', 'suspended'])->default('pending');
             $table->decimal('price', 5, 2);
             $table->string('purchase');
             $table->timestamps();
