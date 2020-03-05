@@ -18,24 +18,24 @@
 						v-slot:default="{ active, toggle }"
 					>
 							<nuxt-link :to="'/boosting/'+ service.slug">
-						<v-card
-							:color="active ? 'transparent' : 'transparent'"
-							:class="{active: active}"
-							height="210"
-							class="ma-4"
-							width="180"
-							@click="toggle"
-							outlined
-							:ripple="false"
-							hover
-						>
-							<v-row>
-								<img :src="service.image" :alt="service.name" />
-								<v-card-text>
-									<p class="font-weight-bold caption text-center">{{ service.name }}</p>
-								</v-card-text>
-							</v-row>
-						</v-card>
+								<v-card
+									:color="active ? 'transparent' : 'transparent'"
+									:class="{active: active}"
+									height="210"
+									class="ma-4"
+									width="180"
+									@click="toggle();emitSlideChange(service.slug);"
+									outlined
+									:ripple="false"
+									hover
+								>
+									<v-row>
+										<img :src="'/'+service.image" :alt="service.name" />
+										<v-card-text>
+											<p class="font-weight-bold caption text-center">{{ service.name }}</p>
+										</v-card-text>
+									</v-row>
+								</v-card>
 							</nuxt-link>
 					</v-slide-item>
 				</v-slide-group>
@@ -60,12 +60,14 @@ export default {
 	},
 	methods: {
 		visit(slug) {
-			// window.location = "/boosting/" + slug;
 			this.$router.push("/boosting/" + slug);
 		},
 		async getAllServices() {
 			const services = await this.$axios.$get("/services");
 			this.services = services;
+		},
+		emitSlideChange(e){
+			this.$emit("slideChange" , e);
 		}
 	},
 	created() {

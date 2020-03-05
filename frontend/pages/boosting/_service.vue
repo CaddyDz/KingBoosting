@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1> #{{service}}</h1>
+    <h1> #{{slug}}</h1>
     <stepper />
   </div>
 </template>
@@ -8,16 +8,9 @@
 <script>
 import Stepper from '~/components/Stepper' 
 export default {
+    props:["slug"],
     components:{
         Stepper
-    },
-    data(){
-      return {
-        service: ""
-      }
-    },
-    mounted(){
-      this.service = this.$attrs.service
     }
 }
 </script>

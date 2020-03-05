@@ -1,16 +1,14 @@
 <template>
     <div>
-        <services-slider :service="service"/>
+        <services-slider :service="service" @slideChange="slug = $event"/>
         <v-container>
-            <nuxt-child :service="service"></nuxt-child>
+            <nuxt-child :slug="slug"></nuxt-child>
         </v-container>
     </div>
 </template>
 
 
 <script>
-import ServicesSlider from '~/components/ServicesSlider.vue'
-import Stepper from '~/components/Stepper'
 
 export default {
     data () {
@@ -19,18 +17,18 @@ export default {
             service: {},
         }
     },
-    components:{
-        // Stepper,
-        ServicesSlider
-    },
     methods: {
 		async getService() {
-			const service = await this.$axios.$get(`/services${this.slug}`);
-			this.service = service;
+			this.$axios.get(`/services/${this.slug}`).then(Response => {
+                this.service = Response;
+            })
+            .catch(error =>{
+                console.log(error)
+            })
 		}
 	},
     mounted(){
-        this.slug = location.pathname;
+        this.slug = this.$route.params.service;
         this.getService();
     }
 }
