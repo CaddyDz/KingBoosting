@@ -9,6 +9,7 @@
 <script>
 export default {
 	props: ["services"],
+
 	methods: {
 		applyStyles() {
 			// Radius is usually half the width of the container
