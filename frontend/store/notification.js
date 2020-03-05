@@ -1,16 +1,16 @@
 export const state = () => ({
-  isNotificationOpen: false,
-  notificationText: "",
-  notificationMode: 'info',
+  isOpen: false,
+  text: "",
+  mode: 'info',
 })
 
 export const mutations = {
-  openNotification(state, payload) {
-    state.isNotificationOpen = true;
-    state.notificationText = payload.text;
-    state.notificationMode = payload.mode;
+  open(state, payload) {
+    state.isOpen = true;
+    state.text = payload.text;
+    state.mode = payload.mode;
   },
-  closeNotification(state) {
-    state.isNotificationOpen = false;
+  close(state) {
+    state.isOpen = false;
   },
 }

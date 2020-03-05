@@ -10,17 +10,17 @@ export default {
 	computed: {
 		snackbar: {
 			get() {
-				return this.$store.state.isNotificationOpen;
+				return this.$store.state.notification.isOpen;
 			},
 			set() {
-				this.$store.commit("closeNotification");
+				this.$store.commit("notification/close");
 			}
 		},
 		text() {
-			return this.$store.state.notificationText;
+			return this.$store.state.notification.text;
 		},
 		mode() {
-			return this.$store.state.notificationMode;
+			return this.$store.state.notification.mode;
 		}
 	}
 };

@@ -37,7 +37,7 @@ class LoginController extends Controller
             'grant_type' => 'password',
             'client_id' => '2',
             'client_secret' => config('passport.client_secret'),
-            'scope' => '',
+            'scope' => '*',
         ]);
     }
 
@@ -116,7 +116,7 @@ class LoginController extends Controller
      */
     protected function credentials(Request $request)
     {
-        return $request->only('email', 'password', 'grant_type', 'client_id', 'client_secret', 'scope');
+        return $request->only('username', 'password', 'grant_type', 'client_id', 'client_secret', 'scope');
     }
 
     /**

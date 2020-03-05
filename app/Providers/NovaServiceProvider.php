@@ -22,7 +22,6 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
      */
     public function boot()
     {
-        Nova::script('menuFix', __DIR__ . '/../../resources/js/fixMenu.js');
         Nova::serving(function (ServingNova $event) {
             Nova::style('blueflix', __DIR__ . '/../../resources/css/theme.css');
         });

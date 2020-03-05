@@ -30,7 +30,7 @@ class RoutesTest extends TestCase
     public function test_method_not_allowed_exception_handler()
     {
         $this->withExceptionHandling();
-        $response = $this->post('/api');
+        $response = $this->post('/api/servers');
         $response->assertStatus(400);
         $response->assertJsonStructure([
             'status'
