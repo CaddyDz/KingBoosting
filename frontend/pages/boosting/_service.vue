@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1> #{{slug}}</h1>
+    <h1> #{{slug.name}}</h1>
     <stepper />
   </div>
 </template>
