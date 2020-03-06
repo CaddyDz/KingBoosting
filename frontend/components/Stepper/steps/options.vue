@@ -18,7 +18,7 @@
                         <h5>Approximate completion time: 1-2 days</h5>
                         <v-col class="input" md="8">
                             <v-text-field
-                                label="Outlined"
+                                label="Discount Code"
                                 outlined
                                 clearable
                                 dark
