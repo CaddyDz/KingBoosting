@@ -82,7 +82,7 @@ export default {
 h1 current-blog-number {
 	font-size: 4rem;
 	font-weight: bold;
-	background: -webkit-linear-gradient(#673ab7, #9c27b0);
+	background: -webkit-linear-gradient(#bfb9ca, #9c27b0);
 	background-clip: text;
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;

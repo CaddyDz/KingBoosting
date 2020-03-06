@@ -11,8 +11,16 @@
             <services-slider :service="service" @slideChange="slideChange($event)"/>
         </div>
         <v-container>
-            <nuxt-child :slug="service"></nuxt-child>
+            <v-row>
+                <v-col md="8">
+                    <nuxt-child :slug="service"></nuxt-child>
+                </v-col>
+                <v-col md="4">
+                    <h1>hello</h1>
+                </v-col>
+            </v-row>
         </v-container>
+        <how-to-buy />
     </div>
 </template>
 
