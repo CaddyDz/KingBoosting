@@ -12,6 +12,7 @@ class OrdersTableSeeder extends Seeder
      */
     public function run()
     {
+        Order::flushEventListeners();
         factory(Order::class, 2000)->create();
     }
 }
