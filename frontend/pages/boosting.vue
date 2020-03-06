@@ -15,12 +15,10 @@
                 <v-col md="8">
                     <nuxt-child :slug="service"></nuxt-child>
                 </v-col>
-                <v-col md="4">
-                    <h1>hello</h1>
-                </v-col>
+                <v-col md="4"></v-col>
             </v-row>
         </v-container>
-        <how-to-buy />
+        
     </div>
 </template>
 

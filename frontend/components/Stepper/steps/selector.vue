@@ -8,7 +8,7 @@
             <v-container>
                 <v-row align="center" justify="center">
                     <v-col md="3">
-                        <img src="/img/blogPosts/Mistakes-blog.jpg" alt="tier.name" loading="lazy" width="200" />
+                        <img src="/img/divisions/diamond/II.webp" alt="tier.name" loading="lazy" width="200" />
                     </v-col>
                     <v-col md="9" class="have-selectors">
                     <v-container>

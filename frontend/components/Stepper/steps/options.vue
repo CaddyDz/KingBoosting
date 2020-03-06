@@ -8,14 +8,36 @@
             <v-container class="container">
                 <v-row>
                     <v-col class="left-col">
-                        <v-checkbox v-model="checkbox1" label="Specific champions at +20% cost"></v-checkbox>
-                        <v-checkbox v-model="checkbox2" label="Priority order (2x speed) at +25% cost"></v-checkbox>
-                        <v-checkbox v-model="checkbox3" label="With Streaming +15% cost"></v-checkbox>
+                         <div class="align-center-to-left" v-for="item in checkBox" :key="item.index">
+                            <v-checkbox :v-model="item.checkbox"></v-checkbox>
+                            <v-icon color="#673ab7">{{item.icon}}</v-icon>
+                            <p>{{item.title}}</p>
+                        </div>
                     </v-col>
                     <v-col class="right-col">
-                        <h5>yak</h5>
+                        <h5>Approximate completion time: 1-2 days</h5>
+                        <v-col class="input" md="8">
+                            <v-text-field
+                                label="Outlined"
+                                outlined
+                                clearable
+                                dark
+                                append-icon="mdi-check"
+                            ></v-text-field>
+                        </v-col>
                     </v-col>
                 </v-row>
+                <div>
+                </div>
+            </v-container>
+        </v-card>
+        <v-card class="boost-me-card">
+            <v-container class="boost-me">
+                <div class="align-center">
+                    <v-icon size="50">mdi-currency-eur</v-icon>
+                    <h2>61.90 ($68.86)</h2>
+                </div>
+                <v-btn class="ma-2" outlined><v-icon left >mdi-shopping-outline</v-icon> Boost Me</v-btn>
             </v-container>
         </v-card>
     </div>
@@ -26,9 +48,24 @@ export default {
     props: ["step"],
     data(){
         return {
-            checkbox1: false,
-            checkbox2: false,
-            checkbox3: false
+            checkBox:[
+                {
+                    checkbox: false,
+                    icon:"mdi-account-supervisor",
+                    title: "Specific champions at +20% cost"
+                },
+                {
+                    checkbox: false,
+                    icon:"mdi-flash",
+                    title:"Priority order (2x speed) at +25% cost"
+                },
+                {
+                    checkbox: false,
+                    icon:"mdi-camcorder",
+                    title: "With Streaming +15% cost"
+                }
+
+            ]
         }
     }
 }
@@ -40,7 +77,53 @@ export default {
         flex-direction: column;
         justify-content: center;
     }
-    .right-col{}
+
+    .align-center{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .align-center-to-left{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+
+    }
+    
+    .boost-me-card{
+        background: linear-gradient(to right ,#673ab7, #9c27b0);
+    }
+
+    p{
+        margin-bottom: 0;
+        margin-left: 10px;
+    }
+
+    h5{
+        margin-bottom: 0;
+        margin-right: 15px;
+    }
+
+    h2{
+        margin: 0;
+    }
+
+    .boost-me{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        flex: 1;
+    }
+
+    .right-col{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
 
     .title{
         display: flex;
