@@ -2,7 +2,7 @@
 	<v-layout column>
 		<v-container fluid class="welcome">
 			<v-row align="center" justify="center">
-				<v-img src="/img/header_logo.png" max-width="100%"></v-img>
+				<logo-component></logo-component>
 			</v-row>
 			<slogan-component></slogan-component>
 			<v-row align="center" justify="center">
