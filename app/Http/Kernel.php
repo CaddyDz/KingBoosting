@@ -42,7 +42,6 @@ class Kernel extends HttpKernel
 
         'api' => [
             \Fruitcake\Cors\HandleCors::class,
-
             'accept.json',
             'throttle:600,1',
             'bindings',
@@ -58,7 +57,6 @@ class Kernel extends HttpKernel
      */
     protected $routeMiddleware = [
         \Fruitcake\Cors\HandleCors::class,
-
         'accept.json' => \App\Http\Middleware\API::class,
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
@@ -82,7 +80,6 @@ class Kernel extends HttpKernel
      */
     protected $middlewarePriority = [
         \Fruitcake\Cors\HandleCors::class,
-
         \Illuminate\Session\Middleware\StartSession::class,
         \Illuminate\View\Middleware\ShareErrorsFromSession::class,
         \App\Http\Middleware\Authenticate::class,
