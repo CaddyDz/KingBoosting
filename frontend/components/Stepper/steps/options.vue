@@ -63,6 +63,12 @@ export default {
 				}
 			]
 		};
+	},
+	methods:{
+		checkBoxChangeSteteHandler(e){
+			this.checkBox[e.id].checkbox = !this.checkBox[e.id].checkbox;
+			console.log(JSON.stringify(this.checkBox[e.id])); 
+		}
 	}
 };
 </script>
