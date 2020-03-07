@@ -8,8 +8,6 @@
 
 <script>
 export default {
-	props: ["services"],
-
 	methods: {
 		applyStyles() {
 			// Radius is usually half the width of the container
@@ -31,6 +29,11 @@ export default {
 				field.style.top = y + "px";
 				angle += step;
 			}
+		}
+	},
+	computed: {
+		services() {
+			return this.$store.state.services.services;
 		}
 	},
 	mounted() {

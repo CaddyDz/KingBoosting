@@ -15,7 +15,7 @@
 				<video-section></video-section>
 			</v-row>
 		</v-container>
-		<services-circle :services="services" />
+		<services-circle />
 		<features :features="features" />
 		<customer-voice />
 		<how-to-buy />
@@ -56,6 +56,11 @@ export default {
 		HowToBuy,
 		WhyUs,
 		Blogs
+	},
+	created() {
+		this.$store.commit("services/populate", {
+			services: this.services
+		});
 	}
 };
 </script>
