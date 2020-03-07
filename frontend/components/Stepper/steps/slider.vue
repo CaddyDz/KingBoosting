@@ -10,7 +10,6 @@
                     v-model="slider"
                     thumb-label="always"
                     max="10"
-                    
                 ></v-slider>
                 <v-radio-group class="radio-group" v-model="row" dark mandatory row>
                     <v-radio label="Solo/Duo" value="Solo/Duo"></v-radio>
@@ -29,7 +28,8 @@ export default {
             items: ['Foo', 'Bar', 'Fizz', 'Buzz'],
             hasDivisions:true,
             slider:4,
-            radios: "Solo/Duo"
+            radios: "Solo/Duo",
+            row:""
         }
     }
 }

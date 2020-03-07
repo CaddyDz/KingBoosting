@@ -13,7 +13,9 @@
         <v-container>
             <v-row>
                 <v-col md="8">
-                    <stepper :service="service"/>
+                    <nuxt-child :service="service">
+                      <!-- <stepper /> -->
+                    </nuxt-child>
                 </v-col>
                 <v-col md="4"></v-col>
             </v-row>
@@ -29,7 +31,7 @@ import Stepper from '~/components/Stepper'
 
 export default {
     components:{
-        Stepper
+        // Stepper
     },
     data () {
         return {
@@ -39,7 +41,7 @@ export default {
     },
     methods: {
         slideChange(e){
-            this.slug = e;
+            this.slug = '/'+e;
             this.getService();
         },
 		async getService() {
