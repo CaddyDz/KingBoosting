@@ -10,8 +10,8 @@
 			<v-container class="container">
 				<v-row>
 					<v-col class="left-col">
-						<div class="align-center-to-left" v-for="item in checkBox" :key="item.index">
-							<v-checkbox :v-model="item.checkbox"></v-checkbox>
+						<div class="align-center-to-left" v-for="item in checkBox" :key="item.id">
+							<v-checkbox :v-model="item.checkbox" @change="checkBoxChangeSteteHandler(item.id)"></v-checkbox>
 							<v-icon color="#673ab7">{{ item.icon }}</v-icon>
 							<p>{{ item.title }}</p>
 						</div>
@@ -19,7 +19,7 @@
 					<v-col class="right-col">
 						<h5>Approximate completion time: 1-2 days</h5>
 						<v-col class="input" md="8">
-							<v-text-field label="Discount Code" outlined clearable dark append-icon="mdi-check"></v-text-field>
+							<v-text-field label="Discount Code" :value="discountCode" @change="inputCodeChangeHandler($event)" outlined clearable dark append-icon="mdi-check"></v-text-field>
 						</v-col>
 					</v-col>
 				</v-row>
@@ -32,7 +32,7 @@
 					<v-icon size="50">mdi-currency-eur</v-icon>
 					<h2>61.90 ($68.86)</h2>
 				</div>
-				<v-btn class="ma-2" outlined>
+				<v-btn class="ma-2" outlined @click="order()">
 					<v-icon left>mdi-shopping-outline</v-icon>Boost Me
 				</v-btn>
 			</v-container>
@@ -40,23 +40,27 @@
 	</div>
 </template>
 
-<script>
+<script> 
 export default {
 	props: ["step"],
 	data() {
 		return {
+			discountCode: "",
 			checkBox: [
 				{
+					id:0,
 					checkbox: false,
 					icon: "mdi-account-supervisor",
 					title: "Specific champions at +20% cost"
 				},
 				{
+					id:1,
 					checkbox: false,
 					icon: "mdi-flash",
 					title: "Priority order (2x speed) at +25% cost"
 				},
 				{
+					id:2,
 					checkbox: false,
 					icon: "mdi-camcorder",
 					title: "With Streaming +15% cost"
@@ -65,9 +69,22 @@ export default {
 		};
 	},
 	methods:{
+		commitToStore(c){
+			this.$store.commit("boosting_order/setOptions",c)
+		},
 		checkBoxChangeSteteHandler(e){
-			this.checkBox[e.id].checkbox = !this.checkBox[e.id].checkbox;
-			console.log(JSON.stringify(this.checkBox[e.id])); 
+			this.checkBox[e].checkbox = !this.checkBox[e].checkbox;
+		},
+		inputCodeChangeHandler(e){
+			this.discountCode = e;
+		},
+		order(){
+			this.commitToStore({
+				specificChampions: this.checkBox[0].checkbox,
+				priorityOrder: this.checkBox[1].checkbox,
+				streaming: this.checkBox[2].checkbox,
+				discountCode: this.discountCode
+			});
 		}
 	}
 };

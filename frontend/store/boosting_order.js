@@ -13,7 +13,7 @@ export const state = () => ({
             specificChampions: false,
             priorityOrder: false,
             streaming: false,
-            discountCode: ""
+            discountCode: null
         }
     }
   })
