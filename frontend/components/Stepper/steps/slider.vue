@@ -7,12 +7,12 @@
         <v-card raised class="mb-4" >
             <v-container class="container">
                 <v-slider
-                    v-model="slider"
+                    v-model="winsCounter"
                     thumb-label="always"
                     max="10"
-                    @end="sliderChangeHandler({value:$event})"
+                    @end="winsHandler($event)"
                 ></v-slider>
-                <v-radio-group class="radio-group" v-model="row" dark mandatory row>
+                <v-radio-group @change="radioHandler($event)" class="radio-group" v-model="row" dark mandatory row >
                     <v-radio label="Solo/Duo" value="Solo/Duo"></v-radio>
                     <v-radio label="Flex 5v5" value="Flex"></v-radio>
                 </v-radio-group>
@@ -28,17 +28,29 @@ export default {
         return {
             items: ['Foo', 'Bar', 'Fizz', 'Buzz'],
             hasDivisions:true,
-            slider:4,
+            winsCounter:4,
             radios: "Solo/Duo",
-            row:"",
-            sliderValue: 4
+            row:""
         }
     },
     methods:{
-        sliderChangeHandler(e){
-            // TODO: change it to write to the store
-            this.sliderValue = e.value;
+        commitToStore(c){
+            this.$store.commit("boosting_order/setSlider",c)
+        },
+        winsHandler(e){
+            this.winsCounter = e;
+            this.sliderChangeHandler();
+        },
+        radioHandler(e){
+            this.radios = e;
+            this.sliderChangeHandler();
+        },
+        sliderChangeHandler(){
+            this.commitToStore({wins:this.winsCounter , radio: this.radios})
         }
+    },
+    mounted(){
+        this.commitToStore({wins:this.winsCounter , radio: this.radios})
     }
 }
 </script>
