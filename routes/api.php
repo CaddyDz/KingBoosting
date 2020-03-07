@@ -39,6 +39,9 @@ Route::get('/getBoostersNames', 'BoostersController@getBoostersNames');
 Route::get('/blog/first', 'ArticlesController@getFirstArticle');
 Route::get('/blog/count', 'ArticlesController@getArticlesCount');
 Route::get('/blog/{article}', 'ArticlesController@show')->name('article');
+Route::middleware(['auth:api'])->group(function () {
+    Route::post('/orders', 'OrdersController@store');
+});
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return auth()->user();
 });

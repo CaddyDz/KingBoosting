@@ -15,8 +15,6 @@ class CreateWinBoostingsTable extends Migration
     {
         Schema::create('win_boostings', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('type_id')->nullable();
-            $table->foreign('type_id')->references('id')->on('service_types')->onDelete('cascade');
             $table->unsignedBigInteger('tier_id');
             $table->foreign('tier_id')->references('id')->on('tiers')->onDelete('cascade');
             $table->unsignedTinyInteger('wins');

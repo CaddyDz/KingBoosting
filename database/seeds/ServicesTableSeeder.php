@@ -25,7 +25,7 @@ class ServicesTableSeeder extends Seeder
                 'Popular',
                 'Regular Boosting makes it possible to buy a guaranteed number of wins of your choice. We created regular boosting to be fast and easy, providing an efficient but high-quality service.',
                 null,
-                1,
+                [1 => 'Ranked Win Boosting'],
             ],
             [
                 'League Boosting',
@@ -34,7 +34,7 @@ class ServicesTableSeeder extends Seeder
                 null,
                 'League boosting allow the customer to purchase guaranteed tier and division boosts. We designed league boosting to be the fastest option but at the same time providing high-quality service.',
                 null,
-                2,
+                [2 => 'League Division Boosting'],
             ],
             [
                 'LOR Boosting',
@@ -43,7 +43,7 @@ class ServicesTableSeeder extends Seeder
                 'New',
                 null,
                 null,
-                2,
+                [2 => 'LOR Division Boosting'],
             ],
             [
                 'Duo Queue Boosting',
@@ -52,7 +52,7 @@ class ServicesTableSeeder extends Seeder
                 null,
                 'This type of ELO boost makes it possible for the client to stay active playing LoL.By purchasing it, we provide a professional ELO booster who will play duo queue ranked games with the customer.',
                 null,
-                [2 => 'DuoQueue Division Boosting', 3, 1]
+                [2 => 'DuoQueue Division Boosting', 3 => 'DuoQueue Game Boosting', 1 => 'DuoQueue Win Boosting']
             ],
             [
                 'Buy lol smurf account',
@@ -61,7 +61,7 @@ class ServicesTableSeeder extends Seeder
                 null,
                 'Below, you can browse from different types of unranked smurf accounts. Select the one that meets your needs, and by completing your payment, you receive the account\'s log in details.',
                 2,
-                4,
+                [4 => 'LOL smurf account selling'],
             ],
             [
                 'Account market',
@@ -70,7 +70,7 @@ class ServicesTableSeeder extends Seeder
                 null,
                 'LoL accounts on sale. In this menu you can choose to buy different types of League of Legends accounts.',
                 3,
-                4,
+                [4 => 'Market Account Selling'],
             ],
             [
                 'TFT Boosting',
@@ -79,7 +79,7 @@ class ServicesTableSeeder extends Seeder
                 null,
                 null,
                 null,
-                [2, 1, 5],
+                [2 => 'TFT Division Boosting', 1 => 'TFT Win Boosting', 5 => 'TFT Placement Matches'],
             ],
             [
                 'Champion Mastery',
@@ -88,7 +88,7 @@ class ServicesTableSeeder extends Seeder
                 null,
                 'Champion mastery boost makes it possible to reach tier 7 with each champion you desire. All you have to do is to choose the champion and we will do the rest.',
                 null,
-                6,
+                [6 => 'Mastery Champion Boosting'],
             ],
             [
                 'Placement matches',
@@ -97,7 +97,7 @@ class ServicesTableSeeder extends Seeder
                 null,
                 'Placement matches are here to give you the perfect start. By choosing the division where you finished last season and the number of wins you want us to complete, we can give you some serious results to start with.',
                 null,
-                5,
+                [5 => 'Placement Matches'],
             ],
             [
                 'Clash Boosting',
@@ -106,7 +106,7 @@ class ServicesTableSeeder extends Seeder
                 'New',
                 null,
                 null,
-                8,
+                [8 => 'Clash Boosting'],
             ],
             [
                 'Promotion boosting',
@@ -115,7 +115,7 @@ class ServicesTableSeeder extends Seeder
                 null,
                 'If you are only one step away from your desired rank, Promotion boosting makes sure that your long-awaited promotion is in good hands.',
                 null,
-                9,
+                [9 => 'Promotion Boosting'],
             ],
             [
                 'Account leveling',
@@ -124,7 +124,7 @@ class ServicesTableSeeder extends Seeder
                 null,
                 'Account leveling service makes it possible to reach the LoL level you desire.',
                 null,
-                7,
+                [7 => 'Account Leveling'],
             ],
             [
                 'Normal matches',
@@ -133,7 +133,7 @@ class ServicesTableSeeder extends Seeder
                 null,
                 'Normal matches boosts allow you to purchase progress in the normal game mode. You can choose from normal games or normal wins, both providing fast and significant results.',
                 null,
-                [3, 1],
+                [3 => 'Normal Game Boosting', 1 => 'Normal Win Boosting'],
             ],
             [
                 'Coaching',
@@ -142,7 +142,7 @@ class ServicesTableSeeder extends Seeder
                 null,
                 null,
                 null,
-                10,
+                [10 => 'Coaching'],
             ]
         ];
         foreach ($services as $service) {
@@ -157,13 +157,10 @@ class ServicesTableSeeder extends Seeder
                 'bg_img' => '/img/services/' . sluggify($service[0]) . '-top-bg.png',
             ]);
             if (is_array($service[6])) {
-                info('it is an array');
                 foreach ($service[6] as $key => $value) {
-                    info($value);
                     $serviceModel->types()->attach($key, ['name' => $value ?? $service[0]]);
                 }
             } else {
-                info('it is not an array');
                 $serviceModel->types()->attach($service[6]);
             }
         }

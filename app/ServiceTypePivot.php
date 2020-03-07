@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Relations\Pivot;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class ServiceTypePivot extends Pivot
 {
@@ -19,5 +20,15 @@ class ServiceTypePivot extends Pivot
     public function orders(): HasMany
     {
         return $this->hasMany(Order::class);
+    }
+
+    public function service(): BelongsTo
+    {
+        return $this->belongsTo(Service::class);
+    }
+
+    public function type(): BelongsTo
+    {
+        return $this->belongsTo(ServiceType::class, 'service_type_id');
     }
 }
