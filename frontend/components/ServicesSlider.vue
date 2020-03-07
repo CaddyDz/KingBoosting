@@ -17,7 +17,7 @@
 						:key="index + 4"
 						v-slot:default="{ active, toggle }"
 					>
-							<nuxt-link :to="'/boosting/'+ service.slug">
+							<nuxt-link :to="'/'+service.slug">
 								<v-card
 									:color="active ? 'transparent' : 'transparent'"
 									:class="{active: active}"
@@ -67,6 +67,7 @@ export default {
 			this.services = services;
 		},
 		emitSlideChange(e){
+			console.log(`slide change to ${e}`)
 			this.$emit("slideChange" , e);
 		}
 	},
