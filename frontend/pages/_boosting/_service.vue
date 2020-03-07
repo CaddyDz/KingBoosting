@@ -13,7 +13,7 @@
         <v-container>
             <v-row>
                 <v-col md="8">
-                    <nuxt-child :slug="service"></nuxt-child>
+                    <stepper :service="service"/>
                 </v-col>
                 <v-col md="4"></v-col>
             </v-row>
@@ -23,9 +23,14 @@
 </template>
 
 
+
 <script>
+import Stepper from '~/components/Stepper'
 
 export default {
+    components:{
+        Stepper
+    },
     data () {
         return {
             slug:"",
@@ -39,7 +44,7 @@ export default {
         },
 		async getService() {
             // console.log(`i will call with ${this.slug}`)
-			this.$axios.get(`/services/${this.slug}`).then(Response => {
+			this.$axios.get(`/services${this.slug}`).then(Response => {
                 this.service = Response.data;
             })
             .catch(error =>{
@@ -48,12 +53,12 @@ export default {
 		}
 	},
     mounted(){
-        this.slug = this.$route.params.service;
+        this.slug = this.$route.path;
         this.getService();
     }
 }
 </script>
 
-<style scoped>
-    .slider{}
+<style>
+
 </style>
