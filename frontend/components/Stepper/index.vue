@@ -10,6 +10,7 @@
 <script>
 
 export default {
+    props:["service"],
     data:() => {
         return {
             steps:[
