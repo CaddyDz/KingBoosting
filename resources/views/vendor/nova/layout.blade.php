@@ -9,9 +9,8 @@
     <title>{{ \Laravel\Nova\Nova::name() }}</title>
 
     <!-- Fonts -->
-    {{-- <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,800,800i,900,900i"
-        rel="stylesheet"> --}}
-    <link rel="stylesheet" href="/nunito.css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,800,800i,900,900i"
+        rel="stylesheet">
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ mix('app.css', 'vendor/nova') }}">
