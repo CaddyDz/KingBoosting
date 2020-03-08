@@ -4,8 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0e97d5331974fcf6237241c159fc1a26",
-    "content-hash": "0a1b121fb09140b41101282e7840c982",
+    "content-hash": "f89e5c82d6fb67b02fc986246284b4b8",
     "packages": [
         {
             "name": "anaseqal/nova-sidebar-icons",
@@ -1384,6 +1383,49 @@
                 "url"
             ],
             "time": "2019-07-01T23:21:34+00:00"
+        },
+        {
+            "name": "inspheric/nova-defaultable",
+            "version": "v1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/inspheric/nova-defaultable-fields.git",
+                "reference": "e1d9efbcab0b94d983f81d5f10f217551fcfad25"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/inspheric/nova-defaultable-fields/zipball/e1d9efbcab0b94d983f81d5f10f217551fcfad25",
+                "reference": "e1d9efbcab0b94d983f81d5f10f217551fcfad25",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Inspheric\\NovaDefaultable\\DefaultableServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Inspheric\\NovaDefaultable\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Default values for Nova fields when creating resources.",
+            "keywords": [
+                "default",
+                "field",
+                "laravel",
+                "nova"
+            ],
+            "time": "2019-05-29T15:38:50+00:00"
         },
         {
             "name": "jakub-onderka/php-console-color",
