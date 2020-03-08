@@ -19,7 +19,7 @@
                                 label="Current tier"
                                 dense
                                 solo
-                                v-model="tiers[3]"
+                                v-model="leagueConfig.tier"
                                 @change="selectChangeHandler({target:'tier' , value:$event})"
                                 ></v-select>
                             </v-col>
@@ -29,7 +29,7 @@
                                 label="Current division"
                                 dense
                                 solo
-                                v-model="divisions[3]"
+                                v-model="leagueConfig.division"
                                 @change="selectChangeHandler({target:'division' , value:$event})"
                                 ></v-select>
                             </v-col>
@@ -39,7 +39,7 @@
                             label="Select your server"
                             dense
                             solo
-                            v-model="servers[3]"
+                            v-model="leagueConfig.server"
                             @change="selectChangeHandler({target:'server' , value:$event})"
                         ></v-select>
                     </v-container>
@@ -60,17 +60,23 @@ export default {
             servers: ["North America" ,"EU-West" ,"EU-Nordic & East" ,"Turkey","Russia","Brazil","Latin America North" ,"Latin America South","Oceania","Korea","PBE"],
             hasDivisions:true,
             leagueConfig :{
-                tier: "",
-                division :"",
-                server:""
+                tier: "Platinum",
+                division :"Division II",
+                server:"EU-West"
             }
         }
     },
     methods:{
+        commitToStore(c){
+            this.$store.commit("boosting_order/setSelector",c);
+        },
         selectChangeHandler(e){
-            // TODO: change it to write to the store
-            this.leagueConfig[e.target] = e.value ;
+            this.leagueConfig[e.target] = e.value;
+            this.commitToStore(this.leagueConfig);
         }
+    },
+    mounted(){
+        this.commitToStore(this.leagueConfig);
     }
 }
 </script>
