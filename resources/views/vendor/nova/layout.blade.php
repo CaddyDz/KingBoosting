@@ -63,6 +63,7 @@
                     <dropdown class="ml-auto h-9 flex items-center dropdown-right">
                         @include('nova::partials.user')
                     </dropdown>
+                    @include('nova_notification_feed::notification_feed')
                 </div>
 
                 <div data-testid="content" class="px-view py-view mx-auto">
