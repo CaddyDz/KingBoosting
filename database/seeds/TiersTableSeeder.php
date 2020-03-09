@@ -19,22 +19,8 @@ class TiersTableSeeder extends Seeder
                 'divisions' => [
                     [
                         'name' => 'IV',
-                        'image' => '/img/divisions/iron/IV.webp'
-                    ],
-                    [
-                        'name' => 'III',
-                        'image' => '/img/divisions/iron/III.png'
-                    ],
-                    [
-                        'name' => 'II',
-                        'image' => '/img/divisions/iron/II.png'
-                    ],
-                    [
-                        'name' => 'I',
-                        'image' => '/img/divisions/iron/I.png'
-                    ],
-                ],
-                'wins' => [
+                        'image' => '/img/divisions/iron/IV.webp',
+                        'wins' => [
                     [
                         'wins' => 1,
                         'eta' => '0-1 day'
@@ -76,6 +62,146 @@ class TiersTableSeeder extends Seeder
                         'eta' => '1-2 days'
                     ],
                 ]
+                    ],
+                    [
+                        'name' => 'III',
+                        'image' => '/img/divisions/iron/III.png',
+                        'wins' => [
+                    [
+                        'wins' => 1,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'wins' => 2,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'wins' => 3,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'wins' => 4,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'wins' => 5,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 6,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 7,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 8,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 9,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 10,
+                        'eta' => '1-2 days'
+                    ],
+                ]
+                    ],
+                    [
+                        'name' => 'II',
+                        'image' => '/img/divisions/iron/II.png',
+                        'wins' => [
+                    [
+                        'wins' => 1,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'wins' => 2,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'wins' => 3,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'wins' => 4,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'wins' => 5,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 6,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 7,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 8,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 9,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 10,
+                        'eta' => '1-2 days'
+                    ],
+                ]
+                    ],
+                    [
+                        'name' => 'I',
+                        'image' => '/img/divisions/iron/I.png',
+                        'wins' => [
+                    [
+                        'wins' => 1,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'wins' => 2,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'wins' => 3,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'wins' => 4,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'wins' => 5,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 6,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 7,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 8,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 9,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 10,
+                        'eta' => '1-2 days'
+                    ],
+                ]
+                    ],
+                ],
             ],
             [
                 'tier' => 'Bronze',
@@ -83,22 +209,8 @@ class TiersTableSeeder extends Seeder
                 'divisions' => [
                     [
                         'name' => 'IV',
-                        'image' => '/img/divisions/bronze/IV.png'
-                    ],
-                    [
-                        'name' => 'III',
-                        'image' => '/img/divisions/bronze/III.png'
-                    ],
-                    [
-                        'name' => 'II',
-                        'image' => '/img/divisions/bronze/II.png'
-                    ],
-                    [
-                        'name' => 'I',
-                        'image' => '/img/divisions/bronze/I.png'
-                    ],
-                ],
-                'wins' => [
+                        'image' => '/img/divisions/bronze/IV.png',
+                        'wins' => [
                     [
                         'wins' => 1,
                         'eta' => '0-1 day'
@@ -140,6 +252,147 @@ class TiersTableSeeder extends Seeder
                         'eta' => '1-2 days'
                     ],
                 ]
+                    ],
+                    [
+                        'name' => 'III',
+                        'image' => '/img/divisions/bronze/III.png',
+                        'wins' => [
+                    [
+                        'wins' => 1,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'wins' => 2,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'wins' => 3,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'wins' => 4,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'wins' => 5,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 6,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 7,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 8,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 9,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 10,
+                        'eta' => '1-2 days'
+                    ],
+                ]
+                    ],
+                    [
+                        'name' => 'II',
+                        'image' => '/img/divisions/bronze/II.png',
+                        'wins' => [
+                    [
+                        'wins' => 1,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'wins' => 2,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'wins' => 3,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'wins' => 4,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'wins' => 5,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 6,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 7,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 8,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 9,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 10,
+                        'eta' => '1-2 days'
+                    ],
+                ]
+                    ],
+                    [
+                        'name' => 'I',
+                        'image' => '/img/divisions/bronze/I.png',
+                        'wins' => [
+                    [
+                        'wins' => 1,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'wins' => 2,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'wins' => 3,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'wins' => 4,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'wins' => 5,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 6,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 7,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 8,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 9,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 10,
+                        'eta' => '1-2 days'
+                    ],
+                ]
+                    ],
+                ],
+
             ],
             [
                 'tier' => 'Silver',
@@ -147,25 +400,8 @@ class TiersTableSeeder extends Seeder
                 'divisions' => [
                     [
                         'name' => 'IV',
-                        'image' => '/img/divisions/silver/IV.webp'
-                    ],
-                    [
-                        'name' => 'III',
-                        'image' => '/img/divisions/silver/III.webp',
-                        'price' => 2.9
-                    ],
-                    [
-                        'name' => 'II',
-                        'image' => '/img/divisions/silver/II.webp',
-                        'price' => 2.9
-                    ],
-                    [
-                        'name' => 'I',
-                        'image' => '/img/divisions/silver/I.webp',
-                        'price' => 3.9
-                    ],
-                ],
-                'wins' => [
+                        'image' => '/img/divisions/silver/IV.webp',
+                         'wins' => [
                     [
                         'wins' => 1,
                         'eta' => '0-1 day'
@@ -207,6 +443,150 @@ class TiersTableSeeder extends Seeder
                         'eta' => '1-2 days'
                     ],
                 ]
+                    ],
+                    [
+                        'name' => 'III',
+                        'image' => '/img/divisions/silver/III.webp',
+                        'price' => 2.9,
+                         'wins' => [
+                    [
+                        'wins' => 1,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'wins' => 2,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'wins' => 3,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'wins' => 4,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'wins' => 5,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 6,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 7,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 8,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 9,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 10,
+                        'eta' => '1-2 days'
+                    ],
+                ]
+                    ],
+                    [
+                        'name' => 'II',
+                        'image' => '/img/divisions/silver/II.webp',
+                        'price' => 2.9,
+                         'wins' => [
+                    [
+                        'wins' => 1,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'wins' => 2,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'wins' => 3,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'wins' => 4,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'wins' => 5,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 6,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 7,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 8,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 9,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 10,
+                        'eta' => '1-2 days'
+                    ],
+                ]
+                    ],
+                    [
+                        'name' => 'I',
+                        'image' => '/img/divisions/silver/I.webp',
+                        'price' => 3.9,
+                         'wins' => [
+                    [
+                        'wins' => 1,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'wins' => 2,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'wins' => 3,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'wins' => 4,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'wins' => 5,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 6,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 7,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 8,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 9,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 10,
+                        'eta' => '1-2 days'
+                    ],
+                ]
+                    ],
+                ],
+
             ],
             [
                 'tier' => 'Gold',
@@ -215,25 +595,8 @@ class TiersTableSeeder extends Seeder
                     [
                         'name' => 'IV',
                         'image' => '/img/divisions/gold/IV.webp',
-                        'price' => 3.9
-                    ],
-                    [
-                        'name' => 'III',
-                        'image' => '/img/divisions/gold/III.webp',
-                        'price' => 4.9
-                    ],
-                    [
-                        'name' => 'II',
-                        'image' => '/img/divisions/gold/II.webp',
-                        'price' => 4.9
-                    ],
-                    [
-                        'name' => 'I',
-                        'image' => '/img/divisions/gold/I.webp',
-                        'price' => 5.9
-                    ],
-                ],
-                'wins' => [
+                        'price' => 3.9,
+                         'wins' => [
                     [
                         'wins' => 1,
                         'eta' => '0-1 day'
@@ -275,6 +638,150 @@ class TiersTableSeeder extends Seeder
                         'eta' => '1-2 days'
                     ],
                 ]
+                    ],
+                    [
+                        'name' => 'III',
+                        'image' => '/img/divisions/gold/III.webp',
+                        'price' => 4.9,
+                         'wins' => [
+                    [
+                        'wins' => 1,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'wins' => 2,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'wins' => 3,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'wins' => 4,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'wins' => 5,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 6,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 7,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 8,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 9,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 10,
+                        'eta' => '1-2 days'
+                    ],
+                ]
+                    ],
+                    [
+                        'name' => 'II',
+                        'image' => '/img/divisions/gold/II.webp',
+                        'price' => 4.9,
+                         'wins' => [
+                    [
+                        'wins' => 1,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'wins' => 2,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'wins' => 3,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'wins' => 4,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'wins' => 5,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 6,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 7,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 8,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 9,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 10,
+                        'eta' => '1-2 days'
+                    ],
+                ]
+                    ],
+                    [
+                        'name' => 'I',
+                        'image' => '/img/divisions/gold/I.webp',
+                        'price' => 5.9,
+                         'wins' => [
+                    [
+                        'wins' => 1,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'wins' => 2,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'wins' => 3,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'wins' => 4,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'wins' => 5,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 6,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 7,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 8,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 9,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 10,
+                        'eta' => '1-2 days'
+                    ],
+                ]
+                    ],
+                ],
+
             ],
             [
                 'tier' => 'Platinum',
@@ -283,25 +790,8 @@ class TiersTableSeeder extends Seeder
                     [
                         'name' => 'IV',
                         'image' => '/img/divisions/platinum/IV.webp',
-                        'price' => 6.9
-                    ],
-                    [
-                        'name' => 'III',
-                        'image' => '/img/divisions/platinum/III.webp',
-                        'price' => 6.9
-                    ],
-                    [
-                        'name' => 'II',
-                        'image' => '/img/divisions/platinum/II.webp',
-                        'price' => 7.9
-                    ],
-                    [
-                        'name' => 'I',
-                        'image' => '/img/divisions/platinum/I.webp',
-                        'price' => 9.9
-                    ],
-                ],
-                'wins' => [
+                        'price' => 6.9,
+                        'wins' => [
                     [
                         'wins' => 1,
                         'eta' => '0-1 day'
@@ -343,6 +833,150 @@ class TiersTableSeeder extends Seeder
                         'eta' => '2-3 days'
                     ],
                 ]
+                    ],
+                    [
+                        'name' => 'III',
+                        'image' => '/img/divisions/platinum/III.webp',
+                        'price' => 6.9,
+                        'wins' => [
+                    [
+                        'wins' => 1,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'wins' => 2,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'wins' => 3,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 4,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 5,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 6,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 7,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 8,
+                        'eta' => '2-3 days'
+                    ],
+                    [
+                        'wins' => 9,
+                        'eta' => '2-3 days'
+                    ],
+                    [
+                        'wins' => 10,
+                        'eta' => '2-3 days'
+                    ],
+                ]
+                    ],
+                    [
+                        'name' => 'II',
+                        'image' => '/img/divisions/platinum/II.webp',
+                        'price' => 7.9,
+                        'wins' => [
+                    [
+                        'wins' => 1,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'wins' => 2,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'wins' => 3,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 4,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 5,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 6,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 7,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 8,
+                        'eta' => '2-3 days'
+                    ],
+                    [
+                        'wins' => 9,
+                        'eta' => '2-3 days'
+                    ],
+                    [
+                        'wins' => 10,
+                        'eta' => '2-3 days'
+                    ],
+                ]
+                    ],
+                    [
+                        'name' => 'I',
+                        'image' => '/img/divisions/platinum/I.webp',
+                        'price' => 9.9,
+                        'wins' => [
+                    [
+                        'wins' => 1,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'wins' => 2,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'wins' => 3,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 4,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 5,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 6,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 7,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 8,
+                        'eta' => '2-3 days'
+                    ],
+                    [
+                        'wins' => 9,
+                        'eta' => '2-3 days'
+                    ],
+                    [
+                        'wins' => 10,
+                        'eta' => '2-3 days'
+                    ],
+                ]
+                    ],
+                ],
+
             ],
             [
                 'tier' => 'Diamond',
@@ -351,25 +985,8 @@ class TiersTableSeeder extends Seeder
                     [
                         'name' => 'IV',
                         'image' => '/img/divisions/diamond/IV.webp',
-                        'price' => 12.9
-                    ],
-                    [
-                        'name' => 'III',
-                        'image' => '/img/divisions/diamond/III.webp',
-                        'price' => 16.9
-                    ],
-                    [
-                        'name' => 'II',
-                        'image' => '/img/divisions/diamond/II.webp',
-                        'price' => 21.9
-                    ],
-                    [
-                        'name' => 'I',
-                        'image' => '/img/divisions/diamond/I.webp',
-                        'price' => 22.9
-                    ],
-                ],
-                'wins' => [
+                        'price' => 12.9,
+                          'wins' => [
                     [
                         'wins' => 1,
                         'eta' => '0-1 day'
@@ -399,6 +1016,114 @@ class TiersTableSeeder extends Seeder
                         'eta' => '2-3 days'
                     ],
                 ]
+                    ],
+                    [
+                        'name' => 'III',
+                        'image' => '/img/divisions/diamond/III.webp',
+                        'price' => 16.9,
+                          'wins' => [
+                    [
+                        'wins' => 1,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'wins' => 2,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 3,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 4,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 5,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 6,
+                        'eta' => '2-3 days'
+                    ],
+                    [
+                        'wins' => 7,
+                        'eta' => '2-3 days'
+                    ],
+                ]
+                    ],
+                    [
+                        'name' => 'II',
+                        'image' => '/img/divisions/diamond/II.webp',
+                        'price' => 21.9,
+                          'wins' => [
+                    [
+                        'wins' => 1,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'wins' => 2,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 3,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 4,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 5,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 6,
+                        'eta' => '2-3 days'
+                    ],
+                    [
+                        'wins' => 7,
+                        'eta' => '2-3 days'
+                    ],
+                ]
+                    ],
+                    [
+                        'name' => 'I',
+                        'image' => '/img/divisions/diamond/I.webp',
+                        'price' => 22.9,
+                          'wins' => [
+                    [
+                        'wins' => 1,
+                        'eta' => '0-1 day'
+                    ],
+                    [
+                        'wins' => 2,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 3,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 4,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 5,
+                        'eta' => '1-2 days'
+                    ],
+                    [
+                        'wins' => 6,
+                        'eta' => '2-3 days'
+                    ],
+                    [
+                        'wins' => 7,
+                        'eta' => '2-3 days'
+                    ],
+                ]
+                    ],
+                ],
+
             ],
             [
                 'tier' => 'Master',
