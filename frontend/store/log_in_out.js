@@ -13,3 +13,12 @@ export const state = () => ({
         state.token = "";
     }
   };
+
+  export const getters = {
+    token(state){
+      return state.token;
+    },
+    isLoggedIn(state){
+      return state.isLoggedIn;
+    }
+  }
