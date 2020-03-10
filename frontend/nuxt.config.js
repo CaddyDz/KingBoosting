@@ -51,15 +51,11 @@ export default {
       }
     }
   },
-  router: {
-    middleware: 'i18n'
-  },
   /*
    ** Plugins to load before mounting the App
    */
   plugins: [
     '~plugins/globals',
-    '~plugins/i18n',
     '~plugins/storage',
     '~plugins/axios',
     {
@@ -82,9 +78,24 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
+    [
+      'nuxt-i18n',
+      {
+        /* module options */
+      }
+    ],
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv'
   ],
+  i18n: {
+    locales: ['en', 'fr', 'de', 'at', 'swiss', 'es', 'nl', 'it', 'se', 'no', 'dk'],
+    defaultLocale: 'en',
+    vueI18n: {
+      fallbackLocale: 'en'
+    },
+    vueI18nLoader: true,
+    strategy: 'no_prefix',
+  },
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
@@ -121,14 +132,6 @@ export default {
     /*
      ** You can extend webpack config here
      */
-    extend(config, ctx) {
-      // Configure i18n custom block
-      config.module.rules.push({
-        resourceQuery: /blockType=i18n/,
-        type: 'javascript/auto',
-        loader: '@kazupon/vue-i18n-loader'
-      })
-    },
     plugins: [
       // Expose lodash globally
       new webpack.ProvidePlugin({
