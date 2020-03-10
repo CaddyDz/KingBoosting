@@ -17,7 +17,8 @@
     "@nuxtjs/dotenv": "^1.4.0",
     "@nuxtjs/pwa": "^3.0.0-0",
     "nuxt": "^2.0.0",
-    "nuxt-i18n": "^6.6.0"
+    "nuxt-i18n": "^6.6.0",
+    "vuex-persist": "^2.2.0"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^2.0.0",
