@@ -7,18 +7,18 @@
 			<v-col md="2">
 				<v-menu transition="slide-y-transition" min-width="100%" open-on-hover>
 					<template v-slot:activator="{on}">
-						<a href="/boosting/regular-boosting" v-on="on" class="link">{{ $t('Boosting') }}</a>
+						<a href="/regular-boosting" v-on="on" class="link">{{ $t('Boosting') }}</a>
 					</template>
 					<v-row align="center" justify="center">
 						<v-col md="3">
-							<nuxt-link to="/boosting/regular-boosting">
+							<nuxt-link to="/regular-boosting">
 								<img src="/img/tft.png" alt />
 								<!-- Vuetify Built-in class -->
 								<p class="text-center">{{ $t('Regular Boosting') }}</p>
 							</nuxt-link>
 						</v-col>
 						<v-col md="3">
-							<nuxt-link to="/boosting/regular-boosting">
+							<nuxt-link to="/regular-boosting">
 								<img src="/img/tft.png" alt />
 								<!-- Vuetify Built-in class -->
 								<p class="text-center">{{ $t('Regular Boosting') }}</p>

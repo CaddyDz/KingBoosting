@@ -55,24 +55,27 @@ export default {
 			if (!this.$refs.form.validate()) {
 				return;
 			}
-			axios
-				.post("/login", {
-					email: this.email,
-					password: this.password
-				})
-				.then(response => {
-					this.$store.commit("openNotification", {
-						text: response.data.message,
-						mode: "success"
-					});
-					window.location = process.env.DASHBOARD_URL;
-				})
-				.catch(errors => {
-					this.$store.commit("openNotification", {
-						text: errors.response.data.errors,
-						mode: "error"
-					});
+		 this.$axios
+			.post("/login", {
+				email: this.email,
+				password: this.password
+			})
+			.then(response => {
+				this.$store.commit('log_in_out/login',{token:response.data.success.access_token})
+				this.$store.commit("notification/open", {
+					text: response.data.message,
+					mode: "success"
 				});
+				this.close();
+				// i see like no need to change the route.
+				// window.location = process.env.DASHBOARD_URL;
+			})
+			.catch(errors => {
+				this.$store.commit("openNotification", {
+					text: errors.response.data.errors,
+					mode: "error"
+				});
+			});
 		},
 		requestPasswordReset() {
 			if (!this.email) {

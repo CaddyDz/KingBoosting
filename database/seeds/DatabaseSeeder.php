@@ -29,6 +29,6 @@ class DatabaseSeeder extends Seeder
         $this->call(PrioritiesTableSeeder::class);
         $this->call(FeaturesTableSeeder::class);
         $this->call(ServersTableSeeder::class);
-        $this->call(WinBoostingsTableSeeder::class);
+        $this->call(DiscountsTableSeeder::class);
     }
 }

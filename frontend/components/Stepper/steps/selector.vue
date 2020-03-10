@@ -15,26 +15,32 @@
                         <v-row >
                             <v-col>
                                 <v-select
-                                :items="items"
-                                label="Standard"
+                                :items="tiers"
+                                label="Current tier"
                                 dense
                                 solo
+                                v-model="leagueConfig.tier"
+                                @change="selectChangeHandler({target:'tier' , value:$event})"
                                 ></v-select>
                             </v-col>
                             <v-col v-if="hasDivisions">
                                 <v-select
-                                :items="items"
-                                label="Solo field"
+                                :items="divisions"
+                                label="Current division"
                                 dense
                                 solo
+                                v-model="leagueConfig.division"
+                                @change="selectChangeHandler({target:'division' , value:$event})"
                                 ></v-select>
                             </v-col>
                         </v-row>
                         <v-select
-                            :items="items"
-                            label="Standard"
+                            :items="servers"
+                            label="Select your server"
                             dense
                             solo
+                            v-model="leagueConfig.server"
+                            @change="selectChangeHandler({target:'server' , value:$event})"
                         ></v-select>
                     </v-container>
                     </v-col>
@@ -49,41 +55,60 @@ export default {
     props: ["step"],
     data(){
         return {
-            items: ['Foo', 'Bar', 'Fizz', 'Buzz'],
-            hasDivisions:true
+            tiers: ["Iron","Bronze","Silver","Gold","Platinum","Diamond","Master","Grandmaster","Challenger"],
+            divisions: ["Division I","Division II","Division III","Division IV"],
+            servers: ["North America" ,"EU-West" ,"EU-Nordic & East" ,"Turkey","Russia","Brazil","Latin America North" ,"Latin America South","Oceania","Korea","PBE"],
+            hasDivisions:true,
+            leagueConfig :{
+                tier: "Platinum",
+                division :"Division II",
+                server:"EU-West"
+            }
         }
+    },
+    methods:{
+        commitToStore(c){
+            this.$store.commit("boosting_order/setSelector",c);
+        },
+        selectChangeHandler(e){
+            this.leagueConfig[e.target] = e.value;
+            this.commitToStore(this.leagueConfig);
+        }
+    },
+    mounted(){
+        this.commitToStore(this.leagueConfig);
     }
 }
 </script>
 
 <style scoped>
-    .have-selectors{
-        padding-right: 20px;
-        padding-left: 20px;
-    }
+.have-selectors {
+	padding-right: 20px;
+	padding-left: 20px;
+}
 
-    .title{
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        margin-bottom: 20px;
-    }
+.title {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin-bottom: 20px;
+}
 
-    .title-txt{
-        margin-left: 20px;
-    }
+.title-txt {
+	margin-left: 20px;
+}
 
-    .title .title-id{
-        color: #181818;
-    }
+.title .title-id {
+	color: #181818;
+}
 
-    .title-id{
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-    	background: linear-gradient(#673ab7, #9c27b0);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+.title-id {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	background: linear-gradient(#673ab7, #9c27b0);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
 </style>

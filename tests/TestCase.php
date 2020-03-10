@@ -3,6 +3,7 @@
 namespace Tests;
 
 use App\User;
+use Laravel\Passport\Passport;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
@@ -32,7 +33,7 @@ abstract class TestCase extends BaseTestCase
         $role->givePermissionTo(Permission::all());
         $user = $user ?: create(User::class);
         $user->assignRole($role);
-        $this->be($user);
+        Passport::actingAs($user);
         return $this;
     }
 
