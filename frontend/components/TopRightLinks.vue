@@ -10,54 +10,9 @@
 		<span>
 			<a href="/loyalty-program">{{ $t('Loyalty Program') }}</a>
 		</span>
-		<v-dialog v-model="shown" width="fit-content" hide-overlay content-class="languages">
-			<template v-slot:default>
-				<span class="language-selector" @mouseover="showLanguages">{{ $t('Language') }}</span>
-			</template>
-
-			<v-list @mouseleave="close">
-				<v-list-item v-for="(language,index) in languages" :key="index">
-					<v-list-item-icon></v-list-item-icon>
-					<v-list-item-content>
-						<v-list-item-title v-text="language"></v-list-item-title>
-					</v-list-item-content>
-				</v-list-item>
-			</v-list>
-		</v-dialog>
+		<locale-switcher></locale-switcher>
 	</div>
 </template>
-
-<script>
-export default {
-	data() {
-		return {
-			shown: false,
-			current: "gb",
-			languages: {
-				gb: "English",
-				fr: "Français",
-				de: "Deutsche",
-				at: "Deutsche",
-				swiss: "Français",
-				es: "Español",
-				nl: "Nederlands",
-				it: "Italiano",
-				se: "Svenska",
-				no: "Norsk",
-				dk: "Dansk"
-			}
-		};
-	},
-	methods: {
-		showLanguages() {
-			this.shown = true;
-		},
-		close() {
-			this.shown = false;
-		}
-	}
-};
-</script>
 
 <style scoped>
 a {
@@ -91,8 +46,12 @@ span {
 	"en": {
 		"Mobile Pay": "Mobile Pay",
 		"Contact": "Contact",
-		"Loyalty Program": "Loyalty Program",
-		"Language": "Language"
-	}
+		"Loyalty Program": "Loyalty Program"
+  },
+  "fr": {
+    "Mobile Pay": "Paiement Mobile",
+    "Contact": "Contactez Nous",
+    "Loyalty Program": "Programme d'affiliation"
+  }
 }
 </i18n>
