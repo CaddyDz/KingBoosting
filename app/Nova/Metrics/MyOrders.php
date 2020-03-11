@@ -18,7 +18,7 @@ class MyOrders extends Value
      */
     public function calculate(NovaRequest $request)
     {
-        return $this->count($request, Order::where('client_id', auth()->id()))->allowZeroResult();
+        return $this->result(Order::where('client_id', auth()->id())->count());
     }
 
     /**
