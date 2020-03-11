@@ -78,3 +78,7 @@ pre {
 .text-90-half {
     color: #fff;
 }
+
+.heroicon-ui {
+    fill: var(--primary);
+}
