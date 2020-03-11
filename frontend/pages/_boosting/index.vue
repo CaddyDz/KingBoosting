@@ -3,7 +3,7 @@
 		<div class="slider" fluid :style="{background: `url(${service.bg_img}) top/cover`}">
 			<v-row justify="center" align="center">
 				<v-col md="8" style="text-align: center;">
-					<p>{{ service.name }}</p>
+					<h1>{{ service.name }}</h1>
 					<br />
 					{{ service.description }}
 				</v-col>
@@ -60,3 +60,8 @@ export default {
 	}
 };
 </script>
+<style>
+	h1 {
+		margin-top: 20px;
+	}
+</style>
