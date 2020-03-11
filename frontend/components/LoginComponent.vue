@@ -9,7 +9,8 @@
 		>{{ $t('Members Area') }}</v-btn>
 		<v-dialog max-width="800px" v-model="dialog" v-else>
 			<template v-slot:activator="{ on }">
-				<v-btn class="ma-2" outlined color="white" v-on="on">{{ $t('Members Area') }}</v-btn>
+				<v-btn v-if="config.button" class="ma-2" outlined color="white" v-on="on">{{ $t('Members Area') }}</v-btn>
+				<v-icon v-if="!config.button" v-on="on" >mdi-login-variant</v-icon>
 			</template>
 			<v-card class="px-5" color="#303030">
 				<v-container>
@@ -29,6 +30,7 @@
 
 <script>
 export default {
+	props:["config"],
 	data() {
 		return {
 			auth: false,

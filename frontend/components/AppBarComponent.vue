@@ -5,7 +5,7 @@
 				<img src="/img/header_logo.png" alt="King Boosting" />
 			</nuxt-link>
 			<nav-links></nav-links>
-			<LoginComponent></LoginComponent>	
+			<LoginComponent :config="{button:false}"></LoginComponent>	
 		</v-container>
 	</v-app-bar>
 </template>

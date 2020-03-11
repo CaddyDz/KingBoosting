@@ -19,7 +19,7 @@
     <v-stepper-items>
       <v-stepper-content key="1-content" :step="1">
         <!-- If user is already logged in, this step should be skipped -->
-        <LoginComponent v-if="!isLoggedIn"></LoginComponent>
+        <LoginComponent :config="{button:true}" v-if="!isLoggedIn"></LoginComponent>
       </v-stepper-content>
       <v-stepper-content key="2-content" :step="2">
         <v-form v-model="valid">
