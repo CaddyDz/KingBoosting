@@ -1,11 +1,8 @@
 // This entire component is in AppBarComponent.vue
 <template>
-	<v-container fluid>
-		<v-row>
-			<!-- Necessary to finish 12 -->
-			<v-col md="2"></v-col>
-			<v-col md="2">
-				<v-menu transition="slide-y-transition" min-width="100%" open-on-hover>
+	<v-container fluid class="container">
+		<nuxt-link to="/" class="link" >
+			<v-menu transition="slide-y-transition" min-width="100%" open-on-hover>
 					<template v-slot:activator="{on}">
 						<a href="/regular-boosting" v-on="on" class="link">{{ $t('Boosting') }}</a>
 					</template>
@@ -17,29 +14,14 @@
 								<p class="text-center">{{ $t('Regular Boosting') }}</p>
 							</nuxt-link>
 						</v-col>
-						<v-col md="3">
-							<nuxt-link to="/regular-boosting">
-								<img src="/img/tft.png" alt />
-								<!-- Vuetify Built-in class -->
-								<p class="text-center">{{ $t('Regular Boosting') }}</p>
-							</nuxt-link>
-						</v-col>
 					</v-row>
 				</v-menu>
-			</v-col>
-			<v-col md="2">
-				<a href="#" :title="$t('Coaching')" class="link">{{ $t('Coaching') }}</a>
-			</v-col>
-			<v-col md="2">
-				<a href="#" :title="$t('Lol Accounts')" class="link">{{ $t('Lol Accounts') }}</a>
-			</v-col>
-			<v-col md="2">
-				<a href="#" :title="$t('Boosters')" class="link">{{ $t('Boosters') }}</a>
-			</v-col>
-			<v-col md="2">
-				<a href="#" :title="$t('More*')" class="link">{{ $t('More*') }}</a>
-			</v-col>
-		</v-row>
+		</nuxt-link>
+		<nuxt-link to="/" class="link" >{{ $t('Regular Boosting') }}</nuxt-link>
+		<nuxt-link to="/" class="link" >{{ $t('Coaching') }}</nuxt-link>
+		<nuxt-link to="/" class="link" >{{ $t('Lol Accounts') }}</nuxt-link>
+		<nuxt-link to="/" class="link" >{{ $t('Boosters') }}</nuxt-link>
+		<nuxt-link to="/" class="link" >{{ $t('More') }}</nuxt-link>
 	</v-container>
 </template>
 
@@ -56,6 +38,10 @@
 		rgba(18, 4, 17, 0) 87%
 	);
 }
+
+.container {
+	justify-content: center !important;
+}
 /* The purple underground shade */
 img:hover {
 	background-image: url("/img/service_nav_bg.png");
@@ -68,12 +54,11 @@ a {
 /* Make the text above the underground purple shade */
 p {
 	position: relative;
-	bottom: 40px;
+	/* bottom: 40px; */
 }
 /* Add underline manually to navbar links text */
 .link {
-	padding-bottom: 6px;
-	border-bottom: 3px solid currentColor;
+	margin-right: 25px;
 }
 .v-menu__content {
 	box-shadow: none !important;
