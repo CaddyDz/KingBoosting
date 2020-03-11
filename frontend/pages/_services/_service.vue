@@ -13,9 +13,7 @@
 		<v-container>
 			<v-row>
 				<v-col md="8">
-					<nuxt-child :service="service">
-						<!-- <stepper /> -->
-					</nuxt-child>
+					<stepper />
 				</v-col>
 				<v-col md="4"></v-col>
 			</v-row>
@@ -28,8 +26,9 @@
 import Stepper from "~/components/Stepper";
 
 export default {
+	name: "service",
 	components: {
-		// Stepper
+		Stepper
 	},
 	data() {
 		return {
@@ -43,14 +42,16 @@ export default {
 			this.getService();
 		},
 		getService() {
-			// console.log(`i will call with ${this.slug}`)
 			this.$axios
 				.get(`/services${this.slug}`)
 				.then(response => {
 					this.service = response.data;
 				})
 				.catch(error => {
-					console.log(error);
+					this.$store.commit("notification/open", {
+						text: this.$i18n.t("Something went wrong"),
+						mode: "error"
+					});
 				});
 		}
 	},

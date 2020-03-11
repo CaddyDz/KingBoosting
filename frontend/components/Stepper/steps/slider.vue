@@ -1,58 +1,62 @@
 <template>
-    <div>
-        <div class="title">
-            <div class="title-id"><h2> {{step.id}} </h2></div>
-            <h2 class="title-txt"> {{step.title}} </h2>
-        </div>
-        <v-card raised class="mb-4" >
-            <v-container class="container">
-                <v-slider
-                    v-model="winsCounter"
-                    thumb-label="always"
-                    max="10"
-                    @end="winsHandler($event)"
-                ></v-slider>
-                <v-radio-group @change="radioHandler($event)" class="radio-group" v-model="row" dark mandatory row >
-                    <v-radio label="Solo/Duo" value="Solo/Duo"></v-radio>
-                    <v-radio label="Flex 5v5" value="Flex"></v-radio>
-                </v-radio-group>
-            </v-container>
-        </v-card>
-    </div>
+	<div>
+		<div class="title">
+			<div class="title-id">
+				<h2>{{step.id}}</h2>
+			</div>
+			<h2 class="title-txt">{{step.title}}</h2>
+		</div>
+		<v-card raised class="mb-4">
+			<v-container class="container">
+				<v-slider v-model="winsCounter" thumb-label="always" max="10" @end="winsHandler($event)"></v-slider>
+				<v-radio-group
+					@change="radioHandler($event)"
+					class="radio-group"
+					v-model="row"
+					dark
+					mandatory
+					row
+				>
+					<v-radio label="Solo/Duo" value="Solo/Duo"></v-radio>
+					<v-radio label="Flex 5v5" value="Flex"></v-radio>
+				</v-radio-group>
+			</v-container>
+		</v-card>
+	</div>
 </template>
 
 <script>
 export default {
-    props: ["step"],
-    data(){
-        return {
-            items: ['Foo', 'Bar', 'Fizz', 'Buzz'],
-            hasDivisions:true,
-            winsCounter:4,
-            radios: "Solo/Duo",
-            row:""
-        }
-    },
-    methods:{
-        commitToStore(c){
-            this.$store.commit("boosting_order/setSlider",c)
-        },
-        winsHandler(e){
-            this.winsCounter = e;
-            this.sliderChangeHandler();
-        },
-        radioHandler(e){
-            this.radios = e;
-            this.sliderChangeHandler();
-        },
-        sliderChangeHandler(){
-            this.commitToStore({wins:this.winsCounter , radio: this.radios})
-        }
-    },
-    mounted(){
-        this.commitToStore({wins:this.winsCounter , radio: this.radios})
-    }
-}
+	props: ["step"],
+	data() {
+		return {
+			items: ["Foo", "Bar", "Fizz", "Buzz"],
+			hasDivisions: true,
+			winsCounter: 4,
+			radios: "Solo/Duo",
+			row: ""
+		};
+	},
+	methods: {
+		commitToStore(c) {
+			this.$store.commit("boosting_order/setSlider", c);
+		},
+		winsHandler(e) {
+			this.winsCounter = e;
+			this.sliderChangeHandler();
+		},
+		radioHandler(e) {
+			this.radios = e;
+			this.sliderChangeHandler();
+		},
+		sliderChangeHandler() {
+			this.commitToStore({ wins: this.winsCounter, radio: this.radios });
+		}
+	},
+	mounted() {
+		this.commitToStore({ wins: this.winsCounter, radio: this.radios });
+	}
+};
 </script>
 
 <style scoped>
