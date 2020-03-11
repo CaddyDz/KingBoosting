@@ -56,8 +56,13 @@ export default {
 		services() {
 			return this.$store.state.services.services;
 		},
-		model() {
-			return this.service.id + 2;
+		model: {
+			get() {
+				return this.service.id + 2;
+			},
+			set() {
+				return this.service.id + 2;
+			}
 		}
 	}
 };
