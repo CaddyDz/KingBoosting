@@ -1,12 +1,13 @@
 <template>
-    <v-container class="container">
-        <div class="title">
+    <div >
+        <v-container class="title">
             <h1>Our Boosters</h1>
             <p>In this menu you can arrange and view our ELO booster and coach employees by using different filters. You can also learn about their detailed statistics throughout different ranked tiers and the champions they usually boost with.</p>
-        </div>
+        </v-container>
         <div>
             <v-row>
                 <v-col md="3">
+                <v-container>
                     <v-text-field
                         solo
                         label="Search ..."
@@ -67,14 +68,24 @@
                             </v-list-item>
                         </v-list-group>                        
                         </v-list>
+                    </v-container>
                 </v-col>
-                <v-col md="9">
-                    cards
+                <v-col md="9" class="boosters-list" >
+                                       
+                    <booster-card />
+                    <booster-card />
+                    <booster-card />
+                    <booster-card />
+                    <booster-card />
+                    <booster-card />
+                    <booster-card />
+                    <booster-card />
+                    <booster-card />
                 </v-col>
             </v-row>
 
         </div>
-    </v-container>
+    </div>
 </template>
 
 <script>
@@ -137,6 +148,14 @@ export default {
     .lng-title>.lng-name {
         margin-bottom: 0;
         margin-left: 15px;
+    }
+    .boosters-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: auto ;
+    /* box-sizing: border-box; */
+    align-items: center;
+    justify-content: center;
     }
 
 </style>
