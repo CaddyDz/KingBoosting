@@ -53,7 +53,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .right-container {
   display: flex;
   flex-direction: row;

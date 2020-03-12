@@ -34,7 +34,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .theme--light.v-icon:hover {
 	color: #4a148c !important;
 	caret-color: #4a148c !important;

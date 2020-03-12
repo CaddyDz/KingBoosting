@@ -59,7 +59,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .blogPosts-container {
 	background-image: url("/img/blogPosts/blog-bg.webp");
 	background-size: cover;

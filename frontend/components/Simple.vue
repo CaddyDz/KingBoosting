@@ -433,7 +433,7 @@ export default {
 	}
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .v-input.v-input--is-label-active.v-input--is-dirty.theme--dark.v-input__slider {
 	margin-top: 40px !important;
 	margin-bottom: -40px !important;
