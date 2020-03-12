@@ -67,6 +67,7 @@
             </div>
             <div style="margin-top: 80px">
                 <h1 class="section-title">Boosting Statistics By Tiers</h1>
+                <boosting-tiers-slider />
             </div>
         </v-container>    
     </div>    
