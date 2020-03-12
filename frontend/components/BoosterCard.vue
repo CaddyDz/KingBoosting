@@ -3,7 +3,7 @@
   <v-card dark max-width="450">
     <div class="d-flex flex-no-wrap justify-space-between">
       <div>
-        <v-card-title class="headline" >Lakbir Hmad</v-card-title>
+        <v-card-title class="headline" >jason statham</v-card-title>
         <v-card-subtitle >
             lhalag
             <v-rating :value="4.5" color="amber" dense half-increments readonly size="14"></v-rating>
