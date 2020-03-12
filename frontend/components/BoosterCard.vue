@@ -1,5 +1,5 @@
 <template>
-	<v-card dark max-width="450">
+	<v-card dark max-width="450" @click="navigate">
 		<div class="d-flex flex-no-wrap justify-space-between">
 			<div>
 				<v-card-title class="headline">jason statham</v-card-title>
@@ -45,6 +45,13 @@ export default {
 				}
 			]
 		};
+	},
+	methods:{
+		navigate(){
+			this.$router.push({
+				path: '/boosters/10'
+			})
+		}
 	}
 };
 </script>
