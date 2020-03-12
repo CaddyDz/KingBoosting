@@ -40,7 +40,12 @@
                             </div>
                         </v-card-text>
                         <v-card-actions>
-                            <v-btn block outlined v-text="'Coach Me'"></v-btn>
+                              <v-dialog v-model="dialog" persistent max-width="600">
+                                <template v-slot:activator="{ on }" >                       
+                                    <v-btn block outlined v-text="'Coach Me'" v-on="on"></v-btn>
+                                </template>
+                                <coach-me-modal @closeModal="closeModal($event)" />
+                            </v-dialog>
                         </v-card-actions>
                     </v-card>
                 </v-col>
@@ -78,6 +83,7 @@ export default {
 
     data(){
         return {
+            dialog: false,
             finalCircular:[
                 {value : 80,id:0},
                 {value : 60,id:1},
@@ -111,6 +117,12 @@ export default {
                 {id:2,name:"Language skill",rate:5},
                 {id:3,name:"Champions",rate:4.3},
             ]
+        }
+    },
+    methods: {
+        closeModal(e){
+            console.log(e);
+            this.dialog=e;
         }
     },
     beforeDestroy () {
