@@ -18,7 +18,7 @@ class PendingOrders extends Value
      */
     public function calculate(NovaRequest $request)
     {
-        return $this->count($request, Order::where('status', 'pending'))->allowZeroResult();
+        return $this->result(Order::where('status', 'pending')->count());
     }
 
     /**

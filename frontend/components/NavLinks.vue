@@ -56,6 +56,9 @@ p {
 	position: relative;
 	/* bottom: 40px; */
 }
+.nuxt-link {
+	bottom: 3px;
+}
 /* Add underline manually to navbar links text */
 .link {
 	margin-right: 25px;

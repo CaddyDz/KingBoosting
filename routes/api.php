@@ -24,6 +24,8 @@ Route::middleware(['auth', 'verified', 'nopassword'])->name('password.')->group(
 Route::post('/tiers', 'TiersController@index');
 // List all servers
 Route::get('/servers', 'ServersController@index');
+// List all boosters
+Route::get('/boosters', 'BoostersController@index');
 // List all services
 Route::get('/services', 'ServicesController@index');
 Route::get('/services/{service}', 'ServicesController@show');

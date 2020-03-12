@@ -52,9 +52,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  */
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasRoles;
-    use Notifiable;
-    use HasApiTokens;
+    use HasRoles, Notifiable, HasApiTokens;
 
     /**
      * The attributes that are mass assignable.
@@ -91,5 +89,15 @@ class User extends Authenticatable implements MustVerifyEmail
     public function jobs()
     {
         return $this->hasMany(Order::class, 'booster_id');
+    }
+
+    /**
+     * The channels the user receives notification broadcasts on.
+     *
+     * @return string
+     */
+    public function receivesBroadcastNotificationsOn()
+    {
+        return 'users.' . $this->id;
     }
 }
