@@ -18,7 +18,7 @@ class WatchedOrders extends Value
      */
     public function calculate(NovaRequest $request)
     {
-        return $this->count($request, Order::class)->allowZeroResult();
+        return $this->result(Order::count());
     }
 
     /**

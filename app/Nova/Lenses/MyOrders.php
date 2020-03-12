@@ -36,9 +36,7 @@ class MyOrders extends Lens
     public function fields(Request $request)
     {
         return [
-            Icon::make('')->icon(function () {
-                return $this->icon;
-            })->css(function () {
+            Icon::make('')->icon(fn (): string =>  $this->resource->icon)->css(function () {
                 $options = [
                     'pending' => 'text-info',
                     'progress'   => 'text-warning-dark',
