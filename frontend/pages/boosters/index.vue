@@ -47,7 +47,7 @@
 					</v-container>
 				</v-col>
 				<v-col md="9" class="boosters-list">
-					<booster-card v-for="booster in boosters" :key="booster.id" />
+					<booster-card class="booster" v-for="booster in boosters" :key="booster.id" />
 				</v-col>
 			</v-row>
 		</div>
@@ -134,9 +134,11 @@ export default {
 .boosters-list {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
-	grid-auto-rows: auto;
-	/* box-sizing: border-box; */
-	align-items: center;
-	justify-content: center;
+	grid-row-gap:20px;
+}
+
+.booster {
+	align-self: center;
+	justify-self: center;
 }
 </style>
