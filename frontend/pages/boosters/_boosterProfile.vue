@@ -61,6 +61,13 @@
                 </v-progress-circular>
                 <br>
             </div>
+            <div style="margin-top: 80px">
+                <h1 class="section-title">Top Champions</h1>
+                <rate-table />
+            </div>
+            <div style="margin-top: 80px">
+                <h1 class="section-title">Boosting Statistics By Tiers</h1>
+            </div>
         </v-container>    
     </div>    
 </template>
@@ -139,7 +146,7 @@ export default {
 
     .circular-progress {
         justify-self: center;
-        margin-top: 20px;
+        margin-top: 40px;
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -168,5 +175,8 @@ export default {
         display: flex;
         flex-direction: column;
         justify-content: space-around;
+    }
+    .section-title{
+        margin-bottom: 20px;
     }
 </style>
