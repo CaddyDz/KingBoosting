@@ -34,7 +34,9 @@
 				<a href="#" :title="$t('Lol Accounts')" class="link">{{ $t('Lol Accounts') }}</a>
 			</v-col>
 			<v-col md="2">
-				<a href="#" :title="$t('Boosters')" class="link">{{ $t('Boosters') }}</a>
+				<nuxt-link to="/boosters" :title="$t('Boosters')">
+					<p class="text-center link nuxt-link">{{ $t('Boosters') }}</p>
+				</nuxt-link>
 			</v-col>
 			<v-col md="2">
 				<a href="#" :title="$t('More*')" class="link">{{ $t('More*') }}</a>
@@ -69,6 +71,9 @@ a {
 p {
 	position: relative;
 	bottom: 40px;
+}
+.nuxt-link {
+	bottom: 3px;
 }
 /* Add underline manually to navbar links text */
 .link {
