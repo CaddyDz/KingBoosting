@@ -7,7 +7,60 @@
         <div>
             <v-row>
                 <v-col md="3">
-                    menu    
+                    
+                    <v-list>
+                        <v-list-group
+                            prepend-icon="mdi-server-network"
+                            value="true">
+                            <template v-slot:activator>
+                                <v-list-item-title>Servers</v-list-item-title>
+                            </template>
+                            <v-list-item
+                                v-for="(admin, i) in admins"
+                                :key="i"
+                                link
+                            >
+                                <v-list-item-avatar >
+                                    <v-checkbox
+                                    color="primary"
+                                    @change="commitFilter({id:i , value : $event})"
+                                ></v-checkbox>
+                                </v-list-item-avatar>
+                                <v-list-item-title v-text="admin[0]"></v-list-item-title>
+                            </v-list-item>
+                        </v-list-group>
+                        <v-list-group
+                            prepend-icon="mdi-chart-line-variant"
+                            value="true">
+                            
+                            <template v-slot:activator>
+                                <v-list-item-title>Rank</v-list-item-title>
+                            </template>
+
+                        </v-list-group>
+                        <v-list-group
+                            prepend-icon="mdi-translate"
+                            value="true">
+                            
+                            <template v-slot:activator>
+                                <v-list-item-title>Language</v-list-item-title>
+                            </template>
+                            <v-list-item
+                                v-for="(admin, i) in admins"
+                                :key="i"
+                                link
+                            >
+                                <v-list-item-avatar >
+                                    <v-checkbox
+                                        color="primary"
+                                        @change="commitFilter({id:i , value : $event})"
+                                    ></v-checkbox>
+                                </v-list-item-avatar>
+                                <v-icon ></v-icon>
+                                <v-list-item-title v-text="admin[0]"></v-list-item-title>
+                            </v-list-item>
+                        </v-list-group>                        
+                        </v-list>
                 </v-col>
                 <v-col md="9">
                     cards
@@ -20,11 +73,32 @@
 
 <script>
 export default {
-    
+    data(){
+        return {
+            active: "false",
+            settings: [],
+            admins: [
+                ['Management', 'mdi-arrow-up-bold-box-outline'],
+                ['Settings', 'settings'],
+            ],
+            cruds: [
+                ['Create', 'add'],
+                ['Read', 'insert_drive_file'],
+                ['Update', 'update'],
+                ['Delete', 'delete'],
+            ],
+        }
+    },
+    methods: {
+        commitFilter(i){
+            // TODO: commit filter 
+            console.log(JSON.stringify(i));
+        }
+    }
 }
 </script>
 
-<style>
+<style scoped>
     .title {
         text-align: center;
         display: flex;
