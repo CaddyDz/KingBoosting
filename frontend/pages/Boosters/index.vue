@@ -7,7 +7,11 @@
         <div>
             <v-row>
                 <v-col md="3">
-                    
+                    <v-text-field
+                        solo
+                        label="Search ..."
+                        append-icon="mdi-magnify"
+                    ></v-text-field>
                     <v-list>
                         <v-list-group
                             prepend-icon="mdi-server-network"
@@ -16,7 +20,7 @@
                                 <v-list-item-title>Servers</v-list-item-title>
                             </template>
                             <v-list-item
-                                v-for="(admin, i) in admins"
+                                v-for="(server, i) in servers"
                                 :key="i"
                                 link
                             >
@@ -26,7 +30,7 @@
                                     @change="commitFilter({id:i , value : $event})"
                                 ></v-checkbox>
                                 </v-list-item-avatar>
-                                <v-list-item-title v-text="admin[0]"></v-list-item-title>
+                                <v-list-item-title v-text="server"></v-list-item-title>
                             </v-list-item>
                         </v-list-group>
                         <v-list-group
@@ -77,8 +81,6 @@
 export default {
     data(){
         return {
-            active: "false",
-            settings: [],
             countrys: [
                 {name:"Russia",code:"rus"},
                 {name:"English",code:"us"},
@@ -94,6 +96,7 @@ export default {
                 ['Update', 'update'],
                 ['Delete', 'delete'],
             ],
+            servers: ["North America" ,"EU-West" ,"EU-Nordic & East" ,"Turkey","Russia","Brazil","Latin America North" ,"Latin America South","Oceania","Korea","PBE"]
         }
     },
     methods: {
