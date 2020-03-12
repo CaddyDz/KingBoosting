@@ -20,7 +20,7 @@
 		<nuxt-link to="/" class="link" >{{ $t('Regular Boosting') }}</nuxt-link>
 		<nuxt-link to="/" class="link" >{{ $t('Coaching') }}</nuxt-link>
 		<nuxt-link to="/" class="link" >{{ $t('Lol Accounts') }}</nuxt-link>
-		<nuxt-link to="/" class="link" >{{ $t('Boosters') }}</nuxt-link>
+		<nuxt-link to="/boosters" class="link" >{{ $t('Boosters') }}</nuxt-link>
 		<nuxt-link to="/" class="link" >{{ $t('More') }}</nuxt-link>
 	</v-container>
 </template>
