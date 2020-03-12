@@ -16,7 +16,7 @@
                             <v-col md="9">
                                 <v-card-title>Kitani islam</v-card-title>
                                 <v-card-subtitle>
-                					<v-rating :value="4.5" color="amber" dense half-increments readonly size="14"></v-rating>
+                					<v-rating :value="4.5"  dense half-increments readonly size="14"></v-rating>
                                 </v-card-subtitle>
                                 <v-card-text>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo nesciunt aspernatur omnis sapiente praesentium provident, aliquam doloribus voluptates asperiores voluptate, consequuntur vitae, aperiam nemo rerum ducimus nihil. Dolores, neque eum?</v-card-text>
                             </v-col>
@@ -36,7 +36,7 @@
                         <v-card-text>
                             <div class="coaching-skills-simple" v-for="item in coachingSkills" :key="item.id">
                                 <p>{{item.name}}</p>
-                                <v-rating :value="item.rate" color="amber" dense half-increments readonly size="14"></v-rating>
+                                <v-rating :value="item.rate" style="margin-left: 15px"  dense half-increments readonly size="18"></v-rating>
                             </div>
                         </v-card-text>
                         <v-card-actions>
