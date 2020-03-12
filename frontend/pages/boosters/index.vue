@@ -56,12 +56,9 @@
 
 <script>
 export default {
-	async asyncData({ $axios }) {
-		const boosters = await $axios.$get("/boosters");
-		return { boosters };
-	},
 	data() {
 		return {
+			boosters: {},
 			countrys: [
 				{ name: "Russia", code: "rus" },
 				{ name: "English", code: "us" },
@@ -97,6 +94,15 @@ export default {
 			// TODO: commit filter
 			console.log(JSON.stringify(i));
 		}
+	},
+	mounted(){
+		this.$axios.get('/boosters')
+		.then(res => {
+			this.boosters = res.data;
+		})
+		.catch(err => {
+
+		});
 	}
 };
 </script>
