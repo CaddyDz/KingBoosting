@@ -46,18 +46,20 @@
                                 <v-list-item-title>Language</v-list-item-title>
                             </template>
                             <v-list-item
-                                v-for="(admin, i) in admins"
+                                v-for="(country, i) in countrys"
                                 :key="i"
                                 link
                             >
                                 <v-list-item-avatar >
                                     <v-checkbox
                                         color="primary"
-                                        @change="commitFilter({id:i , value : $event})"
+                                        @change="commitFilter({id:i , value : $event , country : country.name })"
                                     ></v-checkbox>
                                 </v-list-item-avatar>
-                                <v-icon ></v-icon>
-                                <v-list-item-title v-text="admin[0]"></v-list-item-title>
+                                <v-list-item-title class="lng-title">
+                                    <country-flag :country="country.code" size='small'/>
+                                    <p class="lng-name">{{country.name}}</p>
+                                </v-list-item-title>
                             </v-list-item>
                         </v-list-group>                        
                         </v-list>
@@ -77,9 +79,14 @@ export default {
         return {
             active: "false",
             settings: [],
-            admins: [
-                ['Management', 'mdi-arrow-up-bold-box-outline'],
-                ['Settings', 'settings'],
+            countrys: [
+                {name:"Russia",code:"rus"},
+                {name:"English",code:"us"},
+                {name:"Ukrainian",code:"ua"},
+                {name:"German",code:"de"},
+                {name:"Estonian",code:"ee"},
+                {name:"Spani",code:"es"},
+                {name:"Italian",code:"it"},
             ],
             cruds: [
                 ['Create', 'add'],
@@ -116,6 +123,17 @@ export default {
     .title>p {
         font-size : medium;
         font-weight : normal;
+    }
+
+    .lng-title {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .lng-title>.lng-name {
+        margin-bottom: 0;
+        margin-left: 15px;
     }
 
 </style>

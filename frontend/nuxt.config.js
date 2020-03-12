@@ -58,6 +58,7 @@ export default {
     '~plugins/globals',
     '~plugins/storage',
     '~plugins/axios',
+    '~plugins/vue-country-flag.js',
     {
       src: '~plugins/vuex',
       ssr: false
