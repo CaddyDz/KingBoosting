@@ -30,6 +30,9 @@ export default {
 {
   "en": {
     "Close": "Close"
+	 },
+	"fr": {
+   "Close": "Fermer"
   }
 }
 </i18n>

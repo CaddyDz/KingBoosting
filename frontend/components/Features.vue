@@ -103,6 +103,9 @@ export default {
 {
   "en": {
     "Features": "Features"
+ },
+"fr": {
+	  "Features": "Traits"
   }
 }
 </i18n>

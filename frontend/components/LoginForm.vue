@@ -55,27 +55,29 @@ export default {
 			if (!this.$refs.form.validate()) {
 				return;
 			}
-		 this.$axios
-			.post("/login", {
-				email: this.email,
-				password: this.password
-			})
-			.then(response => {
-				this.$store.commit('log_in_out/login',{token:response.data.success.access_token})
-				this.$store.commit("notification/open", {
-					text: response.data.message,
-					mode: "success"
+			this.$axios
+				.post("/login", {
+					email: this.email,
+					password: this.password
+				})
+				.then(response => {
+					this.$store.commit("log_in_out/login", {
+						token: response.data.success.access_token
+					});
+					this.$store.commit("notification/open", {
+						text: response.data.message,
+						mode: "success"
+					});
+					this.close();
+					// i see like no need to change the route.
+					// window.location = process.env.DASHBOARD_URL;
+				})
+				.catch(errors => {
+					this.$store.commit("openNotification", {
+						text: errors.response.data.errors,
+						mode: "error"
+					});
 				});
-				this.close();
-				// i see like no need to change the route.
-				// window.location = process.env.DASHBOARD_URL;
-			})
-			.catch(errors => {
-				this.$store.commit("openNotification", {
-					text: errors.response.data.errors,
-					mode: "error"
-				});
-			});
 		},
 		requestPasswordReset() {
 			if (!this.email) {
@@ -135,6 +137,22 @@ export default {
     "Please fill out email field to reset your password": "Please fill out email field to reset your password",
     "We have sent you an email to reset your password": "We have sent you an email to reset your password",
     "Something went wrong": "Something went wrong"
-  }
+	 },
+	"fr": {
+    "Email address *": "Adresse email *",
+    "Your email address": "Votre adresse email",
+    "Password *": "Mot de passe *",
+    "Your password": "Votre mot de passe",
+    "Forgotten Password?": "MOT DE PASSE OUBLIÉ?",
+    "Continue": "CONTINUER",
+    "Cancel": "ANNULER",
+    "E-mail is required": "L'email est requis",
+    "E-mail must be valid": "L'email doit être valide",
+    "Password is required": "Mot de passe requis",
+    "Password must be at least 8 characters": "Mot de passe doit être d'au moins 8 caractères",
+    "Please fill out email field to reset your password": "Veuillez remplir le champ email pour réinitialiser votre mot de passe",
+    "We have sent you an email to reset your password": "Nous vous envoyé un e-mail pour réinitialiser votre mot de passe",
+    "Something went wrong": "Quelque chose a mal tourné"
+	}
 }
 </i18n>

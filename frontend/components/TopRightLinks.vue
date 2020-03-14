@@ -51,7 +51,7 @@ span {
   "fr": {
     "Mobile Pay": "Paiement Mobile",
     "Contact": "Contactez Nous",
-    "Loyalty Program": "Programme d'affiliation"
+    "Loyalty Program": "Programme de fidélité"
   }
 }
 </i18n>
