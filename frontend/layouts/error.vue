@@ -42,6 +42,11 @@ h1 {
     "404 Not Found": "404 Not Found",
     "An error occurred": "An error occurred",
     "Home Page": "Home Page"
-  }
+  },
+	"fr":{
+    "404 Not Found": "404 Page introuvable",
+    "An error occurred": "Une erreur est survenue",
+    "Home Page": "Page d'accueil"
+  },
 }
 </i18n>

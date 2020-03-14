@@ -48,6 +48,9 @@ export default {
 {
   "en": {
     "Members Area": "Members Area"
-  }
+  },
+	"fr": {
+    "Members Area": "Zone Des Membres"
+	},
 }
 </i18n>

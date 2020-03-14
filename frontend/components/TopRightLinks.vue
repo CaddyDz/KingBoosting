@@ -93,6 +93,12 @@ span {
 		"Contact": "Contact",
 		"Loyalty Program": "Loyalty Program",
 		"Language": "Language"
-	}
+	},
+	"fr": {
+		"Mobile Pay": "Mobile Pay",
+		"Contact": "Contact",
+		"Loyalty Program": "Programme de fidélité",
+		"Language": "Langue"
+	},
 }
 </i18n>

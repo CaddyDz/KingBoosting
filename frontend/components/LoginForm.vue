@@ -132,6 +132,22 @@ export default {
     "Please fill out email field to reset your password": "Please fill out email field to reset your password",
     "We have sent you an email to reset your password": "We have sent you an email to reset your password",
     "Something went wrong": "Something went wrong"
-  }
+  },
+	"fr": {
+    "Email address *": "Adresse email *",
+    "Your email address": "Votre adresse email",
+    "Password *": "Mot de passe *",
+    "Your password": "Votre mot de passe",
+    "Forgotten Password?": "MOT DE PASSE OUBLIÉ?",
+    "Continue": "CONTINUER",
+    "Cancel": "ANNULER",
+    "E-mail is required": "L'email est requis",
+    "E-mail must be valid": "L'email doit être valide",
+    "Password is required": "Mot de passe requis",
+    "Password must be at least 8 characters": "Mot de passe doit être d'au moins 8 caractères",
+    "Please fill out email field to reset your password": "Veuillez remplir le champ email pour réinitialiser votre mot de passe",
+    "We have sent you an email to reset your password": "Nous vous envoyé un e-mail pour réinitialiser votre mot de passe",
+    "Something went wrong": "Quelque chose a mal tourné"
+	},
 }
 </i18n>
