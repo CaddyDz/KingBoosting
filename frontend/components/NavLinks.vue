@@ -94,6 +94,15 @@ p {
 		"Lol Accounts": "Lol Accounts",
 		"Boosters": "Boosters",
 		"More*": "More*"
+	},
+	},
+	"fr": {
+	  "Boosting": "Booster",
+		"Regular Boosting": "Boost régulier",
+		"Coaching": "Entrainement",
+		"Lol Accounts": "Comptes Lol",
+		"Boosters": "Boosters",
+		"More*": "Plus*"
 	}
 }
 </i18n>

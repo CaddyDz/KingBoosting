@@ -97,6 +97,10 @@ p {
 {
   "en": {
     "Why Us": "Why Us"
+	},
+	 },
+ "fr": {
+    "Why Us": "Pourquoi nous"
   }
 }
 </i18n>

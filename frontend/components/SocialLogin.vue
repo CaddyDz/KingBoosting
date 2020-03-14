@@ -29,6 +29,12 @@
     "Social Login": "Social Login",
     "LOGIN WITH FACEBOOK": "LOGIN WITH FACEBOOK",
     "LOGIN WITH GOOGLE": "LOGIN WITH GOOGLE"
+	},
+	 },
+	 "fr": {
+    "Social Login": "Connexion sociale",
+    "LOGIN WITH FACEBOOK": "SE CONNECTER AVEC FACEBOOK",
+    "LOGIN WITH GOOGLE": "SE CONNECTER AVEC GOOGLE"
   }
 }
 </i18n>
