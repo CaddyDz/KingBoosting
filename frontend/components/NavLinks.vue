@@ -95,7 +95,6 @@ p {
 		"Boosters": "Boosters",
 		"More*": "More*"
 	},
-	},
 	"fr": {
 	  "Boosting": "Booster",
 		"Regular Boosting": "Boost régulier",

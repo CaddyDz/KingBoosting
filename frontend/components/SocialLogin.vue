@@ -29,7 +29,6 @@
     "Social Login": "Social Login",
     "LOGIN WITH FACEBOOK": "LOGIN WITH FACEBOOK",
     "LOGIN WITH GOOGLE": "LOGIN WITH GOOGLE"
-	},
 	 },
 	 "fr": {
     "Social Login": "Connexion sociale",

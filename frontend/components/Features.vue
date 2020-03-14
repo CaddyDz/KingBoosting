@@ -103,8 +103,7 @@ export default {
 {
   "en": {
     "Features": "Features"
-	},
-	 },
+ },
 "fr": {
 	  "Features": "Traits"
   }
