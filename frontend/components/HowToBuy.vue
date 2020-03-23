@@ -31,7 +31,7 @@
 
 <script>
 export default {
-	data: () => {
+	data() {
 		return {
 			overlay: false,
 			steps: [
@@ -56,7 +56,7 @@ export default {
 				},
 				{
 					id: 4,
-					step: yhis.i18n.t(
+					step: this.$i18n.t(
 						"In the members area you can track your order, spectate, pause or chat live with your booster!"
 					),
 					icon: "mdi-ticket"
@@ -175,10 +175,9 @@ h4:hover {
   "fr": {
     "How To Buy": "Comment Acheter",
     "Select the details of your purchase": "Sélectionnez les détails de votre achat",
-    "After clicking the 'Buy Boost' button, you can either continue as a guest or as a returning customer.": "Après avoir cliqué sur le bouton "Buy Boost", vous pouvez continuer en tant qu'invité ou en tant que client fidèle.",
-    "By clicking the 'Purchase' button, you will be redirected to the chosen payment gateway.": "En cliquant sur le bouton "Acheter", vous serez redirigé vers la passerelle de paiement choisie.",
+    "After clicking the 'Buy Boost' button, you can either continue as a guest or as a returning customer.": "Après avoir cliqué sur le bouton \"Buy Boost\", vous pouvez continuer en tant qu'invité ou en tant que client fidèle.",
+    "By clicking the 'Purchase' button, you will be redirected to the chosen payment gateway.": "En cliquant sur le bouton \"Acheter\", vous serez redirigé vers la passerelle de paiement choisie.",
     "In the members area you can track your order, spectate, pause or chat live with your booster!": "Dans la zone membres, vous pouvez suivre votre commande, regarder, faire une pause ou discuter en direct avec votre booster",
   }
 }
-
 </i18n>

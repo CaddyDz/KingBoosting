@@ -97,9 +97,8 @@ export default {
   "en": {
     "Customer": "Customer",
     "Voice": "Voice"
-
- },
-"fr": {
+  },
+  "fr": {
     "Customer": "Client",
     "Voice": "Voix"
   }

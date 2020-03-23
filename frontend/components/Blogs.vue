@@ -111,12 +111,11 @@ h1 current-blog-number {
     "GO TO BLOG": "GO TO BLOG",
     "Something went wrong": "Something went wrong"
   },
-"fr": {
-    "Blogs": "Blogs",
-    "READ MORE": "LIRE LA SUITE",
-    "GO TO BLOG": "ALLEZ AU BLOG",
-    "Something went wrong": "Quelque chose a mal tourné"
-
- }
+  "fr": {
+      "Blogs": "Blogs",
+      "READ MORE": "LIRE LA SUITE",
+      "GO TO BLOG": "ALLEZ AU BLOG",
+      "Something went wrong": "Quelque chose a mal tourné"
+  }
 }
 </i18n>
