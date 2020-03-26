@@ -101,6 +101,42 @@ export default {
   "fr": {
     "Customer": "Client",
     "Voice": "Voix"
-  }
+  },
+  "it": {
+    "Customer" : "Cliente",
+	"Voice": "Voce"
+  },
+  "de": {
+	"Customer": "Customer",
+    "Voice": "Voice"
+  },
+  "at": {
+	"Customer": "Customer",
+    "Voice": "Voice"
+  },
+  "swiss": {
+	"Customer": "Customer",
+    "Voice": "Voice"
+  },
+  "es": {
+	"Customer": "Customer",
+    "Voice": "Voice"
+  },
+  "nl": {
+	"Customer": "Customer",
+    "Voice": "Voice"
+  },
+  "se": {
+	"Customer": "Customer",
+    "Voice": "Voice"
+  },
+  "ne": {
+	"Customer": "Customer",
+    "Voice": "Voice"
+  },
+  "dk": {
+	"Customer": "Customer",
+    "Voice": "Voice"
+  },
 }
 </i18n>
