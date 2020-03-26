@@ -116,6 +116,60 @@ h1 current-blog-number {
       "READ MORE": "LIRE LA SUITE",
       "GO TO BLOG": "ALLEZ AU BLOG",
       "Something went wrong": "Quelque chose a mal tourné"
-  }
+  },
+  "it": {
+	  "Blogs": "Blog",
+	  "Read More": "LEGGI DI PIÙ",
+	  "GO TO BLOG": "VAI AL BLOG",
+	  "Something went wrong": "Qualcosa è andato storto"
+  },
+  "de": {
+    "Blogs": "Blogs",
+    "READ MORE": "READ MORE",
+    "GO TO BLOG": "GO TO BLOG",
+    "Something went wrong": "Something went wrong"
+  },
+  "at": {
+    "Blogs": "Blogs",
+    "READ MORE": "READ MORE",
+    "GO TO BLOG": "GO TO BLOG",
+    "Something went wrong": "Something went wrong"
+  },
+  "swiss": {
+    "Blogs": "Blogs",
+    "READ MORE": "READ MORE",
+    "GO TO BLOG": "GO TO BLOG",
+    "Something went wrong": "Something went wrong"
+  },
+  "es": {
+    "Blogs": "Blogs",
+    "READ MORE": "READ MORE",
+    "GO TO BLOG": "GO TO BLOG",
+    "Something went wrong": "Something went wrong"
+  },
+  "nl": {
+    "Blogs": "Blogs",
+    "READ MORE": "READ MORE",
+    "GO TO BLOG": "GO TO BLOG",
+    "Something went wrong": "Something went wrong"
+  },
+  "se": {
+    "Blogs": "Blogs",
+    "READ MORE": "READ MORE",
+    "GO TO BLOG": "GO TO BLOG",
+    "Something went wrong": "Something went wrong"
+  },
+  "ne": {
+    "Blogs": "Blogs",
+    "READ MORE": "READ MORE",
+    "GO TO BLOG": "GO TO BLOG",
+    "Something went wrong": "Something went wrong"
+  },
+  "dk": {
+    "Blogs": "Blogs",
+    "READ MORE": "READ MORE",
+    "GO TO BLOG": "GO TO BLOG",
+    "Something went wrong": "Something went wrong"
+  },
 }
 </i18n>
