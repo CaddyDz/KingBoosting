@@ -105,7 +105,34 @@ export default {
     "Features": "Features"
   },
   "fr": {
-	  "Features": "Traits"
-  }
+	"Features": "Traits"
+  },
+  "it": {
+	"Features": "Caratteristiche"
+  },
+  "de": {
+	"Features": "Features" 
+  },
+  "at": {
+	"Features": "Features"
+  },
+  "swiss": {
+	"Features": "Features"
+  },
+  "es": {
+	"Features": "Features"
+  },
+  "nl": {
+	"Features": "Features"
+  },
+  "se": {
+	"Features": "Features"
+  },
+  "ne": {
+	"Features": "Features"
+  },
+  "dk": {
+	"Features": "Features"
+  },
 }
 </i18n>
