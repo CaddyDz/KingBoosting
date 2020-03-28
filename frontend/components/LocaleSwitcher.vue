@@ -72,8 +72,35 @@ export default {
 	"en": {
 		"Language": "Language"
   },
-  "fr": {
-    "Language": "Langue"
-  }
+  	"fr": {
+        "Language": "Langue"
+  },
+ 	"it": {
+		"Language": "linguaggio"
+  },
+	"de": {
+		"Language": "Language"
+	},
+	"at": {
+		"Language": "Language"
+	},
+	"swiss": {
+		"Language": "Language"
+	},
+	"es": {
+		"Language": "Language"
+	},
+	"nl": {
+		"Language": "Language"
+	},
+	"se": {
+		"Language": "Language"
+	},
+	"ne": {
+		"Language": "Language"
+	},
+	"dk": {
+		"Language": "Language"
+	},
 }
 </i18n>
