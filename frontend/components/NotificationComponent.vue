@@ -28,11 +28,39 @@ export default {
 
 <i18n>
 {
-  "en": {
-    "Close": "Close"
-	 },
+    "en": {
+        "Close": "Close"
+	},
 	"fr": {
-   "Close": "Fermer"
-  }
+        "Close": "Fermer"
+    },
+   "it": {
+	   "Close": "Chiuder"
+    },
+   "de": {
+	   "Close": "Fermer"
+    },
+   "at": {
+	   "Close": "Fermer"
+    },
+   "swiss": {
+	   "Close": "Fermer"
+    },
+   "es": {
+	   "Close": "Fermer"
+    },
+   "nl": {
+	   "Close": "Fermer"
+    },
+   "se": {
+	   "Close": "Fermer"
+    },
+   "ne": {
+	   "Close": "Fermer"
+	},
+	"dk": {
+		"Close": "Fermer"
+	}, 
 }
 </i18n>
+ 
