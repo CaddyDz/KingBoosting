@@ -47,11 +47,56 @@ span {
 		"Mobile Pay": "Mobile Pay",
 		"Contact": "Contact",
 		"Loyalty Program": "Loyalty Program"
-  },
-  "fr": {
-    "Mobile Pay": "Paiement Mobile",
-    "Contact": "Contactez Nous",
-    "Loyalty Program": "Programme de fidélité"
-  }
+    },
+    "fr": {
+        "Mobile Pay": "Paiement Mobile",
+        "Contact": "Contactez Nous",
+        "Loyalty Program": "Programme de fidélité"
+	},
+	"it": {
+		"Mobile Pay": "Pagamento mobile",
+        "Contact": "Contattaci",
+        "Loyalty Program": "Programma fedeltà"
+	},
+	"de": {
+		"Mobile Pay": "Mobile Pay",
+		"Contact": "Contact",
+		"Loyalty Program": "Loyalty Program"
+    },
+	"at": {
+		"Mobile Pay": "Mobile Pay",
+		"Contact": "Contact",
+		"Loyalty Program": "Loyalty Program"
+	},
+	"swiss": {
+		"Mobile Pay": "Mobile Pay",
+		"Contact": "Contact",
+		"Loyalty Program": "Loyalty Program"
+	},
+	"es": {
+		"Mobile Pay": "Mobile Pay",
+		"Contact": "Contact",
+		"Loyalty Program": "Loyalty Program"
+	},
+	"nl": {
+		"Mobile Pay": "Mobile Pay",
+		"Contact": "Contact",
+		"Loyalty Program": "Loyalty Program"
+	},
+	"se": {
+		"Mobile Pay": "Mobile Pay",
+		"Contact": "Contact",
+		"Loyalty Program": "Loyalty Program"
+	},
+	"ne": {
+		"Mobile Pay": "Mobile Pay",
+		"Contact": "Contact",
+		"Loyalty Program": "Loyalty Program"
+	},
+	"dk": {
+		"Mobile Pay": "Mobile Pay",
+		"Contact": "Contact",
+		"Loyalty Program": "Loyalty Program"
+	}
 }
 </i18n>
