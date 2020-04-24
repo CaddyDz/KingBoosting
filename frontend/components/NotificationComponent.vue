@@ -30,37 +30,36 @@ export default {
 {
     "en": {
         "Close": "Close"
-	},
-	"fr": {
+    },
+    "fr": {
         "Close": "Fermer"
     },
-   "it": {
-	   "Close": "Chiuder"
+    "it": {
+        "Close": "Chiuder"
     },
-   "de": {
-	   "Close": "Fermer"
+    "de": {
+        "Close": "Fermer"
     },
-   "at": {
-	   "Close": "Fermer"
+    "at": {
+        "Close": "Fermer"
     },
-   "swiss": {
-	   "Close": "Fermer"
+    "swiss": {
+        "Close": "Fermer"
     },
-   "es": {
-	   "Close": "Fermer"
+    "es": {
+        "Close": "Fermer"
     },
-   "nl": {
-	   "Close": "Fermer"
+    "nl": {
+        "Close": "Fermer"
     },
-   "se": {
-	   "Close": "Fermer"
+    "se": {
+        "Close": "Fermer"
     },
-   "ne": {
-	   "Close": "Fermer"
-	},
-	"dk": {
-		"Close": "Fermer"
-	}, 
+    "ne": {
+        "Close": "Fermer"
+    },
+    "dk": {
+        "Close": "Fermer"
+    }
 }
 </i18n>
- 

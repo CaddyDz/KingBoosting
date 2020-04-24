@@ -170,6 +170,6 @@ h1 current-blog-number {
     "READ MORE": "READ MORE",
     "GO TO BLOG": "GO TO BLOG",
     "Something went wrong": "Something went wrong"
-  },
+  }
 }
 </i18n>

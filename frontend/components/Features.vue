@@ -111,7 +111,7 @@ export default {
 	"Features": "Caratteristiche"
   },
   "de": {
-	"Features": "Features" 
+	"Features": "Features"
   },
   "at": {
 	"Features": "Features"
@@ -133,6 +133,6 @@ export default {
   },
   "dk": {
 	"Features": "Features"
-  },
+  }
 }
 </i18n>

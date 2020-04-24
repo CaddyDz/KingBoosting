@@ -137,6 +137,6 @@ export default {
   "dk": {
 	"Customer": "Customer",
     "Voice": "Voice"
-  },
+  }
 }
 </i18n>

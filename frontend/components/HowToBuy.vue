@@ -165,89 +165,89 @@ h4:hover {
 </style>
 <i18n>
 {
-  "en": {
-    "How To Buy": "How To Buy",
-    "Select the details of your purchase.": "Select the details of your purchase.",
-    "After clicking the 'Buy Boost' button, you can either continue as a guest or as a returning customer.": "After clicking the 'Buy Boost' button, you can either continue as a guest or as a returning customer.",
-    "By clicking the 'Purchase' button, you will be redirected to the chosen payment gateway.": "By clicking the 'Purchase' button, you will be redirected to the chosen payment gateway.",
-    "In the members area you can track your order, spectate, pause or chat live with your booster!": "In the members area you can track your order, spectate, pause or chat live with your booster!"
-  },
-  "fr": {
-    "How To Buy": "Comment Acheter",
-    "Select the details of your purchase": "Sélectionnez les détails de votre achat",
-    "After clicking the 'Buy Boost' button, you can either continue as a guest or as a returning customer.": "Après avoir cliqué sur le bouton \"Buy Boost\", vous pouvez continuer en tant qu'invité ou en tant que client fidèle.",
-    "By clicking the 'Purchase' button, you will be redirected to the chosen payment gateway.": "En cliquant sur le bouton \"Acheter\", vous serez redirigé vers la passerelle de paiement choisie.",
-    "In the members area you can track your order, spectate, pause or chat live with your booster!": "Dans la zone membres, vous pouvez suivre votre commande, regarder, faire une pause ou discuter en direct avec votre booster"
-  },
-  "it": {
-	"How To Buy": "Come comprare",
-	"Select the details of your purchase.": "Seleziona i dettagli del tuo acquisto.",
-	"After clicking the 'Buy Boost' button, you can either continue as a guest or as a returning customer.": "Dopo aver cliccato sul pulsante \"Acquistare Boost\", puoi continuare come ospite o come cliente fedele.",
-	"By clicking the 'Purchase' button, you will be redirected to the chosen payment gateway.": "Cliccando sul pulsante \"Acquisito"\", verrai reindirizzato alla passerella del pagamento selezionato.",
-	"In the members area you can track your order, spectate, pause or chat live with your booster!": "Nella zona di membri puoi seguire il tuo ordine, guardare, fare una pausa o chattare in diretta con il tuo booster",
-  },
-  "de": {
-	"How To Buy": "How To Buy",
-    "Select the details of your purchase.": "Select the details of your purchase.",
-    "After clicking the 'Buy Boost' button, you can either continue as a guest or as a returning customer.": "After clicking the 'Buy Boost' button, you can either continue as a guest or as a returning customer.",
-    "By clicking the 'Purchase' button, you will be redirected to the chosen payment gateway.": "By clicking the 'Purchase' button, you will be redirected to the chosen payment gateway.",
-    "In the members area you can track your order, spectate, pause or chat live with your booster!": "In the members area you can track your order, spectate, pause or chat live with your booster!"
-  },
-  "at": {
-	"How To Buy": "How To Buy",
-    "Select the details of your purchase.": "Select the details of your purchase.",
-    "After clicking the 'Buy Boost' button, you can either continue as a guest or as a returning customer.": "After clicking the 'Buy Boost' button, you can either continue as a guest or as a returning customer.",
-    "By clicking the 'Purchase' button, you will be redirected to the chosen payment gateway.": "By clicking the 'Purchase' button, you will be redirected to the chosen payment gateway.",
-    "In the members area you can track your order, spectate, pause or chat live with your booster!": "In the members area you can track your order, spectate, pause or chat live with your booster!"
-  },
-  "at": {
-	"How To Buy": "How To Buy",
-    "Select the details of your purchase.": "Select the details of your purchase.",
-    "After clicking the 'Buy Boost' button, you can either continue as a guest or as a returning customer.": "After clicking the 'Buy Boost' button, you can either continue as a guest or as a returning customer.",
-    "By clicking the 'Purchase' button, you will be redirected to the chosen payment gateway.": "By clicking the 'Purchase' button, you will be redirected to the chosen payment gateway.",
-    "In the members area you can track your order, spectate, pause or chat live with your booster!": "In the members area you can track your order, spectate, pause or chat live with your booster!"
-  },
-  "swiss": {
-	"How To Buy": "How To Buy",
-    "Select the details of your purchase.": "Select the details of your purchase.",
-    "After clicking the 'Buy Boost' button, you can either continue as a guest or as a returning customer.": "After clicking the 'Buy Boost' button, you can either continue as a guest or as a returning customer.",
-    "By clicking the 'Purchase' button, you will be redirected to the chosen payment gateway.": "By clicking the 'Purchase' button, you will be redirected to the chosen payment gateway.",
-    "In the members area you can track your order, spectate, pause or chat live with your booster!": "In the members area you can track your order, spectate, pause or chat live with your booster!"
-  },
-  "es": {
-	"How To Buy": "How To Buy",
-    "Select the details of your purchase.": "Select the details of your purchase.",
-    "After clicking the 'Buy Boost' button, you can either continue as a guest or as a returning customer.": "After clicking the 'Buy Boost' button, you can either continue as a guest or as a returning customer.",
-    "By clicking the 'Purchase' button, you will be redirected to the chosen payment gateway.": "By clicking the 'Purchase' button, you will be redirected to the chosen payment gateway.",
-    "In the members area you can track your order, spectate, pause or chat live with your booster!": "In the members area you can track your order, spectate, pause or chat live with your booster!"
-  },
-  "nl": {
-	  	"How To Buy": "How To Buy",
-    "Select the details of your purchase.": "Select the details of your purchase.",
-    "After clicking the 'Buy Boost' button, you can either continue as a guest or as a returning customer.": "After clicking the 'Buy Boost' button, you can either continue as a guest or as a returning customer.",
-    "By clicking the 'Purchase' button, you will be redirected to the chosen payment gateway.": "By clicking the 'Purchase' button, you will be redirected to the chosen payment gateway.",
-    "In the members area you can track your order, spectate, pause or chat live with your booster!": "In the members area you can track your order, spectate, pause or chat live with your booster!"
-  },
-  "se": {
-	  	"How To Buy": "How To Buy",
-    "Select the details of your purchase.": "Select the details of your purchase.",
-    "After clicking the 'Buy Boost' button, you can either continue as a guest or as a returning customer.": "After clicking the 'Buy Boost' button, you can either continue as a guest or as a returning customer.",
-    "By clicking the 'Purchase' button, you will be redirected to the chosen payment gateway.": "By clicking the 'Purchase' button, you will be redirected to the chosen payment gateway.",
-    "In the members area you can track your order, spectate, pause or chat live with your booster!": "In the members area you can track your order, spectate, pause or chat live with your booster!"
-  },
-  "ne": {
-	  	"How To Buy": "How To Buy",
-    "Select the details of your purchase.": "Select the details of your purchase.",
-    "After clicking the 'Buy Boost' button, you can either continue as a guest or as a returning customer.": "After clicking the 'Buy Boost' button, you can either continue as a guest or as a returning customer.",
-    "By clicking the 'Purchase' button, you will be redirected to the chosen payment gateway.": "By clicking the 'Purchase' button, you will be redirected to the chosen payment gateway.",
-    "In the members area you can track your order, spectate, pause or chat live with your booster!": "In the members area you can track your order, spectate, pause or chat live with your booster!"
-  },
-  "dk": {
-	"How To Buy": "How To Buy",
-    "Select the details of your purchase.": "Select the details of your purchase.",
-    "After clicking the 'Buy Boost' button, you can either continue as a guest or as a returning customer.": "After clicking the 'Buy Boost' button, you can either continue as a guest or as a returning customer.",
-    "By clicking the 'Purchase' button, you will be redirected to the chosen payment gateway.": "By clicking the 'Purchase' button, you will be redirected to the chosen payment gateway.",
-    "In the members area you can track your order, spectate, pause or chat live with your booster!": "In the members area you can track your order, spectate, pause or chat live with your booster!"
-  }
+    "en": {
+        "How To Buy": "How To Buy",
+        "Select the details of your purchase.": "Select the details of your purchase.",
+        "After clicking the 'Buy Boost' button, you can either continue as a guest or as a returning customer.": "After clicking the 'Buy Boost' button, you can either continue as a guest or as a returning customer.",
+        "By clicking the 'Purchase' button, you will be redirected to the chosen payment gateway.": "By clicking the 'Purchase' button, you will be redirected to the chosen payment gateway.",
+        "In the members area you can track your order, spectate, pause or chat live with your booster!": "In the members area you can track your order, spectate, pause or chat live with your booster!"
+    },
+    "fr": {
+        "How To Buy": "Comment Acheter",
+        "Select the details of your purchase": "Sélectionnez les détails de votre achat",
+        "After clicking the 'Buy Boost' button, you can either continue as a guest or as a returning customer.": "Après avoir cliqué sur le bouton 'Buy Boost', vous pouvez continuer en tant qu'invité ou en tant que client fidèle.",
+        "By clicking the 'Purchase' button, you will be redirected to the chosen payment gateway.": "En cliquant sur le bouton 'Acheter', vous serez redirigé vers la passerelle de paiement choisie.",
+        "In the members area you can track your order, spectate, pause or chat live with your booster!": "Dans la zone membres, vous pouvez suivre votre commande, regarder, faire une pause ou discuter en direct avec votre booster"
+    },
+    "it": {
+        "How To Buy": "Come comprare",
+        "Select the details of your purchase.": "Seleziona i dettagli del tuo acquisto.",
+        "After clicking the 'Buy Boost' button, you can either continue as a guest or as a returning customer.": "Dopo aver cliccato sul pulsante 'Acquistare Boost', puoi continuare come ospite o come cliente fedele.",
+        "By clicking the 'Purchase' button, you will be redirected to the chosen payment gateway.": "Cliccando sul pulsante 'Acquisito', verrai reindirizzato alla passerella del pagamento selezionato.",
+        "In the members area you can track your order, spectate, pause or chat live with your booster!": "Nella zona di membri puoi seguire il tuo ordine, guardare, fare una pausa o chattare in diretta con il tuo booster"
+    },
+    "de": {
+        "How To Buy": "How To Buy",
+        "Select the details of your purchase.": "Select the details of your purchase.",
+        "After clicking the 'Buy Boost' button, you can either continue as a guest or as a returning customer.": "After clicking the 'Buy Boost' button, you can either continue as a guest or as a returning customer.",
+        "By clicking the 'Purchase' button, you will be redirected to the chosen payment gateway.": "By clicking the 'Purchase' button, you will be redirected to the chosen payment gateway.",
+        "In the members area you can track your order, spectate, pause or chat live with your booster!": "In the members area you can track your order, spectate, pause or chat live with your booster!"
+    },
+    "at": {
+        "How To Buy": "How To Buy",
+        "Select the details of your purchase.": "Select the details of your purchase.",
+        "After clicking the 'Buy Boost' button, you can either continue as a guest or as a returning customer.": "After clicking the 'Buy Boost' button, you can either continue as a guest or as a returning customer.",
+        "By clicking the 'Purchase' button, you will be redirected to the chosen payment gateway.": "By clicking the 'Purchase' button, you will be redirected to the chosen payment gateway.",
+        "In the members area you can track your order, spectate, pause or chat live with your booster!": "In the members area you can track your order, spectate, pause or chat live with your booster!"
+    },
+    "at": {
+        "How To Buy": "How To Buy",
+        "Select the details of your purchase.": "Select the details of your purchase.",
+        "After clicking the 'Buy Boost' button, you can either continue as a guest or as a returning customer.": "After clicking the 'Buy Boost' button, you can either continue as a guest or as a returning customer.",
+        "By clicking the 'Purchase' button, you will be redirected to the chosen payment gateway.": "By clicking the 'Purchase' button, you will be redirected to the chosen payment gateway.",
+        "In the members area you can track your order, spectate, pause or chat live with your booster!": "In the members area you can track your order, spectate, pause or chat live with your booster!"
+    },
+    "swiss": {
+        "How To Buy": "How To Buy",
+        "Select the details of your purchase.": "Select the details of your purchase.",
+        "After clicking the 'Buy Boost' button, you can either continue as a guest or as a returning customer.": "After clicking the 'Buy Boost' button, you can either continue as a guest or as a returning customer.",
+        "By clicking the 'Purchase' button, you will be redirected to the chosen payment gateway.": "By clicking the 'Purchase' button, you will be redirected to the chosen payment gateway.",
+        "In the members area you can track your order, spectate, pause or chat live with your booster!": "In the members area you can track your order, spectate, pause or chat live with your booster!"
+    },
+    "es": {
+        "How To Buy": "How To Buy",
+        "Select the details of your purchase.": "Select the details of your purchase.",
+        "After clicking the 'Buy Boost' button, you can either continue as a guest or as a returning customer.": "After clicking the 'Buy Boost' button, you can either continue as a guest or as a returning customer.",
+        "By clicking the 'Purchase' button, you will be redirected to the chosen payment gateway.": "By clicking the 'Purchase' button, you will be redirected to the chosen payment gateway.",
+        "In the members area you can track your order, spectate, pause or chat live with your booster!": "In the members area you can track your order, spectate, pause or chat live with your booster!"
+    },
+    "nl": {
+        "How To Buy": "How To Buy",
+        "Select the details of your purchase.": "Select the details of your purchase.",
+        "After clicking the 'Buy Boost' button, you can either continue as a guest or as a returning customer.": "After clicking the 'Buy Boost' button, you can either continue as a guest or as a returning customer.",
+        "By clicking the 'Purchase' button, you will be redirected to the chosen payment gateway.": "By clicking the 'Purchase' button, you will be redirected to the chosen payment gateway.",
+        "In the members area you can track your order, spectate, pause or chat live with your booster!": "In the members area you can track your order, spectate, pause or chat live with your booster!"
+    },
+    "se": {
+        "How To Buy": "How To Buy",
+        "Select the details of your purchase.": "Select the details of your purchase.",
+        "After clicking the 'Buy Boost' button, you can either continue as a guest or as a returning customer.": "After clicking the 'Buy Boost' button, you can either continue as a guest or as a returning customer.",
+        "By clicking the 'Purchase' button, you will be redirected to the chosen payment gateway.": "By clicking the 'Purchase' button, you will be redirected to the chosen payment gateway.",
+        "In the members area you can track your order, spectate, pause or chat live with your booster!": "In the members area you can track your order, spectate, pause or chat live with your booster!"
+    },
+    "ne": {
+        "How To Buy": "How To Buy",
+        "Select the details of your purchase.": "Select the details of your purchase.",
+        "After clicking the 'Buy Boost' button, you can either continue as a guest or as a returning customer.": "After clicking the 'Buy Boost' button, you can either continue as a guest or as a returning customer.",
+        "By clicking the 'Purchase' button, you will be redirected to the chosen payment gateway.": "By clicking the 'Purchase' button, you will be redirected to the chosen payment gateway.",
+        "In the members area you can track your order, spectate, pause or chat live with your booster!": "In the members area you can track your order, spectate, pause or chat live with your booster!"
+    },
+    "dk": {
+        "How To Buy": "How To Buy",
+        "Select the details of your purchase.": "Select the details of your purchase.",
+        "After clicking the 'Buy Boost' button, you can either continue as a guest or as a returning customer.": "After clicking the 'Buy Boost' button, you can either continue as a guest or as a returning customer.",
+        "By clicking the 'Purchase' button, you will be redirected to the chosen payment gateway.": "By clicking the 'Purchase' button, you will be redirected to the chosen payment gateway.",
+        "In the members area you can track your order, spectate, pause or chat live with your booster!": "In the members area you can track your order, spectate, pause or chat live with your booster!"
+    }
 }
 </i18n>
