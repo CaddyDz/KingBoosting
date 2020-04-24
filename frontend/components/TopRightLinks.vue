@@ -21,20 +21,21 @@ a {
 	color: linear-gradient(to right, purple 50%, white 50%);
 	transition: all 500ms ease;
 }
+
 a:hover {
 	color: purple !important;
 }
+
 span {
 	padding-right: 10px;
 	color: white;
 }
+
 .v-overflow-btn {
 	margin-top: 22px;
 	max-width: 51%;
 }
-.language-selector {
-	cursor: pointer;
-}
+
 .theme--dark.v-list {
 	background-color: #250f24;
 	border-radius: 1px;

@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<span>
 		<span class="language-selector" @mouseover="showLanguages">{{ $t('Language') }}</span>
 		<v-dialog v-model="shown" width="fit-content" hide-overlay content-class="languages">
 			<template v-slot:default>
@@ -25,7 +25,7 @@
 				</v-list>
 			</template>
 		</v-dialog>
-	</div>
+	</span>
 </template>
 
 <script>
@@ -66,6 +66,12 @@ export default {
 	}
 };
 </script>
+
+<style scoped>
+.language-selector {
+	cursor: pointer;
+}
+</style>
 
 <i18n>
 {
