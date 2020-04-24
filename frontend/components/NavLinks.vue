@@ -96,12 +96,84 @@ p {
 		"More*": "More*"
 	},
 	"fr": {
-	  "Boosting": "Booster",
+	    "Boosting": "Booster",
 		"Regular Boosting": "Boost régulier",
-		"Coaching": "Entrainement",
+		"Coaching": "Allenamento",
 		"Lol Accounts": "Comptes Lol",
 		"Boosters": "Boosters",
 		"More*": "Plus*"
+	},
+	"it": {
+		"Boosting": "Boosting",
+		"Regular Boosting": "Regular Boosting",
+		"Coaching": "Coaching",
+		"Lol Accounts": "Lol Accounts",
+		"Boosters": "Boosters",
+		"More*": "Di Più*"
+	},
+	"de": {
+		"Boosting": "Boosting",
+		"Regular Boosting": "Regular Boosting",
+		"Coaching": "Coaching",
+		"Lol Accounts": "Lol Accounts",
+		"Boosters": "Boosters",
+		"More*": "More*"
+	},
+	"at": {
+		"Boosting": "Boosting",
+		"Regular Boosting": "Regular Boosting",
+		"Coaching": "Coaching",
+		"Lol Accounts": "Lol Accounts",
+		"Boosters": "Boosters",
+		"More*": "More*"
+	},
+	"swiss": {
+		"Boosting": "Boosting",
+		"Regular Boosting": "Regular Boosting",
+		"Coaching": "Coaching",
+		"Lol Accounts": "Lol Accounts",
+		"Boosters": "Boosters",
+		"More*": "More*"
+	},
+	"es": {
+		"Boosting": "Boosting",
+		"Regular Boosting": "Regular Boosting",
+		"Coaching": "Coaching",
+		"Lol Accounts": "Lol Accounts",
+		"Boosters": "Boosters",
+		"More*": "More*"
+	},
+	"nl": {
+		"Boosting": "Boosting",
+		"Regular Boosting": "Regular Boosting",
+		"Coaching": "Coaching",
+		"Lol Accounts": "Lol Accounts",
+		"Boosters": "Boosters",
+		"More*": "More*"
+	},
+	"se": {
+		"Boosting": "Boosting",
+		"Regular Boosting": "Regular Boosting",
+		"Coaching": "Coaching",
+		"Lol Accounts": "Lol Accounts",
+		"Boosters": "Boosters",
+		"More*": "More*"
+	},
+	"ne": {
+		"Boosting": "Boosting",
+		"Regular Boosting": "Regular Boosting",
+		"Coaching": "Coaching",
+		"Lol Accounts": "Lol Accounts",
+		"Boosters": "Boosters",
+		"More*": "More*"
+	},
+    "dk": {
+		"Boosting": "Boosting",
+		"Regular Boosting": "Regular Boosting",
+		"Coaching": "Coaching",
+		"Lol Accounts": "Lol Accounts",
+		"Boosters": "Boosters",
+		"More*": "More*"
 	}
 }
 </i18n>

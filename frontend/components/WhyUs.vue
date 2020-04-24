@@ -95,12 +95,38 @@ p {
 
 <i18n>
 {
-  "en": {
-    "Why Us": "Why Us"
-
-	 },
- "fr": {
-    "Why Us": "Pourquoi nous"
-  }
+    "en": {
+        "Why Us": "Why Us"
+	},
+    "fr": {
+       "Why Us": "Pourquoi nous"
+	},
+	"it": {
+		"Why Us": "Perché noi"
+	},
+	"de": {
+		"Why Us": "Why Us"
+	},
+	"at": {
+		"Why Us": "Why Us"
+	},
+	"swiss": {
+		"Why Us": "Why Us"
+	},
+	"es": {
+		"Why Us": "Why Us"
+	},
+	"nl": {
+		"Why Us": "Why Us"
+	},
+	"se": {
+		"Why Us": "Why Us"
+	},
+	"ne": {
+		"Why Us": "Why Us"
+	},
+	"dk": {
+		"Why Us": "Why Us"
+	}
 }
 </i18n>
