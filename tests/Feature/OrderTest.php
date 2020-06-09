@@ -2,11 +2,8 @@
 
 namespace Tests\Feature;
 
-use App\Tier;
-use App\Order;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class OrderTest extends TestCase
 {
@@ -19,11 +16,13 @@ class OrderTest extends TestCase
      */
     public function testThatWeCanPlaceAnOrder()
     {
+        $this->withoutExceptionHandling();
         $this->login('Member');
         $order = [
-            'current_tier' => "Silver",
-            'current_division' => "Division I",
-            'server' => 'EU-West',
+            'service' => 1,
+            'current_tier' => 1,
+            'current_division' => 1,
+            'server' => 1,
             'wins' => 4,
             'game_mode' => 'Solo/Duo',
             'options' => [
