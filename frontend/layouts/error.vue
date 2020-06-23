@@ -9,6 +9,7 @@
 <script>
 export default {
 	layout: "empty",
+	name: "error",
 	props: {
 		error: {
 			type: Object,

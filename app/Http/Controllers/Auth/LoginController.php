@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Cache;
 
 class LoginController extends Controller
 {
@@ -175,7 +176,7 @@ class LoginController extends Controller
      */
     public function redirectToProvider($provider)
     {
-        return Socialite::driver($provider)->redirect();
+        return Socialite::driver($provider)->stateless()->redirect();
     }
 
     /**
@@ -186,13 +187,11 @@ class LoginController extends Controller
     public function handleProviderCallback($provider)
     {
         try {
-            $user = Socialite::driver($provider)->user();
+            $user = Socialite::driver($provider)->stateless()->user();
             $email = $user->getEmail();
             if (!$email) {
-                return response([
-                    'status' => 'failed',
-                    'message' => 'No email address associated with this account',
-                ]);
+                Cache::set('rejected', true);
+                return redirect()->to(config('site.url') . '/fb');
             }
             $user = User::where('email', $email)->first();
             if ($user === null) {

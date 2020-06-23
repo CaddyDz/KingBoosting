@@ -12,5 +12,9 @@
 */
 
 Broadcast::channel('App.User.{id}', function ($user, $id) {
-    return (int) $user->id === (int) $id;
+	return (int) $user->id === (int) $id;
+});
+
+Broadcast::channel('errors.{sessionId}', function ($sessionId) {
+	return session()->getId() == $sessionId;
 });

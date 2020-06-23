@@ -11,6 +11,8 @@
 |
 */
 
+use Illuminate\Support\Facades\Cache;
+
 Auth::routes(['verify' => true]);
 Route::get('login/{provider}', 'Auth\LoginController@redirectToProvider');
 Route::get('login/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
@@ -46,4 +48,11 @@ Route::middleware(['auth:api'])->group(function () {
 });
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return auth()->user();
+});
+Route::get('/checkFB', function () {
+    $rejected = Cache::get('rejected') ?? false;
+    Cache::forget('rejected');
+    return response([
+        'rejected' => $rejected,
+    ]);
 });

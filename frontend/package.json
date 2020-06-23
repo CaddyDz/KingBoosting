@@ -16,8 +16,10 @@
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/dotenv": "^1.4.0",
     "@nuxtjs/pwa": "^3.0.0-0",
+    "laravel-echo": "^1.8.0",
     "nuxt": "^2.0.0",
     "nuxt-i18n": "^6.6.0",
+    "pusher-js": "^6.0.3",
     "vuex-persist": "^2.2.0"
   },
   "devDependencies": {
