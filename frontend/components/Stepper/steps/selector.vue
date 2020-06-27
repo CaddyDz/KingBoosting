@@ -44,6 +44,8 @@
 								dense
 								solo
 								v-model="selectedServerID"
+								item-text="region"
+								item-value="id"
 							></v-select>
 						</v-container>
 					</v-col>
@@ -66,7 +68,8 @@ export default {
 			selectedDivisionID: 12, // Silver I
 			division: {}, // Currently selected division
 			hasDivisions: true,
-			selectedServerID: 2
+			selectedServerID: 2,
+			servers: []
 		};
 	},
 	watch: {
@@ -108,6 +111,7 @@ export default {
 	},
 	mounted() {
 		this.getTiers();
+		this.$axios.$get("/servers").then(servers => (this.servers = servers));
 	}
 };
 </script>
