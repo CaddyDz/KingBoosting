@@ -148,7 +148,8 @@ export default {
 {
 	"en": {
 		"Current tier": "Current tier",
-		"Current division": "Current division"
+		"Current division": "Current division",
+		"Select your server": "Select your server"
 	}
 }
 </i18n>
