@@ -1,11 +1,14 @@
 <template>
 	<div>
-		<div class="slider" fluid :style="{background: `url(${service.bg_img}) top/cover`}">
+		<div
+			class="slider"
+			fluid
+			:style="{background: 'url(/img/services/league-boosting-top-bg.png) top/cover'}"
+		>
 			<v-row justify="center" align="center">
 				<v-col md="8" style="text-align: center;">
-					<p>{{ service.name }}</p>
-					<br />
-					{{ service.description }}
+					<p>League Boosting</p>
+					<br />At Kingboosting.com, we sell guaranteed tier and division boosts of your choice. You just have to pick a tier and a division that you desire and our task is to do the rest.
 				</v-col>
 			</v-row>
 			<services-slider :service="service" />
@@ -26,7 +29,7 @@
 import Stepper from "~/components/Stepper";
 
 export default {
-	name: "service",
+	name: "league-boosting",
 	components: {
 		Stepper
 	},
@@ -43,7 +46,7 @@ export default {
 		},
 		getService() {
 			this.$axios
-				.get(`/services${this.slug}`)
+				.get(`/services${this.slug}`) // this.slug already contains leading /
 				.then(response => {
 					this.service = response.data;
 				})

@@ -2,15 +2,15 @@
 	<div>
 		<div class="title">
 			<div class="title-id">
-				<h2>{{step.id}}</h2>
+				<h2>{{ step.id }}</h2>
 			</div>
-			<h2 class="title-txt">{{step.title}}</h2>
+			<h2 class="title-txt">{{ step.title }}</h2>
 		</div>
 		<v-card raised class="mb-4">
 			<v-container>
 				<v-row align="center" justify="center">
 					<v-col md="3">
-						<img src="/img/divisions/diamond/II.webp" alt="tier.name" loading="lazy" width="200" />
+						<img :src="division.image" :alt="tier.name" loading="lazy" width="200" />
 					</v-col>
 					<v-col md="9" class="have-selectors">
 						<v-container>
@@ -18,20 +18,24 @@
 								<v-col>
 									<v-select
 										:items="tiers"
-										label="Current tier"
+										:label="$t('Current tier')"
 										dense
 										solo
-										v-model="leagueConfig.tier"
+										v-model="selectedTierID"
+										item-text="name"
+										item-value="id"
 										@change="selectChangeHandler({target:'tier' , value:$event})"
 									></v-select>
 								</v-col>
 								<v-col v-if="hasDivisions">
 									<v-select
 										:items="divisions"
-										label="Current division"
+										:label="$t('Current division')"
 										dense
 										solo
-										v-model="leagueConfig.division"
+										item-text="name"
+										item-value="id"
+										v-model="selectedDivisionID"
 										@change="selectChangeHandler({target:'division' , value:$event})"
 									></v-select>
 								</v-col>
@@ -57,18 +61,12 @@ export default {
 	props: ["step"],
 	data() {
 		return {
-			tiers: [
-				"Iron",
-				"Bronze",
-				"Silver",
-				"Gold",
-				"Platinum",
-				"Diamond",
-				"Master",
-				"Grandmaster",
-				"Challenger"
-			],
-			divisions: ["Division I", "Division II", "Division III", "Division IV"],
+			tiers: [],
+			selectedTierID: 3, // Pretty self explanatory
+			selectedDivisionID: 2,
+			division: {}, // Currently selected division
+			tier: { wins: [] }, // Currently selected tier, wins is an empty array because it's used in template
+			divisions: [],
 			servers: [
 				"North America",
 				"EU-West",
@@ -84,13 +82,34 @@ export default {
 			],
 			hasDivisions: true,
 			leagueConfig: {
-				tier: "Platinum",
-				division: "Division II",
+				tier: "Silver",
+				division: "Division I",
 				server: "EU-West"
 			}
 		};
 	},
 	methods: {
+		async getTiers() {
+			const response = await this.$axios.post("/tiers", {
+				service: document.location.pathname
+			});
+			// The tiers array is that list
+			this.tiers = response.data;
+			// The silver tier (default)
+			this.tier = _.find(response.data, { id: this.selectedTierID });
+			// Get the maximum number of wins in the tier
+			this.max = _.maxBy(this.tier.wins, "wins").wins;
+			// Divisions of the first tier
+			this.divisions = this.tier.divisions;
+			// Division IV
+			this.division = _.first(this.tier.divisions);
+			// this.division = _.find(this.tier.divisions, {
+			// 	id: this.selectedDivisionID
+			// });
+			// ETA
+			this.eta = _.find(this.tier.wins, ["wins", 4]).eta;
+			this.price = this.division.price * this.number_of_wins;
+		},
 		commitToStore(c) {
 			this.$store.commit("boosting_order/setSelector", c);
 		},
@@ -100,6 +119,7 @@ export default {
 		}
 	},
 	mounted() {
+		this.getTiers();
 		this.commitToStore(this.leagueConfig);
 	}
 };

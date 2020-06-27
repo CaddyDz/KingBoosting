@@ -40,15 +40,15 @@ h1 {
 </style>
 <i18n>
 {
-  "en": {
-    "400 Bad Request": "400 Bad Request",
-    "No email address associated with this Facebook account": "No email address associated with this Facebook account",
-    "Home Page": "Home Page"
+	"en": {
+		"400 Bad Request": "400 Bad Request",
+		"No email address associated with this Facebook account": "No email address associated with this Facebook account",
+		"Home Page": "Home Page"
 	},
 	"fr": {
-    "400 Bad Request": "400 Bad Request",
-    "No email address associated with this Facebook account": "No email address associated with this Facebook account",
-    "Home Page": "Page d'accueil"
-  }
+		"400 Bad Request": "400 Bad Request",
+		"No email address associated with this Facebook account": "No email address associated with this Facebook account",
+		"Home Page": "Page d'accueil"
+	}
 }
 </i18n>
