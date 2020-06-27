@@ -47,7 +47,7 @@ h1 {
 {
   "en": {
     "404 Not Found": "404 Not Found",
-    "An error occurred": "An error occurred",
+    "An error occured": "An error occurred",
     "Home Page": "Home Page"
 	},
 	"fr": {
