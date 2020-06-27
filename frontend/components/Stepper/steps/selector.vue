@@ -6,11 +6,11 @@
 			</div>
 			<h2 class="title-txt">Select Your Current League</h2>
 		</div>
-		<v-card raised class="mb-4">
+		<v-card raised class="mb-4" :style="{boxShadow: tier.box_shadow}">
 			<v-container>
 				<v-row align="center" justify="center">
 					<v-col md="3">
-						<img :src="division.image" :alt="tier.name" loading="lazy" width="200" />
+						<img :src="division.image || tier.image" :alt="tier.name" loading="lazy" width="200" />
 					</v-col>
 					<v-col md="9" class="have-selectors">
 						<v-container>
@@ -75,10 +75,10 @@ export default {
 	watch: {
 		selectedTierID(tierId) {
 			this.tier = _.find(this.tiers, ["id", tierId]);
-			this.max = _.maxBy(this.tier.wins, "wins").wins;
 			if (!_.isEmpty(this.tier.divisions)) {
 				// Divisions not empty, therefor less than master
 				this.hasDivisions = true;
+				this.divisions = this.tier.divisions;
 				this.selectedDivisionID = this.tier.divisions[0].id;
 			} else {
 				// Set division to an empty object with null image to pass coalesce in template
