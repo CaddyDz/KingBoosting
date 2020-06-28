@@ -8,7 +8,13 @@
 		</div>
 		<v-card raised class="mb-4">
 			<v-container class="container">
-				<v-slider v-model="winsCounter" thumb-label="always" :max="max" @end="winsHandler($event)"></v-slider>
+				<v-slider
+					v-model="winsCounter"
+					thumb-label="always"
+					min="1"
+					:max="max"
+					@end="winsHandler($event)"
+				></v-slider>
 				<v-radio-group
 					@change="radioHandler($event)"
 					class="radio-group"
