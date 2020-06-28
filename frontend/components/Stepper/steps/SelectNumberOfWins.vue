@@ -8,7 +8,7 @@
 		</div>
 		<v-card raised class="mb-4">
 			<v-container class="container">
-				<v-slider v-model="winsCounter" thumb-label="always" max="10" @end="winsHandler($event)"></v-slider>
+				<v-slider v-model="winsCounter" thumb-label="always" :max="max" @end="winsHandler($event)"></v-slider>
 				<v-radio-group
 					@change="radioHandler($event)"
 					class="radio-group"
@@ -35,6 +35,11 @@ export default {
 			radios: "Solo/Duo",
 			row: ""
 		};
+	},
+	computed: {
+		max() {
+			return this.$store.state.wins.maxNumberOfWins;
+		}
 	},
 	methods: {
 		commitToStore(c) {
