@@ -2,7 +2,7 @@
 	<div>
 		<SelectCurrentLeague />
 		<SelectNumberOfWins />
-		<!-- <options :step="steps[3]" /> -->
+		<Checkout />
 	</div>
 </template>
 
@@ -10,10 +10,7 @@
 export default {
 	data() {
 		return {
-			steps: [
-				{ id: 2, title: this.$i18n.t("Select Your Number Of Wins") },
-				{ id: 3, title: this.$i18n.t("Checkout") }
-			]
+			//
 		};
 	}
 };
