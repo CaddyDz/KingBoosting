@@ -2,9 +2,9 @@
 	<div>
 		<div class="title">
 			<div class="title-id">
-				<h2>{{step.id}}</h2>
+				<h2>2</h2>
 			</div>
-			<h2 class="title-txt">{{step.title}}</h2>
+			<h2 class="title-txt">Select Your Number Of Wins</h2>
 		</div>
 		<v-card raised class="mb-4">
 			<v-container class="container">
@@ -27,7 +27,6 @@
 
 <script>
 export default {
-	props: ["step"],
 	data() {
 		return {
 			items: ["Foo", "Bar", "Fizz", "Buzz"],

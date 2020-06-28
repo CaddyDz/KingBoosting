@@ -16,7 +16,7 @@
 		<v-container>
 			<v-row>
 				<v-col md="8">
-					<stepper />
+					<Stepper />
 				</v-col>
 				<v-col md="4"></v-col>
 			</v-row>

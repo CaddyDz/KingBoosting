@@ -57,7 +57,6 @@
 
 <script>
 export default {
-	props: ["step"],
 	data() {
 		return {
 			// We should use the index in the array instead of the ID
