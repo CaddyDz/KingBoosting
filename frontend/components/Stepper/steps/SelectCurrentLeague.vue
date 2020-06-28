@@ -74,6 +74,10 @@ export default {
 	watch: {
 		selectedTierID(tierId) {
 			this.tier = _.find(this.tiers, ["id", tierId]);
+			// Get max num of wins and commit it to store
+			// Get the maximum number of wins in the tier
+			let max = _.maxBy(this.tier.wins, "wins").wins;
+			this.$store.commit("wins/changeMaxNumberOfWins", max);
 			if (!_.isEmpty(this.tier.divisions)) {
 				// Divisions not empty, therefor less than master
 				this.hasDivisions = true;

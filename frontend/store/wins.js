@@ -4,6 +4,6 @@ export const state = () => ({
 
 export const mutations = {
 	changeMaxNumberOfWins(state, payload) {
-		state.maxNumberOfWins = payload.maxNumberOfWins;
+		state.maxNumberOfWins = payload;
 	}
 }
