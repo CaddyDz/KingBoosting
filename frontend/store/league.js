@@ -2,7 +2,7 @@ export const state = () => ({
 	tier: {
 		wins: [{
 			wins: 4,
-			eta: ""
+			eta: "0-1 day"
 		}]
 	},
 	wins: 4,
