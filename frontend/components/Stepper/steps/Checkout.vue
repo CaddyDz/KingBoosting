@@ -66,7 +66,7 @@ export default {
 	},
 	computed: {
 		eta() {
-			return this.$store.state.checkout.eta;
+			return this.$store.getters["league/eta"];
 		}
 	},
 	methods: {

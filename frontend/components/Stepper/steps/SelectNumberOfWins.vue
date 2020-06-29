@@ -45,6 +45,16 @@ export default {
 	computed: {
 		max() {
 			return this.$store.state.wins.maxNumberOfWins;
+		},
+		tier() {
+			return this.$store.state.league.tier;
+		}
+	},
+	watch: {
+		winsCounter(value) {
+			this.$store.commit("league/changeNumberOfWins", value);
+			let eta = _.find(this.tier.wins, ["wins", value]).eta;
+			this.$store.commit("checkout/changeETA", eta);
 		}
 	},
 	methods: {

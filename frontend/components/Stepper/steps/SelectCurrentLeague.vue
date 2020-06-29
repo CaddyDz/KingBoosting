@@ -74,6 +74,7 @@ export default {
 	watch: {
 		selectedTierID(tierId) {
 			this.tier = _.find(this.tiers, ["id", tierId]);
+			this.$store.commit("league/changeTier", this.tier);
 			// Get max num of wins and commit it to store
 			// Get the maximum number of wins in the tier
 			let max = _.maxBy(this.tier.wins, "wins").wins;
@@ -103,6 +104,7 @@ export default {
 			this.tiers = response.data;
 			// The silver tier (default)
 			this.tier = _.find(this.tiers, ["id", this.selectedTierID]);
+			this.$store.commit("league/changeTier", this.tier);
 			// Divisions of the first tier
 			this.divisions = this.tier.divisions;
 			// Division I
