@@ -89,10 +89,15 @@ export default {
 				this.division = { image: null };
 				// Remove the divisions select from the DOM
 				this.hasDivisions = false;
+				this.$store.commit(
+					"league/changePrice",
+					parseFloat(this.tier.price)
+				);
 			}
 		},
 		selectedDivisionID(divisionId) {
 			this.division = _.find(this.tier.divisions, ["id", divisionId]);
+			this.$store.commit("league/changePrice", this.division.price);
 		}
 	},
 	methods: {

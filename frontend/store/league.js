@@ -6,6 +6,7 @@ export const state = () => ({
 		}]
 	},
 	wins: 4,
+	price: 3.9,
 });
 
 export const mutations = {
@@ -14,6 +15,9 @@ export const mutations = {
 	},
 	changeNumberOfWins(state, payload) {
 		state.wins = payload;
+	},
+	changePrice(state, payload) {
+		state.price = payload;
 	}
 }
 
@@ -24,4 +28,7 @@ export const getters = {
 			state.wins
 		]).eta;
 	},
+	price(state) {
+		return state.price * state.wins;
+	}
 }

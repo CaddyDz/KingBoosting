@@ -3,7 +3,7 @@
 		<v-container class="boost-me">
 			<div class="align-center">
 				<v-icon size="50">mdi-currency-eur</v-icon>
-				<h2>61.90 ($68.86)</h2>
+				<h2>{{ price }} (${{ priceUSD }})</h2>
 			</div>
 			<v-dialog v-model="dialog" width="940">
 				<template v-slot:activator="{ on }">
@@ -23,8 +23,18 @@
 export default {
 	data() {
 		return {
-			dialog: false
+			dialog: false,
+			// Default exchange rate, to be changed by API call
+			exchangeRate: 1.1003
 		};
+	},
+	computed: {
+		price() {
+			return this.$store.getters["league/price"];
+		},
+		priceUSD() {
+			return (this.price * this.exchangeRate).toFixed(2);
+		}
 	},
 	methods: {
 		order() {
@@ -38,6 +48,13 @@ export default {
 		closeDialog() {
 			// this.on=false
 		}
+	},
+	mounted() {
+		this.$axios
+			.get("https://api.exchangeratesapi.io/latest?symbols=USD")
+			.then(response => {
+				this.exchangeRate = response.data.rates.USD;
+			});
 	}
 };
 </script>
