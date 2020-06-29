@@ -1,5 +1,10 @@
 export const state = () => ({
-	tier: {},
+	tier: {
+		wins: [{
+			wins: 4,
+			eta: ""
+		}]
+	},
 	wins: 4,
 });
 
