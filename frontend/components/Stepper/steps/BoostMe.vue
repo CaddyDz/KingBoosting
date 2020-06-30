@@ -38,12 +38,7 @@ export default {
 	},
 	methods: {
 		order() {
-			this.commitToStore({
-				specificChampions: this.checkBox[0].checkbox,
-				priorityOrder: this.checkBox[1].checkbox,
-				streaming: this.checkBox[2].checkbox,
-				discountCode: this.discountCode
-			});
+			this.dialog = true;
 		},
 		closeDialog() {
 			// this.on=false
