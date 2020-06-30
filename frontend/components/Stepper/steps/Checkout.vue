@@ -11,7 +11,7 @@
 				<v-row>
 					<v-col class="left-col">
 						<div class="align-center-to-left" v-for="checkbox in checkboxes" :key="checkbox.id">
-							<v-checkbox v-model="checkbox.checked" @change="checkOption(checkbox.id)"></v-checkbox>
+							<v-checkbox v-model="checkbox.checked" @change="checkOption(checkbox)"></v-checkbox>
 							<v-icon color="#673ab7">{{ checkbox.icon }}</v-icon>
 							<p>{{ checkbox.title }}</p>
 						</div>
@@ -47,19 +47,22 @@ export default {
 					id: 0,
 					checked: false,
 					icon: "mdi-account-supervisor",
-					title: "Specific champions at +20% cost"
+					title: "Specific champions at +20% cost",
+					percentage: 20
 				},
 				{
 					id: 1,
 					checked: false,
 					icon: "mdi-flash",
-					title: "Priority order (2x speed) at +25% cost"
+					title: "Priority order (2x speed) at +25% cost",
+					percentage: 25
 				},
 				{
 					id: 2,
 					checked: false,
 					icon: "mdi-camcorder",
-					title: "With Streaming +15% cost"
+					title: "With Streaming +15% cost",
+					percentage: 15
 				}
 			]
 		};
@@ -73,9 +76,12 @@ export default {
 		commitToStore(c) {
 			this.$store.commit("boosting_order/setOptions", c);
 		},
-		checkOption(checkboxID) {
-			this.checkbox[checkbox].checkbox = !this.checkbox[checkboxID]
-				.checkbox;
+		checkOption(checkbox) {
+			if (checkbox.checked) {
+				console.log("+" + checkbox.percentage);
+			} else {
+				console.log("-" + checkbox.percentage);
+			}
 		},
 		inputCodeChangeHandler(e) {
 			this.discountCode = e;
