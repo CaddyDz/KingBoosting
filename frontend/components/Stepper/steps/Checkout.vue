@@ -10,10 +10,10 @@
 			<v-container class="container">
 				<v-row>
 					<v-col class="left-col">
-						<div class="align-center-to-left" v-for="item in checkBox" :key="item.id">
-							<v-checkbox v-model="item.checkbox" @change="checkBoxChangeSteteHandler(item.id)"></v-checkbox>
-							<v-icon color="#673ab7">{{ item.icon }}</v-icon>
-							<p>{{ item.title }}</p>
+						<div class="align-center-to-left" v-for="checkbox in checkboxes" :key="checkbox.id">
+							<v-checkbox v-model="checkbox.checked" @change="checkOption(checkbox.id)"></v-checkbox>
+							<v-icon color="#673ab7">{{ checkbox.icon }}</v-icon>
+							<p>{{ checkbox.title }}</p>
 						</div>
 					</v-col>
 					<v-col class="right-col">
@@ -42,22 +42,22 @@ export default {
 	data() {
 		return {
 			discountCode: "",
-			checkBox: [
+			checkboxes: [
 				{
 					id: 0,
-					checkbox: false,
+					checked: false,
 					icon: "mdi-account-supervisor",
 					title: "Specific champions at +20% cost"
 				},
 				{
 					id: 1,
-					checkbox: false,
+					checked: false,
 					icon: "mdi-flash",
 					title: "Priority order (2x speed) at +25% cost"
 				},
 				{
 					id: 2,
-					checkbox: false,
+					checked: false,
 					icon: "mdi-camcorder",
 					title: "With Streaming +15% cost"
 				}
@@ -73,8 +73,9 @@ export default {
 		commitToStore(c) {
 			this.$store.commit("boosting_order/setOptions", c);
 		},
-		checkBoxChangeSteteHandler(e) {
-			this.checkBox[e].checkbox = !this.checkBox[e].checkbox;
+		checkOption(checkboxID) {
+			this.checkbox[checkbox].checkbox = !this.checkbox[checkboxID]
+				.checkbox;
 		},
 		inputCodeChangeHandler(e) {
 			this.discountCode = e;
