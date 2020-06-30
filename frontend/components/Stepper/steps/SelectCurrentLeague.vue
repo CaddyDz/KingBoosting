@@ -76,7 +76,6 @@ export default {
 			this.tier = _.find(this.tiers, ["id", tierId]);
 			this.$store.commit("league/changeTier", this.tier);
 			// Get max num of wins and commit it to store
-			// Get the maximum number of wins in the tier
 			let max = _.maxBy(this.tier.wins, "wins").wins;
 			this.$store.commit("wins/changeMaxNumberOfWins", max);
 			if (!_.isEmpty(this.tier.divisions)) {
@@ -89,15 +88,12 @@ export default {
 				this.division = { image: null };
 				// Remove the divisions select from the DOM
 				this.hasDivisions = false;
-				this.$store.commit(
-					"league/changePrice",
-					parseFloat(this.tier.price)
-				);
+				this.$store.commit("league/changeBasePrice", this.tier.price);
 			}
 		},
 		selectedDivisionID(divisionId) {
 			this.division = _.find(this.tier.divisions, ["id", divisionId]);
-			this.$store.commit("league/changePrice", this.division.price);
+			this.$store.commit("league/changeBasePrice", this.division.price);
 		}
 	},
 	methods: {

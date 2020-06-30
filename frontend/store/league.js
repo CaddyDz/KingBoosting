@@ -5,19 +5,26 @@ export const state = () => ({
 			eta: "0-1 day"
 		}]
 	},
+	basePrice: 3.9,
 	wins: 4,
-	price: 3.9,
+	percent: 0,
 });
 
 export const mutations = {
 	changeTier(state, payload) {
 		state.tier = payload;
 	},
-	changeNumberOfWins(state, payload) {
-		state.wins = payload;
+	changeNumberOfWins(state, wins) {
+		state.wins = wins;
 	},
-	changePrice(state, payload) {
-		state.price = payload;
+	changeBasePrice(state, price) {
+		state.basePrice = price;
+	},
+	addPercent(state, percent) {
+		state.percent += percent;
+	},
+	substractPercent(state, percent) {
+		state.percent -= percent;
 	}
 }
 
@@ -29,6 +36,8 @@ export const getters = {
 		]).eta;
 	},
 	price(state) {
-		return parseFloat(state.price * state.wins).toFixed(2);
+		let price = state.basePrice * state.wins;
+		price += (price * state.percent) / 100;
+		return price;
 	}
 }

@@ -78,9 +78,12 @@ export default {
 		},
 		checkOption(checkbox) {
 			if (checkbox.checked) {
-				console.log("+" + checkbox.percentage);
+				this.$store.commit("league/addPercent", checkbox.percentage);
 			} else {
-				console.log("-" + checkbox.percentage);
+				this.$store.commit(
+					"league/substractPercent",
+					checkbox.percentage
+				);
 			}
 		},
 		inputCodeChangeHandler(e) {

@@ -35,7 +35,6 @@
 export default {
 	data() {
 		return {
-			items: ["Foo", "Bar", "Fizz", "Buzz"],
 			hasDivisions: true,
 			winsCounter: 4,
 			radios: "Solo/Duo",
@@ -83,7 +82,6 @@ export default {
 .container {
 	display: flex;
 	flex-direction: column;
-	/* align-items: center; */
 	justify-content: center;
 }
 

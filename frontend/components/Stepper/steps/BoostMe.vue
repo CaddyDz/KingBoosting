@@ -30,7 +30,7 @@ export default {
 	},
 	computed: {
 		price() {
-			return this.$store.getters["league/price"];
+			return this.$store.getters["league/price"].toFixed(2);
 		},
 		priceUSD() {
 			return (this.price * this.exchangeRate).toFixed(2);
