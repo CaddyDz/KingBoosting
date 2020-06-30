@@ -29,6 +29,6 @@ export const getters = {
 		]).eta;
 	},
 	price(state) {
-		return state.price * state.wins;
+		return parseFloat(state.price * state.wins).toFixed(2);
 	}
 }
