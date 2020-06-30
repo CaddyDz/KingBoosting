@@ -62,7 +62,11 @@ export default {
 	plugins: [
 		'~plugins/globals',
 		'~plugins/storage',
-		'~plugins/axios'
+		'~plugins/axios',
+		{
+			src: '~plugins/vuex',
+			ssr: false
+		}
 	],
 	/*
 	 ** Nuxt.js dev-modules
