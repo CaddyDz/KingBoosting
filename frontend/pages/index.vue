@@ -58,9 +58,7 @@ export default {
 		Blogs
 	},
 	created() {
-		this.$store.commit("services/populate", {
-			services: this.services
-		});
+		this.$store.commit("services/populate", this.services);
 	}
 };
 </script>

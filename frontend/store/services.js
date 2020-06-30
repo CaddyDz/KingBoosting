@@ -3,7 +3,7 @@ export const state = () => ({
 })
 
 export const mutations = {
-	populate(state, payload) {
-		state.services = payload.services
+	populate(state, services) {
+		state.services = services
 	}
 }

@@ -5,7 +5,9 @@ export default ({
 }) => {
 	window.onNuxtReady(() => {
 		new VuexPersistence({
-			reducer: (state) => state.services,
+			reducer: (state) => ({
+				services: state.services
+			}),
 		}).plugin(store);
 	});
 }
