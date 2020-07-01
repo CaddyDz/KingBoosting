@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * App\DivisionBoosting
@@ -20,6 +21,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class DivisionBoosting extends Model
 {
+    use SoftDeletes;
     public function type()
     {
         return $this->belongsTo(ServiceType::class);

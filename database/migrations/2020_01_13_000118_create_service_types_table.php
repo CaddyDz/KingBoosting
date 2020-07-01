@@ -17,6 +17,7 @@ class CreateServiceTypesTable extends Migration
             $table->bigIncrements('id');
             $table->string('type');
             $table->string('icon');
+            $table->timestamp('deleted_at');
             $table->timestamps();
         });
     }

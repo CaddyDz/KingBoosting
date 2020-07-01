@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * App\Tier
@@ -32,6 +33,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Tier extends Model
 {
+    use SoftDeletes;
+
     public function divisions()
     {
         return $this->hasMany(Division::class);

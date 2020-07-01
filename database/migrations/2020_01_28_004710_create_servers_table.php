@@ -6,27 +6,28 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateServersTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
-    {
-        Schema::create('servers', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('region');
-            $table->timestamps();
-        });
-    }
+	/**
+	 * Run the migrations.
+	 *
+	 * @return void
+	 */
+	public function up()
+	{
+		Schema::create('servers', function (Blueprint $table) {
+			$table->bigIncrements('id');
+			$table->string('region');
+			$table->timestamp('deleted_at');
+			$table->timestamps();
+		});
+	}
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('servers');
-    }
+	/**
+	 * Reverse the migrations.
+	 *
+	 * @return void
+	 */
+	public function down()
+	{
+		Schema::dropIfExists('servers');
+	}
 }

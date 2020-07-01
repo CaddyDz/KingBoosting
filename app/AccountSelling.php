@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * App\AccountSelling
@@ -22,5 +23,5 @@ use Illuminate\Database\Eloquent\Model;
  */
 class AccountSelling extends Model
 {
-    //
+    use SoftDeletes;
 }

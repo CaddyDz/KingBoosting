@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * App\Feature
@@ -26,5 +27,5 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Feature extends Model
 {
-    //
+    use SoftDeletes;
 }

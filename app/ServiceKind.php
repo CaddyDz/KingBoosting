@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * App\ServiceKind
@@ -24,6 +25,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class ServiceKind extends Model
 {
+    use SoftDeletes;
+
     protected $fillable = ['name'];
 
     public function services()

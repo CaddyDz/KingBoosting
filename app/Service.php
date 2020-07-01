@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * App\Service
@@ -41,6 +42,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  */
 class Service extends Model
 {
+    use SoftDeletes;
+
     /**
      * Get the route key for the model.
      *

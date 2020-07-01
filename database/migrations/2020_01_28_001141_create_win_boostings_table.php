@@ -6,31 +6,32 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateWinBoostingsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
-    {
-        Schema::create('win_boostings', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedBigInteger('tier_id');
-            $table->foreign('tier_id')->references('id')->on('tiers')->onDelete('cascade');
-            $table->unsignedTinyInteger('wins');
-            // Approximate completion time
-            $table->string('eta');
-            $table->timestamps();
-        });
-    }
+	/**
+	 * Run the migrations.
+	 *
+	 * @return void
+	 */
+	public function up()
+	{
+		Schema::create('win_boostings', function (Blueprint $table) {
+			$table->bigIncrements('id');
+			$table->unsignedBigInteger('tier_id');
+			$table->foreign('tier_id')->references('id')->on('tiers')->onDelete('cascade');
+			$table->unsignedTinyInteger('wins');
+			// Approximate completion time
+			$table->string('eta');
+			$table->timestamp('deleted_at');
+			$table->timestamps();
+		});
+	}
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('win_boostings');
-    }
+	/**
+	 * Reverse the migrations.
+	 *
+	 * @return void
+	 */
+	public function down()
+	{
+		Schema::dropIfExists('win_boostings');
+	}
 }

@@ -7,6 +7,7 @@ use Laravel\Passport\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
@@ -53,7 +54,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  */
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasRoles, Notifiable, HasApiTokens, Searchable;
+    use HasRoles, Notifiable, HasApiTokens, Searchable, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.

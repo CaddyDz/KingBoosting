@@ -6,27 +6,28 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateAccountSellingsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
-    {
-        Schema::create('account_sellings', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('server');
-            $table->timestamps();
-        });
-    }
+	/**
+	 * Run the migrations.
+	 *
+	 * @return void
+	 */
+	public function up()
+	{
+		Schema::create('account_sellings', function (Blueprint $table) {
+			$table->bigIncrements('id');
+			$table->string('server');
+			$table->timestamp('deleted_at');
+			$table->timestamps();
+		});
+	}
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('account_sellings');
-    }
+	/**
+	 * Reverse the migrations.
+	 *
+	 * @return void
+	 */
+	public function down()
+	{
+		Schema::dropIfExists('account_sellings');
+	}
 }

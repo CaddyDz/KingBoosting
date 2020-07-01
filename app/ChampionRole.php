@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * App\ChampionRole
@@ -24,6 +25,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class ChampionRole extends Model
 {
+    use SoftDeletes;
     /**
      * The champions that belong to the role.
      */
