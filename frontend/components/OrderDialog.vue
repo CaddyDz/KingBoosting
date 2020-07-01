@@ -19,7 +19,7 @@
 			<v-stepper-content key="1-content" step="1">
 				<v-row>
 					<v-col>
-						<LoginForm @close="nextStep(1)"></LoginForm>
+						<LoginForm @close="nextStep(1)" @cancel="cancel"></LoginForm>
 					</v-col>
 					<v-col cols="4">
 						<SocialLogin></SocialLogin>
@@ -71,8 +71,7 @@
 						</v-row>
 					</v-container>
 				</v-form>
-				<v-btn color="primary" @click="nextStep(2)">{{ $t('Next') }}</v-btn>
-				<v-btn text>{{ $t('Cancel') }}</v-btn>
+				<v-btn color="primary" @click="nextStep(2)" :disabled="!valid">{{ $t('Next') }}</v-btn>
 			</v-stepper-content>
 			<v-stepper-content key="3-content" step="3">
 				<v-card class="mb-12" color="grey lighten-1" height="200px"></v-card>
@@ -85,17 +84,6 @@
 
 <script>
 export default {
-	computed: {
-		plural(count, noun) {
-			return (count, noun) => `${count} ${noun}${count !== 1 ? "s" : ""}`;
-		},
-		priceUSD() {
-			return (this.price * this.exchangeRate).toFixed(2);
-		},
-		isLoggedIn() {
-			return this.$store.getters["auth/isLoggedIn"];
-		}
-	},
 	data() {
 		return {
 			e1: 1,
@@ -119,6 +107,17 @@ export default {
 			comment: "",
 			nickname: ""
 		};
+	},
+	computed: {
+		plural(count, noun) {
+			return (count, noun) => `${count} ${noun}${count !== 1 ? "s" : ""}`;
+		},
+		priceUSD() {
+			return (this.price * this.exchangeRate).toFixed(2);
+		},
+		isLoggedIn() {
+			return this.$store.getters["auth/isLoggedIn"];
+		}
 	},
 	methods: {
 		getBoostersList() {
@@ -164,6 +163,10 @@ export default {
 				});
 		},
 		closeDialog() {
+			this.e1 = 1;
+			this.$emit("closeDialog");
+		},
+		cancel() {
 			this.$emit("closeDialog");
 		},
 		nextStep(n) {
@@ -175,6 +178,11 @@ export default {
 		}
 	},
 	mounted() {
+		console.log("Mounted dialog");
+		// if already logged in, jump to next step
+		if (this.$store.state.auth.isLoggedIn) {
+			this.e1 = 2;
+		}
 		this.getBoostersList();
 	}
 };

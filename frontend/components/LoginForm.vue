@@ -31,7 +31,7 @@
 						@click="login"
 						type="submit"
 					>{{ $t('Continue') }}</v-btn>
-					<v-btn text small @click="close">{{ $t('Cancel') }}</v-btn>
+					<v-btn text small @click="cancel">{{ $t('Cancel') }}</v-btn>
 				</v-row>
 			</v-flex>
 		</v-layout>
@@ -70,12 +70,11 @@ export default {
 					password: this.password
 				})
 				.then(response => {
-					console.log(response.success.access_token);
 					this.$store.commit("auth/login", {
 						token: response.success.access_token
 					});
 					this.$store.commit("notification/open", {
-						text: response.message,
+						text: "Logged In",
 						mode: "success"
 					});
 					this.close();
@@ -125,6 +124,9 @@ export default {
 		},
 		close() {
 			this.$emit("close");
+		},
+		cancel() {
+			this.$emit("cancel");
 		}
 	},
 	mounted() {

@@ -5,8 +5,10 @@ export default ({
 }) => {
 	window.onNuxtReady(() => {
 		new VuexPersistence({
+			storage: window.localStorage,
 			reducer: (state) => ({
-				services: state.services
+				services: state.services,
+				isLoggedIn: state.auth.isLoggedIn
 			}),
 		}).plugin(store);
 	});
