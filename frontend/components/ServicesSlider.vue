@@ -64,6 +64,14 @@ export default {
 				return this.service.id + 2;
 			}
 		}
+	},
+	mounted() {
+		// If there are no services in the store, ex: user entered page directly
+		if (_.isEmpty(this.services)) {
+			this.$axios.$get("/services").then(data => {
+				this.$store.commit("services/populate", data);
+			});
+		}
 	}
 };
 </script>
