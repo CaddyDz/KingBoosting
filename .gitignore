@@ -1,13 +1,5 @@
-/node_modules
-/public/hot
 /public/storage
-/public/fonts
-/public/assets
-/public/images
 /public/vendor
-/public/css
-/public/js
-/public/mix-manifest.json
 /storage/*.key
 /vendor
 /nova
