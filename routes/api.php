@@ -19,8 +19,8 @@ Route::get('login/{provider}/callback', 'Auth\LoginController@handleProviderCall
 
 // Routes to set password for the user who just verified their email
 Route::middleware(['auth', 'verified', 'nopassword'])->name('password.')->group(function () {
-    Route::get('set-password', 'Auth\VerificationController@showPasswordSettingForm')->name('show');
-    Route::post('set-password', 'Auth\VerificationController@setPassword')->name('store');
+	Route::get('set-password', 'Auth\VerificationController@showPasswordSettingForm')->name('show');
+	Route::post('set-password', 'Auth\VerificationController@setPassword')->name('store');
 });
 // List all tiers
 Route::post('/tiers', 'TiersController@index');
@@ -44,15 +44,15 @@ Route::get('/blog/first', 'ArticlesController@getFirstArticle');
 Route::get('/blog/count', 'ArticlesController@getArticlesCount');
 Route::get('/blog/{article}', 'ArticlesController@show')->name('article');
 Route::middleware(['auth:api'])->group(function () {
-    Route::post('/orders', 'OrdersController@store');
+	Route::post('/orders', 'OrdersController@store');
 });
 Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return auth()->user();
+	return auth()->user();
 });
 Route::get('/checkFB', function () {
-    $rejected = Cache::get('rejected') ?? false;
-    Cache::forget('rejected');
-    return response([
-        'rejected' => $rejected,
-    ]);
+	$rejected = Cache::get('rejected') ?? false;
+	Cache::forget('rejected');
+	return response([
+		'rejected' => $rejected,
+	]);
 });

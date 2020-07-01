@@ -46,12 +46,12 @@ export default {
 
 <i18n>
 {
-    "en": {
-        "Members Area": "Members Area"
-  },
-    "fr": {
-        "Members Area": "Zone Des Membres"
-  },
+	"en": {
+			"Members Area": "Members Area"
+	},
+	"fr": {
+			"Members Area": "Zone Des Membres"
+	},
 	"it": {
 		"Members Area": "Zona Dei Membri"
 	},
@@ -74,7 +74,7 @@ export default {
 		"Members Area": "Members Area"
 	},
 	"ne": {
-	    "Members Area": "Members Area"
+			"Members Area": "Members Area"
 	},
 	"dk": {
 		"Members Area": "Members Area"
