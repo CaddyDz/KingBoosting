@@ -18,7 +18,7 @@ class CreatePrioritiesTable extends Migration
 			$table->string('icon');
 			$table->string('title');
 			$table->text('description');
-			$table->timestamp('deleted_at');
+			$table->timestamp('deleted_at')->nullable();
 			$table->timestamps();
 		});
 	}

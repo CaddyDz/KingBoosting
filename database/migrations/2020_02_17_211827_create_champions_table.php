@@ -19,7 +19,7 @@ class CreateChampionsTable extends Migration
 			$table->string('identifier')->unique();
 			$table->string('image');
 			$table->integer('key')->unique();
-			$table->timestamp('deleted_at');
+			$table->timestamp('deleted_at')->nullable();
 			$table->timestamps();
 		});
 	}

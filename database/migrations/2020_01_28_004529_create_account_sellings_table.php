@@ -16,7 +16,7 @@ class CreateAccountSellingsTable extends Migration
 		Schema::create('account_sellings', function (Blueprint $table) {
 			$table->bigIncrements('id');
 			$table->string('server');
-			$table->timestamp('deleted_at');
+			$table->timestamp('deleted_at')->nullable();
 			$table->timestamps();
 		});
 	}

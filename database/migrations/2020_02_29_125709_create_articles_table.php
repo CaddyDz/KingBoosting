@@ -20,7 +20,7 @@ class CreateArticlesTable extends Migration
 			$table->text('excerpt');
 			$table->string('image');
 			$table->string('slug');
-			$table->timestamp('deleted_at');
+			$table->timestamp('deleted_at')->nullable();
 			$table->timestamps();
 		});
 	}

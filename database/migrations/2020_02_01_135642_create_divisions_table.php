@@ -20,7 +20,7 @@ class CreateDivisionsTable extends Migration
 			$table->string('image');
 			$table->decimal('price')->default(1.90);
 			$table->string('name');
-			$table->timestamp('deleted_at');
+			$table->timestamp('deleted_at')->nullable();
 			$table->timestamps();
 		});
 	}

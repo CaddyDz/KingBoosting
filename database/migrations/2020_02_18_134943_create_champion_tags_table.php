@@ -16,7 +16,7 @@ class CreateChampionTagsTable extends Migration
 		Schema::create('champion_tags', function (Blueprint $table) {
 			$table->bigIncrements('id');
 			$table->string('name')->unique();
-			$table->timestamp('deleted_at');
+			$table->timestamp('deleted_at')->nullable();
 			$table->timestamps();
 		});
 	}

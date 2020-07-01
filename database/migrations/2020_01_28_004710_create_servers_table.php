@@ -16,7 +16,7 @@ class CreateServersTable extends Migration
 		Schema::create('servers', function (Blueprint $table) {
 			$table->bigIncrements('id');
 			$table->string('region');
-			$table->timestamp('deleted_at');
+			$table->timestamp('deleted_at')->nullable();
 			$table->timestamps();
 		});
 	}

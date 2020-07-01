@@ -15,7 +15,7 @@ class CreateDivisionBoostingsTable extends Migration
 	{
 		Schema::create('division_boostings', function (Blueprint $table) {
 			$table->bigIncrements('id');
-			$table->timestamp('deleted_at');
+			$table->timestamp('deleted_at')->nullable();
 			$table->timestamps();
 		});
 	}

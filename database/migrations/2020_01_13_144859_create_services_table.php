@@ -24,7 +24,7 @@ class CreateServicesTable extends Migration
 			$table->enum('status', ['Popular', 'New', 'Best Value'])->nullable();
 			$table->string('slug');
 			$table->string('bg_img');
-			$table->timestamp('deleted_at');
+			$table->timestamp('deleted_at')->nullable();
 			$table->timestamps();
 		});
 	}

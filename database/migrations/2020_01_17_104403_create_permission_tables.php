@@ -20,7 +20,7 @@ class CreatePermissionTables extends Migration
 			$table->bigIncrements('id');
 			$table->string('name');
 			$table->string('guard_name');
-			$table->timestamp('deleted_at');
+			$table->timestamp('deleted_at')->nullable();
 			$table->timestamps();
 		});
 
@@ -28,7 +28,7 @@ class CreatePermissionTables extends Migration
 			$table->bigIncrements('id');
 			$table->string('name');
 			$table->string('guard_name');
-			$table->timestamp('deleted_at');
+			$table->timestamp('deleted_at')->nullable();
 			$table->timestamps();
 		});
 

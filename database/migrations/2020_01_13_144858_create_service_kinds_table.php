@@ -16,7 +16,7 @@ class CreateServiceKindsTable extends Migration
 		Schema::create('service_kinds', function (Blueprint $table) {
 			$table->bigIncrements('id');
 			$table->string('name');
-			$table->timestamp('deleted_at');
+			$table->timestamp('deleted_at')->nullable();
 			$table->timestamps();
 		});
 	}

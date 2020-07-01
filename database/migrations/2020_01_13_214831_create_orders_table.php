@@ -28,7 +28,7 @@ class CreateOrdersTable extends Migration
 			$table->boolean('specific_champions')->default(false);
 			$table->decimal('price', 5, 2);
 			$table->string('purchase');
-			$table->timestamp('deleted_at');
+			$table->timestamp('deleted_at')->nullable();
 			$table->timestamps();
 		});
 	}

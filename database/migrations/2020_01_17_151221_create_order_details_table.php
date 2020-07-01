@@ -24,7 +24,7 @@ class CreateOrderDetailsTable extends Migration
 			$table->unsignedBigInteger('booster_id')->nullable();
 			$table->foreign('booster_id')->references('id')->on('users')->onDelete('cascade');
 			$table->enum('spell_order', ['D', 'F']);
-			$table->timestamp('deleted_at');
+			$table->timestamp('deleted_at')->nullable();
 			$table->timestamps();
 		});
 	}

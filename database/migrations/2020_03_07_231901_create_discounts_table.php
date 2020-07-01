@@ -17,7 +17,7 @@ class CreateDiscountsTable extends Migration
 			$table->bigIncrements('id');
 			$table->string('code');
 			$table->dateTime('expires')->nullable();
-			$table->timestamp('deleted_at');
+			$table->timestamp('deleted_at')->nullable();
 			$table->timestamps();
 		});
 	}

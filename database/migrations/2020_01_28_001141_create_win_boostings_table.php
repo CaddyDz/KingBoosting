@@ -20,7 +20,7 @@ class CreateWinBoostingsTable extends Migration
 			$table->unsignedTinyInteger('wins');
 			// Approximate completion time
 			$table->string('eta');
-			$table->timestamp('deleted_at');
+			$table->timestamp('deleted_at')->nullable();
 			$table->timestamps();
 		});
 	}

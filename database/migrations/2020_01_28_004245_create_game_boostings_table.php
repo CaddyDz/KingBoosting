@@ -15,7 +15,7 @@ class CreateGameBoostingsTable extends Migration
 	{
 		Schema::create('game_boostings', function (Blueprint $table) {
 			$table->bigIncrements('id');
-			$table->timestamp('deleted_at');
+			$table->timestamp('deleted_at')->nullable();
 			$table->timestamps();
 		});
 	}
