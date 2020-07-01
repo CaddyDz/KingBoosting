@@ -95,7 +95,6 @@ export default {
 	methods: {
 		commitFilter(i) {
 			// TODO: commit filter
-			console.log(JSON.stringify(i));
 		}
 	}
 };

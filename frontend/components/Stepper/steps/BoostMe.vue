@@ -7,12 +7,12 @@
 			</div>
 			<v-dialog v-model="dialog" width="940">
 				<template v-slot:activator="{ on }">
-					<v-btn class="ma-2" outlined @click="order()" v-on="on">
+					<v-btn class="ma-2" outlined @click="dialog = true" v-on="on">
 						<v-icon left>mdi-shopping-outline</v-icon>Boost Me
 					</v-btn>
 				</template>
 				<!-- Entire stepper -->
-				<post-order @closeDialog="closeDialog" />
+				<order-dialog @closeDialog="dialog = false" />
 			</v-dialog>
 			<!-- end of Test -->
 		</v-container>
@@ -34,14 +34,6 @@ export default {
 		},
 		priceUSD() {
 			return (this.price * this.exchangeRate).toFixed(2);
-		}
-	},
-	methods: {
-		order() {
-			this.dialog = true;
-		},
-		closeDialog() {
-			// this.on=false
 		}
 	},
 	mounted() {

@@ -73,9 +73,6 @@ export default {
 		}
 	},
 	methods: {
-		commitToStore(c) {
-			this.$store.commit("boosting_order/setOptions", c);
-		},
 		checkOption(checkbox) {
 			if (checkbox.checked) {
 				this.$store.commit("league/addPercent", checkbox.percentage);

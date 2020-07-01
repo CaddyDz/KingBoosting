@@ -431,12 +431,11 @@ export default {
 		this.$axios.$get("/servers").then(servers => (this.servers = servers));
 		// Jump to second step if user is already logged in
 		if (this.isLoggedIn) {
-			console.log("Logged in");
 			this.e1 = 2;
 			// Get boosters list
 			this.getBoostersList();
 		} else {
-			console.log("Logged out");
+			// Logged out
 		}
 	}
 };

@@ -3,24 +3,30 @@
 		<v-stepper-header>
 			<!-- 3 templates here -->
 			<template>
-				<v-stepper-step key="login" :complete="isLoggedIn" :step="1">{{ $t('Login') }}</v-stepper-step>
+				<v-stepper-step key="login" :complete="isLoggedIn" step="1">{{ $t('Login') }}</v-stepper-step>
 				<v-divider v-if="1 !== steps" :key="1"></v-divider>
 			</template>
 			<template>
-				<v-stepper-step key="details" :complete="e1 > 2" :step="2" editable>{{ $t('Details') }}</v-stepper-step>
+				<v-stepper-step key="details" :complete="e1 > 2" step="2">{{ $t('Details') }}</v-stepper-step>
 				<v-divider v-if="2 !== steps" :key="2"></v-divider>
 			</template>
 			<template>
-				<v-stepper-step key="pay" :complete="el > 3" :step="3" editable>Pay</v-stepper-step>
+				<v-stepper-step key="pay" :complete="e1 > 3" step="3">Pay</v-stepper-step>
 				<v-divider v-if="3 !== steps" :key="3"></v-divider>
 			</template>
 		</v-stepper-header>
 		<v-stepper-items>
-			<v-stepper-content key="1-content" :step="1">
-				<!-- If user is already logged in, this step should be skipped -->
-				<LoginComponent v-if="!isLoggedIn"></LoginComponent>
+			<v-stepper-content key="1-content" step="1">
+				<v-row>
+					<v-col>
+						<LoginForm @close="nextStep(1)"></LoginForm>
+					</v-col>
+					<v-col cols="4">
+						<SocialLogin></SocialLogin>
+					</v-col>
+				</v-row>
 			</v-stepper-content>
-			<v-stepper-content key="2-content" :step="2">
+			<v-stepper-content key="2-content" step="2">
 				<v-form v-model="valid">
 					<v-container>
 						<v-row>
@@ -68,10 +74,10 @@
 				<v-btn color="primary" @click="nextStep(2)">{{ $t('Next') }}</v-btn>
 				<v-btn text>{{ $t('Cancel') }}</v-btn>
 			</v-stepper-content>
-			<v-stepper-content key="3-content" :step="3">
+			<v-stepper-content key="3-content" step="3">
 				<v-card class="mb-12" color="grey lighten-1" height="200px"></v-card>
 				<v-btn color="primary" @click="boostMe">{{ $t('Continue') }}</v-btn>
-				<v-btn text>{{ $t('Cancel') }}</v-btn>
+				<v-btn text @click="closeDialog">{{ $t('Cancel') }}</v-btn>
 			</v-stepper-content>
 		</v-stepper-items>
 	</v-stepper>
@@ -87,7 +93,7 @@ export default {
 			return (this.price * this.exchangeRate).toFixed(2);
 		},
 		isLoggedIn() {
-			return this.$store.getters["log_in_out/isLoggedIn"];
+			return this.$store.getters["auth/isLoggedIn"];
 		}
 	},
 	data() {
@@ -107,7 +113,11 @@ export default {
 				v =>
 					v.length > 8 ||
 					this.$i18n.t("Password must be longer than 8 characters")
-			]
+			],
+			offline: false,
+			steps: [],
+			comment: "",
+			nickname: ""
 		};
 	},
 	methods: {
@@ -153,8 +163,11 @@ export default {
 					alert(error.response.data.errors);
 				});
 		},
+		closeDialog() {
+			this.$emit("closeDialog");
+		},
 		nextStep(n) {
-			if (n === this.steps) {
+			if (n === this.steps.length) {
 				this.e1 = 1;
 			} else {
 				this.e1 = n + 1;
