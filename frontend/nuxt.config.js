@@ -61,7 +61,6 @@ export default {
 	 */
 	plugins: [
 		'~plugins/globals',
-		'~plugins/storage',
 		'~plugins/axios',
 		{
 			src: '~plugins/vuex',

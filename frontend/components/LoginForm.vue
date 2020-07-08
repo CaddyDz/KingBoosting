@@ -49,13 +49,13 @@ export default {
 				v => !!v || this.$i18n.t("E-mail is required"),
 				v => /.+@.+/.test(v) || this.$i18n.t("E-mail must be valid")
 			],
+			password: "",
 			passwordRules: [
 				v => !!v || this.$i18n.t("Password is required"),
 				v =>
 					v.length >= 8 ||
 					this.$i18n.t("Password must be at least 8 characters")
-			],
-			password: ""
+			]
 		};
 	},
 	methods: {

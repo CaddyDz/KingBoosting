@@ -1,83 +1,24 @@
 <template>
-	<v-stepper v-model="e1">
+	<v-stepper v-model="currentStep">
 		<v-stepper-header>
 			<!-- 3 templates here -->
 			<template>
 				<v-stepper-step key="login" :complete="isLoggedIn" step="1">{{ $t('Login') }}</v-stepper-step>
-				<v-divider v-if="1 !== steps" :key="1"></v-divider>
+				<v-divider v-if="1 !== steps.length" key="1"></v-divider>
 			</template>
 			<template>
-				<v-stepper-step key="details" :complete="e1 > 2" step="2">{{ $t('Details') }}</v-stepper-step>
-				<v-divider v-if="2 !== steps" :key="2"></v-divider>
+				<v-stepper-step key="order-details" :complete="currentStep > 2" step="2">{{ $t('Details') }}</v-stepper-step>
+				<v-divider v-if="2 !== steps.length" key="2"></v-divider>
 			</template>
 			<template>
-				<v-stepper-step key="pay" :complete="e1 > 3" step="3">Pay</v-stepper-step>
-				<v-divider v-if="3 !== steps" :key="3"></v-divider>
+				<v-stepper-step key="pay" :complete="currentStep > 3" step="3">{{ $t('Pay') }}</v-stepper-step>
+				<v-divider v-if="3 !== steps.length" key="3"></v-divider>
 			</template>
 		</v-stepper-header>
 		<v-stepper-items>
-			<v-stepper-content key="1-content" step="1">
-				<v-row>
-					<v-col>
-						<LoginForm @close="nextStep(1)" @cancel="cancel"></LoginForm>
-					</v-col>
-					<v-col cols="4">
-						<SocialLogin></SocialLogin>
-					</v-col>
-				</v-row>
-			</v-stepper-content>
-			<v-stepper-content key="2-content" step="2">
-				<v-form v-model="valid">
-					<v-container>
-						<v-row>
-							<!-- Summoner -->
-							<v-col cols="12" md="6">
-								<v-text-field
-									v-model="nickname"
-									:label="$t('Nickname *')"
-									required
-									:placeholder="$t('Your in-game name')"
-								></v-text-field>
-							</v-col>
-							<!-- Select Booster -->
-							<v-col class="d-flex" cols="12" sm="6">
-								<v-select :items="boosters" :label="$t('Your Booster')" :loading="boostersLoading"></v-select>
-							</v-col>
-						</v-row>
-						<v-row>
-							<v-col cols="12" md="6">
-								<v-text-field
-									v-model="comment"
-									:label="$t('Comments NOT REQUIRED')"
-									:placeholder="$t('Your comments')"
-									required
-								></v-text-field>
-							</v-col>
-						</v-row>
-						<v-row>
-							<v-col cols="12" md="6">
-								<v-checkbox
-									:label="$t('Appear Offline on Chat')"
-									prepend-icon="mdi-account"
-									v-model="offline"
-								></v-checkbox>
-							</v-col>
-						</v-row>
-						<v-row>
-							<v-col cols="12" md="6">
-								<v-icon>mdi-information-outline</v-icon>
-								<span>{{ $t('Further information will be requested after payment') }}</span>
-							</v-col>
-						</v-row>
-					</v-container>
-				</v-form>
-				<v-btn color="primary" @click="nextStep(2)" :disabled="!valid">{{ $t('Next') }}</v-btn>
-			</v-stepper-content>
-			<v-stepper-content key="3-content" step="3">
-				<v-card class="mb-12" color="grey lighten-1" height="200px"></v-card>
-				<v-btn color="primary" @click="boostMe">{{ $t('Continue') }}</v-btn>
-				<v-btn text @click="closeDialog">{{ $t('Cancel') }}</v-btn>
-			</v-stepper-content>
+			<login @next="nextStep($event)" @cancel="cancel" />
+			<order-details @next="nextStep(2)" />
+			<pay @cancel="cancel" />
 		</v-stepper-items>
 	</v-stepper>
 </template>
@@ -86,32 +27,12 @@
 export default {
 	data() {
 		return {
-			e1: 1,
-			boosters: [],
-			boostersLoading: true,
+			currentStep: 1,
 			valid: false,
-			email: "",
-			emailRules: [
-				v => !!v || this.$i18n.t("E-mail is required"),
-				v => /.+@.+/.test(v) || this.$i18n.t("E-mail must be valid")
-			],
-			password: "",
-			passwordRules: [
-				v => !!v || this.$i18n.t("Password is required"),
-				v =>
-					v.length > 8 ||
-					this.$i18n.t("Password must be longer than 8 characters")
-			],
-			offline: false,
-			steps: [],
-			comment: "",
-			nickname: ""
+			steps: []
 		};
 	},
 	computed: {
-		plural(count, noun) {
-			return (count, noun) => `${count} ${noun}${count !== 1 ? "s" : ""}`;
-		},
 		priceUSD() {
 			return (this.price * this.exchangeRate).toFixed(2);
 		},
@@ -143,9 +64,6 @@ export default {
 					alert(error.response.data.errors.email[0]);
 				});
 		},
-		boostMe() {
-			// TODO:
-		},
 		login() {
 			this.$axios
 				.post("/login", {
@@ -163,7 +81,7 @@ export default {
 				});
 		},
 		closeDialog() {
-			this.e1 = 1;
+			this.currentStep = 1;
 			this.$emit("closeDialog");
 		},
 		cancel() {
@@ -171,17 +89,16 @@ export default {
 		},
 		nextStep(n) {
 			if (n === this.steps.length) {
-				this.e1 = 1;
+				this.currentStep = 1;
 			} else {
-				this.e1 = n + 1;
+				this.currentStep = n + 1;
 			}
 		}
 	},
 	mounted() {
-		console.log("Mounted dialog");
 		// if already logged in, jump to next step
 		if (this.$store.state.auth.isLoggedIn) {
-			this.e1 = 2;
+			this.currentStep = 2;
 		}
 		this.getBoostersList();
 	}
@@ -192,6 +109,7 @@ export default {
 <i18n>
 {
 		"en": {
+				"Pay": "Pay",
 				"Select Your Current League": "Select Your Current League",
 				"Current tier": "Current tier",
 				"Select Your Number Of Wins": "Select Your Number Of Wins",
@@ -205,12 +123,6 @@ export default {
 				"Discount Code": "Discount Code",
 				"BOOST ME": "BOOST ME",
 				"Details": "Details",
-				"Nickname *": "Nickname *",
-				"Your in-game name": "Your in-game name",
-				"Comments NOT REQUIRED": "Comments NOT REQUIRED",
-				"Your comments": "Your comments",
-				"Appear Offline on Chat": "Appear Offline on Chat",
-				"Further information will be requested after payment": "Further information will be requested after payment",
 				"Forgotten Password?": "Forgotten Password?",
 				"Continue": "Continue",
 				"Cancel":"Cancel",
@@ -222,7 +134,6 @@ export default {
 				"Select your server": "Select your server",
 				"Current division": "Current division",
 				"Win": "Win",
-				"Your Booster": "Your Booster",
 				"Next": "Next"
 		},
 		"fr": {

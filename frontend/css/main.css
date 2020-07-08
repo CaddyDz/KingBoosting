@@ -1,58 +1,58 @@
 .welcome {
-  background: url(/img/kaisa.jpg) top/cover no-repeat #111415 !important;
-  height: 32%;
+	background: url(/img/kaisa.jpg) top/cover no-repeat #111415 !important;
+	height: 32%;
 }
 
 html {
-  background-color: black;
-  /* has to be scroll, not auto; */
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
+	background-color: black;
+	/* has to be scroll, not auto; */
+	-webkit-overflow-scrolling: touch;
+	scroll-behavior: smooth;
 }
 
 .services-section {
-  /* margin-top: 20px; */
-  /* margin-bottom: 20px; */
-  background-color: black;
+	/* margin-top: 20px; */
+	/* margin-bottom: 20px; */
+	background-color: black;
 }
 
 .v-system-bar,
 .v-app-bar {
-  padding-left: 40px;
-  padding-right: 40px;
+	padding-left: 40px;
+	padding-right: 40px;
 }
 
 .languages {
-  top: 0 !important;
-  position: absolute !important;
-  right: 0 !important;
-  border-radius: 13px;
-  border: solid thick purple;
+	top: 0 !important;
+	position: absolute !important;
+	right: 0 !important;
+	border-radius: 13px;
+	border: solid thick purple;
 }
 
 .v-application--is-ltr .v-list-item__action:first-child,
 .v-application--is-ltr .v-list-item__icon:first-child {
-  margin-right: 0px !important;
+	margin-right: 0px !important;
 }
 
 .v-application a {
-  color: white !important;
+	color: white !important;
 }
 
 .hvr-glow {
-  display: inline-block;
-  vertical-align: middle;
-  -webkit-transform: perspective(1px) translateZ(0);
-  transform: perspective(1px) translateZ(0);
-  box-shadow: 0 0 1px #400042;
-  -webkit-transition-duration: 0.3s;
-  transition-duration: 0.3s;
-  -webkit-transition-property: box-shadow;
-  transition-property: box-shadow;
+	display: inline-block;
+	vertical-align: middle;
+	-webkit-transform: perspective(1px) translateZ(0);
+	transform: perspective(1px) translateZ(0);
+	box-shadow: 0 0 1px #400042;
+	-webkit-transition-duration: 0.3s;
+	transition-duration: 0.3s;
+	-webkit-transition-property: box-shadow;
+	transition-property: box-shadow;
 }
 
 .hvr-glow:hover,
 .hvr-glow:focus,
 .hvr-glow:active {
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+	box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
 }
