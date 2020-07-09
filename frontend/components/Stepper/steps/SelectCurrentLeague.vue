@@ -93,7 +93,12 @@ export default {
 		},
 		selectedDivisionID(divisionId) {
 			this.division = _.find(this.tier.divisions, ["id", divisionId]);
+			this.$store.commit("league/changeDivision", this.division);
 			this.$store.commit("league/changeBasePrice", this.division.price);
+		},
+		selectedServerID(value) {
+			let server = _.find(this.servers, ["id", value]);
+			this.$store.commit("league/changeServer", server.region);
 		}
 	},
 	methods: {
@@ -113,6 +118,7 @@ export default {
 				"id",
 				this.selectedDivisionID
 			]);
+			this.$store.commit("league/changeDivision", this.division);
 		}
 	},
 	mounted() {

@@ -15,7 +15,12 @@
 					</v-col>
 					<!-- Select Booster -->
 					<v-col class="d-flex" cols="12" sm="6">
-						<v-select :items="boosters" :label="$t('Your Booster')" :loading="boostersLoading"></v-select>
+						<v-select
+							:items="boosters"
+							:label="$t('Your Booster')"
+							:loading="boostersLoading"
+							v-model="booster"
+						></v-select>
 					</v-col>
 				</v-row>
 				<v-row>
@@ -55,6 +60,7 @@ export default {
 			valid: false,
 			boosters: [],
 			boostersLoading: true,
+			booster: "",
 			comment: "",
 			nickname: "",
 			nicknameRules: [
@@ -82,6 +88,10 @@ export default {
 				});
 		},
 		nextStep() {
+			this.$store.commit("league/changeNickname", this.nickname);
+			this.$store.commit("league/changeBooster", this.booster);
+			this.$store.commit("league/changeComment", this.comment);
+			this.$store.commit("league/changeChatMode", this.offline);
 			this.$emit("next");
 		}
 	},

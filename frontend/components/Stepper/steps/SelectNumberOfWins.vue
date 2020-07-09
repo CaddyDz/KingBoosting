@@ -4,27 +4,14 @@
 			<div class="title-id">
 				<h2>2</h2>
 			</div>
-			<h2 class="title-txt">Select Your Number Of Wins</h2>
+			<h2 class="title-txt">{{ $t('Select Your Number Of Wins') }}</h2>
 		</div>
 		<v-card raised class="mb-4">
 			<v-container class="container">
-				<v-slider
-					v-model="winsCounter"
-					thumb-label="always"
-					min="1"
-					:max="max"
-					@end="winsHandler($event)"
-				></v-slider>
-				<v-radio-group
-					@change="radioHandler($event)"
-					class="radio-group"
-					v-model="row"
-					dark
-					mandatory
-					row
-				>
-					<v-radio label="Solo/Duo" value="Solo/Duo"></v-radio>
-					<v-radio label="Flex 5v5" value="Flex"></v-radio>
+				<v-slider v-model="winsCounter" thumb-label="always" min="1" :max="max"></v-slider>
+				<v-radio-group class="radio-group" v-model="mode" dark mandatory row>
+					<v-radio :label="$t('Solo/Duo')" value="Solo/Duo"></v-radio>
+					<v-radio :label="$t('Flex 5v5')" value="Flex"></v-radio>
 				</v-radio-group>
 			</v-container>
 		</v-card>
@@ -35,10 +22,8 @@
 export default {
 	data() {
 		return {
-			hasDivisions: true,
 			winsCounter: 4,
-			radios: "Solo/Duo",
-			row: ""
+			mode: "Solo/Duo"
 		};
 	},
 	computed: {
@@ -54,26 +39,10 @@ export default {
 			this.$store.commit("league/changeNumberOfWins", value);
 			let eta = _.find(this.tier.wins, ["wins", value]).eta;
 			this.$store.commit("checkout/changeETA", eta);
+		},
+		mode(value) {
+			this.$store.commit("league/changeGameMode", value);
 		}
-	},
-	methods: {
-		commitToStore(c) {
-			this.$store.commit("boosting_order/setSlider", c);
-		},
-		winsHandler(e) {
-			this.winsCounter = e;
-			this.sliderChangeHandler();
-		},
-		radioHandler(e) {
-			this.radios = e;
-			this.sliderChangeHandler();
-		},
-		sliderChangeHandler() {
-			this.commitToStore({ wins: this.winsCounter, radio: this.radios });
-		}
-	},
-	mounted() {
-		this.commitToStore({ wins: this.winsCounter, radio: this.radios });
 	}
 };
 </script>
@@ -118,9 +87,10 @@ export default {
 
 <i18n>
 {
-  "en": {
-    "Flex 5v5": "Flex 5v5",
-    "Solo/Duo": "Solo/Duo"
-  }
+	"en": {
+		"Flex 5v5": "Flex 5v5",
+		"Solo/Duo": "Solo/Duo",
+		"Select Your Number Of Wins": "Select Your Number Of Wins"
+	}
 }
 </i18n>

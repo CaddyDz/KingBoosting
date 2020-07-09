@@ -21,8 +21,7 @@
 						<v-col class="input" md="8">
 							<v-text-field
 								label="Discount Code"
-								:value="discountCode"
-								@change="inputCodeChangeHandler($event)"
+								v-model="discountCode"
 								outlined
 								clearable
 								dark
@@ -72,19 +71,23 @@ export default {
 			return this.$store.getters["league/eta"];
 		}
 	},
+	watch: {
+		discountCode(value) {
+			this.$store.commit("league/changeDiscountCode", value);
+		}
+	},
 	methods: {
 		checkOption(checkbox) {
 			if (checkbox.checked) {
+				this.$store.commit("league/addOption", checkbox.title);
 				this.$store.commit("league/addPercent", checkbox.percentage);
 			} else {
+				this.$store.commit("league/removeOption", checkbox.title);
 				this.$store.commit(
 					"league/substractPercent",
 					checkbox.percentage
 				);
 			}
-		},
-		inputCodeChangeHandler(e) {
-			this.discountCode = e;
 		}
 	}
 };
