@@ -15,98 +15,98 @@ use DigitalCreative\CollapsibleResourceManager\CollapsibleResourceManager;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
-    /**
-     * Bootstrap any application services.
-     *
-     * @return void
-     */
-    public function boot()
-    {
-        Nova::serving(function (ServingNova $event) {
-            Nova::style('blueflix', __DIR__ . '/../../resources/css/theme.css');
-        });
-        parent::boot();
-    }
+	/**
+	 * Bootstrap any application services.
+	 *
+	 * @return void
+	 */
+	public function boot()
+	{
+		Nova::serving(function (ServingNova $event) {
+			Nova::style('blueflix', __DIR__ . '/../../resources/css/theme.css');
+		});
+		parent::boot();
+	}
 
-    /**
-     * Register the Nova routes.
-     *
-     * @return void
-     */
-    protected function routes()
-    {
-        Nova::routes()
-            ->withAuthenticationRoutes()
-            ->withPasswordResetRoutes()
-            ->register();
-    }
+	/**
+	 * Register the Nova routes.
+	 *
+	 * @return void
+	 */
+	protected function routes()
+	{
+		Nova::routes()
+			->withAuthenticationRoutes()
+			->withPasswordResetRoutes()
+			->register();
+	}
 
-    /**
-     * Register the Nova gate.
-     *
-     * This gate determines who can access Nova in non-local environments.
-     *
-     * @return void
-     */
-    protected function gate()
-    {
-        Gate::define('viewNova', function ($user) {
-            return $user->hasPermissionTo('Access Members Area');
-        });
-    }
+	/**
+	 * Register the Nova gate.
+	 *
+	 * This gate determines who can access Nova in non-local environments.
+	 *
+	 * @return void
+	 */
+	protected function gate()
+	{
+		Gate::define('viewNova', function ($user) {
+			return $user->hasPermissionTo('Access Members Area');
+		});
+	}
 
-    /**
-     * Get the cards that should be displayed on the default Nova dashboard.
-     *
-     * @return array
-     */
-    protected function cards()
-    {
-        return [
-            new NovaCloudflareCard(),
-        ];
-    }
+	/**
+	 * Get the cards that should be displayed on the default Nova dashboard.
+	 *
+	 * @return array
+	 */
+	protected function cards()
+	{
+		return [
+			new NovaCloudflareCard(),
+		];
+	}
 
-    /**
-     * Get the extra dashboards that should be displayed on the Nova dashboard.
-     *
-     * @return array
-     */
-    protected function dashboards()
-    {
-        return [];
-    }
+	/**
+	 * Get the extra dashboards that should be displayed on the Nova dashboard.
+	 *
+	 * @return array
+	 */
+	protected function dashboards()
+	{
+		return [];
+	}
 
-    /**
-     * Get the tools that should be listed in the Nova sidebar.
-     *
-     * @return array
-     */
-    public function tools()
-    {
-        return [
-            new NovaSidebarIcons,
-            NovaPermissionTool::make(),
-            new CollapsibleResourceManager([
-                'navigation' => [
-                    TopLevelResource::make([
-                        // 'label' => 'Resources',
-                        'resources' => [
-                            Order::class,
-                        ]
-                    ]),
-                ]
-            ])
-        ];
-    }
+	/**
+	 * Get the tools that should be listed in the Nova sidebar.
+	 *
+	 * @return array
+	 */
+	public function tools()
+	{
+		return [
+			new NovaSidebarIcons,
+			NovaPermissionTool::make(),
+			// new CollapsibleResourceManager([
+			// 	'navigation' => [
+			// 		TopLevelResource::make([
+			// 			'label' => 'Resources',
+			// 			'resources' => [
+			// 				Order::class,
+			// 			]
+			// 		]),
+			// 	]
+			// ])
+		];
+	}
 
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
-    public function register()
-    {
-        //
-    }
+	/**
+	 * Register any application services.
+	 *
+	 * @return void
+	 */
+	public function register()
+	{
+		//
+	}
 }

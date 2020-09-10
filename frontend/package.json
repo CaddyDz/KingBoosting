@@ -5,7 +5,7 @@
 	"author": "CaddyDz",
 	"private": true,
 	"scripts": {
-		"dev": "nuxt --max_old_space_size=1000",
+		"dev": "nuxt",
 		"build": "nuxt build",
 		"start": "nuxt start",
 		"generate": "nuxt generate",
@@ -13,6 +13,7 @@
 		"test": "jest"
 	},
 	"dependencies": {
+		"@nuxtjs/auth": "^4.9.1",
 		"@nuxtjs/axios": "^5.3.6",
 		"@nuxtjs/dotenv": "^1.4.0",
 		"@nuxtjs/pwa": "^3.0.0-0",

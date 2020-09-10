@@ -1,11 +1,11 @@
 <template>
-	<v-form v-model="valid" ref="form" @submit="login($event)">
+	<v-form v-model="valid" ref="form" @submit="userLogin">
 		<v-layout column>
 			<v-flex>
 				<v-text-field
 					:label="$t('Email address *')"
 					:placeholder="$t('Your email address')"
-					v-model="email"
+					v-model="login.email"
 					:rules="emailRules"
 					:error-messages="emailErrors"
 					required
@@ -14,7 +14,7 @@
 			<v-flex>
 				<v-text-field
 					type="password"
-					v-model="password"
+					v-model="login.password"
 					:label="$t('Password *')"
 					:placeholder="$t('Your password')"
 					:rules="passwordRules"
@@ -43,13 +43,15 @@ export default {
 	data() {
 		return {
 			valid: true,
-			email: "",
+			login: {
+				email: "",
+				password: ""
+			},
 			emailErrors: [],
 			emailRules: [
 				v => !!v || this.$i18n.t("E-mail is required"),
 				v => /.+@.+/.test(v) || this.$i18n.t("E-mail must be valid")
 			],
-			password: "",
 			passwordRules: [
 				v => !!v || this.$i18n.t("Password is required"),
 				v =>
@@ -59,10 +61,14 @@ export default {
 		};
 	},
 	methods: {
-		login(event) {
-			event.preventDefault();
-			if (!this.$refs.form.validate()) {
-				return;
+		async userLogin() {
+			try {
+				let response = await this.$auth.loginWith("local", {
+					data: this.login
+				});
+				console.log(response);
+			} catch (err) {
+				console.log(err);
 			}
 			this.$axios
 				.$post("/login", {

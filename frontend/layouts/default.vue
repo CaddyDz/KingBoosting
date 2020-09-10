@@ -12,6 +12,13 @@
 				<nuxt />
 			</v-container>
 		</v-content>
+		<v-footer absolute class="font-weight-medium">
+			<img src="/img/header_logo.png" alt="King Boosting" />
+			<v-col class="text-center" cols="12">
+				{{ new Date().getFullYear() }} —
+				<strong>King Boosting</strong>
+			</v-col>
+		</v-footer>
 	</v-app>
 </template>
 

@@ -15,21 +15,21 @@ export default {
 		titleTemplate: '%s | ' + 'King Boosting',
 		title: 'Buy LOL ELO Boost & Premium LOL Boosting' || '',
 		meta: [{
-				charset: 'utf-8'
-			},
-			{
-				name: 'viewport',
-				content: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'
-			},
-			{
-				hid: 'description',
-				name: 'description',
-				content: 'Buy high quality ELO Boosting and LoL Boost services. 100% Safety and Privacy. The best ELO &amp; League Boost experience. Available on all servers.'
-			},
-			{
-				name: 'keywords',
-				content: 'elo boost, lol elo boost, lol boost, lol elo boosting, elo boost lol, cheap elo boosting, elo boosting'
-			}
+			charset: 'utf-8'
+		},
+		{
+			name: 'viewport',
+			content: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'
+		},
+		{
+			hid: 'description',
+			name: 'description',
+			content: 'Buy high quality ELO Boosting and LoL Boost services. 100% Safety and Privacy. The best ELO &amp; League Boost experience. Available on all servers.'
+		},
+		{
+			name: 'keywords',
+			content: 'elo boost, lol elo boost, lol boost, lol elo boosting, elo boost lol, cheap elo boosting, elo boosting'
+		}
 		],
 		link: [{
 			rel: 'icon',
@@ -82,6 +82,7 @@ export default {
 		// Doc: https://axios.nuxtjs.org/usage
 		'@nuxtjs/axios',
 		'@nuxtjs/pwa',
+		'@nuxtjs/auth',
 		[
 			'nuxt-i18n',
 			{
@@ -91,6 +92,22 @@ export default {
 		// Doc: https://github.com/nuxt-community/dotenv-module
 		'@nuxtjs/dotenv'
 	],
+	auth: {
+		strategies: {
+			local: {
+				endpoints: {
+					login: { url: '/api/login', method: 'post', propertyName: 'token' },
+					logout: { url: '/api/logout', method: 'post' },
+					user: { url: '/api/user', method: 'get', propertyName: 'user' }
+				},
+				// tokenRequired: true,
+				// tokenType: 'bearer',
+				// globalToken: true,
+				// autoFetchUser: true
+			}
+		}
+		// Options
+	},
 	i18n: {
 		locales: ['en', 'fr', 'de', 'at', 'swiss', 'es', 'nl', 'it', 'se', 'no', 'dk'],
 		defaultLocale: 'en',
