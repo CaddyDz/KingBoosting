@@ -8,7 +8,7 @@ export default ({
 			storage: window.localStorage,
 			reducer: (state) => ({
 				services: state.services,
-				isLoggedIn: state.auth.isLoggedIn
+				isLoggedIn: state.authentication.isLoggedIn
 			}),
 		}).plugin(store);
 	});

@@ -97,7 +97,7 @@ export default {
 	},
 	mounted() {
 		// if already logged in, jump to next step
-		if (this.$store.state.auth.isLoggedIn) {
+		if (this.$store.state.authentication.isLoggedIn) {
 			this.currentStep = 2;
 		}
 		this.getBoostersList();
