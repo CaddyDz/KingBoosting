@@ -6,29 +6,29 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateServiceTypesTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
-    {
-        Schema::create('service_types', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('type');
-            $table->string('icon');
-            $table->timestamp('deleted_at')->nullable();
-            $table->timestamps();
-        });
-    }
+	/**
+	 * Run the migrations.
+	 *
+	 * @return void
+	 */
+	public function up()
+	{
+		Schema::create('service_types', function (Blueprint $table) {
+			$table->bigIncrements('id');
+			$table->string('type');
+			$table->string('icon');
+			$table->timestamp('deleted_at')->nullable();
+			$table->timestamps();
+		});
+	}
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('service_types');
-    }
+	/**
+	 * Reverse the migrations.
+	 *
+	 * @return void
+	 */
+	public function down()
+	{
+		Schema::dropIfExists('service_types');
+	}
 }

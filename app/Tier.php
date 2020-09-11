@@ -33,15 +33,15 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class Tier extends Model
 {
-    use SoftDeletes;
+	use SoftDeletes;
 
-    public function divisions()
-    {
-        return $this->hasMany(Division::class);
-    }
+	public function divisions()
+	{
+		return $this->hasMany(Division::class);
+	}
 
-    public function wins()
-    {
-        return $this->hasMany(WinBoosting::class);
-    }
+	public function wins()
+	{
+		return $this->hasMany(WinBoosting::class);
+	}
 }

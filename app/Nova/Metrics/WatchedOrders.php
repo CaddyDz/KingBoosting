@@ -9,45 +9,45 @@ use SaintSystems\Nova\LinkableMetrics\LinkableValue;
 
 class WatchedOrders extends Value
 {
-    use LinkableValue;
-    /**
-     * Calculate the value of the metric.
-     *
-     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
-     * @return mixed
-     */
-    public function calculate(NovaRequest $request)
-    {
-        return $this->result(Order::count());
-    }
+	use LinkableValue;
+	/**
+	 * Calculate the value of the metric.
+	 *
+	 * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
+	 * @return mixed
+	 */
+	public function calculate(NovaRequest $request)
+	{
+		return $this->result(Order::count());
+	}
 
-    /**
-     * Get the ranges available for the metric.
-     *
-     * @return array
-     */
-    public function ranges()
-    {
-        return [];
-    }
+	/**
+	 * Get the ranges available for the metric.
+	 *
+	 * @return array
+	 */
+	public function ranges()
+	{
+		return [];
+	}
 
-    /**
-     * Determine for how many minutes the metric should be cached.
-     *
-     * @return  \DateTimeInterface|\DateInterval|float|int
-     */
-    public function cacheFor()
-    {
-        // return now()->addMinutes(5);
-    }
+	/**
+	 * Determine for how many minutes the metric should be cached.
+	 *
+	 * @return  \DateTimeInterface|\DateInterval|float|int
+	 */
+	public function cacheFor()
+	{
+		// return now()->addMinutes(5);
+	}
 
-    /**
-     * Get the URI key for the metric.
-     *
-     * @return string
-     */
-    public function uriKey()
-    {
-        return 'watched-orders';
-    }
+	/**
+	 * Get the URI key for the metric.
+	 *
+	 * @return string
+	 */
+	public function uriKey()
+	{
+		return 'watched-orders';
+	}
 }

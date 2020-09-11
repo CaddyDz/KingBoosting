@@ -33,20 +33,20 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class Champion extends Model
 {
-    use SoftDeletes;
-    /**
-     * The roles that belong to the champion.
-     */
-    public function roles()
-    {
-        return $this->belongsToMany(ChampionRole::class);
-    }
+	use SoftDeletes;
+	/**
+	 * The roles that belong to the champion.
+	 */
+	public function roles()
+	{
+		return $this->belongsToMany(ChampionRole::class);
+	}
 
-    /**
-     * The tags that belong to the champion.
-     */
-    public function tags()
-    {
-        return $this->belongsToMany(ChampionTag::class);
-    }
+	/**
+	 * The tags that belong to the champion.
+	 */
+	public function tags()
+	{
+		return $this->belongsToMany(ChampionTag::class);
+	}
 }

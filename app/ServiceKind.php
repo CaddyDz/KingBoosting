@@ -25,12 +25,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class ServiceKind extends Model
 {
-    use SoftDeletes;
+	use SoftDeletes;
 
-    protected $fillable = ['name'];
+	protected $fillable = ['name'];
 
-    public function services()
-    {
-        return $this->hasMany(Service::class);
-    }
+	public function services()
+	{
+		return $this->hasMany(Service::class);
+	}
 }

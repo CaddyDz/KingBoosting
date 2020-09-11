@@ -4,13 +4,13 @@ use Illuminate\Database\Seeder;
 
 class AccountSellingsTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-    public function run()
-    {
-        //
-    }
+	/**
+	 * Run the database seeds.
+	 *
+	 * @return void
+	 */
+	public function run()
+	{
+		//
+	}
 }

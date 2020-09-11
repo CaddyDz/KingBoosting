@@ -27,5 +27,5 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class Feature extends Model
 {
-    use SoftDeletes;
+	use SoftDeletes;
 }

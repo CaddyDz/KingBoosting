@@ -23,5 +23,5 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class AccountSelling extends Model
 {
-    use SoftDeletes;
+	use SoftDeletes;
 }

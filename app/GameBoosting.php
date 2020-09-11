@@ -21,5 +21,5 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class GameBoosting extends Model
 {
-    use SoftDeletes;
+	use SoftDeletes;
 }

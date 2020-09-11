@@ -54,62 +54,62 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  */
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasRoles, Notifiable, HasApiTokens, Searchable, SoftDeletes;
+	use HasRoles, Notifiable, HasApiTokens, Searchable, SoftDeletes;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'username', 'email', 'password', 'first_name', 'last_name', 'social', 'country',
-    ];
+	/**
+	 * The attributes that are mass assignable.
+	 *
+	 * @var array
+	 */
+	protected $fillable = [
+		'username', 'email', 'password', 'first_name', 'last_name', 'social', 'country',
+	];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
+	/**
+	 * The attributes that should be hidden for arrays.
+	 *
+	 * @var array
+	 */
+	protected $hidden = [
+		'password', 'remember_token',
+	];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+	/**
+	 * The attributes that should be cast to native types.
+	 *
+	 * @var array
+	 */
+	protected $casts = [
+		'email_verified_at' => 'datetime',
+	];
 
-    public function orders()
-    {
-        return $this->hasMany(Order::class, 'client_id');
-    }
+	public function orders()
+	{
+		return $this->hasMany(Order::class, 'client_id');
+	}
 
-    public function jobs()
-    {
-        return $this->hasMany(Order::class, 'booster_id');
-    }
+	public function jobs()
+	{
+		return $this->hasMany(Order::class, 'booster_id');
+	}
 
-    /**
-     * The channels the user receives notification broadcasts on.
-     *
-     * @return string
-     */
-    public function receivesBroadcastNotificationsOn()
-    {
-        return 'users.' . $this->id;
-    }
+	/**
+	 * The channels the user receives notification broadcasts on.
+	 *
+	 * @return string
+	 */
+	public function receivesBroadcastNotificationsOn()
+	{
+		return 'users.' . $this->id;
+	}
 
-    /**
-     * Get the index name for the model.
-     *
-     * @return string
-     */
-    public function searchableAs()
-    {
-        return 'boosters';
-    }
+	/**
+	 * Get the index name for the model.
+	 *
+	 * @return string
+	 */
+	public function searchableAs()
+	{
+		return 'boosters';
+	}
 }

@@ -42,49 +42,49 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class Service extends Model
 {
-    use SoftDeletes;
+	use SoftDeletes;
 
-    /**
-     * Get the route key for the model.
-     *
-     * @return string
-     */
-    public function getRouteKeyName()
-    {
-        return 'slug';
-    }
+	/**
+	 * Get the route key for the model.
+	 *
+	 * @return string
+	 */
+	public function getRouteKeyName()
+	{
+		return 'slug';
+	}
 
-    /**
-     * Get service kind
-     *
-     * Retreive the related service kind model
-     *
-     * For example a service could be an "ELO Boosting" or "Account Selling"
-     * We need that text to show in the service page
-     *
-     * @return App\ServiceKind
-     **/
-    public function kind()
-    {
-        return $this->belongsTo(ServiceKind::class);
-    }
+	/**
+	 * Get service kind
+	 *
+	 * Retreive the related service kind model
+	 *
+	 * For example a service could be an "ELO Boosting" or "Account Selling"
+	 * We need that text to show in the service page
+	 *
+	 * @return App\ServiceKind
+	 **/
+	public function kind()
+	{
+		return $this->belongsTo(ServiceKind::class);
+	}
 
-    /**
-     * Get service types
-     *
-     * Retreive the related service type models
-     *
-     * For example a service could be a "Division Boosting" or "Wins Boosting" or both
-     * We need that to determine second section in the service page
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     **/
-    public function types(): BelongsToMany
-    {
-        return $this->belongsToMany(ServiceType::class)
-            ->using(ServiceTypePivot::class)
-            ->withPivot([
-                'name',
-            ]);
-    }
+	/**
+	 * Get service types
+	 *
+	 * Retreive the related service type models
+	 *
+	 * For example a service could be a "Division Boosting" or "Wins Boosting" or both
+	 * We need that to determine second section in the service page
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+	 **/
+	public function types(): BelongsToMany
+	{
+		return $this->belongsToMany(ServiceType::class)
+			->using(ServiceTypePivot::class)
+			->withPivot([
+				'name',
+			]);
+	}
 }

@@ -21,10 +21,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class OrderDetails extends Model
 {
-    use SoftDeletes;
+	use SoftDeletes;
 
-    public function order()
-    {
-        return $this->belongsTo(Order::class);
-    }
+	public function order()
+	{
+		return $this->belongsTo(Order::class);
+	}
 }

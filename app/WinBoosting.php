@@ -30,20 +30,20 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class WinBoosting extends Model
 {
-    use SoftDeletes;
+	use SoftDeletes;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = ['wins', 'eta'];
+	/**
+	 * The attributes that are mass assignable.
+	 *
+	 * @var array
+	 */
+	protected $fillable = ['wins', 'eta'];
 
-    /**
-     * Get the tier that owns the division.
-     */
-    public function tier()
-    {
-        return $this->belongsTo(Tier::class);
-    }
+	/**
+	 * Get the tier that owns the division.
+	 */
+	public function tier()
+	{
+		return $this->belongsTo(Tier::class);
+	}
 }

@@ -27,14 +27,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class ServiceType extends Model
 {
-    use SoftDeletes;
+	use SoftDeletes;
 
-    public function services()
-    {
-        return $this->belongsToMany(Service::class)
-            ->using(ServiceTypePivot::class)
-            ->withPivot([
-                'name',
-            ]);
-    }
+	public function services()
+	{
+		return $this->belongsToMany(Service::class)
+			->using(ServiceTypePivot::class)
+			->withPivot([
+				'name',
+			]);
+	}
 }

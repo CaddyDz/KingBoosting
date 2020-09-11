@@ -35,49 +35,49 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class Order extends Model
 {
-    use SoftDeletes;
-    public function client(): BelongsTo
-    {
-        return $this->belongsTo(User::class, 'client_id', 'id');
-    }
+	use SoftDeletes;
+	public function client(): BelongsTo
+	{
+		return $this->belongsTo(User::class, 'client_id', 'id');
+	}
 
-    public function booster(): BelongsTo
-    {
-        return $this->belongsTo(User::class, 'booster_id');
-    }
+	public function booster(): BelongsTo
+	{
+		return $this->belongsTo(User::class, 'booster_id');
+	}
 
-    public function getIconAttribute(): string
-    {
-        switch ($this->status) {
-            case 'pending':
-                return 'entypo:circular-graph';
-            case 'progress':
-                return 'entypo:controller-play';
-            case 'paused':
-                return 'entypo:controller-paus';
-            case 'completed':
-                return 'entypo:check';
-            case 'suspended':
-                return 'entypo:circle-with-cross';
-            default:
-                return 'entypo:controller-play';
-        }
-    }
+	public function getIconAttribute(): string
+	{
+		switch ($this->status) {
+			case 'pending':
+				return 'entypo:circular-graph';
+			case 'progress':
+				return 'entypo:controller-play';
+			case 'paused':
+				return 'entypo:controller-paus';
+			case 'completed':
+				return 'entypo:check';
+			case 'suspended':
+				return 'entypo:circle-with-cross';
+			default:
+				return 'entypo:controller-play';
+		}
+	}
 
-    public function details(): HasOne
-    {
-        return $this->hasOne(OrderDetails::class);
-    }
+	public function details(): HasOne
+	{
+		return $this->hasOne(OrderDetails::class);
+	}
 
-    public function getTypeAttribute(): string
-    {
-        if ($this->service->name === 'League Boosting') {
-            return 'What the fuck';
-        }
-    }
+	public function getTypeAttribute(): string
+	{
+		if ($this->service->name === 'League Boosting') {
+			return 'What the fuck';
+		}
+	}
 
-    public function service(): BelongsTo
-    {
-        return $this->belongsTo(ServiceTypePivot::class, 'service_service_type_id', 'id');
-    }
+	public function service(): BelongsTo
+	{
+		return $this->belongsTo(ServiceTypePivot::class, 'service_service_type_id', 'id');
+	}
 }

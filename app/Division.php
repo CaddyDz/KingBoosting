@@ -30,19 +30,19 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class Division extends Model
 {
-    use SoftDeletes;
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = ['name', 'image'];
+	use SoftDeletes;
+	/**
+	 * The attributes that are mass assignable.
+	 *
+	 * @var array
+	 */
+	protected $fillable = ['name', 'image'];
 
-    /**
-     * Get the tier that owns the division.
-     */
-    public function tier()
-    {
-        return $this->belongsTo(Tier::class);
-    }
+	/**
+	 * Get the tier that owns the division.
+	 */
+	public function tier()
+	{
+		return $this->belongsTo(Tier::class);
+	}
 }

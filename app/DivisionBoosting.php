@@ -21,14 +21,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class DivisionBoosting extends Model
 {
-    use SoftDeletes;
-    public function type()
-    {
-        return $this->belongsTo(ServiceType::class);
-    }
+	use SoftDeletes;
+	public function type()
+	{
+		return $this->belongsTo(ServiceType::class);
+	}
 
-    public function tier()
-    {
-        return $this->hasOne(ServiceType::class);
-    }
+	public function tier()
+	{
+		return $this->hasOne(ServiceType::class);
+	}
 }
