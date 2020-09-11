@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Unit;
 
 use Tests\TestCase;
@@ -11,9 +13,8 @@ class NotFoundTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function test_not_found()
+	public function test_not_found(): void
 	{
-		$this->withExceptionHandling();
 		$response = $this->get('/not-found');
 		$response->assertNotFound();
 	}
