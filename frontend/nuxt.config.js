@@ -189,7 +189,12 @@ export default {
 				// global modules
 				_: "lodash"
 			})
-		]
+		],
+		typescript: {
+			typeCheck: {
+				memoryLimit: 512
+			}
+		}
 	},
 	/*
 	 ** Generate configuration
