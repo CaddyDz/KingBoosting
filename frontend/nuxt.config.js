@@ -86,6 +86,7 @@ export default {
 		"@nuxtjs/axios",
 		"@nuxtjs/pwa",
 		"@nuxtjs/auth",
+		"@nuxtjs/sentry",
 		[
 			"nuxt-i18n",
 			{
@@ -147,6 +148,11 @@ export default {
 		icon: {
 			/* icon options */
 		}
+	},
+	sentry: {
+		dsn:
+			"https://f8d1200b27ae4ec0a627eefbdf4f5f21@o143524.ingest.sentry.io/5425202", // Enter your project's DSN here
+		config: {} // Additional config
 	},
 	/*
 	 ** Axios module configuration

@@ -2,13 +2,22 @@
 	<div>
 		<v-container class="title">
 			<h1>Our Boosters</h1>
-			<p>In this menu you can arrange and view our ELO booster and coach employees by using different filters. You can also learn about their detailed statistics throughout different ranked tiers and the champions they usually boost with.</p>
+			<p>
+				In this menu you can arrange and view our ELO booster and coach
+				employees by using different filters. You can also learn about their
+				detailed statistics throughout different ranked tiers and the champions
+				they usually boost with.
+			</p>
 		</v-container>
 		<div>
 			<v-row>
 				<v-col md="3">
 					<v-container>
-						<v-text-field solo label="Search ..." append-icon="mdi-magnify"></v-text-field>
+						<v-text-field
+							solo
+							label="Search ..."
+							append-icon="mdi-magnify"
+						></v-text-field>
 						<v-list>
 							<v-list-group prepend-icon="mdi-server-network" value="true">
 								<template v-slot:activator>
@@ -16,7 +25,10 @@
 								</template>
 								<v-list-item v-for="(server, i) in servers" :key="i" link>
 									<v-list-item-avatar>
-										<v-checkbox color="primary" @change="commitFilter({id:i , value : $event})"></v-checkbox>
+										<v-checkbox
+											color="primary"
+											@change="commitFilter({ id: i, value: $event })"
+										></v-checkbox>
 									</v-list-item-avatar>
 									<v-list-item-title v-text="server"></v-list-item-title>
 								</v-list-item>
@@ -34,7 +46,13 @@
 									<v-list-item-avatar>
 										<v-checkbox
 											color="primary"
-											@change="commitFilter({id:i , value : $event , country : country.name })"
+											@change="
+												commitFilter({
+													id: i,
+													value: $event,
+													country: country.name
+												})
+											"
 										></v-checkbox>
 									</v-list-item-avatar>
 									<v-list-item-title class="lng-title">
@@ -57,8 +75,12 @@
 <script>
 export default {
 	async asyncData({ $axios }) {
-		const boosters = await $axios.$get("/boosters");
-		return { boosters };
+		try {
+			const boosters = await $axios.$get("/boosters");
+			return { boosters };
+		} catch (error) {
+			$sentry.captureException(error);
+		}
 	},
 	data() {
 		return {
