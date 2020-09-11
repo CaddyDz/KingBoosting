@@ -7,11 +7,11 @@
 			<top-right-links></top-right-links>
 		</v-system-bar>
 		<app-bar-component></app-bar-component>
-		<v-content>
+		<v-main>
 			<v-container fluid>
 				<nuxt />
 			</v-container>
-		</v-content>
+		</v-main>
 		<v-footer absolute class="font-weight-medium">
 			<img src="/img/header_logo.png" alt="King Boosting" />
 			<v-col class="text-center" cols="12">
