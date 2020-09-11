@@ -15,21 +15,21 @@ export default {
 		titleTemplate: '%s | ' + 'King Boosting',
 		title: 'Buy LOL ELO Boost & Premium LOL Boosting' || '',
 		meta: [{
-			charset: 'utf-8'
-		},
-		{
-			name: 'viewport',
-			content: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'
-		},
-		{
-			hid: 'description',
-			name: 'description',
-			content: 'Buy high quality ELO Boosting and LoL Boost services. 100% Safety and Privacy. The best ELO &amp; League Boost experience. Available on all servers.'
-		},
-		{
-			name: 'keywords',
-			content: 'elo boost, lol elo boost, lol boost, lol elo boosting, elo boost lol, cheap elo boosting, elo boosting'
-		}
+				charset: 'utf-8'
+			},
+			{
+				name: 'viewport',
+				content: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'
+			},
+			{
+				hid: 'description',
+				name: 'description',
+				content: 'Buy high quality ELO Boosting and LoL Boost services. 100% Safety and Privacy. The best ELO &amp; League Boost experience. Available on all servers.'
+			},
+			{
+				name: 'keywords',
+				content: 'elo boost, lol elo boost, lol boost, lol elo boosting, elo boost lol, cheap elo boosting, elo boosting'
+			}
 		],
 		link: [{
 			rel: 'icon',
@@ -96,9 +96,20 @@ export default {
 		strategies: {
 			local: {
 				endpoints: {
-					login: { url: '/api/login', method: 'post', propertyName: 'token' },
-					logout: { url: '/api/logout', method: 'post' },
-					user: { url: '/api/user', method: 'get', propertyName: 'user' }
+					login: {
+						url: '/api/login',
+						method: 'post',
+						propertyName: 'token'
+					},
+					logout: {
+						url: '/api/logout',
+						method: 'post'
+					},
+					user: {
+						url: '/api/user',
+						method: 'get',
+						propertyName: 'user'
+					}
 				},
 				// tokenRequired: true,
 				// tokenType: 'bearer',
@@ -160,5 +171,15 @@ export default {
 				'_': 'lodash'
 			})
 		]
+	},
+	/*
+	 ** Generate configuration
+	 ** Configure the generation of your universal web application to a static web application.
+	 ** See https://nuxtjs.org/api/configuration-generate
+	 */
+	generate: {
+		// The generation of routes are concurrent, generate.concurrency specifies the amount of routes that run in one thread.
+		// Default: 500
+		concurrency: 10
 	}
 }
