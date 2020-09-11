@@ -13,34 +13,28 @@ export default {
 	head: {
 		titleTemplate: "%s | " + "King Boosting",
 		title: "Buy LOL ELO Boost & Premium LOL Boosting" || "",
-		meta: [
-			{
+		meta: [{
 				charset: "utf-8"
 			},
 			{
 				name: "viewport",
-				content:
-					"width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+				content: "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
 			},
 			{
 				hid: "description",
 				name: "description",
-				content:
-					"Buy high quality ELO Boosting and LoL Boost services. 100% Safety and Privacy. The best ELO &amp; League Boost experience. Available on all servers."
+				content: "Buy high quality ELO Boosting and LoL Boost services. 100% Safety and Privacy. The best ELO &amp; League Boost experience. Available on all servers."
 			},
 			{
 				name: "keywords",
-				content:
-					"elo boost, lol elo boost, lol boost, lol elo boosting, elo boost lol, cheap elo boosting, elo boosting"
+				content: "elo boost, lol elo boost, lol boost, lol elo boosting, elo boost lol, cheap elo boosting, elo boosting"
 			}
 		],
-		link: [
-			{
-				rel: "icon",
-				type: "image/x-icon",
-				href: "/favicon.ico"
-			}
-		]
+		link: [{
+			rel: "icon",
+			type: "image/x-icon",
+			href: "/favicon.ico"
+		}]
 	},
 	/*
 	 ** Customize the progress-bar color
@@ -150,8 +144,7 @@ export default {
 		}
 	},
 	sentry: {
-		dsn:
-			"https://f8d1200b27ae4ec0a627eefbdf4f5f21@o143524.ingest.sentry.io/5425202", // Enter your project's DSN here
+		dsn: "https://f8d1200b27ae4ec0a627eefbdf4f5f21@o143524.ingest.sentry.io/5425202", // Enter your project's DSN here
 		config: {} // Additional config
 	},
 	/*
