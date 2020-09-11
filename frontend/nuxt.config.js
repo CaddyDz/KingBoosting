@@ -127,6 +127,11 @@ export default {
 		vueI18nLoader: true,
 		strategy: 'no_prefix',
 	},
+	pwa: {
+		icon: {
+			/* icon options */
+		}
+	},
 	/*
 	 ** Axios module configuration
 	 ** See https://axios.nuxtjs.org/options
