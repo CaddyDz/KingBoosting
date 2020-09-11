@@ -8,9 +8,7 @@
 			<v-row align="center" justify="center">
 				<v-btn class="ma-2" outlined color="white">Elo Boosting</v-btn>
 				<v-btn class="ma-2" outlined color="white">Unranked Smurf</v-btn>
-				<v-btn class="ma-2" outlined color="white"
-					>League Ranked Accounts</v-btn
-				>
+				<v-btn class="ma-2" outlined color="white">League Ranked Accounts</v-btn>
 				<v-btn class="ma-2" outlined color="white">Coaching</v-btn>
 			</v-row>
 			<v-row style="background: rgba(0, 0, 0, 0.5);">
@@ -35,7 +33,7 @@ import CustomerVoice from "~/components/CustomerVoice.vue";
 import ServicesCircle from "~/components/ServicesCircle.vue";
 
 export default {
-	async asyncData({ $axios }) {
+	async asyncData({ $axios, $sentry }) {
 		try {
 			const [
 				services,
@@ -50,7 +48,13 @@ export default {
 				$axios.$get("/blog/first"),
 				$axios.$get("/blog/count")
 			]);
-			return { services, features, priorities, firstArticle, articlesCount };
+			return {
+				services,
+				features,
+				priorities,
+				firstArticle,
+				articlesCount
+			};
 		} catch (error) {
 			$sentry.captureException(error);
 		}

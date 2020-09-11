@@ -13,11 +13,7 @@
 			<v-row>
 				<v-col md="3">
 					<v-container>
-						<v-text-field
-							solo
-							label="Search ..."
-							append-icon="mdi-magnify"
-						></v-text-field>
+						<v-text-field solo label="Search ..." append-icon="mdi-magnify"></v-text-field>
 						<v-list>
 							<v-list-group prepend-icon="mdi-server-network" value="true">
 								<template v-slot:activator>
@@ -25,10 +21,7 @@
 								</template>
 								<v-list-item v-for="(server, i) in servers" :key="i" link>
 									<v-list-item-avatar>
-										<v-checkbox
-											color="primary"
-											@change="commitFilter({ id: i, value: $event })"
-										></v-checkbox>
+										<v-checkbox color="primary" @change="commitFilter({ id: i, value: $event })"></v-checkbox>
 									</v-list-item-avatar>
 									<v-list-item-title v-text="server"></v-list-item-title>
 								</v-list-item>
@@ -74,7 +67,7 @@
 
 <script>
 export default {
-	async asyncData({ $axios }) {
+	async asyncData({ $axios, $sentry }) {
 		try {
 			const boosters = await $axios.$get("/boosters");
 			return { boosters };
