@@ -1,13 +1,16 @@
-php:
-  preset: laravel
-  disabled:
-    - unused_use
-  finder:
-    not-name:
-      - index.php
-      - server.php
-js:
-  finder:
-    not-name:
-      - webpack.mix.js
-css: true
+preset: laravel
+enabled:
+  - no_superfluous_phpdoc_tags
+  - declare_strict_types
+  - length_ordered_imports
+  - concat_with_spaces
+disabled:
+  - alpha_ordered_imports
+  - concat_without_spaces
+finder:
+  not-name:
+    - index.php
+    - server.php
+tab-width: 4
+use-tabs: true
+risky: true
