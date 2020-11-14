@@ -7,39 +7,39 @@
 			<v-col md="2">
 				<v-menu transition="slide-y-transition" min-width="100%" open-on-hover>
 					<template v-slot:activator="{on}">
-						<a href="/regular-boosting" v-on="on" class="link">{{ $t('Boosting') }}</a>
+						<a href="/regular-boosting" v-on="on" class="link">Boosting</a>
 					</template>
 					<v-row align="center" justify="center">
 						<v-col md="3">
 							<nuxt-link to="/regular-boosting">
 								<img src="/img/tft.png" alt />
 								<!-- Vuetify Built-in class -->
-								<p class="text-center">{{ $t('Regular Boosting') }}</p>
+								<p class="text-center">Regular Boosting</p>
 							</nuxt-link>
 						</v-col>
 						<v-col md="3">
 							<nuxt-link to="/regular-boosting">
 								<img src="/img/tft.png" alt />
 								<!-- Vuetify Built-in class -->
-								<p class="text-center">{{ $t('Regular Boosting') }}</p>
+								<p class="text-center">Regular Boosting</p>
 							</nuxt-link>
 						</v-col>
 					</v-row>
 				</v-menu>
 			</v-col>
 			<v-col md="2">
-				<a href="#" :title="$t('Coaching')" class="link">{{ $t('Coaching') }}</a>
+				<a href="#" title="Coaching" class="link">Coaching</a>
 			</v-col>
 			<v-col md="2">
-				<a href="#" :title="$t('Lol Accounts')" class="link">{{ $t('Lol Accounts') }}</a>
+				<a href="#" title="Lol Accounts" class="link">Lol Accounts</a>
 			</v-col>
 			<v-col md="2">
-				<nuxt-link to="/boosters" :title="$t('Boosters')">
-					<p class="text-center link nuxt-link">{{ $t('Boosters') }}</p>
+				<nuxt-link to="/boosters" title="Boosters">
+					<p class="text-center link nuxt-link">Boosters</p>
 				</nuxt-link>
 			</v-col>
 			<v-col md="2">
-				<a href="#" :title="$t('More*')" class="link">{{ $t('More*') }}</a>
+				<a href="#" title="More*" class="link">More*</a>
 			</v-col>
 		</v-row>
 	</v-container>
@@ -84,96 +84,3 @@ p {
 	box-shadow: none !important;
 }
 </style>
-
-<i18n>
-{
-	"en": {
-		"Boosting": "Boosting",
-		"Regular Boosting": "Regular Boosting",
-		"Coaching": "Coaching",
-		"Lol Accounts": "Lol Accounts",
-		"Boosters": "Boosters",
-		"More*": "More*"
-	},
-	"fr": {
-	    "Boosting": "Booster",
-		"Regular Boosting": "Boost régulier",
-		"Coaching": "Allenamento",
-		"Lol Accounts": "Comptes Lol",
-		"Boosters": "Boosters",
-		"More*": "Plus*"
-	},
-	"it": {
-		"Boosting": "Boosting",
-		"Regular Boosting": "Regular Boosting",
-		"Coaching": "Coaching",
-		"Lol Accounts": "Lol Accounts",
-		"Boosters": "Boosters",
-		"More*": "Di Più*"
-	},
-	"de": {
-		"Boosting": "Boosting",
-		"Regular Boosting": "Regular Boosting",
-		"Coaching": "Coaching",
-		"Lol Accounts": "Lol Accounts",
-		"Boosters": "Boosters",
-		"More*": "More*"
-	},
-	"at": {
-		"Boosting": "Boosting",
-		"Regular Boosting": "Regular Boosting",
-		"Coaching": "Coaching",
-		"Lol Accounts": "Lol Accounts",
-		"Boosters": "Boosters",
-		"More*": "More*"
-	},
-	"swiss": {
-		"Boosting": "Boosting",
-		"Regular Boosting": "Regular Boosting",
-		"Coaching": "Coaching",
-		"Lol Accounts": "Lol Accounts",
-		"Boosters": "Boosters",
-		"More*": "More*"
-	},
-	"es": {
-		"Boosting": "Boosting",
-		"Regular Boosting": "Regular Boosting",
-		"Coaching": "Coaching",
-		"Lol Accounts": "Lol Accounts",
-		"Boosters": "Boosters",
-		"More*": "More*"
-	},
-	"nl": {
-		"Boosting": "Boosting",
-		"Regular Boosting": "Regular Boosting",
-		"Coaching": "Coaching",
-		"Lol Accounts": "Lol Accounts",
-		"Boosters": "Boosters",
-		"More*": "More*"
-	},
-	"se": {
-		"Boosting": "Boosting",
-		"Regular Boosting": "Regular Boosting",
-		"Coaching": "Coaching",
-		"Lol Accounts": "Lol Accounts",
-		"Boosters": "Boosters",
-		"More*": "More*"
-	},
-	"ne": {
-		"Boosting": "Boosting",
-		"Regular Boosting": "Regular Boosting",
-		"Coaching": "Coaching",
-		"Lol Accounts": "Lol Accounts",
-		"Boosters": "Boosters",
-		"More*": "More*"
-	},
-    "dk": {
-		"Boosting": "Boosting",
-		"Regular Boosting": "Regular Boosting",
-		"Coaching": "Coaching",
-		"Lol Accounts": "Lol Accounts",
-		"Boosters": "Boosters",
-		"More*": "More*"
-	}
-}
-</i18n>

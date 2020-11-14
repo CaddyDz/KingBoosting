@@ -4,14 +4,14 @@
 			<div class="title-id">
 				<h2>2</h2>
 			</div>
-			<h2 class="title-txt">{{ $t('Select Your Number Of Wins') }}</h2>
+			<h2 class="title-txt">Select Your Number Of Wins</h2>
 		</div>
 		<v-card raised class="mb-4">
 			<v-container class="container">
 				<v-slider v-model="winsCounter" thumb-label="always" min="1" :max="max"></v-slider>
 				<v-radio-group class="radio-group" v-model="mode" dark mandatory row>
-					<v-radio :label="$t('Solo/Duo')" value="Solo/Duo"></v-radio>
-					<v-radio :label="$t('Flex 5v5')" value="Flex"></v-radio>
+					<v-radio label="Solo/Duo" value="Solo/Duo"></v-radio>
+					<v-radio label="Flex 5v5" value="Flex"></v-radio>
 				</v-radio-group>
 			</v-container>
 		</v-card>
@@ -20,28 +20,21 @@
 
 <script>
 export default {
-	data() {
-		return {
+	data: () => ( {
 			winsCounter: 4,
 			mode: "Solo/Duo"
-		};
-	},
+	}),
 	computed: {
 		max() {
-			return this.$store.state.wins.maxNumberOfWins;
-		},
-		tier() {
-			return this.$store.state.league.tier;
+			return this.$store.state.league.tier > 5 ? 7 : 10;
 		}
 	},
 	watch: {
 		winsCounter(value) {
-			this.$store.commit("league/changeNumberOfWins", value);
-			let eta = _.find(this.tier.wins, ["wins", value]).eta;
-			this.$store.commit("checkout/changeETA", eta);
+			this.$store.commit("wins/changeNumberOfWins", value);
 		},
 		mode(value) {
-			this.$store.commit("league/changeGameMode", value);
+			this.$store.commit("wins/changeGameMode", value);
 		}
 	}
 };
@@ -84,13 +77,3 @@ export default {
 	justify-content: center;
 }
 </style>
-
-<i18n>
-{
-	"en": {
-		"Flex 5v5": "Flex 5v5",
-		"Solo/Duo": "Solo/Duo",
-		"Select Your Number Of Wins": "Select Your Number Of Wins"
-	}
-}
-</i18n>

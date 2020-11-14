@@ -11,7 +11,7 @@
 					<br />Regular Boosting allows our customers to buy the desired number of ranked wins. All you have to do is choose how many ranked wins you would like to have on.
 				</v-col>
 			</v-row>
-			<services-slider :service="service" />
+			<!-- <services-slider :service="service" /> -->
 		</div>
 		<v-container>
 			<v-row>
@@ -30,15 +30,14 @@ import Stepper from "~/components/Stepper";
 
 export default {
 	name: "regular-boosting",
+  auth: false,
 	components: {
 		Stepper
 	},
-	data() {
-		return {
+	data: () => ( {
 			slug: "",
 			service: {}
-		};
-	},
+	}),
 	methods: {
 		slideChange(e) {
 			this.slug = "/" + e;
@@ -52,7 +51,7 @@ export default {
 				})
 				.catch(error => {
 					this.$store.commit("notification/open", {
-						text: this.$i18n.t("Something went wrong"),
+						text: "Something went wrong",
 						mode: "error"
 					});
 				});
@@ -60,7 +59,7 @@ export default {
 	},
 	mounted() {
 		this.slug = this.$route.path;
-		this.getService();
+		// this.getService();
 	}
 };
 </script>

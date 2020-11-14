@@ -1,9 +1,8 @@
+/node_modules
+/public/hot
 /public/storage
-/public/vendor
 /storage/*.key
 /vendor
-/nova
-/.vscode
 .env
 .env.backup
 .phpunit.result.cache
@@ -11,6 +10,4 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
-.DS_Store
-/coverage
-.php_cs.cache
+/old

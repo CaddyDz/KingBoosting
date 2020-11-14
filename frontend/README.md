@@ -1,10 +1,8 @@
-# King Boosting
-
-> ELO Boosting Site
+# frontend
 
 ## Build Setup
 
-``` bash
+```bash
 # install dependencies
 $ npm install
 

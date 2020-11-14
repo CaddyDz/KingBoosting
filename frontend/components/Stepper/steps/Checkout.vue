@@ -17,7 +17,7 @@
 						</div>
 					</v-col>
 					<v-col class="right-col">
-						<h5>Approximate completion time: {{ eta }}</h5>
+						<h5>Approximate completion time: {{ eta }} days</h5>
 						<v-col class="input" md="8">
 							<v-text-field
 								label="Discount Code"
@@ -38,8 +38,7 @@
 
 <script>
 export default {
-	data() {
-		return {
+	data: () => ( {
 			discountCode: "",
 			checkboxes: [
 				{
@@ -64,27 +63,26 @@ export default {
 					percentage: 15
 				}
 			]
-		};
-	},
+	}),
 	computed: {
 		eta() {
-			return this.$store.getters["league/eta"];
+			return this.$store.getters["checkout/eta"];
 		}
 	},
 	watch: {
 		discountCode(value) {
-			this.$store.commit("league/changeDiscountCode", value);
+			this.$store.commit("checkout/changeDiscountCode", value);
 		}
 	},
 	methods: {
 		checkOption(checkbox) {
 			if (checkbox.checked) {
-				this.$store.commit("league/addOption", checkbox.title);
-				this.$store.commit("league/addPercent", checkbox.percentage);
+				this.$store.commit("checkout/addOption", checkbox.title);
+				this.$store.commit("checkout/addPercent", checkbox.percentage);
 			} else {
-				this.$store.commit("league/removeOption", checkbox.title);
+				this.$store.commit("checkout/removeOption", checkbox.title);
 				this.$store.commit(
-					"league/substractPercent",
+					"checkout/substractPercent",
 					checkbox.percentage
 				);
 			}

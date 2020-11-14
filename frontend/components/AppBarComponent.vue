@@ -7,7 +7,7 @@
 		<v-spacer></v-spacer>
 		<nav-links></nav-links>
 		<v-spacer></v-spacer>
-		<LoginComponent></LoginComponent>
+		<!-- <LoginComponent></LoginComponent> -->
 	</v-app-bar>
 </template>
 
