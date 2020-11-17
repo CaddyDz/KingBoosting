@@ -1,17 +1,12 @@
 import webpack from "webpack";
-import colors from 'vuetify/es5/util/colors'
+import colors from "vuetify/es5/util/colors";
 
 export default {
-  vue: {
+	vue: {
 		config: {
 			productionTip: false
 		}
 	},
-	/*
-	** Nuxt target
-	** See https://nuxtjs.org/api/configuration-target
-	*/
-	target: 'server',
 	/*
 	 ** Headers of the page
 	 */
@@ -42,87 +37,150 @@ export default {
 		}]
 	},
 	/*
-	** Global CSS
-	*/
-	css: [
-	],
+	 ** Customize the progress-bar color
+	 */
+	loading: {
+		color: "#673ab7"
+	},
 	/*
-	** Plugins to load before mounting the App
-	** https://nuxtjs.org/guide/plugins
-	*/
+	 ** Global CSS
+	 */
+	css: ["~/css/main.css"],
+	render: {
+		bundleRenderer: {
+			shouldPreload: (file, type) => {
+				return ["script", "style", "font"].includes(type);
+			}
+		}
+	},
+	/*
+	 ** Plugins to load before mounting the App
+	 */
 	plugins: [
-    "@/plugins/globals.js",
+		"~plugins/globals",
+		"~plugins/axios",
+		{
+			src: "~plugins/vuex",
+			ssr: false
+		}
 	],
-  router: {
-    middleware: ['auth']
-  },
 	/*
-	** Auto import components
-	** See https://nuxtjs.org/api/configuration-components
-	*/
-	components: true,
-	/*
-	** Nuxt.js dev-modules
-	*/
+	 ** Nuxt.js dev-modules
+	 */
 	buildModules: [
 		// Doc: https://github.com/nuxt-community/eslint-module
-		'@nuxtjs/eslint-module',
-		'@nuxtjs/vuetify'
+		"@nuxtjs/eslint-module",
+		"@nuxtjs/vuetify"
 	],
 	/*
-	** Nuxt.js modules
-	*/
+	 ** Nuxt.js modules
+	 */
 	modules: [
 		// Doc: https://axios.nuxtjs.org/usage
-		'@nuxtjs/axios',
-    '@nuxtjs/auth-next'
+		"@nuxtjs/axios",
+		"@nuxtjs/pwa",
+		"@nuxtjs/auth",
+		"@nuxtjs/sentry",
+		[
+			"nuxt-i18n",
+			{
+				/* module options */
+			}
+		],
+		// Doc: https://github.com/nuxt-community/dotenv-module
+		"@nuxtjs/dotenv"
 	],
+	auth: {
+		strategies: {
+			local: {
+				endpoints: {
+					login: {
+						url: "/api/login",
+						method: "post",
+						propertyName: "token"
+					},
+					logout: {
+						url: "/api/logout",
+						method: "post"
+					},
+					user: {
+						url: "/api/user",
+						method: "get",
+						propertyName: "user"
+					}
+				}
+				// tokenRequired: true,
+				// tokenType: 'bearer',
+				// globalToken: true,
+				// autoFetchUser: true
+			}
+		}
+		// Options
+	},
+	i18n: {
+		locales: [
+			"en",
+			"fr",
+			"de",
+			"at",
+			"swiss",
+			"es",
+			"nl",
+			"it",
+			"se",
+			"no",
+			"dk"
+		],
+		defaultLocale: "en",
+		vueI18n: {
+			fallbackLocale: "en"
+		},
+		vueI18nLoader: true,
+		strategy: "no_prefix"
+	},
+	pwa: {
+		icon: {
+			/* icon options */
+		}
+	},
+	sentry: {
+		dsn: "https://f8d1200b27ae4ec0a627eefbdf4f5f21@o143524.ingest.sentry.io/5425202", // Enter your project's DSN here
+		config: {} // Additional config
+	},
 	/*
-	** Axios module configuration
-	** See https://axios.nuxtjs.org/options
-	*/
+	 ** Axios module configuration
+	 ** See https://axios.nuxtjs.org/options
+	 */
 	axios: {
-    credentials: true
-  },
-  /*
-	** Auth module configuration
-	** See https://dev.auth.nuxtjs.org/api/options
-	*/
-  auth: {
-    strategies: {
-    'laravelSanctum': {
-        provider: 'laravel/sanctum',
-        url: 'https://kingboosting.dev'
-      },
-    }
-  },
+		// proxyHeaders: false,
+		debug: false
+	},
 	/*
-	** vuetify module configuration
-	** https://github.com/nuxt-community/vuetify-module
-	*/
+	 ** vuetify module configuration
+	 ** https://github.com/nuxt-community/vuetify-module
+	 */
 	vuetify: {
-		customVariables: ['~/assets/variables.scss'],
+		customVariables: ["~/assets/variables.scss"],
 		theme: {
 			dark: true,
 			themes: {
 				dark: {
-					primary: colors.blue.darken2,
-					accent: colors.grey.darken3,
-					secondary: colors.amber.darken3,
-					info: colors.teal.lighten1,
-					warning: colors.amber.base,
-					error: colors.deepOrange.accent4,
-					success: colors.green.accent3
+					primary: "#673ab7",
+					secondary: "#9c27b0",
+					accent: "#673ab7",
+					error: "#f44336",
+					warning: "#ffeb3b",
+					info: "#3f51b5",
+					success: "#4caf50"
 				}
 			}
 		}
 	},
 	/*
-	** Build configuration
-	** See https://nuxtjs.org/api/configuration-build/
-	*/
+	 ** Build configuration
+	 */
 	build: {
-    /*
+		/*
 		 ** You can extend webpack config here
 		 */
 		plugins: [
@@ -132,5 +190,20 @@ export default {
 				_: "lodash"
 			})
 		],
+		typescript: {
+			typeCheck: {
+				memoryLimit: 512
+			}
+		}
+	},
+	/*
+	 ** Generate configuration
+	 ** Configure the generation of your universal web application to a static web application.
+	 ** See https://nuxtjs.org/api/configuration-generate
+	 */
+	generate: {
+		// The generation of routes are concurrent, generate.concurrency specifies the amount of routes that run in one thread.
+		// Default: 500
+		concurrency: 10
 	}
-}
+};

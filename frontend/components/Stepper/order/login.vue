@@ -5,7 +5,7 @@
 				<LoginForm @close="nextStep(1)" @cancel="cancel"></LoginForm>
 			</v-col>
 			<v-col cols="4">
-				<!-- <SocialLogin></SocialLogin> -->
+				<SocialLogin></SocialLogin>
 			</v-col>
 		</v-row>
 	</v-stepper-content>

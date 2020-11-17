@@ -7,17 +7,17 @@
 					<v-col cols="12" md="6">
 						<v-text-field
 							v-model="nickname"
-							label="Nickname *"
+							:label="$t('Nickname *')"
 							:rules="nicknameRules"
 							required
-							placeholder="Your in-game name"
+							:placeholder="$t('Your in-game name')"
 						></v-text-field>
 					</v-col>
 					<!-- Select Booster -->
 					<v-col class="d-flex" cols="12" sm="6">
 						<v-select
 							:items="boosters"
-							label="Your Booster"
+							:label="$t('Your Booster')"
 							:loading="boostersLoading"
 							v-model="booster"
 						></v-select>
@@ -27,15 +27,15 @@
 					<v-col cols="12" md="6">
 						<v-text-field
 							v-model="comment"
-							label="Comments NOT REQUIRED"
-							placeholder="Your comments"
+							:label="$t('Comments NOT REQUIRED')"
+							:placeholder="$t('Your comments')"
 						></v-text-field>
 					</v-col>
 				</v-row>
 				<v-row>
 					<v-col cols="12" md="6">
 						<v-checkbox
-							label="Appear Offline on Chat"
+							:label="$t('Appear Offline on Chat')"
 							prepend-icon="mdi-account"
 							v-model="offline"
 						></v-checkbox>
@@ -44,18 +44,19 @@
 				<v-row>
 					<v-col cols="12" md="6">
 						<v-icon>mdi-information-outline</v-icon>
-						<span>Further information will be requested after payment</span>
+						<span>{{ $t('Further information will be requested after payment') }}</span>
 					</v-col>
 				</v-row>
 			</v-container>
 		</v-form>
-		<v-btn color="primary" @click="nextStep" :disabled="!valid">Next</v-btn>
+		<v-btn color="primary" @click="nextStep" :disabled="!valid">{{ $t('Next') }}</v-btn>
 	</v-stepper-content>
 </template>
 
 <script>
 export default {
-	data: () => ( {
+	data() {
+		return {
 			valid: false,
 			boosters: [],
 			boostersLoading: true,
@@ -63,13 +64,14 @@ export default {
 			comment: "",
 			nickname: "",
 			nicknameRules: [
-				v => !!v || "Nickname is required",
+				v => !!v || this.$i18n.t("Nickname is required"),
 				v =>
 					v.length >= 3 ||
-					"Please insert a valid nickname"
+					this.$i18n.t("Please insert a valid nickname")
 			],
 			offline: false
-	}),
+		};
+	},
 	methods: {
 		getBoostersList() {
 			this.$axios
@@ -80,7 +82,7 @@ export default {
 				})
 				.catch(err => {
 					$notify(
-						"Failed to get list of boosters",
+						this.$i18n.t("Failed to get list of boosters"),
 						"error"
 					);
 				});
@@ -94,7 +96,25 @@ export default {
 		}
 	},
 	mounted() {
-		// this.getBoostersList();
+		this.getBoostersList();
 	}
 };
 </script>
+
+<i18n>
+{
+	"en": {
+		"Nickname *": "Nickname *",
+		"Your in-game name": "Your in-game name",
+		"Comments NOT REQUIRED": "Comments NOT REQUIRED",
+		"Your comments": "Your comments",
+		"Appear Offline on Chat": "Appear Offline on Chat",
+		"Further information will be requested after payment": "Further information will be requested after payment",
+		"Next": "Next",
+		"Your Booster": "Your Booster",
+		"Failed to get list of boosters": "Failed to get list of boosters",
+    "Nickname is required": "Nickname is required",
+    "Please insert a valid nickname": "Please insert a valid nickname"
+	}
+}
+</i18n>
