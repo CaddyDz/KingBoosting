@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 return [
 
 	/*
@@ -55,6 +57,7 @@ return [
 			'secret' => env('AWS_SECRET_ACCESS_KEY'),
 			'prefix' => env('SQS_PREFIX', 'https://sqs.us-east-1.amazonaws.com/your-account-id'),
 			'queue' => env('SQS_QUEUE', 'your-queue-name'),
+			'suffix' => env('SQS_SUFFIX'),
 			'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
 		],
 
@@ -80,7 +83,7 @@ return [
 	*/
 
 	'failed' => [
-		'driver' => env('QUEUE_FAILED_DRIVER', 'database'),
+		'driver' => env('QUEUE_FAILED_DRIVER', 'database-uuids'),
 		'database' => env('DB_CONNECTION', 'mysql'),
 		'table' => 'failed_jobs',
 	],

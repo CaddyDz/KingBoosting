@@ -1,11 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Auth;
 
-use App\User;
+use App\Models\User;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Contracts\Validation\Validator as ValidatorContract;
 
 class RegisterController extends Controller
 {
@@ -30,47 +35,42 @@ class RegisterController extends Controller
 	protected $redirectTo = RouteServiceProvider::HOME;
 
 	/**
-	 * Create a new user instance after a valid registration.
+	 * Create a new controller instance.
 	 *
-	 * @param  array  $data
-	 * @return \App\User
+	 * @return void
 	 */
-	protected function create(array $data)
+	public function __construct()
 	{
-		return User::create([
-			'username' => $data['username'],
-			'first_name' => $data['first_name'],
-			'last_name' => $data['last_name'],
-			'email' => $data['email'],
-			'social' => $data['social'] ?? null,
-			'country' => $this->getClientCountry(),
+		$this->middleware('guest');
+	}
+
+	/**
+	 * Get a validator for an incoming registration request.
+	 *
+	 * @param array $data
+	 * @return \Illuminate\Contracts\Validation\Validator
+	 */
+	protected function validator(array $data): ValidatorContract
+	{
+		return Validator::make($data, [
+			'name' => ['required', 'string', 'max:255'],
+			'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+			'password' => ['required', 'string', 'min:8', 'confirmed'],
 		]);
 	}
 
 	/**
-	 * Get the guard to be used during registration.
+	 * Create a new user instance after a valid registration.
 	 *
-	 * @return \Illuminate\Contracts\Auth\StatefulGuard
+	 * @param array $data
+	 * @return \App\Models\User
 	 */
-	protected function guard()
+	protected function create(array $data): User
 	{
-		return Auth::guard();
-	}
-
-	/**
-	 * Return 404 when accessing register page.
-	 *
-	 * Register modal is custom provided by the application
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
-	public function showRegistrationForm()
-	{
-		return abort(404);
-	}
-
-	public function getClientCountry()
-	{
-		return isset($_SERVER["HTTP_CF_IPCOUNTRY"]) ? $_SERVER["HTTP_CF_IPCOUNTRY"] : 'US';
+		return User::create([
+			'name' => $data['name'],
+			'email' => $data['email'],
+			'password' => Hash::make($data['password']),
+		]);
 	}
 }

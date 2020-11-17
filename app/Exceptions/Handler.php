@@ -1,12 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Exceptions;
 
-use Exception;
 use Throwable;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -30,37 +29,29 @@ class Handler extends ExceptionHandler
 	];
 
 	/**
-	 * Report or log an exception.
+	 * Register the exception handling callbacks for the application.
 	 *
-	 * @param \Throwable $exception
 	 * @return void
-	 *
-	 * @throws \Exception
 	 */
-	public function report(Throwable $exception)
+	public function register(): void
 	{
-		if (app()->bound('sentry') && $this->shouldReport($exception)) {
-			app('sentry')->captureException($exception);
-		}
-		parent::report($exception);
+		//
 	}
 
 	/**
-	 * Render an exception into an HTTP response.
+	 * Capture errors and report to sentry
 	 *
-	 * @param \Illuminate\Http\Request $request
-	 * @param \Exception $exception
-	 * @return \Symfony\Component\HttpFoundation\Response
+	 * Bind the sentry SDK to the app container
 	 *
-	 * @throws \Exception
-	 */
-	public function render($request, Exception $exception)
+	 * @param Throwable $exception Exception
+	 * @return void
+	 **/
+	public function report(Throwable $exception): void
 	{
-		if ($exception instanceof NotFoundHttpException) {
-			return response(['status' => 'Not Found'], 404);
-		} elseif ($exception instanceof MethodNotAllowedHttpException) {
-			return response(['status' => 'Bad Request'], 400);
+		if ($this->shouldReport($exception) && app()->bound('sentry')) {
+			app('sentry')->captureException($exception);
 		}
-		return parent::render($request, $exception);
+
+		parent::report($exception);
 	}
 }

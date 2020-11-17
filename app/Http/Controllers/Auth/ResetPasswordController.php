@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Auth;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\ResetsPasswords;
@@ -28,19 +29,4 @@ class ResetPasswordController extends Controller
 	 * @var string
 	 */
 	protected $redirectTo = RouteServiceProvider::HOME;
-
-	/**
-	 * Return password reset token and email.
-	 *
-	 * @param  \Illuminate\Http\Request  $request
-	 * @param  string|null  $token
-	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-	 */
-	public function showResetForm(Request $request, $token = null)
-	{
-		return response([
-			'token' => $token,
-			'email' => $request->email,
-		], 201);
-	}
 }

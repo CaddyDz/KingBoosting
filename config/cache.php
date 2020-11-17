@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Illuminate\Support\Str;
 
 return [
@@ -14,7 +16,7 @@ return [
 	| not explicitly specified when executing a given caching function.
 	|
 	| Supported: "apc", "array", "database", "file",
-	|            "memcached", "redis", "dynamodb"
+	| "memcached", "redis", "dynamodb"
 	|
 	*/
 
@@ -39,6 +41,7 @@ return [
 
 		'array' => [
 			'driver' => 'array',
+			'serialize' => false,
 		],
 
 		'database' => [

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 return [
 
 	/*
@@ -11,9 +13,19 @@ return [
 	|
 	*/
 
-	'filename'  => '_ide_helper',
-	'format'    => 'php',
+	'filename' => '_ide_helper',
+	'format' => 'php',
 
+	/*
+	|--------------------------------------------------------------------------
+	| Where to write the PhpStorm specific meta file
+	|--------------------------------------------------------------------------
+	|
+	| PhpStorm also supports the directory `.phpstorm.meta.php/` with arbitrary
+	| files in it, should you need additional files for your project; e.g.
+	| `.phpstorm.meta.php/laravel_ide_Helper.php'.
+	|
+	*/
 	'meta_filename' => '.phpstorm.meta.php',
 
 	/*
@@ -37,7 +49,7 @@ return [
 	|
 	*/
 
-	'include_factory_builders' => true,
+	'include_factory_builders' => false,
 
 	/*
 	|--------------------------------------------------------------------------
@@ -52,6 +64,17 @@ return [
 
 	/*
 	|--------------------------------------------------------------------------
+	| Write Model relation count properties
+	|--------------------------------------------------------------------------
+	|
+	| Set to false to disable writing of relation count properties to model DocBlocks.
+	|
+	*/
+
+	'write_model_relation_count_properties' => true,
+
+	/*
+	|--------------------------------------------------------------------------
 	| Write Eloquent Model Mixins
 	|--------------------------------------------------------------------------
 	|
@@ -63,7 +86,7 @@ return [
 	|
 	*/
 
-	'write_eloquent_model_mixins' => false,
+	'write_eloquent_model_mixins' => true,
 
 	/*
 	|--------------------------------------------------------------------------
@@ -75,10 +98,11 @@ return [
 	|
 	*/
 
-	'include_helpers' => false,
+	'include_helpers' => true,
 
 	'helper_files' => [
 		base_path() . '/vendor/laravel/framework/src/Illuminate/Support/helpers.php',
+		base_path() . '/app/Helpers.php',
 	],
 
 	/*
@@ -89,12 +113,27 @@ return [
 	| Define in which directories the ide-helper:models command should look
 	| for models.
 	|
+	| glob patterns are supported to easier reach models in sub-directories,
+	| e.g. `app/Services/* /Models` (without the space)
+	|
 	*/
 
 	'model_locations' => [
 		'app',
 	],
 
+	/*
+	|--------------------------------------------------------------------------
+	| Models to ignore
+	|--------------------------------------------------------------------------
+	|
+	| Define which models should be ignored.
+	|
+	*/
+
+	'ignored_models' => [
+
+	],
 
 	/*
 	|--------------------------------------------------------------------------
@@ -122,7 +161,9 @@ return [
 	|
 	*/
 
-	'interfaces' => [],
+	'interfaces' => [
+
+	],
 
 	/*
 	|--------------------------------------------------------------------------
@@ -146,11 +187,13 @@ return [
 	| So to support jsonb in your models when working with Postgres, just add the following entry to the array below:
 	|
 	| "postgresql" => array(
-	|       "jsonb" => "json_array",
-	|  ),
+	| "jsonb" => "json_array",
+	| ),
 	|
 	*/
-	'custom_db_types' => [],
+	'custom_db_types' => [
+
+	],
 
 	/*
 	 |--------------------------------------------------------------------------
@@ -165,13 +208,13 @@ return [
 	 |
 	 | For example, normally you would see this:
 	 |
-	 |  * @property \Illuminate\Support\Carbon $created_at
-	 |  * @property \Illuminate\Support\Carbon $updated_at
+	 | * @property \Illuminate\Support\Carbon $created_at
+	 | * @property \Illuminate\Support\Carbon $updated_at
 	 |
 	 | With this enabled, the properties will be this:
 	 |
-	 |  * @property \Illuminate\Support\Carbon $createdAt
-	 |  * @property \Illuminate\Support\Carbon $updatedAt
+	 | * @property \Illuminate\Support\Carbon $createdAt
+	 | * @property \Illuminate\Support\Carbon $updatedAt
 	 |
 	 | Note, it is currently an all-or-nothing option.
 	 |
@@ -202,4 +245,15 @@ return [
 	*/
 	'include_class_docblocks' => false,
 
+	/*
+	|--------------------------------------------------------------------------
+	| Force FQN usage
+	|--------------------------------------------------------------------------
+	|
+	| Use the fully qualified (class) name in docBlock,
+	| event if class exists in a given file
+	| or there is an import (use className) of a given class
+	|
+	*/
+	'force_fqn' => false,
 ];
