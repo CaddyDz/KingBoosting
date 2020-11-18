@@ -38,8 +38,9 @@ class LoginController extends Controller
 				'email' => ['The provided credentials are incorrect.'],
 			]);
 		}
-
-		return $user->createToken('SPA')->plainTextToken;
+		return response([
+			'token' => $user->createToken('SPA')->plainTextToken,
+		]);
 	}
 
 	/**

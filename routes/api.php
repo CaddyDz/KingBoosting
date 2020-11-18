@@ -22,10 +22,10 @@ use App\Http\Controllers\OrderController;
 
 Route::middleware(['auth:sanctum'])->group(function () {
 	// lists authed user
-	Route::get('user', [LoginController::class, 'user']);
-	Route::post('logout', [LoginController::class, 'logout']);
+	Route::get('auth/user', [LoginController::class, 'user']);
+	Route::post('auth/logout', [LoginController::class, 'logout']);
 });
 // auth routes
-Route::post('login', [LoginController::class, 'login']);
-Route::post('register', [RegisterController::class, 'register']);
+Route::post('auth/login', [LoginController::class, 'login']);
+Route::post('auth/register', [RegisterController::class, 'register']);
 Route::post('/orders', [OrderController::class, 'store']);
