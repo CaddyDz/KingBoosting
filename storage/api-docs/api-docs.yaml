@@ -10,7 +10,7 @@ info:
   version: 1.0.0
 servers:
   -
-    url: 'https://laravel.dev'
+    url: 'https://kingboosting.dev'
     description: 'Local env'
 paths:
   /api/login:
@@ -19,39 +19,24 @@ paths:
         - Login
       summary: 'Generate a token for user'
       operationId: login
-      parameters:
-        -
-          name: email
-          in: query
-          required: true
-          schema:
-            type: string
-        -
-          name: password
-          in: query
-          required: true
-          schema:
-            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+              type: object
+              example:
+                email: vmedhurst@example.net
+                password: password
       responses:
         200:
-          description: Success
-          content:
-            application/json: []
+          description: OK
         403:
           description: Forbidden
-  /api/logout:
-    post:
-      tags:
-        - Logout
-      summary: 'Revoke token of user'
-      operationId: logout
-      responses:
-        200:
-          description: Success
-          content:
-            application/json: []
-        401:
-          description: Unauthenticated
   /api/orders:
     post:
       tags:
