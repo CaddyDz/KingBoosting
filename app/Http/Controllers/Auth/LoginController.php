@@ -2,41 +2,70 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\Models\User;
+use App\Http\Requests\Token;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
-	/*
-	|--------------------------------------------------------------------------
-	| Login Controller
-	|--------------------------------------------------------------------------
-	|
-	| This controller handles authenticating users for the application and
-	| redirecting them to your home screen. The controller uses a trait
-	| to conveniently provide its functionality to your applications.
-	|
-	*/
-
-	use AuthenticatesUsers;
-
 	/**
-	 * Where to redirect users after login.
+	 * details api
 	 *
-	 * @var string
+	 * @return \Illuminate\Http\Response
 	 */
-	protected $redirectTo = RouteServiceProvider::HOME;
-
-	/**
-	 * Create a new controller instance.
-	 *
-	 * @return void
-	 */
-	public function __construct()
+	public function user(Request $request)
 	{
-		$this->middleware('guest')->except('logout');
+		return $request->user();
+	}
+
+	/**
+	 * login api
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
+	public function login(Token $request)
+	{
+		$user = User::where('email', $request->email)->first();
+
+		if (! $user || ! Hash::check($request->password, $user->password)) {
+			throw ValidationException::withMessages([
+				'email' => ['The provided credentials are incorrect.'],
+			]);
+		}
+
+		return $user->createToken('SPA')->plainTextToken;
+	}
+
+	/**
+	 * Logout user
+	 *
+	 * Revoke all tokens of user
+	 *
+	 * @param \Illuminate\Http\Request $request Request object
+	 * @return \Illuminate\Http\Response
+	 **/
+	public function logout(Request $request): Response
+	{
+		// Revoke all tokens...
+		$request->user()->tokens()->delete();
+		return response([
+			'status' => 'Logged out',
+		], 204);
+	}
+
+	public function register(Request $request)
+	{
+		$user = new User([
+			'name' => $request->first_name . ' ' . $request->last_name,
+			'email' => $request->email,
+			'password' => bcrypt($request->password)
+		]);
+		$user->save();
+		return $user->createToken('SPA')->plainTextToken;
 	}
 }
