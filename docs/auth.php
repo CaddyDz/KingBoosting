@@ -10,7 +10,7 @@ declare(strict_types=1);
  *   operationId="login",
  *
  *   @OA\Parameter(
- *      name="name",
+ *      name="email",
  *      in="query",
  *      required=true,
  *      @OA\Schema(
@@ -19,14 +19,6 @@ declare(strict_types=1);
  *   ),
  *   @OA\Parameter(
  *      name="password",
- *      in="query",
- *      required=true,
- *      @OA\Schema(
- *          type="string"
- *      )
- *   ),
- *   @OA\Parameter(
- *      name="device_name",
  *      in="query",
  *      required=true,
  *      @OA\Schema(

@@ -28,7 +28,7 @@
                 "operationId": "login",
                 "parameters": [
                     {
-                        "name": "name",
+                        "name": "email",
                         "in": "query",
                         "required": true,
                         "schema": {
@@ -37,14 +37,6 @@
                     },
                     {
                         "name": "password",
-                        "in": "query",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "device_name",
                         "in": "query",
                         "required": true,
                         "schema": {
