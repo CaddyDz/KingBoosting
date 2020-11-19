@@ -68,10 +68,12 @@ class Handler extends ExceptionHandler
 	 */
 	public function render($request, Throwable $exception)
 	{
-		if ($exception instanceof NotFoundHttpException) {
-			return response(['status' => 'Not Found'], 404);
-		} elseif ($exception instanceof MethodNotAllowedHttpException) {
-			return response(['status' => 'Bad Request'], 400);
+		if (str_starts_with($request->path(), 'api')) {
+			if ($exception instanceof NotFoundHttpException) {
+				return response(['status' => 'Not Found'], 404);
+			} elseif ($exception instanceof MethodNotAllowedHttpException) {
+				return response(['status' => 'Bad Request'], 400);
+			}
 		}
 		return parent::render($request, $exception);
 	}
