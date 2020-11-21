@@ -20,7 +20,7 @@ declare(strict_types=1);
  *                     property="password",
  *                     type="string"
  *                 ),
- *                 example={"email": "vmedhurst@example.net", "password": "password"}
+ *                 example={"email": "admin@kingboosting.com", "password": "password"}
  *             )
  *         )
  *     ),
