@@ -75,11 +75,11 @@ window.onload = function() {
   const ui = SwaggerUIBundle({
     dom_id: '#swagger-ui',
 
-    url: "{!! $urlToDocs !!}",
+    url: "{{ config('app.url') . '/docs/api-docs.json' }}",
     operationsSorter: {!! isset($operationsSorter) ? '"' . $operationsSorter . '"' : 'null' !!},
     configUrl: {!! isset($configUrl) ? '"' . $configUrl . '"' : 'null' !!},
     validatorUrl: {!! isset($validatorUrl) ? '"' . $validatorUrl . '"' : 'null' !!},
-    oauth2RedirectUrl: "{{ route('l5-swagger.'.$documentation.'.oauth2_callback') }}",
+    oauth2RedirectUrl: "{{ config('app.url') . '/api/oauth2-callback' }}",
 
     requestInterceptor: function(request) {
       request.headers['X-CSRF-TOKEN'] = '{{ csrf_token() }}';
