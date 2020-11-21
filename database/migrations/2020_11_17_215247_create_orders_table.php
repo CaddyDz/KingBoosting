@@ -22,7 +22,7 @@ class CreateOrdersTable extends Migration
 			$table->string('division');
 			$table->string('server');
 			$table->integer('wins');
-			$table->foreignId('booster_id')->constrained('users');
+			$table->foreignId('booster_id')->constrained('users')->nullable();
 			$table->foreignId('client_id')->constrained('users');
 			$table->enum('status', ['pending', 'progress', 'paused', 'completed', 'suspended'])->default('pending');
 			$table->enum('queue', ['solo_duo', 'flex_5v5'])->default('solo_duo');

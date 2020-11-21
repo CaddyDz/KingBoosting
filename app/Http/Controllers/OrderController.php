@@ -41,7 +41,7 @@ class OrderController extends Controller
 			'service' => $request->service,
 			'tier' => $request->tier,
 			'division' => $request->division,
-			'server' => $request->server,
+			'server' => request('server'),
 			'wins' => $request->wins,
 			'queue' => $request->queue,
 			'specific_champions' => $request->specific_champions,

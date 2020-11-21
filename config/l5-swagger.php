@@ -7,7 +7,7 @@ return [
 	'documentations' => [
 		'default' => [
 			'api' => [
-				'title' => 'Laravel auth API docs',
+				'title' => 'King Boosting API docs',
 			],
 
 			'routes' => [
