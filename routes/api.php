@@ -24,8 +24,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
 	// lists authed user
 	Route::get('auth/user', [LoginController::class, 'user']);
 	Route::post('auth/logout', [LoginController::class, 'logout']);
+	Route::post('orders', [OrderController::class, 'store']);
 });
 // auth routes
 Route::post('auth/login', [LoginController::class, 'login']);
 Route::post('auth/register', [RegisterController::class, 'register']);
-Route::post('/orders', [OrderController::class, 'store']);
