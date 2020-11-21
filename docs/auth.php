@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 /**
  * @OA\Post(
- *     path="/api/login",
+ *     path="/api/auth/login",
  *     tags={"Login"},
  *     summary="Generate a token for user",
  *     operationId="login",
