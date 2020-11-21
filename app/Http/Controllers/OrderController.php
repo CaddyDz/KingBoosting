@@ -44,6 +44,7 @@ class OrderController extends Controller
 			'server' => request('server'),
 			'wins' => $request->wins,
 			'queue' => $request->queue,
+			'client_id' => auth()->id(),
 			'specific_champions' => $request->specific_champions,
 			'priority' => $request->priority,
 			'streaming' => $request->streaming,
