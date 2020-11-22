@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\BoostersController;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -29,3 +30,5 @@ Route::middleware(['auth:sanctum'])->group(function () {
 // auth routes
 Route::post('auth/login', [LoginController::class, 'login']);
 Route::post('auth/register', [RegisterController::class, 'register']);
+// List an array of boosters usernames
+Route::get('/getBoostersNames', [BoostersController::class, 'getBoostersNames']);

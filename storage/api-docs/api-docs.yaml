@@ -10,10 +10,10 @@ info:
   version: 1.0.0
 servers:
   -
-    url: 'https://kingboosting.dev'
+    url: 'http://kingboosting.test'
     description: 'Local env'
 paths:
-  /api/login:
+  /api/auth/login:
     post:
       tags:
         - Login
@@ -30,7 +30,7 @@ paths:
                   type: string
               type: object
               example:
-                email: vmedhurst@example.net
+                email: user@kingboosting.com
                 password: password
       responses:
         200:

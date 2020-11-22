@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use Spatie\Permission\Traits\HasRoles;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -37,18 +38,14 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  */
 class User extends Authenticatable
 {
-	use HasApiTokens, HasFactory, Notifiable;
+	use HasApiTokens, HasFactory, Notifiable, HasRoles;
 
 	/**
 	 * The attributes that are mass assignable.
 	 *
 	 * @var array
 	 */
-	protected $fillable = [
-		'name',
-		'email',
-		'password',
-	];
+	protected $guarded = [];
 
 	/**
 	 * The attributes that should be hidden for arrays.
@@ -68,4 +65,14 @@ class User extends Authenticatable
 	protected $casts = [
 		'email_verified_at' => 'datetime',
 	];
+
+	public function orders()
+	{
+		return $this->hasMany(Order::class, 'client_id');
+	}
+
+	public function jobs()
+	{
+		return $this->hasMany(Order::class, 'booster_id');
+	}
 }
