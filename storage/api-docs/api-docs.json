@@ -57,6 +57,23 @@
                 }
             }
         },
+        "/api/getBoostersNames": {
+            "get": {
+                "tags": [
+                    "Booster"
+                ],
+                "summary": "Get usernames of all boosters",
+                "operationId": "booster",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
         "/api/orders": {
             "post": {
                 "tags": [
