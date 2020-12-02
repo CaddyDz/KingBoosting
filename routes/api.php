@@ -2,13 +2,11 @@
 
 declare(strict_types=1);
 
-use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\BoostersController;
-use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\BoostersController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,13 +20,13 @@ use App\Http\Controllers\OrderController;
 */
 
 Route::middleware(['auth:sanctum'])->group(function () {
+	Route::get('/user', [LoginController::class, 'user']);
 	// lists authed user
-	Route::get('auth/user', [LoginController::class, 'user']);
-	Route::post('auth/logout', [LoginController::class, 'logout']);
+	Route::post('logout', [LoginController::class, 'logout']);
 	Route::post('orders', [OrderController::class, 'store']);
 });
 // auth routes
-Route::post('auth/login', [LoginController::class, 'login']);
-Route::post('auth/register', [RegisterController::class, 'register']);
+Route::post('login', [LoginController::class, 'login'])->name('login');
+Route::post('register', [RegisterController::class, 'register']);
 // List an array of boosters usernames
 Route::get('/getBoostersNames', [BoostersController::class, 'getBoostersNames']);

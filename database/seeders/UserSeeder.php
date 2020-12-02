@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Database\Seeders;
 
 use App\Models\User;
@@ -13,23 +15,23 @@ class UserSeeder extends Seeder
 		'Member' => 500,
 	];
 
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-    public function run()
-    {
-    	$this->seedAdmin();
+	/**
+	 * Run the database seeds.
+	 *
+	 * @return void
+	 */
+	public function run()
+	{
+		$this->seedAdmin();
 		foreach ($this->roles as $role => $many) {
 			$this->seedUsers($role, $many);
 		}
-        User::factory(10)->create();
-		$member = User::factory()->create(['email' => 'user@kingboosting.com']);
+		User::factory(10)->create();
+		$member = User::factory()->create(['email' => 'amalia70@example.org']);
 		$member->assignRole('Member');
-    }
+	}
 
-    public function seedAdmin(): void
+	public function seedAdmin(): void
 	{
 		User::create([
 			'username' => 'Admin',

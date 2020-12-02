@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
@@ -8,7 +10,7 @@ use Spatie\Permission\PermissionRegistrar;
 
 class PermissionSeeder extends Seeder
 {
-    private $permissions = [
+	private $permissions = [
 		'edit orders',
 		'delete orders',
 		'lock orders',

@@ -21,7 +21,7 @@ class LoginController extends Controller
 	 */
 	public function user(Request $request)
 	{
-		return $request->user();
+		return response(['user' => $request->user()]);
 	}
 
 	/**
@@ -34,14 +34,12 @@ class LoginController extends Controller
 	{
 		$user = User::where('email', $request->email)->first();
 
-		if (! $user || ! Hash::check($request->password, $user->password)) {
+		if (!$user || !Hash::check($request->password, $user->password)) {
 			throw ValidationException::withMessages([
 				'email' => ['The provided credentials are incorrect.'],
 			]);
 		}
-		return response([
-			'token' => $user->createToken('SPA')->plainTextToken,
-		]);
+		return response(['token' => $user->createToken('SPA')->plainTextToken, 'user' => $user]);
 	}
 
 	/**
