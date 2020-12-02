@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use Stripe\Charge;
 use App\Models\Order;
 use Illuminate\Http\Request;
 
@@ -37,22 +38,35 @@ class OrderController extends Controller
 	 */
 	public function store(Request $request)
 	{
-		Order::create([
-			'service' => $request->service,
-			'tier' => $request->tier,
-			'division' => $request->division,
-			'server' => request('server'),
-			'wins' => $request->wins,
-			'queue' => $request->queue,
-			'client_id' => auth()->id(),
-			'specific_champions' => $request->specific_champions,
-			'priority' => $request->priority,
-			'streaming' => $request->streaming,
-			'price' => $request->price,
-		]);
-		return response([
-			'message' => __('Your order has been placed'),
-		]);
+		try {
+			Charge::create([
+				"amount" => $request->price,
+				"currency" => "eur",
+				"source" => $request->stripeToken,
+				"description" => "Charge for " . auth()->user()->email,
+			]);
+			Order::create([
+				'service' => $request->service,
+				'tier' => $request->tier,
+				'division' => $request->division,
+				'server' => request('server'),
+				'wins' => $request->wins,
+				'queue' => $request->queue,
+				'client_id' => auth()->id(),
+				'specific_champions' => $request->specific_champions,
+				'priority' => $request->priority,
+				'streaming' => $request->streaming,
+				'price' => $request->price,
+			]);
+			return response([
+				'message' => __('Your order has been placed'),
+			]);
+		} catch (\Exception $ex) {
+			logger()->error($ex->getMessage());
+			return response([
+				'error' => __('Purchase failed!'),
+			], 402);
+		}
 	}
 
 	/**
