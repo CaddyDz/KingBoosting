@@ -26,9 +26,7 @@ class CreateOrdersTable extends Migration
 			$table->foreignId('client_id')->constrained('users');
 			$table->enum('status', ['pending', 'progress', 'paused', 'completed', 'suspended'])->default('pending');
 			$table->enum('queue', ['solo_duo', 'flex_5v5'])->default('solo_duo');
-			$table->boolean('specific_champions')->default(false);
-			$table->boolean('priority')->default(false);
-			$table->boolean('streaming')->default(false);
+			$table->json('options')->nullable();
 			$table->decimal('price', 5, 2);
 			$table->timestamps();
 		});

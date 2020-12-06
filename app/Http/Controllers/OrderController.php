@@ -11,26 +11,6 @@ use Illuminate\Http\Request;
 class OrderController extends Controller
 {
 	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
-	public function index()
-	{
-		//
-	}
-
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
-	public function create()
-	{
-		//
-	}
-
-	/**
 	 * Store a newly created resource in storage.
 	 *
 	 * @param  \Illuminate\Http\Request  $request
@@ -38,6 +18,17 @@ class OrderController extends Controller
 	 */
 	public function store(Request $request)
 	{
+		// Set your secret key. Remember to switch to your live secret key in production!
+		// See your keys here: https://dashboard.stripe.com/account/apikeys
+		\Stripe\Stripe::setApiKey('sk_test_fvYVXcTxZMYsXqsy7fK7VLOH003D2eLbhf');
+
+		$intent = \Stripe\PaymentIntent::create([
+			'amount' => $request->price,
+			'currency' => 'eur',
+			// Verify your integration in this guide by including this parameter
+			'metadata' => ['integration_check' => 'accept_a_payment'],
+		]);
+
 		try {
 			Charge::create([
 				"amount" => $request->price,
@@ -53,9 +44,7 @@ class OrderController extends Controller
 				'wins' => $request->wins,
 				'queue' => $request->queue,
 				'client_id' => auth()->id(),
-				'specific_champions' => $request->specific_champions,
-				'priority' => $request->priority,
-				'streaming' => $request->streaming,
+				'options' => $request->options,
 				'price' => $request->price,
 			]);
 			return response([
@@ -67,50 +56,5 @@ class OrderController extends Controller
 				'error' => __('Purchase failed!'),
 			], 402);
 		}
-	}
-
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  \App\Models\Order  $order
-	 * @return \Illuminate\Http\Response
-	 */
-	public function show(Order $order)
-	{
-		//
-	}
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  \App\Models\Order  $order
-	 * @return \Illuminate\Http\Response
-	 */
-	public function edit(Order $order)
-	{
-		//
-	}
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  \Illuminate\Http\Request  $request
-	 * @param  \App\Models\Order  $order
-	 * @return \Illuminate\Http\Response
-	 */
-	public function update(Request $request, Order $order)
-	{
-		//
-	}
-
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  \App\Models\Order  $order
-	 * @return \Illuminate\Http\Response
-	 */
-	public function destroy(Order $order)
-	{
-		//
 	}
 }
