@@ -42,6 +42,7 @@ class OrderController extends Controller
 				'server' => request('server'),
 				'wins' => $request->wins,
 				'queue' => $request->queue,
+				'booster_id' => $request->booster,
 				'client_id' => auth()->id(),
 				'options' => $request->options,
 				'price' => $request->price,

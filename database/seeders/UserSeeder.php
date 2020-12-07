@@ -11,8 +11,8 @@ class UserSeeder extends Seeder
 {
 	private $roles = [
 		'Moderator' => 5,
-		'Booster' => 100,
-		'Member' => 500,
+		'Booster' => 10,
+		'Member' => 50,
 	];
 
 	/**

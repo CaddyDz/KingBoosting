@@ -16,4 +16,14 @@ class Order extends Model
 	protected $casts = [
 		'options' => 'array',
 	];
+
+	public function booster()
+	{
+		return $this->belongsTo(User::class, 'booster_id');
+	}
+
+	public function client()
+	{
+		return $this->belongsTo(User::class, 'client_id');
+	}
 }
