@@ -22,16 +22,15 @@ class OrderController extends Controller
 		// See your keys here: https://dashboard.stripe.com/account/apikeys
 		\Stripe\Stripe::setApiKey('sk_test_fvYVXcTxZMYsXqsy7fK7VLOH003D2eLbhf');
 
-		$intent = \Stripe\PaymentIntent::create([
-			'amount' => $request->price,
-			'currency' => 'eur',
-			// Verify your integration in this guide by including this parameter
-			'metadata' => ['integration_check' => 'accept_a_payment'],
-		]);
-
 		try {
+			$intent = \Stripe\PaymentIntent::create([
+				'amount' => $request->price * 100,
+				'currency' => 'eur',
+				// Verify your integration in this guide by including this parameter
+				'metadata' => ['integration_check' => 'accept_a_payment'],
+			]);
 			Charge::create([
-				"amount" => $request->price,
+				"amount" => $request->price * 100,
 				"currency" => "eur",
 				"source" => $request->stripeToken,
 				"description" => "Charge for " . auth()->user()->email,
