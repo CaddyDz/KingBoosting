@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use App\Nova\Actions\LockOrder;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\ID;
@@ -24,7 +25,7 @@ class Order extends Resource
 	 *
 	 * @var string
 	 */
-	public static $title = 'id';
+	public static $title = 'service';
 
 	/**
 	 * The columns that should be searched.
@@ -100,6 +101,8 @@ class Order extends Resource
 	 */
 	public function actions(Request $request)
 	{
-		return [];
+		return [
+			(new LockOrder)->canSee(fn ($request) => $request->user()->hasRole('Booster'))
+		];
 	}
 }
