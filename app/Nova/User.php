@@ -18,6 +18,17 @@ class User extends Resource
 	public static $model = \App\Models\User::class;
 
 	/**
+	 * Determine if this resource is available for navigation.
+	 *
+	 * @param  \Illuminate\Http\Request  $request
+	 * @return bool
+	 */
+	public static function availableForNavigation(Request $request)
+	{
+		return $request->user()->hasRole('Admin');
+	}
+
+	/**
 	 * The single value that should be used to represent the resource when being displayed.
 	 *
 	 * @var string

@@ -29,6 +29,8 @@ class UserSeeder extends Seeder
 		User::factory(10)->create();
 		$member = User::factory()->create(['email' => 'amalia70@example.org']);
 		$member->assignRole('Member');
+		$booster = User::factory()->create(['email' => 'booster@kingboosting.com']);
+		$booster->assignRole('Booster');
 	}
 
 	public function seedAdmin(): void
