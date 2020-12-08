@@ -4,9 +4,13 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\OrderRequest;
 use Stripe\Charge;
 use App\Models\Order;
+use App\Models\User;
+use App\Notifications\OrderPlaced;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
 
 class OrderController extends Controller
 {
@@ -16,7 +20,7 @@ class OrderController extends Controller
 	 * @param  \Illuminate\Http\Request  $request
 	 * @return \Illuminate\Http\Response
 	 */
-	public function store(Request $request)
+	public function store(OrderRequest $request)
 	{
 		// Set your secret key. Remember to switch to your live secret key in production!
 		// See your keys here: https://dashboard.stripe.com/account/apikeys
@@ -35,7 +39,7 @@ class OrderController extends Controller
 				"source" => $request->stripeToken,
 				"description" => "Charge for " . auth()->user()->email,
 			]);
-			Order::create([
+			$order = Order::create([
 				'service' => $request->service,
 				'tier' => $request->tier,
 				'division' => $request->division,
@@ -47,6 +51,13 @@ class OrderController extends Controller
 				'options' => $request->options,
 				'price' => $request->price,
 			]);
+			if ($request->booster) {
+				$booster = User::where('username', $request->booster)->firstOrFail();
+				$booster->notify(new OrderPlaced($order));
+			} else {
+				$users = User::role('Booster')->get();
+				Notification::send($users, new OrderPlaced($order));
+			}
 			return response([
 				'message' => __('Your order has been placed'),
 			]);
