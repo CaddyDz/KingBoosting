@@ -21,14 +21,19 @@ use App\Http\Controllers\Auth\RegisterController;
 */
 
 Route::middleware(['auth:sanctum'])->group(function () {
-	Route::get('/user', [LoginController::class, 'user']);
 	// lists authed user
-	Route::post('logout', [LoginController::class, 'logout']);
 	Route::post('orders', [OrderController::class, 'store']);
 });
 // auth routes
-Route::post('login', [LoginController::class, 'login'])->name('login');
-Route::post('register', [RegisterController::class, 'register']);
+Route::prefix('auth')->group(function () {
+	Route::post('login', [LoginController::class, 'login'])->name('login');
+	Route::post('register', [RegisterController::class, 'register']);
+	Route::middleware(['auth:sanctum'])->group(function () {
+		// lists authed user
+		Route::get('/user', [LoginController::class, 'user']);
+		Route::post('logout', [LoginController::class, 'logout']);
+	});
+});
 // List an array of boosters usernames
 Route::get('/getBoostersNames', [BoostersController::class, 'getBoostersNames']);
 Route::get('secret', [CheckoutController::class, 'intent']);
