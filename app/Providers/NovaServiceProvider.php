@@ -39,13 +39,9 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 	 *
 	 * @return void
 	 */
-	protected function gate()
+	protected function gate(): void
 	{
-		Gate::define('viewNova', function ($user) {
-			return in_array($user->email, [
-				//
-			]);
-		});
+		Gate::define('viewNova', fn () => true);
 	}
 
 	/**
@@ -53,7 +49,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 	 *
 	 * @return array
 	 */
-	protected function cards()
+	protected function cards(): array
 	{
 		return [];
 	}
@@ -63,7 +59,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 	 *
 	 * @return array
 	 */
-	protected function dashboards()
+	protected function dashboards(): array
 	{
 		return [];
 	}
@@ -73,7 +69,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 	 *
 	 * @return array
 	 */
-	public function tools()
+	public function tools(): array
 	{
 		return [];
 	}
@@ -83,7 +79,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 	 *
 	 * @return void
 	 */
-	public function register()
+	public function register(): void
 	{
 		//
 	}
