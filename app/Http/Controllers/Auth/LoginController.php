@@ -9,9 +9,10 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Http\Requests\TokenRequest;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Route;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
+use Laravel\Sanctum\PersonalAccessToken;
 use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
@@ -70,5 +71,16 @@ class LoginController extends Controller
 		]);
 		$user->save();
 		return $user->createToken('SPA')->plainTextToken;
+	}
+
+	public function authenticateNova(string $token): RedirectResponse
+	{
+		// Get user from token
+		$user = PersonalAccessToken::findToken($token)
+			->tokenable()
+			->first();
+		Auth::login($user);
+		// Authenticate that user
+		return redirect(config('nova.path'));
 	}
 }

@@ -45,7 +45,11 @@ class RouteServiceProvider extends ServiceProvider
 				->namespace($this->namespace)
 				->group(base_path('routes/api.php'));
 
-			if (!app()->isProduction()) {
+			Route::middleware('web')
+				->namespace($this->namespace)
+				->group(base_path('routes/web.php'));
+
+			if (! app()->isProduction()) {
 				Route::middleware('web')
 					->namespace($this->namespace)
 					->group(base_path('routes/dev.php'));
