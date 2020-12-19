@@ -14,8 +14,9 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 	 *
 	 * @return void
 	 */
-	public function boot()
+	public function boot(): void
 	{
+		Nova::serving(fn () => Nova::style('theme', resource_path('css/theme.css')));
 		parent::boot();
 	}
 
@@ -24,7 +25,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 	 *
 	 * @return void
 	 */
-	protected function routes()
+	protected function routes(): void
 	{
 		Nova::routes()
 			->withAuthenticationRoutes()
