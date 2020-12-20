@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 
 class CheckoutController extends Controller
 {
@@ -18,6 +19,6 @@ class CheckoutController extends Controller
 			// Verify your integration in this guide by including this parameter
 			'metadata' => ['integration_check' => 'accept_a_payment'],
 		]);
-		echo json_encode(array('client_secret' => $intent->client_secret));
+		echo json_encode(['client_secret' => $intent->client_secret]);
 	}
 }

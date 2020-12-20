@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 return [
 
 	// If true, hide all sidebar headlines

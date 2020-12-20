@@ -11,8 +11,6 @@ class Order extends Model
 {
 	use HasFactory;
 
-	protected $guarded = [];
-
 	protected $casts = [
 		'options' => 'array',
 	];
@@ -25,5 +23,23 @@ class Order extends Model
 	public function client()
 	{
 		return $this->belongsTo(User::class, 'client_id');
+	}
+
+	public function getIconAttribute(): string
+	{
+		switch ($this->status) {
+			case 'pending':
+				return 'entypo:circular-graph';
+			case 'progress':
+				return 'entypo:controller-play';
+			case 'paused':
+				return 'entypo:controller-paus';
+			case 'completed':
+				return 'entypo:check';
+			case 'suspended':
+				return 'entypo:circle-with-cross';
+			default:
+				return 'entypo:controller-play';
+		}
 	}
 }

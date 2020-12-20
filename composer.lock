@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "316ee6aff7dc55421d530c51ae0162f0",
+    "content-hash": "7434173a859dfdf9115c0dc4849ebbf3",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -4515,6 +4515,60 @@
             "time": "2020-08-18T17:17:46+00:00"
         },
         {
+            "name": "scadini/nova-icon",
+            "version": "v0.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/scadini/nova-icon.git",
+                "reference": "5bda076c7650482be6fee4c36e8c68e8ea1dfc99"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/scadini/nova-icon/zipball/5bda076c7650482be6fee4c36e8c68e8ea1dfc99",
+                "reference": "5bda076c7650482be6fee4c36e8c68e8ea1dfc99",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "NovaIcon\\FieldServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "NovaIcon\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "João Santos",
+                    "email": "joaoecoceanus@gmail.com"
+                }
+            ],
+            "description": "A Laravel Nova icon field.",
+            "keywords": [
+                "field",
+                "icon",
+                "laravel",
+                "nova",
+                "svg"
+            ],
+            "support": {
+                "issues": "https://github.com/scadini/nova-icon/issues",
+                "source": "https://github.com/scadini/nova-icon/tree/v0.2.1"
+            },
+            "time": "2019-09-22T10:51:07+00:00"
+        },
+        {
             "name": "sentry/sdk",
             "version": "3.1.0",
             "source": {
@@ -7786,6 +7840,51 @@
                 "source": "https://github.com/tijsverkoyen/CssToInlineStyles/tree/2.2.3"
             },
             "time": "2020-07-13T06:12:54+00:00"
+        },
+        {
+            "name": "timothyasp/nova-badge-field",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/timothyasp/nova-badge-field.git",
+                "reference": "5549f24bc155e7269daf63559476b77e2975eeab"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/timothyasp/nova-badge-field/zipball/5549f24bc155e7269daf63559476b77e2975eeab",
+                "reference": "5549f24bc155e7269daf63559476b77e2975eeab",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Timothyasp\\Badge\\FieldServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Timothyasp\\Badge\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A Laravel Nova field.",
+            "keywords": [
+                "laravel",
+                "nova"
+            ],
+            "support": {
+                "issues": "https://github.com/timothyasp/nova-badge-field/issues",
+                "source": "https://github.com/timothyasp/nova-badge-field/tree/1.0.3"
+            },
+            "time": "2019-11-03T21:57:56+00:00"
         },
         {
             "name": "vlucas/phpdotenv",

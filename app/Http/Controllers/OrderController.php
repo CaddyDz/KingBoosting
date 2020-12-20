@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\OrderRequest;
 use Stripe\Charge;
-use App\Models\Order;
 use App\Models\User;
-use App\Notifications\OrderPlaced;
+use App\Models\Order;
 use Illuminate\Http\Request;
+use App\Notifications\OrderPlaced;
+use App\Http\Requests\OrderRequest;
 use Illuminate\Support\Facades\Notification;
 
 class OrderController extends Controller
