@@ -1,10 +1,16 @@
 <?php
 
 $finder = PhpCsFixer\Finder::create()
-	->exclude('/vendor')
-	->exclude('/nova')
-	->exclude('node_modules')
-	->in(__DIR__);
+	->notPath('bootstrap/cache')
+	->notPath('storage')
+	->notPath('vendor')
+	->notPath('node_modules')
+	->notPath('nova')
+	->in(__DIR__)
+	->name('*.php')
+	->notName('*.blade.php')
+	->ignoreDotFiles(true)
+	->ignoreVCS(true);
 
 return PhpCsFixer\Config::create()
 	->setRules([
