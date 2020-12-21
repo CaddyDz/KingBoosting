@@ -15,14 +15,10 @@ class DatabaseSeeder extends Seeder
 	 */
 	public function run(): void
 	{
-		if (app()->isLocal()) {
-			$this->call([
-				PermissionSeeder::class,
-				RoleSeeder::class,
-				UserSeeder::class,
-			]);
-		} else {
-			$this->call(BaseSeeder::class);
-		}
+		$this->call([
+			PermissionSeeder::class,
+			RoleSeeder::class,
+		]);
+		app()->isLocal() ? $this->call(UserSeeder::class) : $this->call(BaseSeeder::class);
 	}
 }
