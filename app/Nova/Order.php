@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Nova;
 
 use NovaIcon\Icon;
-use Timothyasp\Badge\Badge;
 use Laravel\Nova\Fields\ID;
+use Timothyasp\Badge\Badge;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
 use App\Nova\Actions\LockOrder;
