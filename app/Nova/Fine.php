@@ -35,6 +35,26 @@ class Fine extends Resource
 	 */
 	public static $search = [
 		'id',
+		'amount',
+		'comment',
+		'status',
+		'paid',
+	];
+
+	/**
+	 * The relationship columns that should be searched.
+	 *
+	 * @var array
+	 */
+	public static $searchRelations = [
+		'booster' => [
+			'username',
+			'first_name',
+			'last_name',
+			'social',
+			'email',
+			'country',
+		],
 	];
 
 	/**

@@ -25,6 +25,7 @@
 		"sentry/sentry-laravel": "^2.2",
 		"stripe/stripe-php": "^7.66",
 		"timothyasp/nova-badge-field": "^1.0",
+		"titasgailius/search-relations": "^1.0",
 		"vyuldashev/nova-permission": "^2.9"
 	},
 	"require-dev": {

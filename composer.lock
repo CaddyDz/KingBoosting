@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7434173a859dfdf9115c0dc4849ebbf3",
+    "content-hash": "025f2eb48e6f461a9419daf279fa73b6",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -7885,6 +7885,46 @@
                 "source": "https://github.com/timothyasp/nova-badge-field/tree/1.0.3"
             },
             "time": "2019-11-03T21:57:56+00:00"
+        },
+        {
+            "name": "titasgailius/search-relations",
+            "version": "1.0.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/TitasGailius/nova-search-relations.git",
+                "reference": "ac999c8d3230573fe5bb81f50cbabfaa62da26c0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/TitasGailius/nova-search-relations/zipball/ac999c8d3230573fe5bb81f50cbabfaa62da26c0",
+                "reference": "ac999c8d3230573fe5bb81f50cbabfaa62da26c0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Titasgailius\\SearchRelations\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A Laravel Nova tool.",
+            "keywords": [
+                "laravel",
+                "nova",
+                "relations",
+                "search"
+            ],
+            "support": {
+                "issues": "https://github.com/TitasGailius/nova-search-relations/issues",
+                "source": "https://github.com/TitasGailius/nova-search-relations/tree/1.0.6"
+            },
+            "time": "2020-10-09T09:25:10+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
