@@ -9,7 +9,7 @@ use Illuminate\Database\Seeder;
 
 class UserSeeder extends Seeder
 {
-	private $roles = [
+	private array $roles = [
 		'Moderator' => 5,
 		'Booster' => 10,
 		'Member' => 50,
@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
 	 *
 	 * @return void
 	 */
-	public function run()
+	public function run(): void
 	{
 		$this->seedAdmin();
 		foreach ($this->roles as $role => $many) {
