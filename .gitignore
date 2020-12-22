@@ -17,3 +17,4 @@ _ide_helper.php
 /nova
 /storage/api-docs
 nova.zip
+.DS_Store
