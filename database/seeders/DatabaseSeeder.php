@@ -19,6 +19,9 @@ class DatabaseSeeder extends Seeder
 			PermissionSeeder::class,
 			RoleSeeder::class,
 		]);
-		app()->isLocal() ? $this->call(UserSeeder::class) : $this->call(BaseSeeder::class);
+		app()->isLocal() ? $this->call([
+			UserSeeder::class,
+			GameSeeder::class,
+		]) : $this->call(BaseSeeder::class);
 	}
 }
