@@ -37,3 +37,4 @@ Route::prefix('auth')->group(function () {
 // List an array of boosters usernames
 Route::get('/getBoostersNames', [BoostersController::class, 'getBoostersNames']);
 Route::get('secret', [CheckoutController::class, 'intent']);
+Route::post('apply', [BoostersController::class, 'apply']);
