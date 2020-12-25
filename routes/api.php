@@ -26,11 +26,11 @@ Route::middleware(['auth:sanctum'])->group(function () {
 });
 // auth routes
 Route::post('register', [RegisterController::class, 'register']);
+Route::get('/user', [LoginController::class, 'user']);
 Route::prefix('auth')->group(function () {
 	Route::post('login', [LoginController::class, 'login'])->name('login');
 	Route::middleware(['auth:sanctum'])->group(function () {
 		// lists authed user
-		Route::get('/user', [LoginController::class, 'user']);
 		Route::post('logout', [LoginController::class, 'logout']);
 	});
 });
