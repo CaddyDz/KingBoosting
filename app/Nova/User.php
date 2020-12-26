@@ -117,6 +117,11 @@ class User extends Resource
 	 */
 	public function actions(Request $request)
 	{
-		return [];
+		return [
+			(new NotifyAction())
+				->confirmButtonText(__('Send'))
+				->cancelButtonText(__('Cancel'))
+				->canSee(fn ($request) => $request->user()->hasRole('Admin'))->showOnTableRow(),
+		];
 	}
 }
