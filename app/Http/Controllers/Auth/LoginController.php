@@ -5,15 +5,12 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use App\Http\Requests\TokenRequest;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Http\RedirectResponse;
 use Laravel\Sanctum\PersonalAccessToken;
+use Illuminate\Support\Facades\{Auth, Hash};
 use Illuminate\Validation\ValidationException;
+use Illuminate\Http\{RedirectResponse, Request, Response};
 
 class LoginController extends Controller
 {

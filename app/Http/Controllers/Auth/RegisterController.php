@@ -8,13 +8,11 @@ use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Auth\Events\Registered;
 use App\Providers\RouteServiceProvider;
-use Illuminate\Support\Facades\Validator;
 use App\Mail\Registered as MailRegistered;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\{Hash, Mail, Validator};
 use Illuminate\Contracts\Validation\Validator as ValidatorContract;
 
 class RegisterController extends Controller

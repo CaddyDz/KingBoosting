@@ -5,9 +5,8 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use Stripe\Charge;
-use App\Models\User;
-use App\Models\Order;
 use Illuminate\Http\Request;
+use App\Models\{Order, User};
 use App\Notifications\OrderPlaced;
 use App\Http\Requests\OrderRequest;
 use Illuminate\Support\Facades\Notification;

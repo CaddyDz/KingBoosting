@@ -21,5 +21,6 @@ return PhpCsFixer\Config::create()
 		'declare_strict_types' => true,
 		'ordered_imports' => ['sort_algorithm' => 'length'],
 		'no_unused_imports' => true,
+		'group_import' => true,
 	])->setIndent("\t")
 	->setFinder($finder);

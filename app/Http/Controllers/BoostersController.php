@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-use App\Models\Application;
+use App\Models\{Application, User};
 use App\Http\Requests\ApplicationRequest;
 
 class BoostersController extends Controller

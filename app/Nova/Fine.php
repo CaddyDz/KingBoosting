@@ -4,14 +4,8 @@ declare(strict_types=1);
 
 namespace App\Nova;
 
-use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\Badge;
-use Laravel\Nova\Fields\Number;
-use Laravel\Nova\Fields\Boolean;
-use Laravel\Nova\Fields\Textarea;
-use Laravel\Nova\Fields\BelongsTo;
-
+use Laravel\Nova\Fields\{Badge, BelongsTo, Boolean, ID, Number, Textarea};
 class Fine extends Resource
 {
 	/**

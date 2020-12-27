@@ -4,12 +4,9 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
-use Laravel\Nova\Nova;
-use Illuminate\Support\Facades\Gate;
-use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\{Gate, Route};
 use App\Http\Controllers\Nova\LoginController;
-use Laravel\Nova\NovaApplicationServiceProvider;
-
+use Laravel\Nova\{Nova, NovaApplicationServiceProvider};
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
 	/**
