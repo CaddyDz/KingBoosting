@@ -17,8 +17,8 @@ class LockOrder extends Action
 	/**
 	 * Perform the action on the given models.
 	 *
-	 * @param  \Laravel\Nova\Fields\ActionFields  $fields
-	 * @param  \Illuminate\Support\Collection  $orders
+	 * @param \Laravel\Nova\Fields\ActionFields $fields
+	 * @param \Illuminate\Support\Collection $orders
 	 * @return mixed
 	 */
 	public function handle(ActionFields $fields, Collection $orders)

@@ -7,10 +7,11 @@ namespace App\Notifications;
 use App\Models\Order;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
-use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Coreproc\NovaNotificationFeed\Notifications\NovaBroadcastMessage;
+use Illuminate\Notifications\Messages\{BroadcastMessage, MailMessage};
 
-class OrderPlaced extends Notification
+class OrderPlaced extends Notification implements ShouldQueue
 {
 	use Queueable;
 
@@ -29,10 +30,10 @@ class OrderPlaced extends Notification
 	/**
 	 * Get the notification's delivery channels.
 	 *
-	 * @param  mixed  $notifiable
+	 * @param mixed $notifiable
 	 * @return array
 	 */
-	public function via($notifiable)
+	public function via($notifiable): array
 	{
 		return ['database', 'broadcast'];
 	}
@@ -40,10 +41,10 @@ class OrderPlaced extends Notification
 	/**
 	 * Get the mail representation of the notification.
 	 *
-	 * @param  mixed  $notifiable
+	 * @param mixed $notifiable
 	 * @return \Illuminate\Notifications\Messages\MailMessage
 	 */
-	public function toMail($notifiable)
+	public function toMail($notifiable): MailMessage
 	{
 		return (new MailMessage)
 			->line('The introduction to the notification.')
@@ -54,10 +55,10 @@ class OrderPlaced extends Notification
 	/**
 	 * Get the array representation of the notification.
 	 *
-	 * @param  mixed  $notifiable
+	 * @param mixed $notifiable
 	 * @return array
 	 */
-	public function toArray($notifiable)
+	public function toArray($notifiable): array
 	{
 		return [
 			'level' => 'info',
@@ -70,10 +71,10 @@ class OrderPlaced extends Notification
 	/**
 	 * Get the broadcastable representation of the notification.
 	 *
-	 * @param  mixed $notifiable
+	 * @param mixed $notifiable
 	 * @return BroadcastMessage
 	 */
-	public function toBroadcast($notifiable)
+	public function toBroadcast($notifiable): BroadcastMessage
 	{
 		return new NovaBroadcastMessage($this->toArray($notifiable));
 	}
