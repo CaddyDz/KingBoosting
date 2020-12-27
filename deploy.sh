@@ -1,4 +1,5 @@
 cd /home/forge/dashboard.eloboost.app
+git checkout -- . && git reset --hard HEAD && git clean -df
 git pull origin develop
 composer install --optimize-autoloader
 php artisan migrate:fresh --seed --force
