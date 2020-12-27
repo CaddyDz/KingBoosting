@@ -27,7 +27,7 @@ class UserSeeder extends Seeder
 			$this->seedUsers($role, $many);
 		}
 		User::factory(10)->create();
-		$member = User::factory()->create(['email' => 'amalia70@example.org']);
+		$member = User::factory()->create(['email' => 'user@kingboosting.com']);
 		$member->assignRole('Member');
 		$booster = User::factory()->create(['email' => 'booster@kingboosting.com']);
 		$booster->assignRole('Booster');
