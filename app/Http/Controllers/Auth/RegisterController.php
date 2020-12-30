@@ -73,7 +73,6 @@ class RegisterController extends Controller
 			'username' => $data['username'],
 			'email' => $data['email'],
 			'password' => Hash::make($data['password']),
-			'country' => $this->getClientCountry()
 		]);
 	}
 
@@ -109,10 +108,5 @@ class RegisterController extends Controller
 		return response([
 			'status' => __('Password has been sent to your email address'),
 		], 201);
-	}
-
-	public function getClientCountry()
-	{
-		return isset($_SERVER["HTTP_CF_IPCOUNTRY"]) ? $_SERVER["HTTP_CF_IPCOUNTRY"] : 'US';
 	}
 }
