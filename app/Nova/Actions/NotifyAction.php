@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Nova\Actions;
 
-use App\Notifications\CustomNotification;
 use Illuminate\Bus\Queueable;
 use Laravel\Nova\Actions\Action;
 use Illuminate\Support\Collection;
 use Illuminate\Queue\InteractsWithQueue;
+use App\Notifications\CustomNotification;
 use Laravel\Nova\Fields\{ActionFields, Text};
 
 class NotifyAction extends Action

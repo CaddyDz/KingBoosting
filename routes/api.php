@@ -5,6 +5,7 @@ declare(strict_types=1);
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\{LoginController, RegisterController};
 use App\Http\Controllers\{BoostersController, CheckoutController, OrderController};
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
