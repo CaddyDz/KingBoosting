@@ -59,6 +59,7 @@ class OrderController extends Controller
 			}
 			return response([
 				'message' => __('Your order has been placed'),
+				'order_id' => $order->id,
 			]);
 		} catch (\Exception $ex) {
 			logger()->error($ex->getMessage());

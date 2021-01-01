@@ -5,7 +5,7 @@
 	</span>
 </dropdown-trigger>
 
-<dropdown-menu slot="menu" width="200" direction="rtl">
+<dropdown-menu slot="menu" width="200">
 	<ul class="list-reset">
 		<li>
 			<nova-dark-theme-toggle label="@lang('Dark Theme')"></nova-dark-theme-toggle>

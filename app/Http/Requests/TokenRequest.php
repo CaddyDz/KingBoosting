@@ -13,7 +13,7 @@ class TokenRequest extends FormRequest
 	 *
 	 * @return bool
 	 */
-	public function authorize()
+	public function authorize(): bool
 	{
 		return auth()->guest();
 	}
@@ -28,6 +28,18 @@ class TokenRequest extends FormRequest
 		return [
 			'email' => 'bail|required|email|exists:users,email',
 			'password' => 'bail|required|string|min:8',
+		];
+	}
+
+	/**
+	 * Get the error messages for the defined validation rules.
+	 *
+	 * @return array
+	 */
+	public function messages(): array
+	{
+		return [
+			'email.exists' => 'The provided credentials are incorrect.',
 		];
 	}
 }
