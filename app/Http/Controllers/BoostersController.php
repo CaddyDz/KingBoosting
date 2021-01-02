@@ -30,4 +30,9 @@ class BoostersController extends Controller
 			'message' => __('There has been an error, please try again later')
 		]);
 	}
+
+	public function index()
+	{
+		return User::role('Booster')->get();
+	}
 }

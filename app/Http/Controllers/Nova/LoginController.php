@@ -15,6 +15,6 @@ class LoginController extends Controller
 	 */
 	public function showLoginForm()
 	{
-		return redirect()->away(config('sanctum.stateful'));
+		return redirect()->away(config('sanctum.stateful')[0]);
 	}
 }

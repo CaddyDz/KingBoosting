@@ -15,7 +15,7 @@ return [
 	|
 	*/
 
-	'stateful' => env('SANCTUM_STATEFUL_DOMAINS'),
+	'stateful' => [env('SANCTUM_STATEFUL_DOMAINS')],
 
 	/*
 	|--------------------------------------------------------------------------

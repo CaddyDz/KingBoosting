@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{BoostersController, CheckoutController, OrderController};
+use App\Http\Controllers\{BoostersController, CheckoutController, OrderController, UsersController};
 
 /*
 |--------------------------------------------------------------------------
@@ -16,10 +17,15 @@ use App\Http\Controllers\{BoostersController, CheckoutController, OrderControlle
 |
 */
 
+Route::get('/user', function (Request $request) {
+	return $request->user();
+});
 Route::middleware(['auth:sanctum'])->group(function () {
 	Route::post('orders', [OrderController::class, 'store']);
 });
 // List an array of boosters usernames
 Route::get('/getBoostersNames', [BoostersController::class, 'getBoostersNames']);
+// Get boosters
+Route::get('/boosters', [BoostersController::class, 'index']);
 Route::get('secret', [CheckoutController::class, 'intent']);
 Route::post('apply', [BoostersController::class, 'apply']);
