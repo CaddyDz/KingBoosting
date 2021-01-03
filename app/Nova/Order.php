@@ -67,7 +67,7 @@ class Order extends Resource
 					'paused' => '#000',
 					'completed' => '#42d6a9',
 					'suspended' => '#ca404d',
-				])->displayUsingLabels(),
+				])->displayUsingLabels()->exceptOnForms(),
 			ID::make(__('ID'), 'id')->sortable()->canSee(fn ($request) => $request->user()->hasRole('Admin')),
 			Text::make(__('Service'), 'service'),
 			Text::make(__('Tier'), 'tier'),
