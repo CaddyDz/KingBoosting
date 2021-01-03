@@ -76,7 +76,7 @@ class Order extends Resource
 			Number::make(__('Wins'), 'wins'),
 			BelongsTo::make(__('Booster'), 'booster', User::class),
 			BelongsTo::make(__('Client'), 'client', User::class),
-			Text::make(__('Status'), 'status'),
+			Text::make(__('Status'), 'status')->onlyOnDetail(),
 			Text::make(__('Queue'), 'queue'),
 			KeyValue::make(__('Options'), 'options'),
 			Text::make(__('Price'), 'price'),
