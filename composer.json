@@ -9,6 +9,7 @@
 	"license": "MIT",
 	"require": {
 		"php": "^7.3|^8.0",
+		"awesome-nova/filter-card": "^1.0",
 		"coreproc/nova-notification-feed": "^1.4",
 		"darkaonline/l5-swagger": "^8.0",
 		"david-griffiths/nova-dark-theme": "^1.0",

@@ -8,7 +8,10 @@ use NovaIcon\Icon;
 use Timothyasp\Badge\Badge;
 use Illuminate\Http\Request;
 use App\Nova\Actions\LockOrder;
+use App\Nova\Filters\OrderFilter;
+use AwesomeNova\Cards\FilterCard;
 use Laravel\Nova\Fields\{BelongsTo, ID, KeyValue, Number, Text};
+
 class Order extends Resource
 {
 	/**
@@ -76,7 +79,6 @@ class Order extends Resource
 			Number::make(__('Wins'), 'wins'),
 			BelongsTo::make(__('Booster'), 'booster', User::class),
 			BelongsTo::make(__('Client'), 'client', User::class),
-			Text::make(__('Status'), 'status')->onlyOnDetail(),
 			Text::make(__('Queue'), 'queue'),
 			KeyValue::make(__('Options'), 'options'),
 			Text::make(__('Price'), 'price'),
@@ -91,7 +93,9 @@ class Order extends Resource
 	 */
 	public function cards(Request $request)
 	{
-		return [];
+		return [
+			new FilterCard(new OrderFilter()),
+		];
 	}
 
 	/**
@@ -102,7 +106,9 @@ class Order extends Resource
 	 */
 	public function filters(Request $request)
 	{
-		return [];
+		return [
+			new OrderFilter(),
+		];
 	}
 
 	/**

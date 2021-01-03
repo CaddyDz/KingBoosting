@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "025f2eb48e6f461a9419daf279fa73b6",
+    "content-hash": "428645a2f269f66eb89b91cfdead4241",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -61,6 +61,56 @@
                 "source": "https://github.com/asm89/stack-cors/tree/v2.0.2"
             },
             "time": "2020-10-29T16:03:21+00:00"
+        },
+        {
+            "name": "awesome-nova/filter-card",
+            "version": "v1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/awesome-nova/filter-card.git",
+                "reference": "48d20cad304f2000825e8d7f94305f96092b6a7e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/awesome-nova/filter-card/zipball/48d20cad304f2000825e8d7f94305f96092b6a7e",
+                "reference": "48d20cad304f2000825e8d7f94305f96092b6a7e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "AwesomeNova\\FilterCardServiceProvider"
+                    ]
+                },
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "AwesomeNova\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A Laravel Nova card.",
+            "keywords": [
+                "card",
+                "filter",
+                "laravel",
+                "nova"
+            ],
+            "support": {
+                "issues": "https://github.com/awesome-nova/filter-card/issues",
+                "source": "https://github.com/awesome-nova/filter-card/tree/v1.0.2"
+            },
+            "time": "2019-08-05T13:53:31+00:00"
         },
         {
             "name": "brick/math",
