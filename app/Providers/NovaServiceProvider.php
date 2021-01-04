@@ -7,6 +7,7 @@ namespace App\Providers;
 use Illuminate\Support\Facades\{Gate, Route};
 use App\Http\Controllers\Nova\LoginController;
 use Laravel\Nova\{Nova, NovaApplicationServiceProvider};
+
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
 	/**
@@ -17,6 +18,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 	public function boot(): void
 	{
 		Nova::serving(fn () => Nova::style('theme', resource_path('css/theme.css')));
+		Nova::sortResourcesBy(fn ($resource) => $resource::$priority ?? 9999);
 		parent::boot();
 	}
 

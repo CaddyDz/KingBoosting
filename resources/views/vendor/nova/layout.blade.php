@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=1280">
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 
-	@include('nova-echo::meta')
+	<!-- @include('nova-echo::meta') -->
 
 	<title>{{ \Laravel\Nova\Nova::name() }}</title>
 
@@ -35,7 +35,7 @@
 		<div v-cloak class="flex min-h-screen">
 			<!-- Sidebar -->
 			<div class="min-h-screen flex-none pt-header min-h-screen w-sidebar bg-grad-sidebar px-6">
-				<a href="{{ \Laravel\Nova\Nova::path() }}">
+				<a href="{{ \Laravel\Nova\Nova::path() . '/resources/orders' }}">
 					<div class="absolute pin-t pin-l pin-r bg-logo flex items-center w-sidebar h-header px-6 text-white">
 						@include('nova::partials.logo')
 					</div>
@@ -61,7 +61,7 @@
 						@include('nova::partials.user')
 					</dropdown>
 
-					@include('nova_notification_feed::notification_feed')
+					<!-- @include('nova_notification_feed::notification_feed')s -->
 				</div>
 
 				<div data-testid="content" class="px-view py-view mx-auto">

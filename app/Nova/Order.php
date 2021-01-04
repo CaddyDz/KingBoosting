@@ -22,6 +22,13 @@ class Order extends Resource
 	public static $model = \App\Models\Order::class;
 
 	/**
+	 * The order in which to show the resource on the sidebar.
+	 *
+	 * @var int $priority
+	 */
+	public static $priority = 1;
+
+	/**
 	 * The single value that should be used to represent the resource when being displayed.
 	 *
 	 * @var string

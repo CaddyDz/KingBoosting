@@ -1,5 +1,4 @@
 <dropdown-trigger class="h-9 flex items-center">
-	<img src="https://secure.gravatar.com/avatar/{{ md5(\Illuminate\Support\Str::lower($user->email)) }}?size=512" class="rounded-full w-8 h-8 mr-3" />
 	<span class="text-90">
 		{{ $user->username }}
 	</span>
