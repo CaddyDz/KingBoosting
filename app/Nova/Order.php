@@ -44,16 +44,9 @@ class Order extends Resource
 		'id',
 		'purchase',
 		'service',
-		'client_id',
-		'tier',
-		'division',
+		'summoner',
 		'server',
-		'wins',
-		'client_id',
-		'status',
-		'queue',
-		'options',
-		'price',
+		// TODO: search by transaction id
 	];
 
 	/**
