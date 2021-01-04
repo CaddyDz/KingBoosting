@@ -22,7 +22,7 @@ class CreateOrdersTable extends Migration
 			$table->string('tier');
 			$table->string('division');
 			$table->string('server');
-			$table->string('summoner');
+			$table->string('summoner')->nullable();
 			$table->integer('wins');
 			$table->foreignId('booster_id')->nullable()->constrained('users');
 			$table->foreignId('client_id')->constrained('users');
