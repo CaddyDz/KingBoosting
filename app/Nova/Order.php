@@ -42,6 +42,28 @@ class Order extends Resource
 	 */
 	public static $search = [
 		'id',
+		'purchase',
+		'service',
+		'client_id',
+		'tier',
+		'division',
+		'server',
+		'wins',
+		'client_id',
+		'status',
+		'queue',
+		'options',
+		'price',
+	];
+
+	/**
+	 * The relationship columns that should be searched.
+	 *
+	 * @var array
+	 */
+	public static $searchRelations = [
+		'booster' => ['first_name', 'last_name', 'username'],
+		'client' => ['first_name', 'last_name', 'username', 'email']
 	];
 
 	/**
@@ -77,8 +99,9 @@ class Order extends Resource
 					'paused' => '#000',
 					'completed' => '#42d6a9',
 					'suspended' => '#ca404d',
-				])->displayUsingLabels()->exceptOnForms(),
-			ID::make(__('ID'), 'id')->sortable()->canSee(fn ($request) => $request->user()->hasRole('Admin')),
+				])->displayUsingLabels()->exceptOnForms()->sortable(),
+			ID::make(__('ID'), 'id')->sortable(),
+			Text::make(__('Purchase'), 'purchase'),
 			Text::make(__('Service'), 'service'),
 			Text::make(__('Tier'), 'tier'),
 			Text::make(__('Division'), 'division'),
@@ -90,6 +113,18 @@ class Order extends Resource
 			KeyValue::make(__('Options'), 'options'),
 			Text::make(__('Price'), 'price'),
 		];
+	}
+
+	/**
+	 * The icon of the resource.
+	 *
+	 * @return string
+	 */
+	public static function icon()
+	{
+		// Assuming you have a blade file containing an image
+		// in resources/views/vendor/nova/svg/icon-user.blade.php
+		return view('nova::svg.icon-order')->render();
 	}
 
 	/**

@@ -25,7 +25,7 @@ class OrderFactory extends Factory
 	{
 		return [
 			'purchase' => "",
-			'service' => "division-boosting",
+			'service' => "Division Boosting",
 			'tier' => "",
 			'division' => "",
 			'server' => "",
