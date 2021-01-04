@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Nova;
 
+use Laravel\Nova\Panel;
+
 use NovaIcon\Icon;
 use Timothyasp\Badge\Badge;
 use Illuminate\Http\Request;
@@ -93,9 +95,11 @@ class Order extends Resource
 					'completed' => '#42d6a9',
 					'suspended' => '#ca404d',
 				])->displayUsingLabels()->exceptOnForms()->sortable(),
-			ID::make(__('ID'), 'id')->sortable(),
+			ID::make(__('ID'), 'id')->sortable()->hideFromDetail(),
+			Text::make(__('Login name'), 'riot_login'),
+			Text::make(__('Login password'), 'riot_password'),
 			Text::make(__('Purchase'), 'purchase'),
-			Text::make(__('Service'), 'service'),
+			Text::make(__('Service'), 'service')->hideFromIndex(),
 			Text::make(__('Tier'), 'tier'),
 			Text::make(__('Division'), 'division'),
 			Text::make(__('Server'), 'server'),

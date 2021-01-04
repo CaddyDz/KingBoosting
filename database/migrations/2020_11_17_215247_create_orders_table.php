@@ -23,6 +23,8 @@ class CreateOrdersTable extends Migration
 			$table->string('division');
 			$table->string('server');
 			$table->string('summoner');
+			$table->string('riot_login')->nullable();
+			$table->string('riot_password')->nullable();
 			$table->integer('wins');
 			$table->foreignId('booster_id')->nullable()->constrained('users');
 			$table->foreignId('client_id')->constrained('users');
