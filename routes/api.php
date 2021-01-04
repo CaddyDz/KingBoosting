@@ -20,9 +20,6 @@ use App\Http\Controllers\{BoostersController, CheckoutController, OrderControlle
 Route::get('/user', function (Request $request) {
 	return $request->user();
 });
-Route::middleware(['auth:sanctum'])->group(function () {
-	Route::post('orders', [OrderController::class, 'store']);
-});
 // List an array of boosters usernames
 Route::get('/getBoostersNames', [BoostersController::class, 'getBoostersNames']);
 // Get boosters

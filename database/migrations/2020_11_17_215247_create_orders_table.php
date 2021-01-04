@@ -13,10 +13,11 @@ class CreateOrdersTable extends Migration
 	 *
 	 * @return void
 	 */
-	public function up()
+	public function up(): void
 	{
 		Schema::create('orders', function (Blueprint $table) {
 			$table->id();
+			$table->string('purchase');
 			$table->string('service');
 			$table->string('tier');
 			$table->string('division');
@@ -37,7 +38,7 @@ class CreateOrdersTable extends Migration
 	 *
 	 * @return void
 	 */
-	public function down()
+	public function down(): void
 	{
 		Schema::dropIfExists('orders');
 	}
