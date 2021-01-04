@@ -9,10 +9,12 @@
 	"license": "MIT",
 	"require": {
 		"php": "^7.3|^8.0",
+		"anaseqal/nova-sidebar-icons": "^0.0.3",
 		"awesome-nova/filter-card": "^1.0",
 		"coreproc/nova-notification-feed": "^1.4",
 		"darkaonline/l5-swagger": "^8.0",
 		"david-griffiths/nova-dark-theme": "^1.0",
+		"ericlagarda/novalinkresource": "^1.0",
 		"fideloper/proxy": "^4.4",
 		"fruitcake/laravel-cors": "^2.0",
 		"gregoriohc/laravel-nova-theme-responsive": "^0.8.1",
@@ -27,6 +29,7 @@
 		"stripe/stripe-php": "^7.66",
 		"timothyasp/nova-badge-field": "^1.0",
 		"titasgailius/search-relations": "^1.0",
+		"vmitchell85/nova-links": "^1.0",
 		"vyuldashev/nova-permission": "^2.9"
 	},
 	"require-dev": {

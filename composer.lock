@@ -4,8 +4,53 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "428645a2f269f66eb89b91cfdead4241",
+    "content-hash": "0138112de398a1e023cde92d067194f6",
     "packages": [
+        {
+            "name": "anaseqal/nova-sidebar-icons",
+            "version": "0.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/anaseqal/nova-sidebar-icons.git",
+                "reference": "ceb18c4943c36aa1eeebb6bd60c4f2daa24c2b00"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/anaseqal/nova-sidebar-icons/zipball/ceb18c4943c36aa1eeebb6bd60c4f2daa24c2b00",
+                "reference": "ceb18c4943c36aa1eeebb6bd60c4f2daa24c2b00",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Anaseqal\\NovaSidebarIcons\\ToolServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Anaseqal\\NovaSidebarIcons\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A Laravel Nova tool.",
+            "keywords": [
+                "laravel",
+                "nova"
+            ],
+            "support": {
+                "issues": "https://github.com/anaseqal/nova-sidebar-icons/issues",
+                "source": "https://github.com/anaseqal/nova-sidebar-icons/tree/0.0.3"
+            },
+            "time": "2019-08-29T18:49:20+00:00"
+        },
         {
             "name": "asm89/stack-cors",
             "version": "v2.0.2",
@@ -1379,6 +1424,61 @@
                 }
             ],
             "time": "2020-11-14T15:56:27+00:00"
+        },
+        {
+            "name": "ericlagarda/novalinkresource",
+            "version": "v1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Krato/NovaLinkResource.git",
+                "reference": "7a77bd80efac80b00a82d62694020c8f90e090c8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Krato/NovaLinkResource/zipball/7a77bd80efac80b00a82d62694020c8f90e090c8",
+                "reference": "7a77bd80efac80b00a82d62694020c8f90e090c8",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/nova": "*",
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "EricLagarda\\NovaLinkResource\\ToolServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "EricLagarda\\NovaLinkResource\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Eric Lagarda",
+                    "email": "eric@infinety.es",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A Laravel Nova tool.",
+            "homepage": "https://github.com/Krato/NovaLinkResource",
+            "keywords": [
+                "laravel",
+                "link",
+                "nova"
+            ],
+            "support": {
+                "issues": "https://github.com/Krato/NovaLinkResource/issues",
+                "source": "https://github.com/Krato/NovaLinkResource/tree/master"
+            },
+            "time": "2019-02-21T09:31:15+00:00"
         },
         {
             "name": "fideloper/proxy",
@@ -8055,6 +8155,64 @@
                 }
             ],
             "time": "2020-09-14T15:57:31+00:00"
+        },
+        {
+            "name": "vmitchell85/nova-links",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/vmitchell85/nova-links.git",
+                "reference": "98234ea3acee309b69217d9cbfc30ed96d487138"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/vmitchell85/nova-links/zipball/98234ea3acee309b69217d9cbfc30ed96d487138",
+                "reference": "98234ea3acee309b69217d9cbfc30ed96d487138",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/nova": "*",
+                "php": ">=7.1.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^3.6",
+                "phpunit/phpunit": "7.1"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "vmitchell85\\NovaLinks\\NovaLinksServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "vmitchell85\\NovaLinks\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Vince Mitchell",
+                    "email": "vincent.mitchell@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Add custom links to your nova navigation",
+            "homepage": "https://github.com/vmitchell85/nova-links",
+            "keywords": [
+                "laravel",
+                "nova"
+            ],
+            "support": {
+                "issues": "https://github.com/vmitchell85/nova-links/issues",
+                "source": "https://github.com/vmitchell85/nova-links/tree/master"
+            },
+            "time": "2019-03-15T01:02:20+00:00"
         },
         {
             "name": "voku/portable-ascii",
