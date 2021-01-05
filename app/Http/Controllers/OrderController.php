@@ -39,13 +39,10 @@ class OrderController extends Controller
 				"description" => "Charge for " . auth()->user()->email,
 			]);
 			$order = Order::create([
+				'purchase' => $request->purchase,
 				'service' => $request->service,
-				'tier' => $request->tier,
-				'division' => $request->division,
 				'summoner' => $request->nickname,
-				'server' => request('server'),
-				'wins' => $request->wins,
-				'queue' => $request->queue,
+				'server' => request('server'), // property name already taken
 				'booster_id' => $request->booster,
 				'client_id' => auth()->id(),
 				'options' => $request->options,

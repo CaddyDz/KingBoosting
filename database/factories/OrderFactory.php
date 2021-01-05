@@ -26,15 +26,13 @@ class OrderFactory extends Factory
 		return [
 			'purchase' => "",
 			'service' => "Division Boosting",
-			'tier' => "",
-			'division' => "",
 			'server' => "",
-			'wins' => rand(1, 10),
 			'booster_id' => 1,
 			'client_id' => 1,
 			'status' => $this->faker->randomElement(['pending', 'progress', 'paused', 'completed', 'suspended']),
-			'queue' => $this->faker->randomElement(['solo_duo', 'flex_5v5']),
-			'options' => [],
+			'options' => [
+				$this->faker->randomElement(['solo_duo', 'flex_5v5'])
+			],
 			'price' => 12,
 		];
 	}

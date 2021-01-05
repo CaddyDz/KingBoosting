@@ -98,17 +98,18 @@ class Order extends Resource
 			ID::make(__('ID'), 'id')->sortable()->hideFromDetail(),
 			Text::make(__('Login name'), 'riot_login'),
 			Text::make(__('Login password'), 'riot_password'),
-			Text::make(__('Purchase'), 'purchase'),
-			Text::make(__('Service'), 'service')->hideFromIndex(),
-			Text::make(__('Tier'), 'tier'),
-			Text::make(__('Division'), 'division'),
+			Text::make(__('Summoner name'), 'summoner')->onlyOnDetail(),
 			Text::make(__('Server'), 'server'),
-			Number::make(__('Wins'), 'wins'),
+			// Current rank?
+			ID::make(__('Order ID'), 'id')->sortable()->onlyOnDetail(),
+			Text::make(__('Item'), 'purchase'),
+			Text::make(__('Service'), 'service')->hideFromIndex(),
+			// Customer's country => this client country
+			Text::make(__('Customer\'s country'), fn () => $this->client->country)->onlyOnDetail(),
 			BelongsTo::make(__('Booster'), 'booster', User::class),
 			BelongsTo::make(__('Client'), 'client', User::class),
-			Text::make(__('Queue'), 'queue'),
-			KeyValue::make(__('Options'), 'options'),
-			Text::make(__('Price'), 'price'),
+			KeyValue::make(__('Order details'), 'options'),
+			Text::make(__('Price'), 'price')->hideFromDetail(),
 		];
 	}
 

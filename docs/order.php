@@ -42,22 +42,6 @@ declare(strict_types=1);
  *      )
  *   ),
  *   @OA\Parameter(
- *      name="wins",
- *      in="query",
- *      required=true,
- *      @OA\Schema(
- *          type="string"
- *      )
- *   ),
- *   @OA\Parameter(
- *      name="queue",
- *      in="query",
- *      required=false,
- *      @OA\Schema(
- *          type="string"
- *      )
- *   ),
- *   @OA\Parameter(
  *      name="specific_champions",
  *      in="query",
  *      required=false,
