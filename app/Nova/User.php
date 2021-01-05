@@ -65,7 +65,8 @@ class User extends Resource
 				->sortable()
 				->rules('required', 'email', 'max:254')
 				->creationRules('unique:users,email')
-				->updateRules('unique:users,email,{{resourceId}}'),
+				->updateRules('unique:users,email,{{resourceId}}')
+				->readonly(fn ($req) => !$req->user()->hasRole('Admin')),
 
 			Password::make('Password')
 				->onlyOnForms()
