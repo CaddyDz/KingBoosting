@@ -48,8 +48,8 @@ class OrderPolicy
 	/**
 	 * Determine whether the user can update the model.
 	 *
-	 * @param  \App\Models\User  $user
-	 * @param  \App\Models\Order  $order
+	 * @param \App\Models\User $user
+	 * @param \App\Models\Order $order
 	 * @return mixed
 	 */
 	public function update(User $user, Order $order)

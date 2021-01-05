@@ -18,6 +18,13 @@ class User extends Resource
 	public static $model = \App\Models\User::class;
 
 	/**
+	 * The logical group associated with the resource.
+	 *
+	 * @var string
+	 */
+	public static $group = 'ADMIN';
+
+	/**
 	 * Determine if this resource is available for navigation.
 	 *
 	 * @param \Illuminate\Http\Request $request

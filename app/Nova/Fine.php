@@ -6,6 +6,7 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\{Badge, BelongsTo, Boolean, ID, Number, Textarea};
+
 class Fine extends Resource
 {
 	/**
@@ -14,6 +15,13 @@ class Fine extends Resource
 	 * @var string
 	 */
 	public static $model = \App\Models\Fine::class;
+
+	/**
+	 * The logical group associated with the resource.
+	 *
+	 * @var string
+	 */
+	public static $group = 'ADMIN';
 
 	/**
 	 * The single value that should be used to represent the resource when being displayed.
