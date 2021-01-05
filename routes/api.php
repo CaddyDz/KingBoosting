@@ -17,9 +17,7 @@ use App\Http\Controllers\{BoostersController, CheckoutController, OrderControlle
 |
 */
 
-Route::get('/user', function (Request $request) {
-	return $request->user();
-});
+Route::get('/user', fn (Request $request) => $request->user());
 // List an array of boosters usernames
 Route::get('/getBoostersNames', [BoostersController::class, 'getBoostersNames']);
 // Get boosters
