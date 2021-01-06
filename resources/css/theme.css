@@ -26,6 +26,11 @@
 	--90-half: rgba(40, 54, 61, 0.5);
 }
 
+body {
+	font-family: 'Evogria';
+	font-weight: normal;
+}
+
 .bg-grad-sidebar {
 	background: #1b2438;
 	/* margin: 20px 10px 0px 30px; */
