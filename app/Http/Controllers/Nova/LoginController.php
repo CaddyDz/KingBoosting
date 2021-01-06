@@ -4,28 +4,20 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Nova;
 
-use Laravel\Nova\Nova;
 use Laravel\Nova\Http\Controllers\LoginController as Controller;
 
 class LoginController extends Controller
 {
-	// /**
-	//  * Show the application's login form.
-	//  *
-	//  * @return \Illuminate\Http\Response
-	//  */
-	// public function showLoginForm()
-	// {
-	// 	return redirect()->away(config('sanctum.stateful')[0]);
-	// }
-
 	/**
-	 * Get the post register / login redirect path.
+	 * Show the application's login form.
 	 *
-	 * @return string
+	 * @return \Illuminate\Http\Response
 	 */
-	public function redirectPath(): string
+	public function showLoginForm()
 	{
-		return url('/resources/orders');
+		if (app()->isLocal()) {
+			return parent::showLoginForm();
+		}
+		return redirect()->away(config('sanctum.stateful')[0]);
 	}
 }
