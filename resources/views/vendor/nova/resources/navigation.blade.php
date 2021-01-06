@@ -1,7 +1,7 @@
 @if (count(Nova::availableResources(request())))
 <ul class="sidemenu">
     @foreach($navigation as $group => $resources)
-      @if (count($groups) > 1)
+      @if (count($groups) > 1 && $group)
       <li class="sidebar-dropdown mb-2">
         <input type="checkbox" />
         <a href="#" data-toggle="dropdown">
