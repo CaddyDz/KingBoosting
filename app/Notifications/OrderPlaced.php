@@ -63,7 +63,7 @@ class OrderPlaced extends Notification implements ShouldQueue
 		return [
 			'level' => 'info',
 			'message' => __('A new order has been placed, check it out'),
-			'url' => '/dashboard/resources/orders/' . $this->order->id,
+			'url' => '/resources/orders/' . $this->order->id,
 			'target' => '_self'
 		];
 	}
