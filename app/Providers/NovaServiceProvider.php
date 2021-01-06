@@ -21,6 +21,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 	public function boot(): void
 	{
 		Nova::serving(fn () => Nova::style('theme', resource_path('css/theme.css')));
+		Nova::script('menuFix', resource_path('js/fixMenu.js'));
 		Nova::sortResourcesBy(fn ($resource) => $resource::$priority ?? 9999);
 		parent::boot();
 	}
