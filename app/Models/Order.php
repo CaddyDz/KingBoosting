@@ -29,17 +29,17 @@ class Order extends Model
 	{
 		switch ($this->status) {
 			case 'pending':
-				return 'entypo:circular-graph';
+				return 'circular-graph';
 			case 'progress':
-				return 'entypo:controller-play';
+				return 'controller-play';
 			case 'paused':
-				return 'entypo:controller-paus';
+				return 'controller-paus';
 			case 'completed':
-				return 'entypo:check';
+				return 'check';
 			case 'suspended':
-				return 'entypo:circle-with-cross';
+				return 'circle-with-cross';
 			default:
-				return 'entypo:controller-play';
+				return 'controller-play';
 		}
 	}
 }

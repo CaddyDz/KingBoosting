@@ -83,7 +83,7 @@ class Order extends Resource
 			Stack::make('Status', [
 				Icon::make('')
 					->icon(
-						fn (): string => $this->icon
+						fn (): string => 'entypo:' . $this->icon
 					)->css(fn (): string => [
 						'pending' => 'text-info',
 						'progress' => 'text-warning-dark',
