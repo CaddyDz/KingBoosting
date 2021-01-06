@@ -87,3 +87,7 @@ pre {
 .heroicon-ui {
 	fill: var(--primary);
 }
+
+.card.overflow-hidden.flex.flex-row>button {
+	color: white;
+}
