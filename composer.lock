@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0138112de398a1e023cde92d067194f6",
+    "content-hash": "9368990d7cdb7e1660d065b25bbf1c31",
     "packages": [
         {
             "name": "anaseqal/nova-sidebar-icons",
@@ -5106,6 +5106,130 @@
             "time": "2020-10-29T18:22:10+00:00"
         },
         {
+            "name": "stidges/country-flags",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/stidges/country-flags.git",
+                "reference": "9ae96df3f4f3649716d09fa0af24c5806ac192be"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/stidges/country-flags/zipball/9ae96df3f4f3649716d09fa0af24c5806ac192be",
+                "reference": "9ae96df3f4f3649716d09fa0af24c5806ac192be",
+                "shasum": ""
+            },
+            "require": {
+                "php": "~5.6|~7.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": ">=5.4.3",
+                "squizlabs/php_codesniffer": "^2.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Stidges\\CountryFlags\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Stidges",
+                    "email": "info@stidges.com",
+                    "homepage": "https://stidges.com"
+                }
+            ],
+            "description": "A small package to convert a country code to the corresponding country flag emoji",
+            "homepage": "https://github.com/stidges/country-flags",
+            "keywords": [
+                "countries",
+                "country",
+                "country-flags",
+                "emoji",
+                "flag",
+                "unicode"
+            ],
+            "support": {
+                "issues": "https://github.com/stidges/country-flags/issues",
+                "source": "https://github.com/stidges/country-flags/tree/master"
+            },
+            "time": "2018-01-29T13:27:13+00:00"
+        },
+        {
+            "name": "stidges/laravel-country-flags",
+            "version": "v1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/stidges/laravel-country-flags.git",
+                "reference": "007aaa48b2ff91485bc30904090fef276166486b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/stidges/laravel-country-flags/zipball/007aaa48b2ff91485bc30904090fef276166486b",
+                "reference": "007aaa48b2ff91485bc30904090fef276166486b",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^5.5|^6.0|^7.0|^8.0",
+                "php": "^7.0",
+                "stidges/country-flags": "^1.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": ">=5.4.3",
+                "squizlabs/php_codesniffer": "^3.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Stidges\\LaravelCountryFlags\\CountryFlagsServiceProvider"
+                    ],
+                    "aliases": {
+                        "CountryFlag": "Stidges\\LaravelCountryFlags\\CountryFlagFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Stidges\\LaravelCountryFlags\\": "src/"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Stidges",
+                    "email": "info@stidges.com",
+                    "homepage": "https://stidges.com"
+                }
+            ],
+            "description": "A Laravel 5.5 wrapper for the stidges/country-flags package",
+            "homepage": "https://github.com/stidges/laravel-country-flags",
+            "keywords": [
+                "countries",
+                "country",
+                "country-flags",
+                "emoji",
+                "flag",
+                "laravel",
+                "unicode"
+            ],
+            "support": {
+                "issues": "https://github.com/stidges/laravel-country-flags/issues",
+                "source": "https://github.com/stidges/laravel-country-flags/tree/v1.0.4"
+            },
+            "time": "2020-10-12T21:49:31+00:00"
+        },
+        {
             "name": "stripe/stripe-php",
             "version": "v7.66.1",
             "source": {
@@ -5165,6 +5289,59 @@
                 "source": "https://github.com/stripe/stripe-php/tree/v7.66.1"
             },
             "time": "2020-12-01T18:44:12+00:00"
+        },
+        {
+            "name": "superlatif/nova-tag-input",
+            "version": "1.4.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/superlatif-io/nova-tag-input.git",
+                "reference": "f026852d050da84e679327266ceaa6e35915ae53"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/superlatif-io/nova-tag-input/zipball/f026852d050da84e679327266ceaa6e35915ae53",
+                "reference": "f026852d050da84e679327266ceaa6e35915ae53",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Superlatif\\NovaTagInput\\FieldServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Superlatif\\NovaTagInput\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Simon Rapin",
+                    "email": "simon@superlatif.io",
+                    "homepage": "https://superlatif.io",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Tag input field for Laravel Nova.",
+            "keywords": [
+                "laravel",
+                "nova"
+            ],
+            "support": {
+                "issues": "https://github.com/superlatif-io/nova-tag-input/issues",
+                "source": "https://github.com/superlatif-io/nova-tag-input/tree/1.4.3"
+            },
+            "time": "2020-10-21T13:16:05+00:00"
         },
         {
             "name": "swagger-api/swagger-ui",
