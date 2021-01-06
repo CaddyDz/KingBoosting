@@ -20,4 +20,14 @@ class LoginController extends Controller
 		}
 		return redirect()->away(config('sanctum.stateful')[0]);
 	}
+
+	/**
+	 * Get the post register / login redirect path.
+	 *
+	 * @return string
+	 */
+	public function redirectPath()
+	{
+		return '/resources/orders';
+	}
 }
