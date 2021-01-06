@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "606aac311f2bca4100e6a09c2a2edc9f",
+    "content-hash": "5f4e1e5afeea24806f2bb7b24c8d1181",
     "packages": [
         {
             "name": "anaseqal/nova-sidebar-icons",
@@ -4667,21 +4667,22 @@
         },
         {
             "name": "scadini/nova-icon",
-            "version": "v0.2.1",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/scadini/nova-icon.git",
-                "reference": "5bda076c7650482be6fee4c36e8c68e8ea1dfc99"
+                "url": "https://github.com/Sitando/nova-icon.git",
+                "reference": "ad3c2ea2fd7199d2b5f8080396727b45c81bf523"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/scadini/nova-icon/zipball/5bda076c7650482be6fee4c36e8c68e8ea1dfc99",
-                "reference": "5bda076c7650482be6fee4c36e8c68e8ea1dfc99",
+                "url": "https://api.github.com/repos/Sitando/nova-icon/zipball/ad3c2ea2fd7199d2b5f8080396727b45c81bf523",
+                "reference": "ad3c2ea2fd7199d2b5f8080396727b45c81bf523",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1.0"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "laravel": {
@@ -4695,7 +4696,6 @@
                     "NovaIcon\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -4714,10 +4714,9 @@
                 "svg"
             ],
             "support": {
-                "issues": "https://github.com/scadini/nova-icon/issues",
-                "source": "https://github.com/scadini/nova-icon/tree/v0.2.1"
+                "source": "https://github.com/Sitando/nova-icon/tree/master"
             },
-            "time": "2019-09-22T10:51:07+00:00"
+            "time": "2021-01-06T14:18:30+00:00"
         },
         {
             "name": "sentry/sdk",
@@ -4972,7 +4971,7 @@
             "dist": {
                 "type": "path",
                 "url": "./nova-components/NovaChat",
-                "reference": "2bf549fad8578558a1d0dd113267bd2f648a4d02"
+                "reference": "f60e70cd5867ed00084bf3fed0490984f08148eb"
             },
             "require": {
                 "php": ">=7.1.0"
@@ -4993,7 +4992,7 @@
             "license": [
                 "MIT"
             ],
-            "description": "A Laravel Nova resource tool.",
+            "description": "Chat about any resource",
             "keywords": [
                 "laravel",
                 "nova"

@@ -84,13 +84,13 @@ class Order extends Resource
 				Icon::make('')
 					->icon(
 						fn (): string => 'entypo:' . $this->icon
-					)->css(fn (): string => [
+					)->css(fn (): array => [[
 						'pending' => 'text-info',
 						'progress' => 'text-warning-dark',
 						'paused' => 'text-black',
 						'completed' => 'text-success',
 						'suspended' => 'text-danger',
-					][$this->status]),
+					][$this->status], 'h-1', 'w-5']),
 				Badge::make('Status')
 					->options([
 						'pending' => __('Awaiting for booster'),
