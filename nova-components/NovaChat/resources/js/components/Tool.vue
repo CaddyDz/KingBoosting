@@ -64,7 +64,7 @@ export default {
     order: null,
   }),
 
-  mounted() {
+  created() {
     this.order = this.panel.fields[0].order;
   },
 };

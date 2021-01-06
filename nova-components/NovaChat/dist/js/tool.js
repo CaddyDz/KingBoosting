@@ -309,7 +309,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     };
   },
 
-  mounted: function mounted() {
+  created: function created() {
     this.order = this.panel.fields[0].order;
   }
 });
