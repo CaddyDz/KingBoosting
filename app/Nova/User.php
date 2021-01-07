@@ -6,7 +6,7 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use App\Nova\Actions\NotifyAction;
-use Laravel\Nova\Fields\{Gravatar, ID, Password, Text};
+use Laravel\Nova\Fields\{ID, Password, Text};
 
 class User extends Resource
 {
@@ -61,8 +61,6 @@ class User extends Resource
 	{
 		return [
 			ID::make()->sortable(),
-
-			Gravatar::make()->maxWidth(50),
 
 			Text::make('Username')
 				->sortable()
