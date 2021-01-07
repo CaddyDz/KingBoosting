@@ -1,39 +1,39 @@
 :root {
 	--transparent: transparent;
-	--black: #0B0B0E;
+	--black: #000;
 	--white: white;
 	--white-50: rgba(255, 255, 255, 0.5);
-	--danger: #e74444;
-	--success: #21b978;
-	--warning: #ffeb3b;
-	--info: #7E3192;
-	--primary: #6334C7;
-	--primary-dark: #297ec0;
-	--primary-70: rgba(99, 52, 199, 0.7);
-	--primary-50: rgba(99, 52, 199, 0.5);
-	--primary-30: rgba(99, 52, 199, 0.3);
-	--primary-10: rgba(99, 52, 199, 0.1);
+	--danger: #ca404d;
+	--success: #42d6a9;
+	--warning: #d68842;
+	--info: #64cedb;
+	--primary: #8774BB;
+	--primary-dark: #8774BB;
+	--primary-70: rgba(135, 116, 187, 0.7);
+	--primary-50: rgba(135, 116, 187, 0.5);
+	--primary-30: rgba(135, 116, 187, 0.3);
+	--primary-10: rgba(135, 116, 187, 0.1);
 	--logo: ;
-	--sidebar-icon: #BFB3D1;
-	--20: rgb(212, 212, 221);
-	--30: rgb(183, 183, 199);
-	--40: rgb(155, 155, 176);
-	--50: rgb(126, 126, 154);
-	--60: rgb(101, 101, 128);
-	--70: rgb(78, 78, 100);
-	--80: white;
-	--90: rgb(33, 33, 43);
+	--sidebar-icon: #b3c1d1;
+	--20: #f6fbff;
+	--30: #f4f7fa;
+	--40: #eef1f4;
+	--50: #e3e7eb;
+	--60: #bacad6;
+	--70: #b3b9bf;
+	--80: #7c858e;
+	--90: #252d37;
 	--90-half: rgba(40, 54, 61, 0.5);
 }
-
-.bg-grad-sidebar {
-	background-image: linear-gradient(0deg, #7e8ea1 0%, #3c4655 100%);
-}
-
 
 body {
 	font-family: 'Evogria';
 	font-weight: normal;
+}
+
+.bg-grad-sidebar {
+	background: #1b2438;
+	/* margin: 20px 10px 0px 30px; */
 }
 
 .bg-40 {
