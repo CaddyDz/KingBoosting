@@ -136,10 +136,8 @@ class Order extends Resource
 	 *
 	 * @return string
 	 */
-	public static function icon()
+	public static function icon(): string
 	{
-		// Assuming you have a blade file containing an image
-		// in resources/views/vendor/nova/svg/icon-user.blade.php
 		return view('nova::svg.icon-order')->render();
 	}
 
