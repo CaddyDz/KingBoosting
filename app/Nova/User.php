@@ -18,13 +18,6 @@ class User extends Resource
 	public static $model = \App\Models\User::class;
 
 	/**
-	 * The logical group associated with the resource.
-	 *
-	 * @var string
-	 */
-	public static $group = 'ADMIN';
-
-	/**
 	 * Determine if this resource is available for navigation.
 	 *
 	 * @param \Illuminate\Http\Request $request
@@ -78,6 +71,16 @@ class User extends Resource
 				->creationRules('required', 'string', 'min:8')
 				->updateRules('nullable', 'string', 'min:8'),
 		];
+	}
+
+	/**
+	 * The icon of the resource.
+	 *
+	 * @return string
+	 */
+	public static function icon(): string
+	{
+		return view('nova::svg.icon-profile')->render();
 	}
 
 	/**
