@@ -4,18 +4,16 @@ declare(strict_types=1);
 
 namespace App\Nova;
 
-use Laravel\Nova\Panel;
 
 use NovaIcon\Icon;
 use Timothyasp\Badge\Badge;
 use Illuminate\Http\Request;
-use App\Nova\Actions\LockOrder;
-use App\Nova\Actions\OrderDetails;
+use Sitando\NovaChat\NovaChat;
 use App\Nova\Filters\OrderFilter;
 use AwesomeNova\Cards\FilterCard;
 use Superlatif\NovaTagInput\Tags;
+use App\Nova\Actions\{LockOrder, OrderDetails};
 use Laravel\Nova\Fields\{BelongsTo, ID, KeyValue, Number, Stack, Text};
-use Sitando\NovaChat\NovaChat;
 
 class Order extends Resource
 {
@@ -127,7 +125,9 @@ class Order extends Resource
 			BelongsTo::make(__('Booster'), 'booster', User::class),
 			BelongsTo::make(__('Client'), 'client', User::class)->hideFromIndex(),
 			KeyValue::make(__('Order details'), 'options'),
-			NovaChat::make()->order($this->resource),
+			NovaChat::make()->order($this->resource)
+				->auth_id(auth()->id())
+				->canSee(fn (): bool => (bool) $this->booster),
 		];
 	}
 
