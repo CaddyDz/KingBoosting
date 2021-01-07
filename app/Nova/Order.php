@@ -9,11 +9,11 @@ use NovaIcon\Icon;
 use Timothyasp\Badge\Badge;
 use Illuminate\Http\Request;
 use Sitando\NovaChat\NovaChat;
+use App\Nova\Actions\LockOrder;
 use App\Nova\Filters\OrderFilter;
 use AwesomeNova\Cards\FilterCard;
 use Superlatif\NovaTagInput\Tags;
-use App\Nova\Actions\{LockOrder, OrderDetails};
-use Laravel\Nova\Fields\{BelongsTo, ID, KeyValue, Number, Stack, Text};
+use Laravel\Nova\Fields\{BelongsTo, ID, KeyValue, Stack, Text};
 
 class Order extends Resource
 {
@@ -43,7 +43,7 @@ class Order extends Resource
 	 *
 	 * @var string
 	 */
-	public static $title = 'service';
+	public static $title = 'purchase';
 
 	/**
 	 * The columns that should be searched.
@@ -165,17 +165,6 @@ class Order extends Resource
 		return [
 			new OrderFilter(),
 		];
-	}
-
-	/**
-	 * Get the lenses available for the resource.
-	 *
-	 * @param \Illuminate\Http\Request $request
-	 * @return array
-	 */
-	public function lenses(Request $request)
-	{
-		return [];
 	}
 
 	/**

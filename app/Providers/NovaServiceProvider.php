@@ -8,7 +8,7 @@ use App\Nova\Dashboards\Rules;
 use Illuminate\Support\Facades\{Gate, Route};
 use App\Http\Controllers\Nova\LoginController;
 use Anaseqal\NovaSidebarIcons\NovaSidebarIcons;
-use App\Nova\{Application, Booster, Fine, Order, User};
+use App\Nova\{Application, Booster, Fine, Gift, Order, User};
 use Laravel\Nova\{Nova, NovaApplicationServiceProvider};
 use DigitalCreative\CollapsibleResourceManager\CollapsibleResourceManager;
 use DigitalCreative\CollapsibleResourceManager\Resources\{InternalLink, NovaResource, TopLevelResource};
@@ -141,6 +141,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 							Booster::class,
 							Fine::class,
 							Application::class,
+							Gift::class
 						]
 					]),
 				],
