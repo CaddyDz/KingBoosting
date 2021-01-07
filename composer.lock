@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5f4e1e5afeea24806f2bb7b24c8d1181",
+    "content-hash": "6ada89d6d21a6594a1e3efdd083311e3",
     "packages": [
         {
             "name": "anaseqal/nova-sidebar-icons",
@@ -705,6 +705,59 @@
             "time": "2019-02-16T22:07:27+00:00"
         },
         {
+            "name": "digital-creative/collapsible-resource-manager",
+            "version": "v1.2.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dcasia/collapsible-resource-manager.git",
+                "reference": "0b208f908dcb270c1fe6d95ddf4f556033f7de04"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dcasia/collapsible-resource-manager/zipball/0b208f908dcb270c1fe6d95ddf4f556033f7de04",
+                "reference": "0b208f908dcb270c1fe6d95ddf4f556033f7de04",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "DigitalCreative\\CollapsibleResourceManager\\CollapsibleResourceManagerServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "DigitalCreative\\CollapsibleResourceManager\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Rafael Milewski"
+                }
+            ],
+            "description": "A custom sidebar menu with collapsible groups",
+            "keywords": [
+                "collapse",
+                "collapsible",
+                "laravel",
+                "nova",
+                "sidebar"
+            ],
+            "support": {
+                "issues": "https://github.com/dcasia/collapsible-resource-manager/issues",
+                "source": "https://github.com/dcasia/collapsible-resource-manager/tree/v1.2.6"
+            },
+            "time": "2020-07-22T12:26:33+00:00"
+        },
+        {
             "name": "dnoegel/php-xdg-base-dir",
             "version": "v0.1.1",
             "source": {
@@ -1356,6 +1409,51 @@
                 }
             ],
             "time": "2020-11-24T19:55:57+00:00"
+        },
+        {
+            "name": "ebess/nova-collapsible-sidebar",
+            "version": "0.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ebess/nova-collapsible-sidebar.git",
+                "reference": "b973077b9a08722972636b3e1054e873ef800fb1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ebess/nova-collapsible-sidebar/zipball/b973077b9a08722972636b3e1054e873ef800fb1",
+                "reference": "b973077b9a08722972636b3e1054e873ef800fb1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Ebess\\CollapsibleSidebar\\AssetServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Ebess\\CollapsibleSidebar\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A collapsible sidebar for Laravel Nova.",
+            "keywords": [
+                "laravel",
+                "nova"
+            ],
+            "support": {
+                "issues": "https://github.com/ebess/nova-collapsible-sidebar/issues",
+                "source": "https://github.com/ebess/nova-collapsible-sidebar/tree/master"
+            },
+            "time": "2018-10-04T09:06:34+00:00"
         },
         {
             "name": "egulias/email-validator",
@@ -2022,6 +2120,55 @@
             "time": "2018-07-31T19:32:56+00:00"
         },
         {
+            "name": "idf/nova-html-card",
+            "version": "1.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/InteractionDesignFoundation/nova-html-card.git",
+                "reference": "0882447c573a242a893ae3038773633d6d0842ba"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/InteractionDesignFoundation/nova-html-card/zipball/0882447c573a242a893ae3038773633d6d0842ba",
+                "reference": "0882447c573a242a893ae3038773633d6d0842ba",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "IDF\\HtmlCard\\CardServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "IDF\\HtmlCard\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A Laravel Nova card to display arbitrary HTML content",
+            "keywords": [
+                "card",
+                "html",
+                "laravel",
+                "markdown",
+                "nova",
+                "text"
+            ],
+            "support": {
+                "issues": "https://github.com/InteractionDesignFoundation/nova-html-card/issues",
+                "source": "https://github.com/InteractionDesignFoundation/nova-html-card/tree/master"
+            },
+            "time": "2020-03-16T16:51:12+00:00"
+        },
+        {
             "name": "jean85/pretty-package-versions",
             "version": "1.5.1",
             "source": {
@@ -2519,16 +2666,16 @@
         },
         {
             "name": "laravel/ui",
-            "version": "v3.1.0",
+            "version": "v3.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/ui.git",
-                "reference": "444072cb2f8baaa15172c5cde2bd30d188c3b7e7"
+                "reference": "a1f82c6283c8373ea1958b8a27c3d5c98cade351"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/ui/zipball/444072cb2f8baaa15172c5cde2bd30d188c3b7e7",
-                "reference": "444072cb2f8baaa15172c5cde2bd30d188c3b7e7",
+                "url": "https://api.github.com/repos/laravel/ui/zipball/a1f82c6283c8373ea1958b8a27c3d5c98cade351",
+                "reference": "a1f82c6283c8373ea1958b8a27c3d5c98cade351",
                 "shasum": ""
             },
             "require": {
@@ -2571,9 +2718,9 @@
             ],
             "support": {
                 "issues": "https://github.com/laravel/ui/issues",
-                "source": "https://github.com/laravel/ui/tree/v3.1.0"
+                "source": "https://github.com/laravel/ui/tree/v3.2.0"
             },
-            "time": "2020-11-03T19:51:21+00:00"
+            "time": "2021-01-06T19:20:22+00:00"
         },
         {
             "name": "league/commonmark",
