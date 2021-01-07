@@ -28,5 +28,8 @@ class AppServiceProvider extends ServiceProvider
 	{
 		// Disable mass assignment protection on all models
 		Model::unguard();
+		if (!app()->isLocal()) {
+			\URL::forceScheme('https');
+		}
 	}
 }
