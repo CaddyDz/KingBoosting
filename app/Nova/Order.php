@@ -123,8 +123,9 @@ class Order extends Resource
 			// Customer's country => this client country
 			Text::make(__('Customer\'s country'), fn () => $this->client->country)->hideFromIndex(),
 			BelongsTo::make(__('Booster'), 'booster', User::class),
-			BelongsTo::make(__('Client'), 'client', User::class)->hideFromIndex(),
-			KeyValue::make(__('Order details'), 'options'),
+			BelongsTo::make(__('Client'), 'client', User::class)
+				->hideFromIndex()
+				->canSee(fn ($request) => !$request->user()->hasRole('Member')),
 			NovaChat::make()->order($this->resource)
 				->auth_id(auth()->id())
 				->canSee(fn (): bool => (bool) $this->booster),
