@@ -34,7 +34,7 @@
 	<div id="nova">
 		<div v-cloak class="flex min-h-screen">
 			<!-- Sidebar -->
-			<div class="min-h-screen flex-none pt-header min-h-screen w-sidebar bg-grad-sidebar px-6">
+			<collapsible-sidebar class="min-h-screen flex-none pt-header min-h-screen w-sidebar bg-grad-sidebar px-6" persist>
 				<a href="{{ config('sanctum.stateful')[0] }}">
 					<div class="absolute pin-t pin-l pin-r bg-logo flex items-center w-sidebar h-header px-6 text-white">
 						@include('nova::partials.logo')
@@ -44,7 +44,7 @@
 				@foreach (\Laravel\Nova\Nova::availableTools(request()) as $tool)
 				{!! $tool->renderNavigation() !!}
 				@endforeach
-			</div>
+			</collapsible-sidebar>
 
 			<!-- Content -->
 			<div class="content">
