@@ -30,4 +30,9 @@ class NovaChat extends ResourceTool
 	{
 		return $this->withMeta(['order' => $order]);
 	}
+
+	public function auth_id(int $auth_id)
+	{
+		return $this->withMeta(['auth_id' => $auth_id]);
+	}
 }

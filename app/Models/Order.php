@@ -11,6 +11,8 @@ class Order extends Model
 {
 	use HasFactory;
 
+	protected $with = ['booster', 'client', 'chat'];
+
 	protected $casts = [
 		'options' => 'array',
 	];
@@ -41,5 +43,10 @@ class Order extends Model
 			default:
 				return 'controller-play';
 		}
+	}
+
+	public function chat()
+	{
+		return $this->hasOne(Chat::class);
 	}
 }
