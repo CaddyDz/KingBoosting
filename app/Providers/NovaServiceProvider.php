@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
+use App\Nova\Dashboards\Rules;
 use Illuminate\Support\Facades\{Gate, Route};
 use App\Http\Controllers\Nova\LoginController;
 use Anaseqal\NovaSidebarIcons\NovaSidebarIcons;
@@ -96,7 +97,9 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 	 */
 	protected function dashboards(): array
 	{
-		return [];
+		return [
+			new Rules()
+		];
 	}
 
 	/**
