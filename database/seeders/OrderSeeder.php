@@ -22,11 +22,11 @@ class OrderSeeder extends Seeder
 			'server' => 'EU-West',
 			'options' =>
 			[
-				0 => 'Specific champions',
-				1 => 'Priority order (2x speed) at',
-				2 => 'With Streaming at',
-				3 => 'Solo/Duo',
-				4 => 'offline',
+				'Specific champions',
+				'Priority order (2x speed) at',
+				'With Streaming at',
+				'Solo/Duo',
+				'offline',
 			],
 			'price' => 32.967,
 			'summoner' => 'caddydz',

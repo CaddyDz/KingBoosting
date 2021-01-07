@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Nova;
 
-
+use App\Models\Order as ModelsOrder;
 use NovaIcon\Icon;
 use Timothyasp\Badge\Badge;
 use Illuminate\Http\Request;
@@ -12,6 +12,7 @@ use Sitando\NovaChat\NovaChat;
 use App\Nova\Actions\LockOrder;
 use App\Nova\Filters\OrderFilter;
 use AwesomeNova\Cards\FilterCard;
+use IDF\HtmlCard\HtmlCard;
 use Superlatif\NovaTagInput\Tags;
 use Laravel\Nova\Fields\{BelongsTo, ID, KeyValue, Stack, Text};
 
@@ -152,6 +153,9 @@ class Order extends Resource
 	{
 		return [
 			new FilterCard(new OrderFilter()),
+			(new HtmlCard())->width('1/2')
+				->view('booster', ['booster' => ModelsOrder::find($request->resourceId)->booster])
+				->onlyOnDetail()->withoutCardStyles(),
 		];
 	}
 
