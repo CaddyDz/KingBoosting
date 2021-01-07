@@ -54,7 +54,7 @@ class OrderPolicy
 	 */
 	public function update(User $user, Order $order)
 	{
-		return true;
+		return $user->hasRole('Admin');
 	}
 
 	/**
