@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use Stripe\Charge;
-use Illuminate\Http\Request;
 use App\Models\{Order, User};
 use App\Notifications\OrderPlaced;
 use App\Http\Requests\OrderRequest;
@@ -26,14 +25,14 @@ class OrderController extends Controller
 		\Stripe\Stripe::setApiKey('sk_test_fvYVXcTxZMYsXqsy7fK7VLOH003D2eLbhf');
 
 		try {
-			$intent = \Stripe\PaymentIntent::create([
-				'amount' => $request->price * 100,
+			\Stripe\PaymentIntent::create([
+				'amount' => round($request->price * 100),
 				'currency' => 'eur',
 				// Verify your integration in this guide by including this parameter
 				'metadata' => ['integration_check' => 'accept_a_payment'],
 			]);
 			Charge::create([
-				"amount" => $request->price * 100,
+				"amount" => round($request->price * 100),
 				"currency" => "eur",
 				"source" => $request->stripeToken,
 				"description" => "Charge for " . auth()->user()->email,
@@ -47,6 +46,7 @@ class OrderController extends Controller
 				'client_id' => auth()->id(),
 				'options' => $request->options,
 				'price' => $request->price,
+				'comment' => $request->comment,
 			]);
 			if ($request->booster) {
 				$booster = User::where('username', $request->booster)->firstOrFail();

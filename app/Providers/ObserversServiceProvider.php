@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
-use App\Models\User;
-use App\Observers\UserObserver;
+use App\Models\{Order, User};
 use Illuminate\Support\ServiceProvider;
+use App\Observers\{OrderObserver, UserObserver};
 
 class ObserversServiceProvider extends ServiceProvider
 {
@@ -18,5 +18,6 @@ class ObserversServiceProvider extends ServiceProvider
 	public function boot(): void
 	{
 		User::observe(UserObserver::class);
+		Order::observe(OrderObserver::class);
 	}
 }

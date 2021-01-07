@@ -23,14 +23,11 @@ class UserSeeder extends Seeder
 	public function run(): void
 	{
 		$this->seedAdmin();
+		$this->seedBooster();
+		$this->seedMember();
 		foreach ($this->roles as $role => $many) {
 			$this->seedUsers($role, $many);
 		}
-		User::factory(10)->create();
-		$member = User::factory()->create(['email' => 'user@kingboosting.com']);
-		$member->assignRole('Member');
-		$booster = User::factory()->create(['email' => 'booster@kingboosting.com']);
-		$booster->assignRole('Booster');
 	}
 
 	public function seedAdmin(): void
@@ -44,6 +41,18 @@ class UserSeeder extends Seeder
 			'password' => bcrypt('*iUJA2m%Ey67'),
 			'country' => 'TR',
 		])->assignRole('Admin');
+	}
+
+	public function seedBooster(): void
+	{
+		$booster = User::factory()->create(['email' => 'booster@kingboosting.com']);
+		$booster->assignRole('Booster');
+	}
+
+	public function seedMember(): void
+	{
+		$member = User::factory()->create(['email' => 'user@kingboosting.com']);
+		$member->assignRole('Member');
 	}
 
 	public function seedUsers(string $role, int $number): void

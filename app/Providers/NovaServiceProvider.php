@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
-use Anaseqal\NovaSidebarIcons\NovaSidebarIcons;
 use Illuminate\Support\Facades\{Gate, Route};
 use App\Http\Controllers\Nova\LoginController;
-use Laravel\Nova\{Nova, NovaApplicationServiceProvider};
+use Anaseqal\NovaSidebarIcons\NovaSidebarIcons;
 use EricLagarda\NovaLinkResource\NovaLinkResource;
+use Laravel\Nova\{Nova, NovaApplicationServiceProvider};
 
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
