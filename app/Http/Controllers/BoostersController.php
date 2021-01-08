@@ -12,10 +12,10 @@ class BoostersController extends Controller
 	public function getBoostersNames()
 	{
 		// Returns only users with the role 'Booster'
-		$boostersNames = User::role('Booster')->select('username')->pluck('username');
-		return response([
-			$boostersNames
-		], 200);
+		$boostersNames = User::role('Booster')
+			->select('username')
+			->pluck('username');
+		return $boostersNames;
 	}
 
 	public function apply(ApplicationRequest $request)
