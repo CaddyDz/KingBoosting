@@ -151,12 +151,20 @@ class Order extends Resource
 	 */
 	public function cards(Request $request)
 	{
-		return [
+		// Check if we're on the details view
+		// resourceId would only be available then
+		// Load the booster card if resource is available
+		$cards = [
 			new FilterCard(new OrderFilter()),
-			(new HtmlCard())->width('1/2')
-				->view('booster', ['booster' => ModelsOrder::find($request->resourceId)->booster])
-				->onlyOnDetail()->withoutCardStyles(),
 		];
+		if ($request->resourceId) {
+			$booster_card = (new HtmlCard())->width('1/2')
+				->view('booster', ['booster' => ModelsOrder::find($request->resourceId)->booster])
+				->onlyOnDetail()
+				->withoutCardStyles();
+			array_push($cards, $booster_card);
+		}
+		return $cards;
 	}
 
 	/**
