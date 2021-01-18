@@ -42,18 +42,19 @@ class OrderController extends Controller
 				'service' => $request->service,
 				'summoner' => $request->nickname,
 				'server' => request('server'), // property name already taken
-				'booster_id' => $request->booster,
 				'client_id' => auth()->id(),
 				'options' => $request->options,
 				'price' => $request->price,
 				'comment' => $request->comment,
 			]);
-			if ($request->booster) {
-				$booster = User::where('username', $request->booster)->firstOrFail();
-				$booster->notify(new OrderPlaced($order));
-			} else {
-				$users = User::role('Booster')->get();
-				Notification::send($users, new OrderPlaced($order));
+			if ($request->booster) { // if member have chosen a booster
+				$booster = User::where('username', $request->booster)->firstOrFail(); // Get that booster model
+				$order->booster_id = $booster->id; // Assign the order to them
+				$order->save(); // Save the change
+				$booster->notify(new OrderPlaced($order)); // Notify that booster
+			} else { // Otherwise
+				$users = User::role('Booster')->get(); // Get all boosters
+				Notification::send($users, new OrderPlaced($order)); // Notify them all about the newly placed order
 			}
 			return response([
 				'message' => __('Your order has been placed'),
