@@ -42,7 +42,6 @@ class OrderController extends Controller
 				'service' => $request->service,
 				'summoner' => $request->nickname,
 				'server' => request('server'), // property name already taken
-				'client_id' => auth()->id(),
 				'options' => $request->options,
 				'price' => $request->price,
 				'comment' => $request->comment,
