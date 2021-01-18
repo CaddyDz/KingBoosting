@@ -158,14 +158,11 @@ class Order extends Resource
 			new FilterCard(new OrderFilter()),
 		];
 		if ($request->resourceId) {
-			$booster = ModelsOrder::find($request->resourceId)->booster;
-			if ($booster) {
-				$booster_card = (new HtmlCard())->width('1/2')
-					->view('booster', ['booster' => ModelsOrder::find($request->resourceId)->booster])
-					->onlyOnDetail()
-					->withoutCardStyles();
-				array_push($cards, $booster_card);
-			}
+			$booster_card = (new HtmlCard())->width('1/2')
+				->view('booster', ['booster' => ModelsOrder::find($request->resourceId)->booster])
+				->onlyOnDetail()
+				->withoutCardStyles();
+			array_push($cards, $booster_card);
 		}
 		return $cards;
 	}
