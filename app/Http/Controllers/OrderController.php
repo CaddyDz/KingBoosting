@@ -34,7 +34,7 @@ class OrderController extends Controller
 			Charge::create([
 				"amount" => round($request->price * 100),
 				"currency" => "eur",
-				"source" => $request->stripeToken,
+				"source" => $request->token,
 				"description" => "Charge for " . auth()->user()->email,
 			]);
 			$order = Order::create([
