@@ -6,8 +6,8 @@
 </style>
 <div class="py-6" style="width: 100%; height: 315px">
   <div class="flex bg-white shadow-lg rounded-lg overflow-hidden booster-card">
-    <div class="w-1/3 bg-cover" style="background-image: url('/img/favicon.png')">
-    </div>
+	@if ($booster)
+    <div class="w-1/3 bg-cover" style="background-image: url('/img/favicon.png')"></div>
     <div class="w-2/3 p-4">
       <h1 class="text-80 font-bold text-2xl">{{ $booster->username }}</h1>
 	  <br>
@@ -24,5 +24,11 @@
 		</button> --}}
       </div>
     </div>
+	@else
+	<div class="w-1/3 bg-cover" style="background-image: url('/img/favicon.png')"></div>
+	<div class="w-2/3 p-4">
+      <h1 class="text-80 font-bold text-2xl">@lang('Awaiting booster')</h1>
+    </div>
+	@endif
   </div>
 </div>
