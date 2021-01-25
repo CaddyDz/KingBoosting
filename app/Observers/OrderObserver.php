@@ -16,7 +16,9 @@ class OrderObserver
 	 */
 	public function creating(Order $order): void
 	{
-		$order->client_id = auth()->id();
+		if (auth()->check()) {
+			$order->client_id = auth()->id();
+		}
 	}
 
 	/**
