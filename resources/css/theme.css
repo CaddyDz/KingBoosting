@@ -45,7 +45,7 @@ body {
 }
 
 .text-90 {
-	color: var(--primary);
+	color: white;
 }
 
 .card {
@@ -90,4 +90,14 @@ pre {
 
 .card.overflow-hidden.flex.flex-row>button {
 	color: white;
+}
+
+#nova>div>div.content>div.px-view.py-view.mx-auto>div.relative>div:nth-child(3) {
+	width: 62%;
+	float: left;
+}
+
+#nova>div>div.content>div.px-view.py-view.mx-auto>div.relative>div:nth-child(4) {
+	width: 38%;
+	float: left;
 }
