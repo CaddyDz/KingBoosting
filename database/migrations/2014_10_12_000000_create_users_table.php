@@ -24,6 +24,8 @@ class CreateUsersTable extends Migration
 			$table->timestamp('email_verified_at')->nullable();
 			$table->string('password')->nullable();
 			$table->string('country');
+			$table->boolean('coach')->default(false);
+			$table->decimal('coaching_price')->nullable();
 			$table->rememberToken();
 			$table->timestamps();
 		});
