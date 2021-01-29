@@ -92,12 +92,12 @@ pre {
 	color: white;
 }
 
-#nova>div>div.content>div.px-view.py-view.mx-auto>div.relative>div:nth-child(3) {
+div[dusk="orders-detail-component"]:nth-of-type(3) {
 	width: 62%;
 	float: left;
 }
 
-#nova>div>div.content>div.px-view.py-view.mx-auto>div.relative>div:nth-child(4) {
+div[dusk="orders-detail-component"]:nth-of-type(4) {
 	width: 38%;
-	float: left;
+	float: right;
 }
