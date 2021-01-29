@@ -45,13 +45,20 @@ class UserSeeder extends Seeder
 
 	public function seedBooster(): void
 	{
-		$booster = User::factory()->create(['email' => 'booster@kingboosting.com']);
+		$booster = User::factory()->create([
+			'username' => 'Booster',
+			'email' => 'booster@kingboosting.com'
+		]);
+		// Toss a coin whether or not the booster is also a coach
 		$booster->assignRole('Booster');
 	}
 
 	public function seedMember(): void
 	{
-		$member = User::factory()->create(['email' => 'user@kingboosting.com']);
+		$member = User::factory()->create([
+			'username' => 'User',
+			'email' => 'user@kingboosting.com'
+		]);
 		$member->assignRole('Member');
 	}
 
