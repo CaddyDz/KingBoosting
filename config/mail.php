@@ -90,6 +90,8 @@ return [
 		'name' => env('MAIL_FROM_NAME', 'Example'),
 	],
 
+	'address' => env('MAIL_TO_ADDRESS', 'contact@kingboosting.com'),
+
 	/*
 	|--------------------------------------------------------------------------
 	| Markdown Mail Settings
