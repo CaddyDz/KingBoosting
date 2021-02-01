@@ -5,16 +5,16 @@ declare(strict_types=1);
 namespace App\Nova;
 
 use NovaIcon\Icon;
+use NovaButton\Button;
 use IDF\HtmlCard\HtmlCard;
 use Timothyasp\Badge\Badge;
 use Illuminate\Http\Request;
 use Sitando\NovaChat\NovaChat;
-use App\Nova\Actions\LockOrder;
 use App\Nova\Filters\OrderFilter;
 use AwesomeNova\Cards\FilterCard;
 use Superlatif\NovaTagInput\Tags;
 use App\Models\Order as ModelsOrder;
-use Laravel\Nova\Fields\{BelongsTo, ID, KeyValue, Stack, Text};
+use Laravel\Nova\Fields\{BelongsTo, ID, Stack, Text};
 
 class Order extends Resource
 {
@@ -130,6 +130,10 @@ class Order extends Resource
 			NovaChat::make()->order($this->resource)
 				->auth_id(auth()->id())
 				->canSee(fn (): bool => (bool) $this->booster),
+			Button::make(__('Lock'), 'lock-order')
+				->reload()
+				->style('success')
+				->canSee(fn ($request) => $request->user()->hasRole('Booster')),
 		];
 	}
 
@@ -186,10 +190,8 @@ class Order extends Resource
 	 * @param \Illuminate\Http\Request $request
 	 * @return array
 	 */
-	public function actions(Request $request)
+	public function actions(Request $request): array
 	{
-		return [
-			(new LockOrder)->canSee(fn ($request) => $request->user()->hasRole('Booster'))
-		];
+		return [];
 	}
 }

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6c4bde6c415475a511935b5c8b4f062a",
+    "content-hash": "ddff6ae34ea02793f671a16cba2f5381",
     "packages": [
         {
             "name": "anaseqal/nova-sidebar-icons",
@@ -755,6 +755,50 @@
                 "source": "https://github.com/dcasia/collapsible-resource-manager/tree/v1.2.6"
             },
             "time": "2020-07-22T12:26:33+00:00"
+        },
+        {
+            "name": "dillingham/nova-button",
+            "version": "1.0.11",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dillingham/nova-button.git",
+                "reference": "a4dbcdebc9e1fd667c38e12df6be74cebd772b02"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dillingham/nova-button/zipball/a4dbcdebc9e1fd667c38e12df6be74cebd772b02",
+                "reference": "a4dbcdebc9e1fd667c38e12df6be74cebd772b02",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "NovaButton\\Providers\\FieldServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "NovaButton\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Brian Dillingham",
+                    "email": "bdillingham88@gmail.com"
+                }
+            ],
+            "description": "Nova button package",
+            "support": {
+                "issues": "https://github.com/dillingham/nova-button/issues",
+                "source": "https://github.com/dillingham/nova-button/tree/1.0.11"
+            },
+            "time": "2020-09-16T21:46:40+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
