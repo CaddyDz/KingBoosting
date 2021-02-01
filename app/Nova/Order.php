@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace App\Nova;
 
-use App\Models\Order as ModelsOrder;
 use NovaIcon\Icon;
+use IDF\HtmlCard\HtmlCard;
 use Timothyasp\Badge\Badge;
 use Illuminate\Http\Request;
 use Sitando\NovaChat\NovaChat;
 use App\Nova\Actions\LockOrder;
 use App\Nova\Filters\OrderFilter;
 use AwesomeNova\Cards\FilterCard;
-use IDF\HtmlCard\HtmlCard;
 use Superlatif\NovaTagInput\Tags;
+use App\Models\Order as ModelsOrder;
 use Laravel\Nova\Fields\{BelongsTo, ID, KeyValue, Stack, Text};
 
 class Order extends Resource

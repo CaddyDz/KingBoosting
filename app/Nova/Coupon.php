@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Nova;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 use Laravel\Nova\Fields\{Boolean, ID, Number, Select, Text};
 
 class Coupon extends Resource
