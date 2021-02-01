@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6c4bde6c415475a511935b5c8b4f062a",
+    "content-hash": "2f7a9350b84cb6f21a2a0bb4fe213cb3",
     "packages": [
         {
             "name": "anaseqal/nova-sidebar-icons",
@@ -5364,24 +5364,24 @@
         },
         {
             "name": "stidges/country-flags",
-            "version": "v1.0.0",
+            "version": "v2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/stidges/country-flags.git",
-                "reference": "9ae96df3f4f3649716d09fa0af24c5806ac192be"
+                "reference": "303f78f3f352c86a7d9bcf410b8bb91004843922"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stidges/country-flags/zipball/9ae96df3f4f3649716d09fa0af24c5806ac192be",
-                "reference": "9ae96df3f4f3649716d09fa0af24c5806ac192be",
+                "url": "https://api.github.com/repos/stidges/country-flags/zipball/303f78f3f352c86a7d9bcf410b8bb91004843922",
+                "reference": "303f78f3f352c86a7d9bcf410b8bb91004843922",
                 "shasum": ""
             },
             "require": {
-                "php": "~5.6|~7.0"
+                "php": "^7.3|^8.0"
             },
             "require-dev": {
-                "phpunit/phpunit": ">=5.4.3",
-                "squizlabs/php_codesniffer": "^2.3"
+                "phpunit/phpunit": "^9.0",
+                "squizlabs/php_codesniffer": "^3.5"
             },
             "type": "library",
             "autoload": {
@@ -5412,32 +5412,31 @@
             ],
             "support": {
                 "issues": "https://github.com/stidges/country-flags/issues",
-                "source": "https://github.com/stidges/country-flags/tree/master"
+                "source": "https://github.com/stidges/country-flags/tree/v2.0.0"
             },
-            "time": "2018-01-29T13:27:13+00:00"
+            "time": "2021-01-08T13:52:23+00:00"
         },
         {
             "name": "stidges/laravel-country-flags",
-            "version": "v1.0.4",
+            "version": "v2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/stidges/laravel-country-flags.git",
-                "reference": "007aaa48b2ff91485bc30904090fef276166486b"
+                "reference": "215fd9c0e2b351a8f00baea6d188c554a94ef67a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stidges/laravel-country-flags/zipball/007aaa48b2ff91485bc30904090fef276166486b",
-                "reference": "007aaa48b2ff91485bc30904090fef276166486b",
+                "url": "https://api.github.com/repos/stidges/laravel-country-flags/zipball/215fd9c0e2b351a8f00baea6d188c554a94ef67a",
+                "reference": "215fd9c0e2b351a8f00baea6d188c554a94ef67a",
                 "shasum": ""
             },
             "require": {
-                "illuminate/support": "^5.5|^6.0|^7.0|^8.0",
-                "php": "^7.0",
-                "stidges/country-flags": "^1.0"
+                "illuminate/support": "^7.0|^8.0",
+                "php": "^7.3|^8.0",
+                "stidges/country-flags": "^2.0"
             },
             "require-dev": {
-                "phpunit/phpunit": ">=5.4.3",
-                "squizlabs/php_codesniffer": "^3.0"
+                "phpunit/phpunit": "^9.0"
             },
             "type": "library",
             "extra": {
@@ -5482,9 +5481,9 @@
             ],
             "support": {
                 "issues": "https://github.com/stidges/laravel-country-flags/issues",
-                "source": "https://github.com/stidges/laravel-country-flags/tree/v1.0.4"
+                "source": "https://github.com/stidges/laravel-country-flags/tree/v2.0.0"
             },
-            "time": "2020-10-12T21:49:31+00:00"
+            "time": "2021-01-08T15:31:40+00:00"
         },
         {
             "name": "stripe/stripe-php",

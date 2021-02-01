@@ -30,7 +30,7 @@
 		"scadini/nova-icon": "master",
 		"sentry/sentry-laravel": "^2.2",
 		"sitando/nova-chat": "*",
-		"stidges/laravel-country-flags": "^1.0",
+		"stidges/laravel-country-flags": "^2.0",
 		"stripe/stripe-php": "^7.66",
 		"superlatif/nova-tag-input": "^1.4",
 		"timothyasp/nova-badge-field": "^1.0",
