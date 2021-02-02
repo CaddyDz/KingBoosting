@@ -12,6 +12,7 @@ on:
 jobs:
   triage:
     runs-on: ubuntu-latest
+    if: "! contains(toJSON(github.event.commits.*.message), '[skip ci]')"
     steps:
     - uses: actions/labeler@v2
       with:
