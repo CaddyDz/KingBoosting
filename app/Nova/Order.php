@@ -89,7 +89,7 @@ class Order extends Resource
 						'paused' => 'text-black',
 						'completed' => 'text-success',
 						'suspended' => 'text-danger',
-					][$this->status], 'h-1', 'w-5']),
+					][$this->status ?? 'pending'], 'h-1', 'w-5']),
 				Badge::make('Status')
 					->options([
 						'pending' => __('Awaiting for booster'),
@@ -112,18 +112,19 @@ class Order extends Resource
 			Tags::make(__("Order details"), fn () => $this->options),
 			Text::make(__('Price'), 'price')
 				->displayUsing(fn ($price) => '$' . $price)
-				->hideFromDetail(),
+				->hideFromDetail()
+				->hideWhenUpdating(),
 			Text::make(__('Login name'), 'riot_login')->hideFromIndex(),
 			Text::make(__('Login password'), 'riot_password')->hideFromIndex(),
-			Text::make(__('Summoner name'), 'summoner')->hideFromIndex(),
-			Text::make(__('Server'), 'server')->hideFromIndex(),
+			Text::make(__('Summoner name'), 'summoner')->hideFromIndex()->hideWhenUpdating(),
+			Text::make(__('Server'), 'server')->hideFromIndex()->hideWhenUpdating(),
 			// Current rank?
 			ID::make(__('Order ID'), 'id')->sortable()->hideFromIndex(),
-			Text::make(__('Item'), 'purchase')->hideFromIndex(),
-			Text::make(__('Service'), 'service')->hideFromIndex(),
+			Text::make(__('Item'), 'purchase')->hideFromIndex()->hideWhenUpdating(),
+			Text::make(__('Service'), 'service')->hideFromIndex()->hideWhenUpdating(),
 			// Customer's country => this client country
 			Text::make(__('Customer\'s country'), fn () => $this->client->country)->hideFromIndex(),
-			BelongsTo::make(__('Booster'), 'booster', User::class),
+			BelongsTo::make(__('Booster'), 'booster', User::class)->hideWhenUpdating(),
 			BelongsTo::make(__('Client'), 'client', User::class)
 				->hideFromIndex()
 				->canSee(fn ($request) => !$request->user()->hasRole('Member')),
