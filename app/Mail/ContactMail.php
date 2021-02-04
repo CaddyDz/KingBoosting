@@ -11,8 +11,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 
 class ContactMail extends Mailable implements ShouldQueue
 {
-	use Queueable;
-	use SerializesModels;
+	use Queueable, SerializesModels;
 
 	// Array of email data from request object
 	public array $details;
