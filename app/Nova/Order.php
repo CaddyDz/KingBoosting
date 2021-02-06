@@ -134,7 +134,7 @@ class Order extends Resource
 			Button::make(__('Lock'), 'lock-order')
 				->reload()
 				->style('success')
-				->canSee(fn ($request) => $request->user()->hasRole('Booster')),
+				->canSee(fn ($request) => $request->user()->hasRole('Booster') && $this->status == 'pending'),
 		];
 	}
 
