@@ -5,14 +5,12 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use Stripe\Charge;
+use App\Mail\Receipt;
 use App\Models\{Order, User};
 use Swift_TransportException;
 use App\Notifications\OrderPlaced;
 use App\Http\Requests\OrderRequest;
-use App\Mail\Receipt;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Notification;
-
+use Illuminate\Support\Facades\{Mail, Notification};
 class OrdersController extends Controller
 {
 	/**
