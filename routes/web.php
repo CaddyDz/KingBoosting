@@ -3,10 +3,10 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\{MessagesController, OrderController};
+use App\Http\Controllers\{MessagesController, OrdersController};
 
 Route::middleware(['auth:sanctum'])->group(function () {
-	Route::post('orders', [OrderController::class, 'store']);
+	Route::post('orders', [OrdersController::class, 'store']);
 	Route::post('messages/send', [MessagesController::class, 'store']);
 });
 

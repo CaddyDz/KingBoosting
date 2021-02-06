@@ -6,7 +6,7 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use App\Nova\Actions\NotifyAction;
-use Laravel\Nova\Fields\{ID, Password, Text};
+use Laravel\Nova\Fields\{Boolean, ID, Number, Password, Stack, Text};
 
 class User extends Resource
 {
@@ -70,6 +70,11 @@ class User extends Resource
 				->onlyOnForms()
 				->creationRules('required', 'string', 'min:8')
 				->updateRules('nullable', 'string', 'min:8'),
+
+			Stack::make('Coach', [
+				Boolean::make(__('Coach'), 'coach'),
+				Number::make(__('Coaching price'), 'coaching_price'),
+			])->onlyOnForms(),
 		];
 	}
 
