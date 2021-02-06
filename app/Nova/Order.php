@@ -14,6 +14,8 @@ use App\Nova\Filters\OrderFilter;
 use AwesomeNova\Cards\FilterCard;
 use Superlatif\NovaTagInput\Tags;
 use App\Models\Order as ModelsOrder;
+use App\Nova\Actions\EditOrderLoginDetails;
+use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Fields\{BelongsTo, ID, Stack, Text};
 
 class Order extends Resource
@@ -71,6 +73,23 @@ class Order extends Resource
 	];
 
 	/**
+	 * Build an "index" query for the given resource.
+	 *
+	 * @param \Laravel\Nova\Http\Requests\NovaRequest $request
+	 * @param \Illuminate\Database\Eloquent\Builder $query
+	 * @return \Illuminate\Database\Eloquent\Builder
+	 */
+	public static function indexQuery(NovaRequest $request, $query)
+	{
+		if ($request->user()->role('Member')) {
+			return $query->where('client_id', auth()->id());
+		} else if ($request->user()->role('Member')) {
+			return $query->where('booster_id', auth()->id());
+		}
+		return $query;
+	}
+
+	/**
 	 * Get the fields displayed by the resource.
 	 *
 	 * @param \Illuminate\Http\Request $request
@@ -112,19 +131,18 @@ class Order extends Resource
 			Tags::make(__("Order details"), fn () => $this->options),
 			Text::make(__('Price'), 'price')
 				->displayUsing(fn ($price) => '$' . $price)
-				->hideFromDetail()
-				->hideWhenUpdating(),
+				->hideFromDetail(),
 			Text::make(__('Login name'), 'riot_login')->hideFromIndex(),
 			Text::make(__('Login password'), 'riot_password')->hideFromIndex(),
-			Text::make(__('Summoner name'), 'summoner')->hideFromIndex()->hideWhenUpdating(),
-			Text::make(__('Server'), 'server')->hideFromIndex()->hideWhenUpdating(),
+			Text::make(__('Summoner name'), 'summoner')->hideFromIndex(),
+			Text::make(__('Server'), 'server')->hideFromIndex(),
 			// Current rank?
 			ID::make(__('Order ID'), 'id')->sortable()->hideFromIndex(),
-			Text::make(__('Item'), 'purchase')->hideFromIndex()->hideWhenUpdating(),
-			Text::make(__('Service'), 'service')->hideFromIndex()->hideWhenUpdating(),
+			Text::make(__('Item'), 'purchase')->hideFromIndex(),
+			Text::make(__('Service'), 'service')->hideFromIndex(),
 			// Customer's country => this client country
 			Text::make(__('Customer\'s country'), fn () => $this->client->country)->hideFromIndex(),
-			BelongsTo::make(__('Booster'), 'booster', User::class)->hideWhenUpdating(),
+			BelongsTo::make(__('Booster'), 'booster', User::class),
 			BelongsTo::make(__('Client'), 'client', User::class)
 				->hideFromIndex()
 				->canSee(fn ($request) => !$request->user()->hasRole('Member')),
@@ -193,6 +211,8 @@ class Order extends Resource
 	 */
 	public function actions(Request $request): array
 	{
-		return [];
+		return [
+			(new EditOrderLoginDetails)->onlyOnTableRow(),
+		];
 	}
 }
