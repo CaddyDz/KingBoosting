@@ -16,7 +16,7 @@ use Superlatif\NovaTagInput\Tags;
 use App\Models\Order as ModelsOrder;
 use App\Nova\Actions\EditOrderLoginDetails;
 use Laravel\Nova\Http\Requests\NovaRequest;
-use Laravel\Nova\Fields\{BelongsTo, ID, Stack, Text};
+use Laravel\Nova\Fields\{BelongsTo, ID, Number, Stack, Text};
 
 class Order extends Resource
 {
@@ -153,6 +153,7 @@ class Order extends Resource
 				->reload()
 				->style('success')
 				->canSee(fn ($request) => $request->user()->hasRole('Booster') && $this->status == 'pending'),
+			Number::make(__('Share'), 'share')
 		];
 	}
 

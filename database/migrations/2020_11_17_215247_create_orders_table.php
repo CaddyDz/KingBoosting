@@ -28,6 +28,7 @@ class CreateOrdersTable extends Migration
 			$table->enum('status', ['pending', 'progress', 'paused', 'completed', 'suspended'])->default('pending');
 			$table->json('options')->nullable();
 			$table->decimal('price', 5, 2);
+			$table->decimal('share', 4, 2)->default(50.00);
 			$table->text('comment')->nullable();
 			$table->timestamps();
 		});
