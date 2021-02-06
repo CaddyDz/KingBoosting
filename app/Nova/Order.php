@@ -81,9 +81,9 @@ class Order extends Resource
 	 */
 	public static function indexQuery(NovaRequest $request, $query)
 	{
-		if ($request->user()->role('Member')) {
+		if ($request->user()->hasRole('Member')) {
 			return $query->where('client_id', auth()->id());
-		} else if ($request->user()->role('Member')) {
+		} else if ($request->user()->hasRole('Booster')) {
 			return $query->where('booster_id', auth()->id());
 		}
 		return $query;
@@ -212,7 +212,7 @@ class Order extends Resource
 	public function actions(Request $request): array
 	{
 		return [
-			(new EditOrderLoginDetails)->onlyOnTableRow(),
+			(new EditOrderLoginDetails)->onlyOnTableRow()->canSee(fn ($request) => $request->user()->is($this->client)),
 		];
 	}
 }
