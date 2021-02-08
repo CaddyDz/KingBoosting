@@ -38,22 +38,22 @@ class OrderServiceFilter extends Filter
 	public function options(Request $request)
 	{
 		return [
-			"Division Boosting",
-			"Ranked Win Boosting",
-			"Duo Queue Boosting",
-			"Placement Matches Boosting",
-			"Champion Mastery",
-			"Clash Boosting",
-			"Normal matches",
-			"Account leveling",
-			"Rank Boosting",
-			"Placement Matches",
-			"Competitive Win Boosting",
-			"Unrated Matches",
-			"Ranked Win Boosting",
-			"Rank Boosting",
-			"Wildrift Placement Matches",
-			"Normal Matches",
+			__("Division Boosting") => "Division Boosting",
+			__("Ranked Win Boosting") => "Ranked Win Boosting",
+			__("Duo Queue Boosting") => "Duo Queue Boosting",
+			__("Placement Matches Boosting") => "Placement Matches Boosting",
+			__("Champion Mastery") => "Champion Mastery",
+			__("Clash Boosting") => "Clash Boosting",
+			__("Normal matches") => "Normal matches",
+			__("Account leveling") => "Account leveling",
+			__("Rank Boosting") => "Rank Boosting",
+			__("Placement Matches") => "Placement Matches",
+			__("Competitive Win Boosting") => "Competitive Win Boosting",
+			__("Unrated Matches") => "Unrated Matches",
+			__("Ranked Win Boosting") => "Ranked Win Boosting",
+			__("Rank Boosting") => "Rank Boosting",
+			__("Wildrift Placement Matches") => "Wildrift Placement Matches",
+			__("Normal Matches") => "Normal Matches",
 		];
 	}
 }
