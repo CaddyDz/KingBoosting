@@ -14,8 +14,8 @@ use App\Nova\Filters\OrderFilter;
 use AwesomeNova\Cards\FilterCard;
 use Superlatif\NovaTagInput\Tags;
 use App\Models\Order as ModelsOrder;
-use App\Nova\Actions\EditOrderLoginDetails;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use App\Nova\Actions\{EditOrderLoginDetails, PauseOrder};
 use Laravel\Nova\Fields\{BelongsTo, ID, Number, Stack, Text};
 
 class Order extends Resource
@@ -214,6 +214,9 @@ class Order extends Resource
 	{
 		return [
 			(new EditOrderLoginDetails)
+				->onlyOnTableRow()
+				->canSee(fn ($request) => $request->user()->is($this->client)),
+			(new PauseOrder)
 				->onlyOnTableRow()
 				->canSee(fn ($request) => $request->user()->is($this->client)),
 		];
