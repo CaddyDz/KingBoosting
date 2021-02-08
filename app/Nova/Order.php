@@ -16,7 +16,7 @@ use App\Models\Order as ModelsOrder;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use App\Nova\Filters\{OrderFilter, OrderServiceFilter};
 use App\Nova\Actions\{EditOrderLoginDetails, PauseOrder};
-use Laravel\Nova\Fields\{BelongsTo, ID, Number, Stack, Text};
+use Laravel\Nova\Fields\{BelongsTo, ID, KeyValue, Number, Stack, Text};
 
 class Order extends Resource
 {
@@ -153,7 +153,9 @@ class Order extends Resource
 				->reload()
 				->style('success')
 				->canSee(fn ($request) => $request->user()->hasRole('Booster') && $this->status == 'pending'),
-			Number::make(__('Share'), 'share')
+			Number::make(__('Share'), 'share'),
+			KeyValue::make(__('Details'), 'options'),
+			Text::make(__('Champion'), 'champion'),
 		];
 	}
 

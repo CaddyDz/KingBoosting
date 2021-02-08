@@ -30,6 +30,7 @@ class CreateOrdersTable extends Migration
 			$table->decimal('price', 5, 2);
 			$table->decimal('share', 4, 2)->default(50.00);
 			$table->text('comment')->nullable();
+			$table->string('champion')->nullable();
 			$table->timestamps();
 		});
 	}
