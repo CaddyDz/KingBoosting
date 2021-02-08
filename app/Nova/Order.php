@@ -217,10 +217,10 @@ class Order extends Resource
 	{
 		return [
 			(new EditOrderLoginDetails)
-				->onlyOnTableRow()
+				->showOnTableRow()
 				->canSee(fn ($request) => $request->user()->is($this->client)),
 			(new PauseOrder)
-				->onlyOnTableRow()
+				->showOnTableRow()
 				->canSee(fn ($request) => $request->user()->is($this->client) && $this->status == 'progress'),
 		];
 	}
