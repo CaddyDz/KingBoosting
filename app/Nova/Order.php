@@ -10,11 +10,11 @@ use IDF\HtmlCard\HtmlCard;
 use Timothyasp\Badge\Badge;
 use Illuminate\Http\Request;
 use Sitando\NovaChat\NovaChat;
-use App\Nova\Filters\OrderFilter;
 use AwesomeNova\Cards\FilterCard;
 use Superlatif\NovaTagInput\Tags;
 use App\Models\Order as ModelsOrder;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use App\Nova\Filters\{OrderFilter, OrderServiceFilter};
 use App\Nova\Actions\{EditOrderLoginDetails, PauseOrder};
 use Laravel\Nova\Fields\{BelongsTo, ID, Number, Stack, Text};
 
@@ -201,6 +201,7 @@ class Order extends Resource
 	{
 		return [
 			new OrderFilter(),
+			new OrderServiceFilter(),
 		];
 	}
 
