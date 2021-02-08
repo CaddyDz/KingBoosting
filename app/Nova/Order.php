@@ -218,7 +218,7 @@ class Order extends Resource
 				->canSee(fn ($request) => $request->user()->is($this->client)),
 			(new PauseOrder)
 				->onlyOnTableRow()
-				->canSee(fn ($request) => $request->user()->is($this->client)),
+				->canSee(fn ($request) => $request->user()->is($this->client) && $this->status == 'progress'),
 		];
 	}
 }
