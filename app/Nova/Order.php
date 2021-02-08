@@ -213,7 +213,9 @@ class Order extends Resource
 	public function actions(Request $request): array
 	{
 		return [
-			(new EditOrderLoginDetails)->onlyOnTableRow()->canSee(fn ($request) => $request->user()->is($this->client)),
+			(new EditOrderLoginDetails)
+				->onlyOnTableRow()
+				->canSee(fn ($request) => $request->user()->is($this->client)),
 		];
 	}
 }

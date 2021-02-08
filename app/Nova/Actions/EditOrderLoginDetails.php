@@ -15,6 +15,16 @@ class EditOrderLoginDetails extends Action
 	use InteractsWithQueue, Queueable;
 
 	/**
+	 * Get the displayable name of the action.
+	 *
+	 * @return string
+	 */
+	public function name(): string
+	{
+		return __('Edit account information');
+	}
+
+	/**
 	 * Perform the action on the given orders.
 	 *
 	 * @param \Laravel\Nova\Fields\ActionFields $fields
