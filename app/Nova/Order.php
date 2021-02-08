@@ -154,7 +154,7 @@ class Order extends Resource
 				->style('success')
 				->canSee(fn ($request) => $request->user()->hasRole('Booster') && $this->status == 'pending'),
 			Number::make(__('Share'), 'share'),
-			KeyValue::make(__('Details'), 'options'),
+			KeyValue::make(__('Details'), 'options')->onlyOnForms(),
 			Text::make(__('Champion'), 'champion'),
 		];
 	}
