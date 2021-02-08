@@ -19,6 +19,8 @@ class OrderObserver
 		if (auth()->check()) {
 			$order->client_id = auth()->id();
 		}
+		// If a booster has been selected for the order, set its status to progress, otherwise pending
+		(bool) $order->booster_id ? $order->status = 'progress' : 'pending';
 	}
 
 	/**

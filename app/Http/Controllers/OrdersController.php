@@ -11,6 +11,7 @@ use Swift_TransportException;
 use App\Notifications\OrderPlaced;
 use App\Http\Requests\OrderRequest;
 use Illuminate\Support\Facades\{Mail, Notification};
+
 class OrdersController extends Controller
 {
 	/**
@@ -42,7 +43,6 @@ class OrdersController extends Controller
 			if ($request->booster) { // if member have chosen a booster
 				$booster = User::where('username', $request->booster)->firstOrFail(); // Get that booster model
 				$order->booster_id = $booster->id; // Assign the order to them
-				$order->status = 'progress';
 				$order->save(); // Save the change
 				$booster->notify(new OrderPlaced($order)); // Notify that booster
 			} else { // Otherwise
