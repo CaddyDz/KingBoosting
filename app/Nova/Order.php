@@ -15,8 +15,8 @@ use Superlatif\NovaTagInput\Tags;
 use App\Models\Order as ModelsOrder;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use App\Nova\Filters\{OrderFilter, OrderServiceFilter};
-use App\Nova\Actions\{EditOrderLoginDetails, MarkOrderAsPaid, PauseOrder};
 use Laravel\Nova\Fields\{BelongsTo, ID, KeyValue, Number, Select, Stack, Text};
+use App\Nova\Actions\{EditOrderLoginDetails, MarkOrderAsCompleted, MarkOrderAsPaid, PauseOrder};
 
 class Order extends Resource
 {
@@ -242,6 +242,8 @@ class Order extends Resource
 				->canSee(fn ($request) => ($request->user()->is($this->client) || $request->user()->hasRole('Admin')) && $this->status == 'progress'),
 			(new MarkOrderAsPaid)
 				->canSee(fn ($request) => $request->user()->hasRole('Admin') && $this->status == 'completed'),
+			(new MarkOrderAsCompleted)
+				->canSee(fn ($request) => !$request->user()->hasRole('Member') && $this->status != 'paid'),
 		];
 	}
 }
