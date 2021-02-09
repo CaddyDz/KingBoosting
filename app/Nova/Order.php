@@ -15,8 +15,8 @@ use Superlatif\NovaTagInput\Tags;
 use App\Models\Order as ModelsOrder;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use App\Nova\Filters\{OrderFilter, OrderServiceFilter};
-use Laravel\Nova\Fields\{BelongsTo, ID, KeyValue, Number, Select, Stack, Text};
 use App\Nova\Actions\{EditOrderLoginDetails, MarkOrderAsPaid, PauseOrder};
+use Laravel\Nova\Fields\{BelongsTo, ID, KeyValue, Number, Select, Stack, Text};
 
 class Order extends Resource
 {
