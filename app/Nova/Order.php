@@ -137,7 +137,9 @@ class Order extends Resource
 				'suspended' => __('Suspended'),
 				'completed' => __('Complete'),
 				'paid' => __('Paid'),
-			])->displayUsingLabels()->canSee(fn ($request) => $request->user()->hasRole('Admin')),
+			])->displayUsingLabels()
+				->canSee(fn ($request) => $request->user()->hasRole('Admin'))
+				->hideFromIndex(),
 			// Order details in colored pills
 			Tags::make(__("Order details"), fn () => $this->options),
 			Text::make(__('Price'), 'price')
