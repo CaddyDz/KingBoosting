@@ -33,4 +33,17 @@ class OrderObserver
 	{
 		$order->chat()->create();
 	}
+
+	/**
+	 * Handle the Order "updating" event.
+	 *
+	 * @param \App\Models\Order $order
+	 * @return void
+	 */
+	public function updating(Order $order): void
+	{
+		if ($order->status == 'pending') {
+			$order->booster_id = null;
+		}
+	}
 }
