@@ -21,7 +21,7 @@ class EditOrderLoginDetails extends Action
 	 */
 	public function name(): string
 	{
-		return __('Edit account information');
+		return __('Insert login information');
 	}
 
 	/**

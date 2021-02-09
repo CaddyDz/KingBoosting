@@ -236,10 +236,10 @@ class Order extends Resource
 		return [
 			(new EditOrderLoginDetails)
 				->showOnTableRow()
-				->canSee(fn ($request) => $request->user()->is($this->client)),
+				->canSee(fn ($request) => $request->user()->is($this->client) || $request->user()->hasRole('Admin')),
 			(new PauseOrder)
 				->showOnTableRow()
-				->canSee(fn ($request) => $request->user()->is($this->client) && $this->status == 'progress'),
+				->canSee(fn ($request) => ($request->user()->is($this->client) || $request->user()->hasRole('Admin')) && $this->status == 'progress'),
 			(new MarkOrderAsPaid)
 				->canSee(fn ($request) => $request->user()->hasRole('Admin') && $this->status == 'completed'),
 		];
