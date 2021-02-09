@@ -29,7 +29,14 @@ class OrderFactory extends Factory
 			'server' => "",
 			'booster_id' => 1,
 			'client_id' => 1,
-			'status' => $this->faker->randomElement(['pending', 'progress', 'paused', 'completed', 'suspended']),
+			'status' => $this->faker->randomElement([
+				'pending',
+				'progress',
+				'paused',
+				'completed',
+				'suspended',
+				'paid',
+			]),
 			'options' => [
 				$this->faker->randomElement(['solo_duo', 'flex_5v5'])
 			],

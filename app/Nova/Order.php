@@ -15,8 +15,8 @@ use Superlatif\NovaTagInput\Tags;
 use App\Models\Order as ModelsOrder;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use App\Nova\Filters\{OrderFilter, OrderServiceFilter};
-use App\Nova\Actions\{EditOrderLoginDetails, PauseOrder};
-use Laravel\Nova\Fields\{BelongsTo, ID, KeyValue, Number, Stack, Text};
+use Laravel\Nova\Fields\{BelongsTo, ID, KeyValue, Number, Select, Stack, Text};
+use App\Nova\Actions\{EditOrderLoginDetails, MarkOrderAsPaid, PauseOrder};
 
 class Order extends Resource
 {
@@ -106,27 +106,38 @@ class Order extends Resource
 						'pending' => 'text-info',
 						'progress' => 'text-warning-dark',
 						'paused' => 'text-black',
-						'completed' => 'text-success',
 						'suspended' => 'text-danger',
+						'completed' => 'text-success',
+						'paid' => 'text-success',
 					][$this->status ?? 'pending'], 'h-1', 'w-5']),
 				Badge::make('Status')
 					->options([
 						'pending' => __('Awaiting for booster'),
 						'progress' => __('In Progress'),
 						'paused' => __('Paused'),
-						'completed' => __('Complete'),
 						'suspended' => __('Suspended'),
+						'completed' => __('Complete'),
+						'paid' => __('Paid')
 					])
 					->colors([
 						'pending' => '#64cedb',
 						'progress' => '#d68842',
 						'paused' => '#000',
-						'completed' => '#42d6a9',
 						'suspended' => '#ca404d',
+						'completed' => '#42d6a9',
+						'paid' => '#42d6a9',
 					])->displayUsingLabels()
 			])->sortable()->exceptOnForms(),
 			ID::make(__('ID'), 'id')->sortable()->hideFromDetail(),
 			Text::make(__('Purchase'), fn (): string => $this->purchase . '</br>' . country_flag($this->client->country) . ' ' . $this->service)->asHtml()->onlyOnIndex(),
+			Select::make(__('Status'), 'status')->options([
+				'pending' => __('Awaiting for booster'),
+				'progress' => __('In Progress'),
+				'paused' => __('Paused'),
+				'suspended' => __('Suspended'),
+				'completed' => __('Complete'),
+				'paid' => __('Paid'),
+			])->displayUsingLabels()->canSee(fn ($request) => $request->user()->hasRole('Admin')),
 			// Order details in colored pills
 			Tags::make(__("Order details"), fn () => $this->options),
 			Text::make(__('Price'), 'price')
@@ -222,6 +233,8 @@ class Order extends Resource
 			(new PauseOrder)
 				->showOnTableRow()
 				->canSee(fn ($request) => $request->user()->is($this->client) && $this->status == 'progress'),
+			(new MarkOrderAsPaid)
+				->canSee(fn ($request) => $request->user()->hasRole('Admin') && $this->status == 'completed'),
 		];
 	}
 }

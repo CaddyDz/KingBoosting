@@ -25,7 +25,14 @@ class CreateOrdersTable extends Migration
 			$table->string('riot_password')->nullable();
 			$table->foreignId('booster_id')->nullable()->constrained('users');
 			$table->foreignId('client_id')->constrained('users');
-			$table->enum('status', ['pending', 'progress', 'paused', 'completed', 'suspended'])->default('pending');
+			$table->enum('status', [
+				'pending',
+				'progress',
+				'paused',
+				'completed',
+				'suspended',
+				'paid',
+			])->default('pending');
 			$table->json('options')->nullable();
 			$table->decimal('price', 5, 2);
 			$table->decimal('share', 4, 2)->default(50.00);

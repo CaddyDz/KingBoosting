@@ -26,7 +26,7 @@ class LoginController extends Controller
 	 *
 	 * @return string
 	 */
-	public function redirectPath()
+	public function redirectPath(): string
 	{
 		return '/resources/orders';
 	}
