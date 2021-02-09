@@ -16,7 +16,7 @@ use App\Models\Order as ModelsOrder;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use App\Nova\Filters\{OrderFilter, OrderServiceFilter};
 use Laravel\Nova\Fields\{BelongsTo, ID, KeyValue, Number, Select, Stack, Text};
-use App\Nova\Actions\{EditOrderLoginDetails, MarkOrderAsCompleted, MarkOrderAsPaid, PauseOrder, ReleaseOrder};
+use App\Nova\Actions\{AssignOrder, EditOrderLoginDetails, MarkOrderAsCompleted, MarkOrderAsPaid, PauseOrder, ReleaseOrder};
 
 class Order extends Resource
 {
@@ -249,6 +249,9 @@ class Order extends Resource
 			(new ReleaseOrder)
 				->showOnTableRow()
 				->canSee(fn ($request) => !$request->user()->hasRole('Member')),
+			(new AssignOrder)
+				->showOnTableRow()
+				->canSee(fn ($request) => $request->user()->hasRole('Admin')),
 		];
 	}
 }
