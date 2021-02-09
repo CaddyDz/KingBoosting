@@ -142,7 +142,12 @@ class Order extends Resource
 			Tags::make(__("Order details"), fn () => $this->options),
 			Text::make(__('Price'), 'price')
 				->displayUsing(fn ($price) => '$' . $price)
-				->hideFromDetail(),
+				->hideFromDetail()
+				->canSee(fn ($request) => !$request->user()->hasRole('Booster')),
+			Text::make(__('Price'), fn () => $this->price * $this->share / 100)
+				->displayUsing(fn ($price) => '$' . $price)
+				->hideFromDetail()
+				->canSee(fn ($request) => $request->user()->hasRole('Booster')),
 			Text::make(__('Login name'), 'riot_login')->hideFromIndex(),
 			Text::make(__('Login password'), 'riot_password')->hideFromIndex(),
 			Text::make(__('Summoner name'), 'summoner')->hideFromIndex(),
@@ -164,7 +169,9 @@ class Order extends Resource
 				->reload()
 				->style('success')
 				->canSee(fn ($request) => $request->user()->hasRole('Booster') && $this->status == 'pending'),
-			Number::make(__('Share'), 'share'),
+			Number::make(__('Share'), 'share')
+				->displayUsing(fn ($share) => '%' . $share)
+				->canSee(fn ($request) => $request->user()->hasRole('Admin')),
 			KeyValue::make(__('Details'), 'options')->onlyOnForms(),
 			Text::make(__('Champion'), 'champion'),
 		];
