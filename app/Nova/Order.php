@@ -241,10 +241,13 @@ class Order extends Resource
 				->showOnTableRow()
 				->canSee(fn ($request) => ($request->user()->is($this->client) || $request->user()->hasRole('Admin')) && $this->status == 'progress'),
 			(new MarkOrderAsPaid)
+				->showOnTableRow()
 				->canSee(fn ($request) => $request->user()->hasRole('Admin') && $this->status == 'completed'),
 			(new MarkOrderAsCompleted)
+				->showOnTableRow()
 				->canSee(fn ($request) => !$request->user()->hasRole('Member') && $this->status != 'paid'),
 			(new ReleaseOrder)
+				->showOnTableRow()
 				->canSee(fn ($request) => !$request->user()->hasRole('Member')),
 		];
 	}
