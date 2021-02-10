@@ -5,13 +5,33 @@ declare(strict_types=1);
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Order extends Model
 {
-	use HasFactory;
+	use HasFactory, LogsActivity;
 
 	protected $with = ['booster', 'client', 'chat'];
+
+	// protected static $logAttributes = [
+	// 	'purchase',
+	// 	'service',
+	// 	'server',
+	// 	'summoner',
+	// 	'riot_login',
+	// 	'riot_password',
+	// 	'booster_id',
+	// 	'client_id',
+	// 	'status',
+	// 	'options',
+	// 	'share',
+	// 	'price',
+	// 	'comment',
+	// 	'champion',
+	// ];
+
+	protected static $logUnguarded = true;
 
 	protected $casts = [
 		'options' => 'array',

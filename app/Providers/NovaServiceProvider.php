@@ -146,7 +146,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 						]
 					]),
 				],
-			])
+			]),
+			new \Bolechen\NovaActivitylog\NovaActivitylog(),
 		];
 	}
 
