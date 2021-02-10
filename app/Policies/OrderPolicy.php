@@ -31,6 +31,9 @@ class OrderPolicy
 	 */
 	public function view(User $user, Order $order): bool
 	{
+		if ($order->status != 'pending') {
+			return $user->is($order->booster) || $user->is($order->client) || $user->role('Admin');
+		}
 		return true;
 	}
 
