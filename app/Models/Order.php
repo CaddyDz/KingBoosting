@@ -7,29 +7,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Laravel\Nova\Actions\Actionable;
 
 class Order extends Model
 {
-	use HasFactory, LogsActivity;
+	use Actionable, HasFactory, LogsActivity;
 
 	protected $with = ['booster', 'client', 'chat'];
-
-	// protected static $logAttributes = [
-	// 	'purchase',
-	// 	'service',
-	// 	'server',
-	// 	'summoner',
-	// 	'riot_login',
-	// 	'riot_password',
-	// 	'booster_id',
-	// 	'client_id',
-	// 	'status',
-	// 	'options',
-	// 	'share',
-	// 	'price',
-	// 	'comment',
-	// 	'champion',
-	// ];
 
 	protected static $logUnguarded = true;
 
