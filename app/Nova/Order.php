@@ -84,7 +84,8 @@ class Order extends Resource
 		if ($request->user()->hasRole('Member')) {
 			return $query->where('client_id', auth()->id());
 		} else if ($request->user()->hasRole('Booster')) {
-			return $query->where('booster_id', auth()->id());
+			return $query->where('status', 'pending')
+				->orWhere('booster_id', auth()->id());
 		}
 		return $query;
 	}
