@@ -256,7 +256,7 @@ class Order extends Resource
 				->canSee(fn ($request) => $request->user()->hasRole('Admin')),
 			(new MarkOrderProgress)
 				->showOnTableRow()
-				->canSee(fn ($request) => $request->user()->hasRole('Admin')),
+				->canSee(fn ($request) => $request->user()->hasRole('Admin') && $this->status == 'completed'),
 		];
 	}
 }
