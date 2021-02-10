@@ -20,6 +20,7 @@ class LockOrder implements ShouldQueue
 	public function handle($event): void
 	{
 		if ($event->key == 'lock-order') {
+			$event->resource->booster_id = auth()->id();
 			$event->resource->status = 'progress';
 			$event->resource->save();
 		}
