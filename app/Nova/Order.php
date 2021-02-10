@@ -146,7 +146,7 @@ class Order extends Resource
 			Text::make(__('Price'), 'price')
 				->displayUsing(fn ($price) => '$' . $price)
 				->hideFromDetail()
-				->canSee(fn ($request) => !$request->user()->hasRole('Booster')),
+				->canSee(fn ($request) => $request->user()->hasRole('Admin')),
 			Text::make(__('Price'), fn () => $this->price * $this->share / 100)
 				->displayUsing(fn ($price) => '$' . $price)
 				->hideFromDetail()
