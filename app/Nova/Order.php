@@ -239,7 +239,8 @@ class Order extends Resource
 		return [
 			(new EditOrderLoginDetails)
 				->showOnTableRow()
-				->canSee(fn ($request) => $request->user()->is($this->client) || $request->user()->hasRole('Admin')),
+				->canSee(fn ($request) => !$request->user()->hasRole('Booster'))
+				->canRun(fn ($request) => !$request->user()->hasRole('Booster')),
 			(new PauseOrder)
 				->showOnTableRow()
 				->canSee(fn ($request) => ($request->user()->is($this->client) || $request->user()->hasRole('Admin')) && $this->status == 'progress'),
