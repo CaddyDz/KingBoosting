@@ -246,7 +246,8 @@ class Order extends Resource
 				->canSee(fn ($request) => ($request->user()->is($this->client) || $request->user()->hasRole('Admin')) && $this->status == 'progress'),
 			(new MarkOrderAsPaid)
 				->showOnTableRow()
-				->canSee(fn ($request) => $request->user()->hasRole('Admin') && $this->status == 'completed'),
+				->canRun(fn ($request) => $request->user()->hasRole('Admin'))
+				->canSee(fn ($request) => $request->user()->hasRole('Admin')),
 			(new MarkOrderAsCompleted)
 				->showOnTableRow()
 				->canSee(fn ($request) => !$request->user()->hasRole('Member') && $this->status != 'paid')
