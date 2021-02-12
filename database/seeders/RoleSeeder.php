@@ -10,22 +10,10 @@ use Spatie\Permission\Models\Role;
 class RoleSeeder extends Seeder
 {
 	private $roles = [
-		'Admin' => [
-			'lock orders',
-			'unlock orders'
-		],
-		'Moderator' => [
-			'lock orders',
-			'unlock orders'
-		],
-		'Booster' => [
-			'lock orders',
-			'unlock orders'
-		],
-		'Member' => [
-			'lock orders',
-			'unlock orders'
-		],
+		'Admin',
+		'Moderator',
+		'Booster',
+		'Member',
 	];
 
 	/**
@@ -35,10 +23,8 @@ class RoleSeeder extends Seeder
 	 */
 	public function run()
 	{
-		foreach ($this->roles as $role => $permissions) {
-			$role = Role::create(['name' => $role])
-						->givePermissionTo('Access Members Area');
-			$role->givePermissionTo($permissions);
+		foreach ($this->roles as $role) {
+			$role = Role::create(['name' => $role]);
 		}
 	}
 }
