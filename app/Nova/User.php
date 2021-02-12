@@ -6,10 +6,8 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use App\Nova\Actions\NotifyAction;
-use Laravel\Nova\Fields\{Boolean, ID, MorphToMany, Number, Password, Stack, Text};
-use Vyuldashev\NovaPermission\PermissionBooleanGroup;
-use Vyuldashev\NovaPermission\RoleBooleanGroup;
-use Vyuldashev\NovaPermission\RoleSelect;
+use Laravel\Nova\Fields\{ID, MorphToMany, Password, Text};
+use Vyuldashev\NovaPermission\{Permission, PermissionBooleanGroup, Role, RoleSelect};
 
 class User extends Resource
 {
@@ -74,15 +72,9 @@ class User extends Resource
 				->creationRules('required', 'string', 'min:8')
 				->updateRules('nullable', 'string', 'min:8'),
 
-			Stack::make('Coach', [
-				Boolean::make(__('Coach'), 'coach'),
-				Number::make(__('Coaching price'), 'coaching_price'),
-			])->onlyOnForms(),
+			MorphToMany::make('Roles', 'roles', Role::class),
+			MorphToMany::make('Permissions', 'permissions', Permission::class),
 
-			MorphToMany::make('Roles', 'roles', \Vyuldashev\NovaPermission\Role::class),
-			MorphToMany::make('Permissions', 'permissions', \Vyuldashev\NovaPermission\Permission::class),
-
-			RoleBooleanGroup::make('Roles'),
 			PermissionBooleanGroup::make('Permissions'),
 
 			RoleSelect::make('Role', 'roles'),

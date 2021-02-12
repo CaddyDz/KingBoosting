@@ -5,16 +5,14 @@ declare(strict_types=1);
 namespace App\Providers;
 
 use App\Nova\Dashboards\Rules;
+use Bolechen\NovaActivitylog\NovaActivitylog;
 use Illuminate\Support\Facades\{Gate, Route};
 use App\Http\Controllers\Nova\LoginController;
-use Anaseqal\NovaSidebarIcons\NovaSidebarIcons;
 use Laravel\Nova\{Nova, NovaApplicationServiceProvider};
+use Vyuldashev\NovaPermission\{NovaPermissionTool, Permission, Role};
 use App\Nova\{Application, Booster, Coupon, Fine, Gift, Order, User};
 use DigitalCreative\CollapsibleResourceManager\CollapsibleResourceManager;
 use DigitalCreative\CollapsibleResourceManager\Resources\{InternalLink, NovaResource, TopLevelResource};
-use Vyuldashev\NovaPermission\NovaPermissionTool;
-use Vyuldashev\NovaPermission\Permission;
-use Vyuldashev\NovaPermission\Role;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
@@ -114,7 +112,6 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 	public function tools(): array
 	{
 		return [
-			new NovaSidebarIcons,
 			new CollapsibleResourceManager([
 				'navigation' => [
 					TopLevelResource::make([
@@ -152,8 +149,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 					]),
 				],
 			]),
-			new \Bolechen\NovaActivitylog\NovaActivitylog(),
-			NovaPermissionTool::make(),
+			new NovaActivitylog(),
+			NovaPermissionTool::make()->canSee(fn () => true),
 		];
 	}
 

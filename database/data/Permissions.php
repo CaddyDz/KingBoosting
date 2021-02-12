@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Database\Seeders\Data;
+namespace Database\Data;
 
 trait Permissions
 {

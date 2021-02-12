@@ -9,7 +9,6 @@
 	"license": "MIT",
 	"require": {
 		"php": "^7.3|^8.0",
-		"anaseqal/nova-sidebar-icons": "^0.0.3",
 		"awesome-nova/filter-card": "^1.0",
 		"bolechen/nova-activitylog": "^0.2.2",
 		"coreproc/nova-notification-feed": "^1.4",
@@ -64,7 +63,8 @@
 		"psr-4": {
 			"App\\": "app/",
 			"Database\\Factories\\": "database/factories/",
-			"Database\\Seeders\\": "database/seeders/"
+			"Database\\Seeders\\": "database/seeders/",
+			"Database\\Data\\": "database/data/"
 		},
 		"files": [
 			"app/Helpers.php"

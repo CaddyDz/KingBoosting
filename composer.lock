@@ -4,53 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b3f1893e5c1a566072d977d9ee0ec448",
+    "content-hash": "c60d3c9985d8c4acc20807edfc7050f7",
     "packages": [
-        {
-            "name": "anaseqal/nova-sidebar-icons",
-            "version": "0.0.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/anaseqal/nova-sidebar-icons.git",
-                "reference": "ceb18c4943c36aa1eeebb6bd60c4f2daa24c2b00"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/anaseqal/nova-sidebar-icons/zipball/ceb18c4943c36aa1eeebb6bd60c4f2daa24c2b00",
-                "reference": "ceb18c4943c36aa1eeebb6bd60c4f2daa24c2b00",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Anaseqal\\NovaSidebarIcons\\ToolServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Anaseqal\\NovaSidebarIcons\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "A Laravel Nova tool.",
-            "keywords": [
-                "laravel",
-                "nova"
-            ],
-            "support": {
-                "issues": "https://github.com/anaseqal/nova-sidebar-icons/issues",
-                "source": "https://github.com/anaseqal/nova-sidebar-icons/tree/0.0.3"
-            },
-            "time": "2019-08-29T18:49:20+00:00"
-        },
         {
             "name": "asm89/stack-cors",
             "version": "v2.0.2",
