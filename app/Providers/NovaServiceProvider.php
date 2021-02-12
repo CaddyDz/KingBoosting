@@ -10,12 +10,9 @@ use App\Http\Controllers\Nova\LoginController;
 use Anaseqal\NovaSidebarIcons\NovaSidebarIcons;
 use Laravel\Nova\{Nova, NovaApplicationServiceProvider};
 use App\Nova\{Application, Booster, Coupon, Fine, Gift, Order, User};
+use Vyuldashev\NovaPermission\{NovaPermissionTool, Permission, Role};
 use DigitalCreative\CollapsibleResourceManager\CollapsibleResourceManager;
 use DigitalCreative\CollapsibleResourceManager\Resources\{InternalLink, NovaResource, TopLevelResource};
-use Vyuldashev\NovaPermission\NovaPermissionTool;
-use Vyuldashev\NovaPermission\Permission;
-use Vyuldashev\NovaPermission\Role;
-
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
 	/**

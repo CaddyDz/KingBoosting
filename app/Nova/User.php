@@ -7,10 +7,7 @@ namespace App\Nova;
 use Illuminate\Http\Request;
 use App\Nova\Actions\NotifyAction;
 use Laravel\Nova\Fields\{Boolean, ID, MorphToMany, Number, Password, Stack, Text};
-use Vyuldashev\NovaPermission\PermissionBooleanGroup;
-use Vyuldashev\NovaPermission\RoleBooleanGroup;
-use Vyuldashev\NovaPermission\RoleSelect;
-
+use Vyuldashev\NovaPermission\{PermissionBooleanGroup, RoleBooleanGroup, RoleSelect};
 class User extends Resource
 {
 	/**
