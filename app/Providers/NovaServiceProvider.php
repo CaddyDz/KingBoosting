@@ -9,8 +9,8 @@ use Bolechen\NovaActivitylog\NovaActivitylog;
 use Illuminate\Support\Facades\{Gate, Route};
 use App\Http\Controllers\Nova\LoginController;
 use Laravel\Nova\{Nova, NovaApplicationServiceProvider};
-use Vyuldashev\NovaPermission\{NovaPermissionTool, Permission, Role};
 use App\Nova\{Application, Booster, Coupon, Fine, Gift, Order, User};
+use Vyuldashev\NovaPermission\{NovaPermissionTool, Permission, Role};
 use DigitalCreative\CollapsibleResourceManager\CollapsibleResourceManager;
 use DigitalCreative\CollapsibleResourceManager\Resources\{InternalLink, NovaResource, TopLevelResource};
 
