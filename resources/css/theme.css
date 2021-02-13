@@ -94,10 +94,11 @@ pre {
 
 div[dusk="orders-detail-component"]:nth-of-type(3) {
 	width: 62%;
-	float: left;
+	display: inline-block;
 }
 
 div[dusk="orders-detail-component"]:nth-of-type(4) {
 	width: 38%;
+	display: inline-block;
 	float: right;
 }
