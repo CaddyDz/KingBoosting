@@ -166,8 +166,7 @@ class Order extends Resource
 				->hideFromIndex()
 				->canSee(fn ($request) => !$request->user()->hasRole('Member')),
 			NovaChat::make()->order($this->resource)
-				->auth_id(auth()->id())
-				->canSee(fn (): bool => (bool) $this->booster),
+				->auth_id(auth()->id()),
 			Button::make(__('Lock'), 'lock-order')
 				->reload()
 				->style('success')
