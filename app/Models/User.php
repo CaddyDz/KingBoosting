@@ -69,16 +69,6 @@ class User extends Authenticatable
 		return $this->hasMany(Order::class, 'booster_id');
 	}
 
-	/**
-	 * The channels the user receives notification broadcasts on.
-	 *
-	 * @return string
-	 */
-	public function receivesBroadcastNotificationsOn(): string
-	{
-		return 'users.' . $this->id;
-	}
-
 	public function games()
 	{
 		return $this->belongsToMany(Game::class, 'games', 'booster_id', 'game_id');

@@ -8,6 +8,7 @@ use App\Nova\Dashboards\Rules;
 use Bolechen\NovaActivitylog\NovaActivitylog;
 use Illuminate\Support\Facades\{Gate, Route};
 use App\Http\Controllers\Nova\LoginController;
+use Mirovit\NovaNotifications\NovaNotifications;
 use Laravel\Nova\{Nova, NovaApplicationServiceProvider};
 use App\Nova\{Application, Booster, Coupon, Fine, Gift, Order, User};
 use Vyuldashev\NovaPermission\{NovaPermissionTool, Permission, Role};
@@ -151,6 +152,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 			]),
 			new NovaActivitylog(),
 			NovaPermissionTool::make()->canSee(fn () => true),
+			NovaNotifications::make(),
 		];
 	}
 

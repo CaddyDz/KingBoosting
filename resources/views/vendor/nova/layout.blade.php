@@ -5,25 +5,18 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=1280">
 	<meta name="csrf-token" content="{{ csrf_token() }}">
-
 	@include('nova-echo::meta')
-
 	<title>{{ \Laravel\Nova\Nova::name() }}</title>
-
 	<!-- Fonts -->
 	<link href="/fonts/evogria/style.css" rel="stylesheet">
-
 	<!-- Styles -->
 	<link rel="stylesheet" href="{{ mix('app.css', 'vendor/nova') }}">
-
 	<!-- Tool Styles -->
 	@foreach(\Laravel\Nova\Nova::availableStyles(request()) as $name => $path)
 	<link rel="stylesheet" href="/nova-api/styles/{{ $name }}">
 	@endforeach
-
 	<!-- Custom Meta Data -->
 	@include('nova::partials.meta')
-
 	<!-- Theme Styles -->
 	@foreach(\Laravel\Nova\Nova::themeStyles() as $publicPath)
 	<link rel="stylesheet" href="{{ $publicPath }}">
@@ -57,11 +50,11 @@
 					<global-search dusk="global-search-component"></global-search>
 					@endif
 
+					@include('nova-notifications::dropdown')
 					<dropdown class="ml-auto h-9 flex items-center dropdown-right">
 						@include('nova::partials.user')
 					</dropdown>
 
-					@include('nova_notification_feed::notification_feed')
 				</div>
 
 				<div data-testid="content" class="px-view py-view mx-auto">
@@ -101,5 +94,4 @@
 		Nova.liftOff()
 	</script>
 </body>
-
 </html>

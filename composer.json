@@ -1,17 +1,11 @@
 {
 	"name": "laravel/laravel",
 	"type": "project",
-	"description": "The Laravel Framework.",
-	"keywords": [
-		"framework",
-		"laravel"
-	],
-	"license": "MIT",
 	"require": {
 		"php": "^7.3|^8.0",
 		"awesome-nova/filter-card": "^1.0",
 		"bolechen/nova-activitylog": "^0.2.2",
-		"coreproc/nova-notification-feed": "^1.4",
+		"coreproc/nova-echo": "^0.2.0",
 		"darkaonline/l5-swagger": "^8.0",
 		"david-griffiths/nova-dark-theme": "^1.0",
 		"digital-creative/collapsible-resource-manager": "^1.2",
@@ -28,6 +22,8 @@
 		"laravel/nova": "*",
 		"laravel/sanctum": "^2.8",
 		"laravel/tinker": "^2.5",
+		"mirovit/nova-notifications": "^1.0",
+		"pusher/pusher-php-server": "^4.1",
 		"scadini/nova-icon": "master",
 		"sentry/sentry-laravel": "^2.2",
 		"sitando/nova-chat": "*",

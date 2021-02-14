@@ -8,14 +8,13 @@ use App\Models\Order;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Coreproc\NovaNotificationFeed\Notifications\NovaBroadcastMessage;
-use Illuminate\Notifications\Messages\{BroadcastMessage, MailMessage};
+use Mirovit\NovaNotifications\Notification as Notif;
 
 class OrderPlaced extends Notification implements ShouldQueue
 {
 	use Queueable;
 
-	protected Order $order;
+	private Order $order;
 
 	/**
 	 * Create a new notification instance.
@@ -39,20 +38,6 @@ class OrderPlaced extends Notification implements ShouldQueue
 	}
 
 	/**
-	 * Get the mail representation of the notification.
-	 *
-	 * @param mixed $notifiable
-	 * @return \Illuminate\Notifications\Messages\MailMessage
-	 */
-	public function toMail($notifiable): MailMessage
-	{
-		return (new MailMessage)
-			->line('The introduction to the notification.')
-			->action('Notification Action', url('/'))
-			->line('Thank you for using our application!');
-	}
-
-	/**
 	 * Get the array representation of the notification.
 	 *
 	 * @param mixed $notifiable
@@ -60,22 +45,10 @@ class OrderPlaced extends Notification implements ShouldQueue
 	 */
 	public function toArray($notifiable): array
 	{
-		return [
-			'level' => 'info',
-			'message' => __('A new order has been placed, check it out'),
-			'url' => '/resources/orders/' . $this->order->id,
-			'target' => '_self'
-		];
-	}
-
-	/**
-	 * Get the broadcastable representation of the notification.
-	 *
-	 * @param mixed $notifiable
-	 * @return BroadcastMessage
-	 */
-	public function toBroadcast($notifiable): BroadcastMessage
-	{
-		return new NovaBroadcastMessage($this->toArray($notifiable));
+		return Notif::make()
+			->info(__('A new order has been placed, check it out'))
+			->subtitle($this->order->purchase)
+			->routeDetail('orders', $this->order->id)
+			->toArray();
 	}
 }

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c60d3c9985d8c4acc20807edfc7050f7",
+    "content-hash": "fe9c046ea5792c8b9e35a59191827d51",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -519,58 +519,6 @@
                 "source": "https://github.com/CoreProc/nova-echo/tree/master"
             },
             "time": "2019-03-27T08:02:16+00:00"
-        },
-        {
-            "name": "coreproc/nova-notification-feed",
-            "version": "1.4.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/CoreProc/nova-notification-feed.git",
-                "reference": "fae40a065e3986f032fb694f6944e00f07bb2d1a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/CoreProc/nova-notification-feed/zipball/fae40a065e3986f032fb694f6944e00f07bb2d1a",
-                "reference": "fae40a065e3986f032fb694f6944e00f07bb2d1a",
-                "shasum": ""
-            },
-            "require": {
-                "coreproc/nova-echo": "^0.2.0",
-                "php": ">=7.1.0",
-                "pusher/pusher-php-server": "^4.1.1"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Coreproc\\NovaNotificationFeed\\NovaNotificationFeedServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Coreproc\\NovaNotificationFeed\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "A Laravel Nova package that adds a notification feed in your Nova app.",
-            "keywords": [
-                "Broadcast",
-                "bell",
-                "laravel",
-                "notice board",
-                "notifications",
-                "nova",
-                "sidebar"
-            ],
-            "support": {
-                "issues": "https://github.com/CoreProc/nova-notification-feed/issues",
-                "source": "https://github.com/CoreProc/nova-notification-feed/tree/1.4.0"
-            },
-            "time": "2020-03-20T15:08:53+00:00"
         },
         {
             "name": "darkaonline/l5-swagger",
@@ -3020,6 +2968,56 @@
                 }
             ],
             "time": "2021-01-18T20:58:21+00:00"
+        },
+        {
+            "name": "mirovit/nova-notifications",
+            "version": "1.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mirovit/nova-notifications.git",
+                "reference": "01e75d101ce887a3f0ed3cf28507cdd8b5b2188d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mirovit/nova-notifications/zipball/01e75d101ce887a3f0ed3cf28507cdd8b5b2188d",
+                "reference": "01e75d101ce887a3f0ed3cf28507cdd8b5b2188d",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": ">=5.6",
+                "nesbot/carbon": "^2.00",
+                "php": ">=7.1.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Mirovit\\NovaNotifications\\NovaNotificationsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Mirovit\\NovaNotifications\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A Laravel Nova tool to display user notifications.",
+            "keywords": [
+                "laravel",
+                "nova"
+            ],
+            "support": {
+                "issues": "https://github.com/mirovit/nova-notifications/issues",
+                "source": "https://github.com/mirovit/nova-notifications/tree/1.0.5"
+            },
+            "time": "2020-11-04T12:18:41+00:00"
         },
         {
             "name": "monolog/monolog",

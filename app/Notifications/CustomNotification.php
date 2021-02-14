@@ -7,14 +7,13 @@ namespace App\Notifications;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Coreproc\NovaNotificationFeed\Notifications\NovaBroadcastMessage;
-use Illuminate\Notifications\Messages\{BroadcastMessage, MailMessage};
+use Mirovit\NovaNotifications\Notification as Notif;
 
 class CustomNotification extends Notification implements ShouldQueue
 {
 	use Queueable;
 
-	protected string $message;
+	private string $message;
 
 	/**
 	 * Create a new notification instance.
@@ -38,20 +37,6 @@ class CustomNotification extends Notification implements ShouldQueue
 	}
 
 	/**
-	 * Get the mail representation of the notification.
-	 *
-	 * @param mixed $notifiable
-	 * @return \Illuminate\Notifications\Messages\MailMessage
-	 */
-	public function toMail($notifiable): MailMessage
-	{
-		return (new MailMessage)
-			->line('The introduction to the notification.')
-			->action('Notification Action', url('/'))
-			->line('Thank you for using our application!');
-	}
-
-	/**
 	 * Get the array representation of the notification.
 	 *
 	 * @param mixed $notifiable
@@ -59,21 +44,9 @@ class CustomNotification extends Notification implements ShouldQueue
 	 */
 	public function toArray($notifiable): array
 	{
-		return [
-			'level' => 'info',
-			'message' => $this->message,
-			'target' => '_self'
-		];
-	}
-
-	/**
-	 * Get the broadcastable representation of the notification.
-	 *
-	 * @param  mixed $notifiable
-	 * @return BroadcastMessage
-	 */
-	public function toBroadcast($notifiable): BroadcastMessage
-	{
-		return new NovaBroadcastMessage($this->toArray($notifiable));
+		return Notif::make()
+			->info(__('Notice from admin'))
+			->subtitle($this->message)
+			->toArray();
 	}
 }
