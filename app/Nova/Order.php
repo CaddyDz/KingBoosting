@@ -16,7 +16,7 @@ use App\Models\Order as ModelsOrder;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use App\Nova\Filters\{OrderFilter, OrderServiceFilter};
 use Laravel\Nova\Fields\{BelongsTo, ID, Number, Select, Stack, Text};
-use App\Nova\Actions\{AssignOrder, ContinueOrder, EditOrderLoginDetails, CloseOrder, MarkOrderAsPaid, PauseOrder, ReleaseOrder};
+use App\Nova\Actions\{AssignOrder, CloseOrder, ContinueOrder, EditOrderLoginDetails, MarkOrderAsPaid, PauseOrder, ReleaseOrder};
 
 class Order extends Resource
 {
