@@ -11,7 +11,7 @@ class Gift extends Model
 {
 	use HasFactory;
 
-	public function employee()
+	public function booster()
 	{
 		return $this->belongsTo(User::class);
 	}

@@ -38,7 +38,7 @@ class Gift extends Resource
 	 * @var array
 	 */
 	public static $searchRelations = [
-		'employee' => ['first_name', 'last_name', 'username'],
+		'booster' => ['first_name', 'last_name', 'username'],
 		'order' => [
 			'purchase',
 			'service',
@@ -58,7 +58,7 @@ class Gift extends Resource
 	{
 		return [
 			ID::make(__('ID'), 'id')->sortable(),
-			BelongsTo::make(__('Employee'), 'employee', User::class),
+			BelongsTo::make(__('Booster'), 'booster', User::class),
 			BelongsTo::make(__('Order'), 'order', Order::class),
 			Number::make(__('Amount'), 'amount'),
 			Boolean::make(__('Paid'), 'paid')
