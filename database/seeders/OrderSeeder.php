@@ -14,7 +14,7 @@ class OrderSeeder extends Seeder
 	 *
 	 * @return void
 	 */
-	public function run()
+	public function run(): void
 	{
 		$order = [
 			'purchase' => 'Silver I to Gold IV',
