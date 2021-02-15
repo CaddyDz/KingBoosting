@@ -19,17 +19,6 @@ class User extends Resource
 	public static $model = \App\Models\User::class;
 
 	/**
-	 * Determine if this resource is available for navigation.
-	 *
-	 * @param \Illuminate\Http\Request $request
-	 * @return bool
-	 */
-	public static function availableForNavigation(Request $request): bool
-	{
-		return $request->user()->hasRole('Admin');
-	}
-
-	/**
 	 * The single value that should be used to represent the resource when being displayed.
 	 *
 	 * @var string
@@ -75,9 +64,9 @@ class User extends Resource
 			MorphToMany::make('Roles', 'roles', Role::class),
 			MorphToMany::make('Permissions', 'permissions', Permission::class),
 
-			PermissionBooleanGroup::make('Permissions'),
+			PermissionBooleanGroup::make('Permissions')->canSee(fn ($request) => $request->user()->hasRole('Admin')),
 
-			RoleSelect::make('Role', 'roles'),
+			RoleSelect::make('Role', 'roles')->canSee(fn ($request) => $request->user()->hasRole('Admin')),
 		];
 	}
 
