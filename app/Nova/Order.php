@@ -161,7 +161,7 @@ class Order extends Resource
 			Text::make(__('Service'), 'service')->hideFromIndex(),
 			// Customer's country => this client country
 			Text::make(__('Customer\'s country'), fn () => $this->client->country)->hideFromIndex(),
-			BelongsTo::make(__('Booster'), 'booster', User::class),
+			BelongsTo::make(__('Booster'), 'booster', User::class)->nullable(),
 			BelongsTo::make(__('Client'), 'client', User::class)
 				->hideFromIndex()
 				->canSee(fn ($request) => !$request->user()->hasRole('Member')),
