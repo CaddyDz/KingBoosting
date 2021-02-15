@@ -148,7 +148,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 							Role::class,
 							Permission::class,
 						]
-					]),
+					])->canSee(fn ($request) => $request->user()->hasRole('Admin')),
 				],
 			]),
 			new NovaActivitylog(),
