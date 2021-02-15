@@ -253,7 +253,10 @@ class Order extends Resource
 				->canRun(fn ($request) => !$request->user()->hasRole('Booster')),
 			(new PauseOrder)
 				->showOnTableRow()
-				->canSee(fn ($request) => ($request->user()->is($this->client) || $request->user()->hasRole('Admin')) && $this->status == 'progress'),
+				->canSee(fn ($request) => (
+					($request->user()->is($this->client) || $request->user()->hasRole('Moderator'))
+					&& ($this->status == 'pending' || $this->status == 'progress'))
+					|| ($request->user()->hasRole('Admin'))),
 			(new MarkOrderAsPaid)
 				->showOnTableRow()
 				->canRun(fn ($request) => $request->user()->hasRole('Admin'))
