@@ -1,5 +1,3 @@
-/node_modules
-/public/hot
 /public/storage
 /public/vendor/nova
 /storage/*.key
@@ -18,3 +16,5 @@ _ide_helper.php
 /storage/api-docs
 nova.zip
 .DS_Store
+# Generated Swagger API docs
+storage/api-docs
