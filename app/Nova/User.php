@@ -6,7 +6,7 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use App\Nova\Actions\NotifyAction;
-use Laravel\Nova\Fields\{ID, MorphToMany, Password, Text};
+use Laravel\Nova\Fields\{BelongsToMany, ID, MorphToMany, Password, Text};
 use Vyuldashev\NovaPermission\{Permission, PermissionBooleanGroup, Role, RoleSelect};
 
 class User extends Resource
@@ -45,6 +45,8 @@ class User extends Resource
 		return [
 			ID::make()->sortable(),
 
+			BelongsToMany::make(__('Games'), 'games', Game::class)->canSee(fn ($request) => !$request->user()->hasRole('Member')),
+
 			Text::make('Username')
 				->sortable()
 				->rules('required', 'max:255'),
@@ -61,8 +63,8 @@ class User extends Resource
 				->creationRules('required', 'string', 'min:8')
 				->updateRules('nullable', 'string', 'min:8'),
 
-			MorphToMany::make('Roles', 'roles', Role::class),
-			MorphToMany::make('Permissions', 'permissions', Permission::class),
+			MorphToMany::make('Roles', 'roles', Role::class)->canSee(fn ($request) => $request->user()->hasRole('Admin')),
+			MorphToMany::make('Permissions', 'permissions', Permission::class)->canSee(fn ($request) => $request->user()->hasRole('Admin')),
 
 			PermissionBooleanGroup::make('Permissions')->canSee(fn ($request) => $request->user()->hasRole('Admin')),
 

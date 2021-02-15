@@ -13,6 +13,6 @@ class Game extends Model
 
 	public function boosters()
 	{
-		return $this->belongsToMany(User::class, 'users', 'game_id', 'booster_id');
+		return $this->belongsToMany(User::class, 'booster_game', 'game_id', 'booster_id');
 	}
 }
