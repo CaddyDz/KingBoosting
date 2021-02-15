@@ -11,7 +11,7 @@ use Laravel\Nova\Fields\ActionFields;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class MarkOrderAsCompleted extends Action implements ShouldQueue
+class ContinueOrder extends Action implements ShouldQueue
 {
 	use InteractsWithQueue, Queueable;
 
@@ -25,18 +25,8 @@ class MarkOrderAsCompleted extends Action implements ShouldQueue
 	public function handle(ActionFields $fields, Collection $orders)
 	{
 		foreach ($orders as $order) {
-			$order->status = 'completed';
+			$order->status = 'progress';
 			$order->save();
 		}
-	}
-
-	/**
-	 * Get the fields available on the action.
-	 *
-	 * @return array
-	 */
-	public function fields(): array
-	{
-		return [];
 	}
 }

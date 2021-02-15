@@ -15,8 +15,8 @@ use Superlatif\NovaTagInput\Tags;
 use App\Models\Order as ModelsOrder;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use App\Nova\Filters\{OrderFilter, OrderServiceFilter};
-use Laravel\Nova\Fields\{BelongsTo, ID, KeyValue, Number, Select, Stack, Text};
-use App\Nova\Actions\{AssignOrder, EditOrderLoginDetails, MarkOrderAsCompleted, MarkOrderAsPaid, MarkOrderProgress, PauseOrder, ReleaseOrder};
+use Laravel\Nova\Fields\{BelongsTo, ID, Number, Select, Stack, Text};
+use App\Nova\Actions\{AssignOrder, ContinueOrder, EditOrderLoginDetails, CloseOrder, MarkOrderAsPaid, PauseOrder, ReleaseOrder};
 
 class Order extends Resource
 {
@@ -258,7 +258,7 @@ class Order extends Resource
 				->showOnTableRow()
 				->canRun(fn ($request) => $request->user()->hasRole('Admin'))
 				->canSee(fn ($request) => $request->user()->hasRole('Admin')),
-			(new MarkOrderAsCompleted)
+			(new CloseOrder)
 				->showOnTableRow()
 				->canSee(fn ($request) => !$request->user()->hasRole('Member') && $this->status != 'paid')
 				->canRun(fn ($request) => !$request->user()->hasRole('Member') && $this->status != 'paid'),
@@ -269,9 +269,9 @@ class Order extends Resource
 			(new AssignOrder)
 				->showOnTableRow()
 				->canSee(fn ($request) => $request->user()->hasRole('Admin')),
-			(new MarkOrderProgress)
+			(new ContinueOrder)
 				->showOnTableRow()
-				->canSee(fn ($request) => $request->user()->hasRole('Admin') && $this->status == 'completed'),
+				->canSee(fn ($request) => $request->user()->hasRole('Admin')),
 		];
 	}
 }
