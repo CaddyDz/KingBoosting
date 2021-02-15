@@ -142,7 +142,19 @@ class Order extends Resource
 				->canSee(fn ($request) => $request->user()->hasRole('Admin'))
 				->hideFromIndex(),
 			// Order details in colored pills
-			Tags::make(__("Order details"), fn () => $this->options),
+			Tags::make(__("Order details"), 'options')
+				->help("Press ENTER to add an option")
+				->placeholder("Add a new option")
+				->allowEditTags(true)
+				->addOnKeys([13, ':', ';', ',']) // 13 = Enter key
+				->autocompleteItems([
+					'Arizona',
+					'California',
+					'Colorado',
+					'Michigan',
+					'New York',
+					'Texas',
+				]),
 			Text::make(__('Price'), 'price')
 				->displayUsing(fn ($price) => '$' . $price)
 				->hideFromDetail()
@@ -174,7 +186,6 @@ class Order extends Resource
 			Number::make(__('Share'), 'share')
 				->displayUsing(fn ($share) => '%' . $share)
 				->canSee(fn ($request) => $request->user()->hasRole('Admin')),
-			KeyValue::make(__('Details'), 'options')->onlyOnForms(),
 			Text::make(__('Champion'), 'champion'),
 		];
 	}
