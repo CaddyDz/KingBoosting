@@ -47,6 +47,8 @@ class User extends Resource
 
 			BelongsToMany::make(__('Games'), 'games', Game::class)->canSee(fn ($request) => !$request->user()->hasRole('Member')),
 
+			BelongsToMany::make(__('Servers'), 'servers', Server::class)->canSee(fn ($request) => !$request->user()->hasRole('Member')),
+
 			Text::make('Username')
 				->sortable()
 				->rules('required', 'max:255'),

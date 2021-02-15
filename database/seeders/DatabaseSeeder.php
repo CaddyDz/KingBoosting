@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
 		app()->isLocal() ? $this->call([
 			UserSeeder::class,
 			GameSeeder::class,
+			ServerSeeder::class,
 			OrderSeeder::class,
 		]) : $this->call(BaseSeeder::class);
 	}

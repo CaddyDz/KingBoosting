@@ -97,4 +97,9 @@ class UserPolicy
 	{
 		return $user->hasRole('Admin');
 	}
+
+	public function attachAnyServer(User $user, User $model): bool
+	{
+		return $user->hasRole('Admin');
+	}
 }

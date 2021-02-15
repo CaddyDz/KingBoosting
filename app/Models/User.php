@@ -73,4 +73,9 @@ class User extends Authenticatable
 	{
 		return $this->belongsToMany(Game::class, 'booster_game', 'booster_id', 'game_id');
 	}
+
+	public function servers()
+	{
+		return $this->belongsToMany(Server::class, 'booster_server', 'booster_id', 'server_id');
+	}
 }
