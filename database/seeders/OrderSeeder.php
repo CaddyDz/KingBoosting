@@ -28,7 +28,7 @@ class OrderSeeder extends Seeder
 				'Solo/Duo',
 				'offline',
 			],
-			'price' => 32.967,
+			'price' => 30,
 			'summoner' => 'caddydz',
 			'booster_id' => User::role('Booster')->first()->id,
 			'client_id' => User::role('Member')->first()->id,
