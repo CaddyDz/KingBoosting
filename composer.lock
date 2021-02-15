@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b90cb3dd19f1bfe0617b95238d91670f",
+    "content-hash": "cee75bd6535f07592bdea43e74927927",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -706,6 +706,60 @@
                 "source": "https://github.com/dcasia/collapsible-resource-manager/tree/v1.2.6"
             },
             "time": "2020-07-22T12:26:33+00:00"
+        },
+        {
+            "name": "digital-creative/resource-navigation-tab",
+            "version": "v1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dcasia/resource-navigation-tab.git",
+                "reference": "cbcd1940653569b91133a247b1871233fd64d9dc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dcasia/resource-navigation-tab/zipball/cbcd1940653569b91133a247b1871233fd64d9dc",
+                "reference": "cbcd1940653569b91133a247b1871233fd64d9dc",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/nova": "^3.12.0",
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "DigitalCreative\\ResourceNavigationTab\\ResourceNavigationTabServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "DigitalCreative\\ResourceNavigationTab\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Rafael Milewski"
+                }
+            ],
+            "description": "Organize your long pile of tables and relationships into structured pages.",
+            "keywords": [
+                "card",
+                "field",
+                "laravel",
+                "nova",
+                "tabs"
+            ],
+            "support": {
+                "issues": "https://github.com/dcasia/resource-navigation-tab/issues",
+                "source": "https://github.com/dcasia/resource-navigation-tab/tree/v1.1.0"
+            },
+            "time": "2020-10-09T11:09:22+00:00"
         },
         {
             "name": "dillingham/nova-button",

@@ -6,11 +6,14 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use App\Nova\Actions\NotifyAction;
-use Laravel\Nova\Fields\{BelongsToMany, ID, MorphToMany, Password, Text};
 use Vyuldashev\NovaPermission\{Permission, PermissionBooleanGroup, Role, RoleSelect};
+use Laravel\Nova\Fields\{BelongsToMany, HasMany, ID, MorphToMany, Password, Text, Textarea};
+use DigitalCreative\ResourceNavigationTab\{HasResourceNavigationTabTrait, ResourceNavigationTab};
 
 class User extends Resource
 {
+	use HasResourceNavigationTabTrait;
+
 	/**
 	 * The model the resource corresponds to.
 	 *
@@ -43,34 +46,50 @@ class User extends Resource
 	public function fields(Request $request)
 	{
 		return [
-			ID::make()->sortable(),
+			ResourceNavigationTab::make([
+				'label' => 'Profile',
+				'behaveAsPanel' => true,
+				'fields' => [
+					ID::make()->sortable(),
 
-			BelongsToMany::make(__('Games'), 'games', Game::class)->canSee(fn ($request) => !$request->user()->hasRole('Member')),
+					BelongsToMany::make(__('Games'), 'games', Game::class)->canSee(fn ($request) => !$request->user()->hasRole('Member')),
 
-			BelongsToMany::make(__('Servers'), 'servers', Server::class)->canSee(fn ($request) => !$request->user()->hasRole('Member')),
+					BelongsToMany::make(__('Servers'), 'servers', Server::class)->canSee(fn ($request) => !$request->user()->hasRole('Member')),
 
-			Text::make('Username')
-				->sortable()
-				->rules('required', 'max:255'),
+					Text::make('Username')
+						->sortable()
+						->rules('required', 'max:255'),
 
-			Text::make('Email')
-				->sortable()
-				->rules('required', 'email', 'max:254')
-				->creationRules('unique:users,email')
-				->updateRules('unique:users,email,{{resourceId}}')
-				->readonly(fn ($req) => !$req->user()->hasRole('Admin')),
+					Text::make('Email')
+						->sortable()
+						->rules('required', 'email', 'max:254')
+						->creationRules('unique:users,email')
+						->updateRules('unique:users,email,{{resourceId}}')
+						->readonly(fn ($req) => !$req->user()->hasRole('Admin')),
 
-			Password::make('Password')
-				->onlyOnForms()
-				->creationRules('required', 'string', 'min:8')
-				->updateRules('nullable', 'string', 'min:8'),
+					Password::make('Password')
+						->onlyOnForms()
+						->creationRules('required', 'string', 'min:8')
+						->updateRules('nullable', 'string', 'min:8'),
 
-			MorphToMany::make('Roles', 'roles', Role::class)->canSee(fn ($request) => $request->user()->hasRole('Admin')),
-			MorphToMany::make('Permissions', 'permissions', Permission::class)->canSee(fn ($request) => $request->user()->hasRole('Admin')),
+					MorphToMany::make('Roles', 'roles', Role::class)->canSee(fn ($request) => $request->user()->hasRole('Admin')),
+					MorphToMany::make('Permissions', 'permissions', Permission::class)->canSee(fn ($request) => $request->user()->hasRole('Admin')),
 
-			PermissionBooleanGroup::make('Permissions')->canSee(fn ($request) => $request->user()->hasRole('Admin')),
+					PermissionBooleanGroup::make('Permissions')->canSee(fn ($request) => $request->user()->hasRole('Admin')),
 
-			RoleSelect::make('Role', 'roles')->canSee(fn ($request) => $request->user()->hasRole('Admin')),
+					RoleSelect::make('Role', 'roles')->canSee(fn ($request) => $request->user()->hasRole('Admin')),
+				]
+			]),
+			ResourceNavigationTab::make(['label' => 'Invoices']),
+			ResourceNavigationTab::make(['label' => 'Employee Profile']),
+			ResourceNavigationTab::make([
+				'label' => 'Payout',
+				'resourceTableTitle' => 'Payout',
+				'behaveAsPanel' => true,
+				'fields' => [
+					HasMany::make(__('Orders'), 'orders', Payout::class),
+				],
+			]),
 		];
 	}
 
