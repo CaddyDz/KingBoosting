@@ -35,7 +35,7 @@
 		"timothyasp/nova-badge-field": "^1.0",
 		"titasgailius/search-relations": "^1.0",
 		"vmitchell85/nova-links": "^1.0",
-		"vyuldashev/nova-permission": "^2.9"
+		"vyuldashev/nova-permission": "^2.11"
 	},
 	"require-dev": {
 		"barryvdh/laravel-debugbar": "^3.5",
