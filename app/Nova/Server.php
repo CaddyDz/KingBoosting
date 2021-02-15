@@ -4,10 +4,8 @@ declare(strict_types=1);
 
 namespace App\Nova;
 
-use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\Text;
-
+use Laravel\Nova\Fields\{ID, Text};
 class Server extends Resource
 {
 	/**
