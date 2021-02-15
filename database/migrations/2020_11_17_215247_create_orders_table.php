@@ -38,6 +38,7 @@ class CreateOrdersTable extends Migration
 			$table->decimal('share', 4, 2)->default(50.00);
 			$table->text('comment')->nullable();
 			$table->string('champion')->nullable();
+			$table->string('transaction_id')->nullable();
 			$table->timestamps();
 		});
 	}

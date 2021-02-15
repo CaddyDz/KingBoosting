@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Providers;
 
 use App\Nova\Dashboards\Rules;
+use Tightenco\NovaStripe\NovaStripe;
 use Bolechen\NovaActivitylog\NovaActivitylog;
 use Illuminate\Support\Facades\{Gate, Route};
 use App\Http\Controllers\Nova\LoginController;
@@ -153,6 +154,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 			new NovaActivitylog(),
 			NovaPermissionTool::make()->canSee(fn () => true),
 			NovaNotifications::make(),
+			new NovaStripe(),
 		];
 	}
 

@@ -187,6 +187,9 @@ class Order extends Resource
 				->displayUsing(fn ($share) => '%' . $share)
 				->canSee(fn ($request) => $request->user()->hasRole('Admin')),
 			Text::make(__('Champion'), 'champion'),
+			Text::make('Transaction Details', function () {
+				return "<a href='/nova-stripe/charge/{$this->transaction_id}'>{$this->transaction_id}</a>";
+			})->asHtml()->hideFromIndex(),
 		];
 	}
 
@@ -256,7 +259,7 @@ class Order extends Resource
 				->canSee(fn ($request) => (
 					($request->user()->is($this->client) || $request->user()->hasRole('Moderator'))
 					&& ($this->status == 'pending' || $this->status == 'progress'))
-					|| ($request->user()->hasRole('Admin'))),
+					|| $request->user()->hasRole('Admin')),
 			(new MarkOrderAsPaid)
 				->showOnTableRow()
 				->canRun(fn ($request) => $request->user()->hasRole('Admin'))

@@ -24,22 +24,22 @@ class OrdersController extends Controller
 	{
 		// Set your secret key. Remember to switch to your live secret key in production!
 		// See your keys here: https://dashboard.stripe.com/account/apikeys
-		\Stripe\Stripe::setApiKey('sk_test_fvYVXcTxZMYsXqsy7fK7VLOH003D2eLbhf');
+		\Stripe\Stripe::setApiKey(config('services.stripe.secret'));
 
 		try {
-			\Stripe\PaymentIntent::create([
+			$intent = \Stripe\PaymentIntent::create([
 				'amount' => round($request->price * 100),
 				'currency' => 'eur',
 				// Verify your integration in this guide by including this parameter
 				'metadata' => ['integration_check' => 'accept_a_payment'],
 			]);
-			Charge::create([
+			$charge = Charge::create([
 				"amount" => round($request->price * 100),
 				"currency" => "eur",
 				"source" => $request->token,
 				"description" => "Charge for " . auth()->user()->email,
 			]);
-			$order = $this->createOrder($request);
+			$order = $this->createOrder($request, $charge->id);
 			if ($request->booster) { // if member have chosen a booster
 				$booster = User::where('username', $request->booster)->firstOrFail(); // Get that booster model
 				$order->booster_id = $booster->id; // Assign the order to them
@@ -51,7 +51,7 @@ class OrdersController extends Controller
 			}
 			// Send receipt to client
 			try {
-				Mail::to($order->client)->send(new Receipt($order));
+				// Mail::to($order->client)->send(new Receipt($order));
 			} catch (Swift_TransportException $exception) {
 				logger()->error($exception->getMessage());
 				return response([
@@ -70,7 +70,7 @@ class OrdersController extends Controller
 		}
 	}
 
-	private function createOrder(OrderRequest $request): Order
+	private function createOrder(OrderRequest $request, string $transaction_id): Order
 	{
 		return Order::create([
 			'purchase' => $request->purchase,
@@ -80,6 +80,7 @@ class OrdersController extends Controller
 			'options' => $request->options,
 			'price' => $request->price,
 			'comment' => $request->comment,
+			'transaction_id' => $transaction_id,
 		]);
 	}
 }

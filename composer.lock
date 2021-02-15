@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fe9c046ea5792c8b9e35a59191827d51",
+    "content-hash": "b90cb3dd19f1bfe0617b95238d91670f",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -8525,6 +8525,60 @@
                 }
             ],
             "time": "2021-01-27T10:01:46+00:00"
+        },
+        {
+            "name": "tightenco/nova-stripe",
+            "version": "v0.2.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tighten/nova-stripe.git",
+                "reference": "00cef6bd9c8d5bf74f42ad1a98839bb2aba00780"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tighten/nova-stripe/zipball/00cef6bd9c8d5bf74f42ad1a98839bb2aba00780",
+                "reference": "00cef6bd9c8d5bf74f42ad1a98839bb2aba00780",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.0",
+                "stripe/stripe-php": ">=5.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Tightenco\\NovaStripe\\ToolServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Tightenco\\NovaStripe\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Samantha Geitz",
+                    "email": "samantha@tighten.co"
+                }
+            ],
+            "description": "A tool to create a quick Stripe dashboard in your Laravel Nova admin panels",
+            "keywords": [
+                "laravel",
+                "nova",
+                "stripe",
+                "tightenco"
+            ],
+            "support": {
+                "issues": "https://github.com/tighten/nova-stripe/issues",
+                "source": "https://github.com/tighten/nova-stripe/tree/v0.2.4"
+            },
+            "time": "2019-11-11T13:30:09+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
