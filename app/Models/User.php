@@ -59,6 +59,11 @@ class User extends Authenticatable
 		'email_verified_at' => 'datetime',
 	];
 
+	public function payouts()
+	{
+		return $this->hasMany(Order::class, 'booster_id')->where('status', 'completed');
+	}
+
 	public function orders()
 	{
 		return $this->hasMany(Order::class, 'client_id');
