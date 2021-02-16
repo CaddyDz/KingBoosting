@@ -73,7 +73,7 @@ class User extends Resource
 						->updateRules('nullable', 'string', 'min:8'),
 
 					Boolean::make(__('Visible'), 'visible')
-						->readonly(fn ($request) => $request->user()->can('Change visibility')),
+						->readonly(fn ($request) => !$request->user()->can('Change visibility')),
 
 					MorphToMany::make('Roles', 'roles', Role::class)->canSee(fn ($request) => $request->user()->hasRole('Admin')),
 					MorphToMany::make('Permissions', 'permissions', Permission::class)->canSee(fn ($request) => $request->user()->hasRole('Admin')),

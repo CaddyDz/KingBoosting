@@ -13,6 +13,7 @@ class BoostersController extends Controller
 	{
 		// Returns only users with the role 'Booster'
 		$boostersNames = User::role('Booster')
+			->where('visible', true)
 			->select('username')
 			->pluck('username');
 		return $boostersNames;
