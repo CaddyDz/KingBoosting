@@ -275,7 +275,8 @@ class Order extends Resource
 				->canSee(fn ($request) => $request->user()->hasRole('Admin')),
 			(new ContinueOrder)
 				->showOnTableRow()
-				->canSee(fn ($request) => (!$request->user()->hasRole('Member') && $this->status != 'paid') || $request->user()->hasRole('Admin')),
+				->canSee(fn ($request) => !$request->user()->hasRole('Member') && $this->status != 'paid')
+				->canRun(fn ($request) => !$request->user()->hasRole('Member')),
 		];
 	}
 }
