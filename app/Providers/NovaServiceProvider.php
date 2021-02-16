@@ -154,7 +154,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 			new NovaActivitylog(),
 			NovaPermissionTool::make()->canSee(fn () => true),
 			NovaNotifications::make(),
-			new NovaStripe(),
+			NovaStripe::make()->canSee(fn ($request) => $request->user()->hasRole('Admin')),
 		];
 	}
 
