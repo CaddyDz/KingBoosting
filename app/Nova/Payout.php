@@ -49,9 +49,7 @@ class Payout extends Order
 			ID::make(__('ID'), 'id')->sortable()->hideFromDetail(),
 			Text::make(__('Purchase'), fn (): string => $this->purchase . '</br>' . country_flag($this->client->country) . ' ' . $this->service)->asHtml()->onlyOnIndex(),
 			Text::make(__('Price'), fn () => $this->price * $this->share / 100)
-				->displayUsing(fn ($price) => '$' . $price)
-				->hideFromDetail()
-				->canSee(fn ($request) => $request->user()->hasRole('Booster')),
+				->displayUsing(fn ($price) => '$' . $price),
 		];
 	}
 
