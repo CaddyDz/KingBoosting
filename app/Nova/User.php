@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace App\Nova;
 
 use Illuminate\Http\Request;
-use App\Nova\Actions\NotifyAction;
 use Vyuldashev\NovaPermission\{Permission, PermissionBooleanGroup, Role, RoleSelect};
-use Laravel\Nova\Fields\{BelongsToMany, HasMany, ID, MorphToMany, Password, Text, Textarea};
+use App\Nova\Actions\{AllowChangingVisibility, DisallowChangingVisibility, NotifyAction};
 use DigitalCreative\ResourceNavigationTab\{HasResourceNavigationTabTrait, ResourceNavigationTab};
+use Laravel\Nova\Fields\{BelongsToMany, Boolean, HasMany, ID, MorphToMany, Password, Text, Textarea};
 
 class User extends Resource
 {
@@ -72,6 +72,9 @@ class User extends Resource
 						->creationRules('required', 'string', 'min:8')
 						->updateRules('nullable', 'string', 'min:8'),
 
+					Boolean::make(__('Visible'), 'visible')
+						->readonly(fn ($request) => $request->user()->can('Change visibility')),
+
 					MorphToMany::make('Roles', 'roles', Role::class)->canSee(fn ($request) => $request->user()->hasRole('Admin')),
 					MorphToMany::make('Permissions', 'permissions', Permission::class)->canSee(fn ($request) => $request->user()->hasRole('Admin')),
 
@@ -87,7 +90,7 @@ class User extends Resource
 				'resourceTableTitle' => 'Payout',
 				'behaveAsPanel' => true,
 				'fields' => [
-					HasMany::make(__('Orders'), 'orders', Payout::class),
+					HasMany::make(__('Orders'), 'payouts', Payout::class),
 				],
 			]),
 		];
@@ -149,6 +152,12 @@ class User extends Resource
 				->confirmButtonText(__('Send'))
 				->cancelButtonText(__('Cancel'))
 				->canSee(fn ($request) => $request->user()->hasRole('Admin'))->showOnTableRow(),
+
+			(new AllowChangingVisibility())
+				->canSee(fn ($request) => $request->user()->hasRole('Admin')),
+
+			(new DisallowChangingVisibility())
+				->canSee(fn ($request) => $request->user()->hasRole('Admin')),
 		];
 	}
 }

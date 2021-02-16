@@ -26,6 +26,7 @@ class CreateUsersTable extends Migration
 			$table->string('country');
 			$table->boolean('coach')->default(false);
 			$table->decimal('coaching_price')->nullable();
+			$table->boolean('visible')->default(true);
 			$table->rememberToken();
 			$table->timestamps();
 		});

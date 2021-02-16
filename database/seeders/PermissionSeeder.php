@@ -12,6 +12,7 @@ use Spatie\Permission\PermissionRegistrar;
 class PermissionSeeder extends Seeder
 {
 	use Permissions;
+
 	/**
 	 * Run the database seeds.
 	 *
@@ -21,10 +22,8 @@ class PermissionSeeder extends Seeder
 	{
 		// Reset cached roles and permissions
 		app()[PermissionRegistrar::class]->forgetCachedPermissions();
-		foreach ($this->permissions as $group => $permissions) {
-			foreach ($permissions as $permission) {
-				Permission::create(['name' => $permission]);
-			}
+		foreach ($this->permissions as $permission) {
+			Permission::create(['name' => $permission]);
 		}
 	}
 }
