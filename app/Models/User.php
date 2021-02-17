@@ -76,6 +76,13 @@ class User extends Authenticatable
 		return $this->hasMany(Order::class, 'booster_id');
 	}
 
+	public function fines()
+	{
+		if (!$this->hasRole('Member')) {
+			return $this->hasMany(Fine::class, 'booster_id');
+		}
+	}
+
 	public function games()
 	{
 		return $this->belongsToMany(Game::class, 'booster_game', 'booster_id', 'game_id');

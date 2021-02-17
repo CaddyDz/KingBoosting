@@ -75,12 +75,17 @@ class User extends Resource
 					Boolean::make(__('Visible'), 'visible')
 						->readonly(fn ($request) => !$request->user()->can('Change visibility')),
 
-					MorphToMany::make('Roles', 'roles', Role::class)->canSee(fn ($request) => $request->user()->hasRole('Admin')),
-					MorphToMany::make('Permissions', 'permissions', Permission::class)->canSee(fn ($request) => $request->user()->hasRole('Admin')),
+					MorphToMany::make('Roles', 'roles', Role::class)
+						->canSee(fn ($request) => $request->user()->hasRole('Admin')),
 
-					PermissionBooleanGroup::make('Permissions')->canSee(fn ($request) => $request->user()->hasRole('Admin')),
+					MorphToMany::make('Permissions', 'permissions', Permission::class)
+						->canSee(fn ($request) => $request->user()->hasRole('Admin')),
 
-					RoleSelect::make('Role', 'roles')->canSee(fn ($request) => $request->user()->hasRole('Admin')),
+					PermissionBooleanGroup::make('Permissions')
+						->canSee(fn ($request) => $request->user()->hasRole('Admin')),
+
+					RoleSelect::make('Role', 'roles')
+						->canSee(fn ($request) => $request->user()->hasRole('Admin')),
 				]
 			]),
 			ResourceNavigationTab::make(['label' => 'Invoices']),
@@ -91,6 +96,8 @@ class User extends Resource
 				'behaveAsPanel' => true,
 				'fields' => [
 					HasMany::make(__('Orders'), 'payouts', Payout::class),
+					HasMany::make(__('Fines'), 'fines', Fine::class),
+					Text::make(__('Total'), fn () => $this->payouts->reduce(fn ($key, $payout) => $payout->price * $payout->share / 100, 0)),
 				],
 			]),
 		];

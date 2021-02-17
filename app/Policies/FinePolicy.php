@@ -19,7 +19,7 @@ class FinePolicy
 	 */
 	public function viewAny(User $user): bool
 	{
-		return $user->hasRole('Admin');
+		return !$user->hasRole('Member');
 	}
 
 	/**
@@ -42,7 +42,7 @@ class FinePolicy
 	 */
 	public function create(User $user): bool
 	{
-		return false;
+		return $user->hasRole('Admin');
 	}
 
 	/**
@@ -54,7 +54,7 @@ class FinePolicy
 	 */
 	public function update(User $user, Fine $fine): bool
 	{
-		return false;
+		return $user->hasRole('Admin');
 	}
 
 	/**
@@ -66,7 +66,7 @@ class FinePolicy
 	 */
 	public function delete(User $user, Fine $fine): bool
 	{
-		return false;
+		return $user->hasRole('Admin');
 	}
 
 	/**

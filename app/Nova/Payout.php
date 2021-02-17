@@ -52,15 +52,4 @@ class Payout extends Order
 				->displayUsing(fn ($price) => '$' . $price),
 		];
 	}
-
-	/**
-	 * Get the actions available for the resource.
-	 *
-	 * @param \Illuminate\Http\Request $request
-	 * @return array
-	 */
-	public function actions(Request $request): array
-	{
-		return [];
-	}
 }
