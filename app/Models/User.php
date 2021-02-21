@@ -61,9 +61,7 @@ class User extends Authenticatable
 
 	public function payouts()
 	{
-		if (!$this->hasRole('Member')) {
-			return $this->hasMany(Order::class, 'booster_id')->where('status', 'completed');
-		}
+		return $this->hasMany(Order::class, 'booster_id')->where('status', 'completed');
 	}
 
 	public function orders()
