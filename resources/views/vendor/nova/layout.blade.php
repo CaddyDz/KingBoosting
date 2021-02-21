@@ -28,7 +28,7 @@
 		<div v-cloak class="flex min-h-screen">
 			<!-- Sidebar -->
 			<collapsible-sidebar class="min-h-screen flex-none pt-header min-h-screen w-sidebar bg-grad-sidebar px-6" persist>
-				<a href="{{ config('sanctum.stateful')[0] }}">
+				<a href="{{ \Laravel\Nova\Nova::path() }}">
 					<div class="absolute pin-t pin-l pin-r bg-logo flex items-center w-sidebar h-header px-6 text-white">
 						@include('nova::partials.logo')
 					</div>
