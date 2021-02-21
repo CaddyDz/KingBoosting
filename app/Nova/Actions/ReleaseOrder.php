@@ -29,14 +29,4 @@ class ReleaseOrder extends Action implements ShouldQueue
 			$order->save(); // Booster is removed by the model observer.
 		}
 	}
-
-	/**
-	 * Get the fields available on the action.
-	 *
-	 * @return array
-	 */
-	public function fields(): array
-	{
-		return [];
-	}
 }

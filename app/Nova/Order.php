@@ -268,7 +268,7 @@ class Order extends Resource
 				->canRun(fn ($request) => !$request->user()->hasRole('Member') && ($this->status != 'paid' && $this->status != 'completed')),
 			(new ReleaseOrder)
 				->showOnTableRow()
-				->canSee(fn ($request) => !$request->user()->hasRole('Member') && ($this->status == 'progress' || $this->status == 'paused'))
+				->canSee(fn ($request) => !$request->user()->hasRole('Member'))
 				->canRun(fn ($request) => !$request->user()->hasRole('Member')),
 			(new AssignOrder)
 				->showOnTableRow()
