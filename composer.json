@@ -20,7 +20,7 @@
 		"idf/nova-html-card": "^1.2",
 		"laravel/framework": "^8.25",
 		"laravel/helpers": "^1.4",
-		"laravel/nova": "*",
+		"laravel/nova": "~3.0",
 		"laravel/sanctum": "^2.8",
 		"laravel/tinker": "^2.5",
 		"mirovit/nova-notifications": "^1.0",
@@ -94,8 +94,8 @@
 	},
 	"repositories": [
 		{
-			"type": "path",
-			"url": "./nova"
+			"type": "composer",
+			"url": "https://nova.laravel.com"
 		},
 		{
 			"type": "path",
