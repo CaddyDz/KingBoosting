@@ -16,6 +16,7 @@ class ServerTest extends TestCase
 	 */
 	public function test_example()
 	{
+		$this->login();
 		$response = $this->get('/');
 
 		$response->assertStatus(200);
