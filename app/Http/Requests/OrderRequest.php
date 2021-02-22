@@ -28,10 +28,10 @@ class OrderRequest extends FormRequest
 		return [
 			'booster' => 'nullable|exists:users,username',
 			'purchase' => 'required|string|min:3|max:100',
-			'service' => 'required|string|in:Division Boosting,Ranked Win Boosting,Duo Queue Boosting,Placement Boosting,Champion Mastery,Clash Boosting,Normal matches,Account leveling,Rank Boosting,Placement Matches,Competitive Win Boosting,Unrated Matches,Ranked Win Boosting,Rank Boosting,Placement Matches,Normal Matches',
+			'service' => 'required|string|in:Division Boosting,Ranked Win Boosting,Duo Queue Boosting,Placement Boosting,Champion Mastery,Clash Boosting,Normal matches,Account leveling,Rank Boosting,Placement Matches,Competitive Win Boosting,Valorant Unrated Matches,Ranked Win Boosting,Rank Boosting,Placement Matches,Normal Matches',
 			'nickname' => 'required|string|min:3|max:16',
 			'server' => 'required|string|in:North America,EU-West,EU-Nordic & East,Turkey,Russia,Brazil,Latin America North,Latin America South,Oceania,PBE',
-			'options' => 'required|array',
+			'options' => 'nullable|array',
 			'comment' => 'nullable|string|min:3|max:1000'
 		];
 	}
