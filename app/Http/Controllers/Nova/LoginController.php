@@ -18,7 +18,7 @@ class LoginController extends Controller
 		if (app()->isLocal()) {
 			return parent::showLoginForm();
 		}
-		return redirect()->away(config('sanctum.stateful')[0]);
+		return redirect()->away(env('FRONTEND_URL'));
 	}
 
 	/**
