@@ -26,7 +26,7 @@ class ApplicationRequest extends FormRequest
 	public function rules(): array
 	{
 		return [
-			'summoner' => 'bail|required|string|min:5|max:50|unique:applications',
+			'summoner' => 'bail|required|string|max:50|unique:applications',
 			'email' => 'bail|required|email|unique:applications',
 			'country' => 'bail|required|string|min:2|max:50',
 			'discord_skype' => 'bail|required|string|unique:applications',
