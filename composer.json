@@ -4,7 +4,7 @@
 	"require": {
 		"php": "^7.3|^8.0",
 		"awesome-nova/filter-card": "^1.0",
-		"bolechen/nova-activitylog": "^0.2.2",
+		"bolechen/nova-activitylog": "^0.3.0",
 		"coreproc/nova-echo": "^0.2.0",
 		"darkaonline/l5-swagger": "^8.0",
 		"david-griffiths/nova-dark-theme": "^1.0",
