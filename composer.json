@@ -17,7 +17,7 @@
 		"fruitcake/laravel-cors": "^2.0",
 		"gregoriohc/laravel-nova-theme-responsive": "^0.8.1",
 		"guzzlehttp/guzzle": "^7.0.1",
-		"idf/nova-html-card": "^1.2",
+		"idf/nova-html-card": "^2.0",
 		"laravel/framework": "^8.25",
 		"laravel/helpers": "^1.4",
 		"laravel/nova": "~3.0",

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "82866d3fdf5585aefd4ef21122025d71",
+    "content-hash": "ac906d791162bb4436e6863d431e1350",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2268,16 +2268,16 @@
         },
         {
             "name": "idf/nova-html-card",
-            "version": "1.3.1",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/InteractionDesignFoundation/nova-html-card.git",
-                "reference": "3d7a1921b3765a00faa5c64049289aed5222cb54"
+                "reference": "7b1447661b34fda2ce9d2608957853a47818946b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/InteractionDesignFoundation/nova-html-card/zipball/3d7a1921b3765a00faa5c64049289aed5222cb54",
-                "reference": "3d7a1921b3765a00faa5c64049289aed5222cb54",
+                "url": "https://api.github.com/repos/InteractionDesignFoundation/nova-html-card/zipball/7b1447661b34fda2ce9d2608957853a47818946b",
+                "reference": "7b1447661b34fda2ce9d2608957853a47818946b",
                 "shasum": ""
             },
             "require": {
@@ -2293,13 +2293,13 @@
             "extra": {
                 "laravel": {
                     "providers": [
-                        "IDF\\HtmlCard\\CardServiceProvider"
+                        "InteractionDesignFoundation\\HtmlCard\\CardServiceProvider"
                     ]
                 }
             },
             "autoload": {
                 "psr-4": {
-                    "IDF\\HtmlCard\\": "src/"
+                    "InteractionDesignFoundation\\HtmlCard\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -2317,10 +2317,10 @@
             ],
             "support": {
                 "issues": "https://github.com/InteractionDesignFoundation/nova-html-card/issues",
-                "source": "https://github.com/InteractionDesignFoundation/nova-html-card/tree/1.3.1"
+                "source": "https://github.com/InteractionDesignFoundation/nova-html-card/tree/2.0.0"
             },
             "abandoned": "interaction-design-foundation/nova-html-card",
-            "time": "2021-12-06T18:20:49+00:00"
+            "time": "2021-12-06T19:37:00+00:00"
         },
         {
             "name": "jean85/pretty-package-versions",
@@ -3152,16 +3152,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.1.9",
+            "version": "1.1.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "094defdb4a7001845300334e7c1ee2335925ef99"
+                "reference": "3239285c825c152bcc315fe0e87d6b55f5972ed1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/094defdb4a7001845300334e7c1ee2335925ef99",
-                "reference": "094defdb4a7001845300334e7c1ee2335925ef99",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/3239285c825c152bcc315fe0e87d6b55f5972ed1",
+                "reference": "3239285c825c152bcc315fe0e87d6b55f5972ed1",
                 "shasum": ""
             },
             "require": {
@@ -3234,7 +3234,7 @@
             ],
             "support": {
                 "issues": "https://github.com/thephpleague/flysystem/issues",
-                "source": "https://github.com/thephpleague/flysystem/tree/1.1.9"
+                "source": "https://github.com/thephpleague/flysystem/tree/1.1.10"
             },
             "funding": [
                 {
@@ -3242,7 +3242,7 @@
                     "type": "other"
                 }
             ],
-            "time": "2021-12-09T09:40:50+00:00"
+            "time": "2022-10-04T09:16:37+00:00"
         },
         {
             "name": "league/mime-type-detection",
@@ -5566,7 +5566,7 @@
         },
         {
             "name": "sitando/nova-chat",
-            "version": "dev-develop",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "./nova-components/NovaChat",
