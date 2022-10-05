@@ -14,7 +14,7 @@
 		"ebess/nova-collapsible-sidebar": "^0.1.2",
 		"ericlagarda/novalinkresource": "^1.0",
 		"fideloper/proxy": "^4.4",
-		"fruitcake/laravel-cors": "^2.0",
+		"fruitcake/laravel-cors": "^3.0",
 		"gregoriohc/laravel-nova-theme-responsive": "^0.8.1",
 		"guzzlehttp/guzzle": "^7.0.1",
 		"idf/nova-html-card": "^1.2",
