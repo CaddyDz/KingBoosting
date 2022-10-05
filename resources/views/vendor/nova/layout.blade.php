@@ -67,7 +67,7 @@
 	</div>
 
 	<script>
-		window.config = @json(\Laravel\ Nova\ Nova::jsonVariables(request()));
+		window.config = @json(\Laravel\Nova\Nova::jsonVariables(request()));
 	</script>
 
 	<!-- Scripts -->
