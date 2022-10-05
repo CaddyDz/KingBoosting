@@ -32,7 +32,7 @@
 		"stripe/stripe-php": "^7.66",
 		"superlatif/nova-tag-input": "^1.4",
 		"tightenco/nova-stripe": "^0.2.4",
-		"timothyasp/nova-badge-field": "^1.0",
+		"timothyasp/nova-badge-field": "^2.0",
 		"titasgailius/search-relations": "^1.0",
 		"vmitchell85/nova-links": "^1.0",
 		"vyuldashev/nova-permission": "^2.9"

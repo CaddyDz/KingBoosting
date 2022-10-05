@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "82866d3fdf5585aefd4ef21122025d71",
+    "content-hash": "8b0a2ff46af08b4e7ca8c3e0fbdd517c",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -5566,7 +5566,7 @@
         },
         {
             "name": "sitando/nova-chat",
-            "version": "dev-develop",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "./nova-components/NovaChat",
@@ -8980,20 +8980,23 @@
         },
         {
             "name": "timothyasp/nova-badge-field",
-            "version": "1.0.3",
+            "version": "v2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/timothyasp/nova-badge-field.git",
-                "reference": "5549f24bc155e7269daf63559476b77e2975eeab"
+                "reference": "3b4ae2cb26785d19f078dca68bdeff1705b891c8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/timothyasp/nova-badge-field/zipball/5549f24bc155e7269daf63559476b77e2975eeab",
-                "reference": "5549f24bc155e7269daf63559476b77e2975eeab",
+                "url": "https://api.github.com/repos/timothyasp/nova-badge-field/zipball/3b4ae2cb26785d19f078dca68bdeff1705b891c8",
+                "reference": "3b4ae2cb26785d19f078dca68bdeff1705b891c8",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1.0"
+            },
+            "require-dev": {
+                "laravel/nova": "~4.0"
             },
             "type": "library",
             "extra": {
@@ -9019,9 +9022,9 @@
             ],
             "support": {
                 "issues": "https://github.com/timothyasp/nova-badge-field/issues",
-                "source": "https://github.com/timothyasp/nova-badge-field/tree/1.0.3"
+                "source": "https://github.com/timothyasp/nova-badge-field/tree/v2.0.1"
             },
-            "time": "2019-11-03T21:57:56+00:00"
+            "time": "2022-06-23T21:35:36+00:00"
         },
         {
             "name": "titasgailius/search-relations",
