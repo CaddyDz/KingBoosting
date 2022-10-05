@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "82866d3fdf5585aefd4ef21122025d71",
+    "content-hash": "603d35aad0c639fceead6177449acee1",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -5566,7 +5566,7 @@
         },
         {
             "name": "sitando/nova-chat",
-            "version": "dev-develop",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "./nova-components/NovaChat",
@@ -6015,20 +6015,23 @@
         },
         {
             "name": "superlatif/nova-tag-input",
-            "version": "1.4.4",
+            "version": "4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/superlatif-io/nova-tag-input.git",
-                "reference": "e953417a114596f5dc4a8541aba78d1fccf8a7b4"
+                "reference": "e6b5a4451f5fd4ff6f0dee09d8bb256f8c91f8ef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/superlatif-io/nova-tag-input/zipball/e953417a114596f5dc4a8541aba78d1fccf8a7b4",
-                "reference": "e953417a114596f5dc4a8541aba78d1fccf8a7b4",
+                "url": "https://api.github.com/repos/superlatif-io/nova-tag-input/zipball/e6b5a4451f5fd4ff6f0dee09d8bb256f8c91f8ef",
+                "reference": "e6b5a4451f5fd4ff6f0dee09d8bb256f8c91f8ef",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1.0"
+            },
+            "require-dev": {
+                "laravel/nova": "^4.0"
             },
             "type": "library",
             "extra": {
@@ -6062,9 +6065,9 @@
             ],
             "support": {
                 "issues": "https://github.com/superlatif-io/nova-tag-input/issues",
-                "source": "https://github.com/superlatif-io/nova-tag-input/tree/1.4.4"
+                "source": "https://github.com/superlatif-io/nova-tag-input/tree/4.0"
             },
-            "time": "2021-11-08T22:24:19+00:00"
+            "time": "2022-08-24T13:06:37+00:00"
         },
         {
             "name": "swagger-api/swagger-ui",
