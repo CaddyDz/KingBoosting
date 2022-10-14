@@ -31,7 +31,7 @@
 		"stidges/laravel-country-flags": "^2.0",
 		"stripe/stripe-php": "^7.66",
 		"superlatif/nova-tag-input": "^1.4",
-		"tightenco/nova-stripe": "^0.2.4",
+		"tightenco/nova-stripe": "^2.0.5",
 		"timothyasp/nova-badge-field": "^1.0",
 		"titasgailius/search-relations": "^1.0",
 		"vmitchell85/nova-links": "^1.0",
