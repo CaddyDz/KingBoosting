@@ -5371,16 +5371,16 @@
         },
         {
             "name": "sentry/sentry",
-            "version": "3.8.1",
+            "version": "3.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/getsentry/sentry-php.git",
-                "reference": "5150776a0a9835c4ea56ff0ecd94e0a109b6c163"
+                "reference": "2fdbda9b3569df08dd4a300db8a563d0ec7241f9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/getsentry/sentry-php/zipball/5150776a0a9835c4ea56ff0ecd94e0a109b6c163",
-                "reference": "5150776a0a9835c4ea56ff0ecd94e0a109b6c163",
+                "url": "https://api.github.com/repos/getsentry/sentry-php/zipball/2fdbda9b3569df08dd4a300db8a563d0ec7241f9",
+                "reference": "2fdbda9b3569df08dd4a300db8a563d0ec7241f9",
                 "shasum": ""
             },
             "require": {
@@ -5425,7 +5425,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.8.x-dev"
+                    "dev-master": "3.10.x-dev"
                 }
             },
             "autoload": {
@@ -5459,7 +5459,7 @@
             ],
             "support": {
                 "issues": "https://github.com/getsentry/sentry-php/issues",
-                "source": "https://github.com/getsentry/sentry-php/tree/3.8.1"
+                "source": "https://github.com/getsentry/sentry-php/tree/3.10.0"
             },
             "funding": [
                 {
@@ -5471,7 +5471,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2022-09-21T11:01:17+00:00"
+            "time": "2022-10-19T09:28:02+00:00"
         },
         {
             "name": "sentry/sentry-laravel",
@@ -5566,7 +5566,7 @@
         },
         {
             "name": "sitando/nova-chat",
-            "version": "dev-develop",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "./nova-components/NovaChat",
