@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "82866d3fdf5585aefd4ef21122025d71",
+    "content-hash": "25ef2dcd1956f45f17a69648435ccc2f",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -5566,7 +5566,7 @@
         },
         {
             "name": "sitando/nova-chat",
-            "version": "dev-develop",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "./nova-components/NovaChat",
@@ -8873,33 +8873,39 @@
         },
         {
             "name": "tightenco/nova-stripe",
-            "version": "v0.2.4",
+            "version": "v2.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tighten/nova-stripe.git",
-                "reference": "00cef6bd9c8d5bf74f42ad1a98839bb2aba00780"
+                "reference": "810bd6f9b40e41917907f020700c41f908837889"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tighten/nova-stripe/zipball/00cef6bd9c8d5bf74f42ad1a98839bb2aba00780",
-                "reference": "00cef6bd9c8d5bf74f42ad1a98839bb2aba00780",
+                "url": "https://api.github.com/repos/tighten/nova-stripe/zipball/810bd6f9b40e41917907f020700c41f908837889",
+                "reference": "810bd6f9b40e41917907f020700c41f908837889",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1.0",
+                "php": "^7.4|^8.0|^8.1",
                 "stripe/stripe-php": ">=5.0"
+            },
+            "require-dev": {
+                "laravel/nova": "^4.0",
+                "orchestra/testbench": ">=3.6.x-dev",
+                "phpunit/phpunit": "9.5.*",
+                "tightenco/duster": "^0.3.2"
             },
             "type": "library",
             "extra": {
                 "laravel": {
                     "providers": [
-                        "Tightenco\\NovaStripe\\ToolServiceProvider"
+                        "Tighten\\NovaStripe\\ToolServiceProvider"
                     ]
                 }
             },
             "autoload": {
                 "psr-4": {
-                    "Tightenco\\NovaStripe\\": "src/"
+                    "Tighten\\NovaStripe\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -8910,6 +8916,10 @@
                 {
                     "name": "Samantha Geitz",
                     "email": "samantha@tighten.co"
+                },
+                {
+                    "name": "Alison Kirk",
+                    "email": "alison.kirk@tighten.co"
                 }
             ],
             "description": "A tool to create a quick Stripe dashboard in your Laravel Nova admin panels",
@@ -8917,13 +8927,14 @@
                 "laravel",
                 "nova",
                 "stripe",
+                "tighten",
                 "tightenco"
             ],
             "support": {
                 "issues": "https://github.com/tighten/nova-stripe/issues",
-                "source": "https://github.com/tighten/nova-stripe/tree/v0.2.4"
+                "source": "https://github.com/tighten/nova-stripe/tree/v2.0.6"
             },
-            "time": "2019-11-11T13:30:09+00:00"
+            "time": "2022-10-26T10:52:15+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
