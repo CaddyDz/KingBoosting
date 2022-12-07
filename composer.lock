@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "82866d3fdf5585aefd4ef21122025d71",
+    "content-hash": "4e4b8414fc5092a6ea4382ab9450efd4",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -5566,7 +5566,7 @@
         },
         {
             "name": "sitando/nova-chat",
-            "version": "dev-develop",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "./nova-components/NovaChat",
@@ -5955,16 +5955,16 @@
         },
         {
             "name": "stripe/stripe-php",
-            "version": "v7.128.0",
+            "version": "v10.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/stripe/stripe-php.git",
-                "reference": "c704949c49b72985c76cc61063aa26fefbd2724e"
+                "reference": "9b69abcc40bce97712df01ba40c93bcae8e1f272"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/c704949c49b72985c76cc61063aa26fefbd2724e",
-                "reference": "c704949c49b72985c76cc61063aa26fefbd2724e",
+                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/9b69abcc40bce97712df01ba40c93bcae8e1f272",
+                "reference": "9b69abcc40bce97712df01ba40c93bcae8e1f272",
                 "shasum": ""
             },
             "require": {
@@ -5975,6 +5975,7 @@
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "3.5.0",
+                "php-coveralls/php-coveralls": "^2.5",
                 "phpstan/phpstan": "^1.2",
                 "phpunit/phpunit": "^5.7 || ^9.0",
                 "squizlabs/php_codesniffer": "^3.3"
@@ -6009,9 +6010,9 @@
             ],
             "support": {
                 "issues": "https://github.com/stripe/stripe-php/issues",
-                "source": "https://github.com/stripe/stripe-php/tree/v7.128.0"
+                "source": "https://github.com/stripe/stripe-php/tree/v10.1.0"
             },
-            "time": "2022-05-05T17:18:02+00:00"
+            "time": "2022-12-06T20:44:58+00:00"
         },
         {
             "name": "superlatif/nova-tag-input",
