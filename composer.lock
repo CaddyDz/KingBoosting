@@ -5566,7 +5566,7 @@
         },
         {
             "name": "sitando/nova-chat",
-            "version": "dev-develop",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "./nova-components/NovaChat",
@@ -7082,16 +7082,16 @@
         },
         {
             "name": "symfony/intl",
-            "version": "v6.0.8",
+            "version": "v6.0.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/intl.git",
-                "reference": "2ef7cb9af5ad4c3e2d7674326982366ad9dfef86"
+                "reference": "a2e1ce9048ea549ee1e8d9ce521cbe9a9ec7d92c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/intl/zipball/2ef7cb9af5ad4c3e2d7674326982366ad9dfef86",
-                "reference": "2ef7cb9af5ad4c3e2d7674326982366ad9dfef86",
+                "url": "https://api.github.com/repos/symfony/intl/zipball/a2e1ce9048ea549ee1e8d9ce521cbe9a9ec7d92c",
+                "reference": "a2e1ce9048ea549ee1e8d9ce521cbe9a9ec7d92c",
                 "shasum": ""
             },
             "require": {
@@ -7142,7 +7142,7 @@
                 "localization"
             ],
             "support": {
-                "source": "https://github.com/symfony/intl/tree/v6.0.8"
+                "source": "https://github.com/symfony/intl/tree/v6.0.19"
             },
             "funding": [
                 {
@@ -7158,7 +7158,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-04-12T16:11:42+00:00"
+            "time": "2023-01-01T08:36:10+00:00"
         },
         {
             "name": "symfony/mime",
@@ -7967,16 +7967,16 @@
         },
         {
             "name": "symfony/polyfill-php80",
-            "version": "v1.26.0",
+            "version": "v1.27.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php80.git",
-                "reference": "cfa0ae98841b9e461207c13ab093d76b0fa7bace"
+                "reference": "7a6ff3f1959bb01aefccb463a0f2cd3d3d2fd936"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php80/zipball/cfa0ae98841b9e461207c13ab093d76b0fa7bace",
-                "reference": "cfa0ae98841b9e461207c13ab093d76b0fa7bace",
+                "url": "https://api.github.com/repos/symfony/polyfill-php80/zipball/7a6ff3f1959bb01aefccb463a0f2cd3d3d2fd936",
+                "reference": "7a6ff3f1959bb01aefccb463a0f2cd3d3d2fd936",
                 "shasum": ""
             },
             "require": {
@@ -7985,7 +7985,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "1.26-dev"
+                    "dev-main": "1.27-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -8030,7 +8030,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-php80/tree/v1.26.0"
+                "source": "https://github.com/symfony/polyfill-php80/tree/v1.27.0"
             },
             "funding": [
                 {
@@ -8046,7 +8046,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-05-10T07:21:04+00:00"
+            "time": "2022-11-03T14:55:06+00:00"
         },
         {
             "name": "symfony/polyfill-php81",
