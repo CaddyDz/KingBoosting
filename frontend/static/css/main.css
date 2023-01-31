@@ -1,0 +1,78 @@
+html {
+	background-color: black;
+	/* has to be scroll, not auto; */
+	-webkit-overflow-scrolling: touch;
+	scroll-behavior: smooth;
+}
+
+
+.v-application,
+.v-application .text-h1,
+.v-application .text-h2,
+.v-application .text-h3,
+.v-application .text-h4,
+.v-application .text-h5,
+.v-application .text-h6,
+.v-application .text-overline {
+	font-family: Evogria !important;
+	font-weight: normal;
+}
+
+* {
+	font-family: Evogria !important;
+	font-weight: normal;
+}
+
+.services-section {
+	background-color: black;
+}
+
+.languages {
+	top: 0 !important;
+	position: absolute !important;
+	right: 0 !important;
+	border-radius: 13px;
+	border: solid thick purple;
+}
+
+.v-application--is-ltr .v-list-item__action:first-child,
+.v-application--is-ltr .v-list-item__icon:first-child {
+	margin-right: 0px !important;
+}
+
+.v-application a {
+	color: white !important;
+	text-decoration: none !important;
+}
+
+.v-application a:hover {
+	color: purple !important;
+}
+
+.selectedGame {
+	background: bottom / cover no-repeat url(/img/backgrounds/active-game-bg.png);
+}
+
+.v-toolbar__content,
+.v-toolbar__extension {
+	padding: 0px;
+}
+
+.v-toolbar__content>.v-tabs,
+.v-toolbar__extension>.v-tabs {
+	margin-top: 0px;
+}
+
+.v-tabs-slider-wrapper {
+	height: 5px;
+}
+
+.v-slider--horizontal .v-slider__track-container {
+	height: 18px !important;
+}
+
+.v-slider__thumb {
+	height: 26px !important;
+	width: 32px !important;
+	background-color: #FFFFFF !important;
+}

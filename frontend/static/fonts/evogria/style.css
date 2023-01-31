@@ -1,0 +1,14 @@
+@font-face {
+	font-family: 'Evogria';
+	font-style: normal;
+	font-weight: normal;
+	src: local('Evogria'), url('Evogria.woff') format('woff');
+}
+
+
+@font-face {
+	font-family: 'Evogria Italic';
+	font-style: normal;
+	font-weight: normal;
+	src: local('Evogria Italic'), url('Evogria Italic.woff') format('woff');
+}

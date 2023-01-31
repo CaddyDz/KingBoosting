@@ -1,0 +1,36 @@
+export default [{
+		checked: false,
+		icon: "mdi-account-remove",
+		title: "Appear offline on chat",
+		percentage: 0,
+		tip: "This option will make your account offline in the League Client chat, therefore your friends won't see when the booster is playing on your account",
+	},
+	{
+		checked: false,
+		icon: "mdi-account-group",
+		title: "Specific champions/roles",
+		percentage: 0,
+		tip: "You may determine what role(s) your booster will queue up for while playing on your account. For additional costs, you may also determine what champions he should play.",
+	},
+	{
+		checked: false,
+		icon: "mdi-flash",
+		title: "Priority order at",
+		percentage: 20,
+		tip: "This option ensures that your order will be treated with a higher priority, thus resulting in a faster completion.",
+	},
+	{
+		checked: false,
+		icon: "mdi-video",
+		title: "With Streaming at",
+		percentage: 15,
+		tip: "Your assigned booster will record/live stream all the games, depending on your requirements.",
+	},
+	{
+		checked: false,
+		icon: "mdi-plus",
+		title: "I will pprovide XP boost for each game at",
+		percentage: -10,
+		tip: "If you will provide XP boost for every game, select this option for a cheaper price.",
+	},
+];

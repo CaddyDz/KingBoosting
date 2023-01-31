@@ -1,0 +1,7 @@
+.v-app-bar.v-app-bar--fixed {
+	position: relative !important;
+}
+
+.v-main {
+	padding-top: 0px !important;
+}
