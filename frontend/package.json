@@ -13,7 +13,7 @@
 		"@nuxtjs/axios": "^5.12.5",
 		"@nuxtjs/dotenv": "^1.4.1",
 		"@nuxtjs/sentry": "^4.5.0",
-		"core-js": "^3.8.2",
+		"core-js": "^3.30.2",
 		"nuxt": "^2.15.0",
 		"nuxt-stripe-module": "^3.0.1",
 		"particles.js": "^2.0.0",
