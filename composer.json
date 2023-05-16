@@ -26,7 +26,7 @@
 		"mirovit/nova-notifications": "^1.0",
 		"pusher/pusher-php-server": "^4.1",
 		"scadini/nova-icon": "^0.2.1",
-		"sentry/sentry-laravel": "^2.2",
+		"sentry/sentry-laravel": "^3.4",
 		"sitando/nova-chat": "*",
 		"stidges/laravel-country-flags": "^2.0",
 		"stripe/stripe-php": "^7.66",
