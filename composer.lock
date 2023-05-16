@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "82866d3fdf5585aefd4ef21122025d71",
+    "content-hash": "60436c0f54e7ab1ba2b735224dc7a9b7",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -407,16 +407,16 @@
         },
         {
             "name": "coreproc/nova-echo",
-            "version": "0.2.0",
+            "version": "0.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CoreProc/nova-echo.git",
-                "reference": "8986cde5847d8cf2b9d1622420b1bbd7817e5525"
+                "reference": "8df2d8d80329ffc3175c8e69d1df235c05648a6c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CoreProc/nova-echo/zipball/8986cde5847d8cf2b9d1622420b1bbd7817e5525",
-                "reference": "8986cde5847d8cf2b9d1622420b1bbd7817e5525",
+                "url": "https://api.github.com/repos/CoreProc/nova-echo/zipball/8df2d8d80329ffc3175c8e69d1df235c05648a6c",
+                "reference": "8df2d8d80329ffc3175c8e69d1df235c05648a6c",
                 "shasum": ""
             },
             "require": {
@@ -451,9 +451,9 @@
             ],
             "support": {
                 "issues": "https://github.com/CoreProc/nova-echo/issues",
-                "source": "https://github.com/CoreProc/nova-echo/tree/master"
+                "source": "https://github.com/CoreProc/nova-echo/tree/0.3.0"
             },
-            "time": "2019-03-27T08:02:16+00:00"
+            "time": "2023-03-23T01:26:57+00:00"
         },
         {
             "name": "darkaonline/l5-swagger",
@@ -5573,7 +5573,7 @@
         },
         {
             "name": "sitando/nova-chat",
-            "version": "dev-develop",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "./nova-components/NovaChat",
