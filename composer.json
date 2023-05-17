@@ -1,8 +1,8 @@
 {
-	"name": "laravel/laravel",
+	"name": "caddydz/kingboosting",
 	"type": "project",
 	"require": {
-		"php": "^7.3|^8.0",
+		"php": "^8.0",
 		"awesome-nova/filter-card": "^1.0",
 		"bolechen/nova-activitylog": "^0.2.2",
 		"coreproc/nova-echo": "^0.2.0",
@@ -20,7 +20,7 @@
 		"idf/nova-html-card": "^1.2",
 		"laravel/framework": "^8.25",
 		"laravel/helpers": "^1.4",
-		"laravel/nova": "~3.0",
+		"laravel/nova": "^3.0",
 		"laravel/sanctum": "^2.8",
 		"laravel/tinker": "^2.5",
 		"mirovit/nova-notifications": "^1.0",
