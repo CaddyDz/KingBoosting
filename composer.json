@@ -24,7 +24,7 @@
 		"laravel/sanctum": "^2.8",
 		"laravel/tinker": "^2.5",
 		"mirovit/nova-notifications": "^1.0",
-		"pusher/pusher-php-server": "^4.1",
+		"pusher/pusher-php-server": "^7.2",
 		"scadini/nova-icon": "^0.2.1",
 		"sentry/sentry-laravel": "^2.2",
 		"sitando/nova-chat": "*",
