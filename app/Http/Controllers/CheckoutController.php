@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-
 class CheckoutController extends Controller
 {
 	public function intent()

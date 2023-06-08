@@ -10,7 +10,6 @@ use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Payout extends Order
 {
-
 	/**
 	 * Build an "index" query for the given resource.
 	 *
