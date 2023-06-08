@@ -11,10 +11,8 @@ npm-debug.log
 yarn-error.log
 _ide_helper.php
 .phpstorm.meta.php
-.php_cs.cache
-/nova
 /storage/api-docs
-nova.zip
 .DS_Store
 # Generated Swagger API docs
 storage/api-docs
+.php-cs-fixer.cache

@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Monolog\Handler\{NullHandler, StreamHandler, SyslogUdpHandler};
+
 return [
 
 	/*

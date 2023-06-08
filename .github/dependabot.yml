@@ -1,4 +1,10 @@
 version: 2
+registries:
+  composer-repository-nova-laravel-com:
+    type: composer-repository
+    url: https://nova.laravel.com
+    username: ${{ secrets.NOVA_USERNAME }}
+    password: ${{ secrets.NOVA_API_TOKEN }}
 updates:
 - package-ecosystem: composer
   directory: "/"
@@ -6,6 +12,8 @@ updates:
     interval: daily
     time: "04:00"
   open-pull-requests-limit: 99
+  registries:
+  - composer-repository-nova-laravel-com
   reviewers:
   - CaddyDz
   assignees:
