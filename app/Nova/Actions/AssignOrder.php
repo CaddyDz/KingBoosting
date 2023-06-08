@@ -11,6 +11,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Laravel\Nova\Fields\{ActionFields, Select};
+
 class AssignOrder extends Action implements ShouldQueue
 {
 	use InteractsWithQueue, Queueable;
