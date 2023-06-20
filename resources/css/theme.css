@@ -27,9 +27,8 @@
 }
 
 .bg-grad-sidebar {
-	background-image: linear-gradient(0deg, #7e8ea1 0%, #3c4655 100%);
+	background-image: linear-gradient(0deg, #300355 0%, #000000 100%);
 }
-
 
 body {
 	font-family: 'Evogria';
@@ -100,5 +99,4 @@ div[dusk="orders-detail-component"]:nth-of-type(3) {
 div[dusk="orders-detail-component"]:nth-of-type(4) {
 	width: 38%;
 	display: inline-block;
-	float: right;
 }

@@ -14,7 +14,11 @@ use Laravel\Nova\{Nova, NovaApplicationServiceProvider};
 use App\Nova\{Application, Booster, Coupon, Fine, Gift, Order, User};
 use Vyuldashev\NovaPermission\{NovaPermissionTool, Permission, Role};
 use DigitalCreative\CollapsibleResourceManager\CollapsibleResourceManager;
-use DigitalCreative\CollapsibleResourceManager\Resources\{InternalLink, NovaResource, TopLevelResource};
+use DigitalCreative\CollapsibleResourceManager\Resources\{
+	InternalLink,
+	NovaResource,
+	TopLevelResource
+};
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
@@ -25,8 +29,10 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 	 */
 	public function boot(): void
 	{
-		Nova::serving(fn () => Nova::style('theme', resource_path('css/theme.css')));
-		Nova::script('menuFix', resource_path('js/fixMenu.js'));
+		Nova::serving(
+			fn () => Nova::style('theme', resource_path('css/theme.css'))
+		);
+		Nova::script('redirect', resource_path('js/redirect.js'));
 		Nova::sortResourcesBy(fn ($resource) => $resource::$priority ?? 9999);
 		parent::boot();
 	}

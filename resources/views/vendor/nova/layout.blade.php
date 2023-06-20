@@ -51,7 +51,7 @@
 					@endif
 
 					@include('nova-notifications::dropdown')
-					<dropdown class="ml-auto h-9 flex items-center dropdown-right">
+					<dropdown class="h-9 flex items-center dropdown-right">
 						@include('nova::partials.user')
 					</dropdown>
 
