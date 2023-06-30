@@ -1,6 +1,7 @@
-cd /home/forge/staging.kingboosting.com
+cd /home/forge/kingboosting.dsalim.dev
 git checkout .
-git pull origin develop
-npm install --production
-npm run build --no-lock
-pm2 start npm --name "staging.kingboosting.com" --watch -- start
+git pull origin $FORGE_SITE_BRANCH
+# npm install
+# npm run build
+# pm2
+# pm2 restart kingboosting.dsalim.dev

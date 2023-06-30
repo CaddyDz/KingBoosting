@@ -5,6 +5,7 @@ import router from "./config/router";
 import plugins from "./config/plugins";
 
 export default {
+	server: { port: 3301, },
 	vue: {
 		config: {
 			productionTip: false,
