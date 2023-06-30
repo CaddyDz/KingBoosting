@@ -10,6 +10,7 @@ use Illuminate\Database\Seeder;
 class ServerSeeder extends Seeder
 {
 	private array $servers = [
+		"Frankfurt",
 		"North America",
 		"EU-West",
 		"EU-Nordic & East",

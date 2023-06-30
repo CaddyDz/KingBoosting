@@ -1,4 +1,5 @@
 export default [
+	"Frankfurt",
 	"North America",
 	"EU-West",
 	"EU-Nordic & East",
