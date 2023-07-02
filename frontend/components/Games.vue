@@ -60,7 +60,6 @@ section {
 	position: relative;
 	width: 100%;
 	box-sizing: border-box;
-	margin-top: -80px;
 }
 
 .bg {
@@ -146,11 +145,6 @@ section {
 	cursor: not-allowed;
 }
 
-@media only screen and (max-width: 1600px) {
-	section {
-		margin-top: -160px;
-	}
-}
 @media only screen and (max-width: 1200px) {
 	.bg {
 		width: inherit;

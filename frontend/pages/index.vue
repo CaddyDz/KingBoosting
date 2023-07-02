@@ -5,7 +5,7 @@
 			<v-row align="center" justify="center" class="logo">
 				<img src="/img/logo/logo.png" alt="Logo" width="55%" class="mt-15" />
 			</v-row>
-			<v-row align="end" justify="center" class="mt-7 mb-14">
+			<v-row justify="center" class="mt-7 mb-14">
 				<v-btn-toggle rounded v-model="undefined" background-color="transparent">
 					<v-btn class="hero-btn" to="/division-boosting">Get Boosted</v-btn>
 					<v-btn class="hero-btn" to="/coaching">Get Coached</v-btn>
@@ -28,6 +28,7 @@
 	width: 100%;
 	filter: contrast(70%);
 	z-index: 1;
+	opacity: 0.4;
 }
 .container {
 	position: relative;
