@@ -1,9 +1,6 @@
 import colors from 'vuetify/es5/util/colors'
 
 export default {
-	breakpoint: {},
-	icons: {},
-	lang: {},
 	rtl: false,
 	theme: {
 		dark: true,

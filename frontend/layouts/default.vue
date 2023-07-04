@@ -3,18 +3,11 @@
 		<notification-component></notification-component>
 		<v-system-bar lights-out app height="20">
 			<a v-for="(social, index) in socials" :key="index" :href="social.link" target="_blank" rel="noopener">
-				<v-icon color="white">{{ social.icon }}</v-icon>
+				<v-icon color="white" size="x-large">{{ social.icon }}</v-icon>
 			</a>
 			<v-spacer></v-spacer>
 			<span>
-				<v-icon color="white">mdi-cellphone-iphone</v-icon>
-				<a href="/pay-with-mobile">Mobile Pay</a>
-			</span>
-			<span>
-				<a href="/contact">Contact</a>
-			</span>
-			<span>
-				<a href="/loyalty-program">Loyalty Program</a>
+				<nuxt-link to="/contact">Contact</nuxt-link>
 			</span>
 			<span v-if="this.$auth.loggedIn">
 				<v-btn @click="logout">Logout</v-btn>
@@ -46,11 +39,7 @@ export default {
 			},
 			{
 				icon: "mdi-twitter",
-				link: "https://twitter.com/kingboosting",
-			},
-			{
-				icon: "mdi-skype",
-				link: "skype:",
+				link: "https://twitter.com/KingBoostingCom",
 			},
 		],
 	}),
