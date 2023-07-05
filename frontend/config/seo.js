@@ -22,7 +22,7 @@ export default {
 		},
 		{
 			name: "author",
-			content: "Zidweb"
+			content: "Salim Djerbouh"
 		},
 	],
 	link: [{
@@ -31,13 +31,19 @@ export default {
 			href: "/favicon.ico"
 		},
 		{
+			rel: 'preconnect',
+			href: 'https://fonts.googleapis.com',
+		},
+		{
+			rel: 'preconnect',
+			href: 'https://fonts.gstatic.com',
+			crossorigin: true,
+		},
+		{
 			rel: 'stylesheet',
-			href: '/fonts/evogria/style.css'
+			href: 'https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;700&display=swap'
 		},
 	],
-	script: [{
-		// src: '//code.tidio.co/bytmjjusa3gkjkwwkmqjbag7x3lzanqk.js'
-	}],
 	noscript: [{
 		innerHTML: 'This website requires JavaScript.'
 	}]
