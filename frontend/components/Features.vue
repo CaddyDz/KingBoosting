@@ -1,10 +1,9 @@
 <template>
 	<section class="features-section">
-		<v-img src="/img/indexAssets/features.png" class="bg" />
 		<v-row class="section-title flex-center mb-10">
 			<h1>Features</h1>
 		</v-row>
-		<v-row v-for="(feature, index) in features" :key="index">
+		<v-row v-for="(feature, index) in features" :key="index" class="mb-6">
 			<v-col class="feature" offset="3">
 				<v-card :class="index % 2 ? 'bg-dark' : 'bg-white'" elevation="24">
 					<v-row>
@@ -22,7 +21,6 @@
 				</v-card>
 			</v-col>
 		</v-row>
-		<v-img aspect-ratio="1.4" src="/img/indexAssets/featuresWhyUs.png" class="bg-fill" />
 	</section>
 </template>
 
@@ -81,20 +79,6 @@ section {
 	position: relative;
 	width: 100%;
 	box-sizing: border-box;
-	margin-bottom: 80px;
-}
-.bg {
-	position: absolute;
-	width: 100%;
-	filter: contrast(50%);
-	z-index: 1;
-}
-.bg-fill {
-	position: absolute;
-	width: 100%;
-	filter: contrast(50%);
-	margin-top: -80px;
-	z-index: 0;
 }
 .section-title {
 	position: relative;
@@ -128,12 +112,6 @@ section {
 @media only screen and (max-width: 1600px) {
 	section {
 		margin-top: -80px;
-	}
-}
-@media only screen and (max-width: 1200px) {
-	.bg {
-		width: inherit;
-		height: 100%;
 	}
 }
 </style>

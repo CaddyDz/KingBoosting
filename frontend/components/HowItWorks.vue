@@ -1,9 +1,8 @@
 <template>
 	<section class="flex-center">
-		<v-img src="/img/indexAssets/howItWorks.png" class="bg" />
 		<v-container>
 			<v-card elevation="3">
-				<v-card-title class="section-title flex-center">
+				<v-card-title class="section-title flex-center mb-5">
 					<h1>How KingBoosting Works ?</h1>
 				</v-card-title>
 
@@ -69,16 +68,6 @@ section {
 	width: 100%;
 	box-sizing: border-box;
 	margin-bottom: 80px;
-}
-.bg {
-	position: absolute;
-	width: 100%;
-	margin-top: -7%;
-	filter: contrast(50%);
-	z-index: 1;
-}
-img {
-	height: 100vh;
 }
 .container {
 	position: relative;
