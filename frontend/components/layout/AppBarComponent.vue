@@ -88,4 +88,7 @@ export default {
 .v-tab {
 	font-size: 16px;
 }
+a:hover {
+	color: purple !important;
+}
 </style>

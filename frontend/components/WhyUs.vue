@@ -1,6 +1,5 @@
 <template>
-	<section class="why-us-section">
-		<v-img src="/img/indexAssets/whyUs.png" class="bg" />
+	<section class="why-us-section pt-5">
 		<v-container>
 			<v-row class="section-title flex-center mb-8">
 				<h1>Why Us ?</h1>
@@ -94,16 +93,6 @@ section {
 	width: 100%;
 	box-sizing: border-box;
 	margin-bottom: 80px;
-}
-.bg {
-	position: absolute;
-	top: 10%;
-	width: 100%;
-	filter: contrast(50%);
-	z-index: 1;
-}
-img {
-	height: 100vh;
 }
 .container {
 	position: relative;

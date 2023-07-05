@@ -1,6 +1,5 @@
 <template>
 	<section class="customers-voice">
-		<v-img src="/img/indexAssets/customerVoice.png" class="bg" />
 		<v-container>
 			<v-row class="section-title flex-center">
 				<h1>Customers voice</h1>
@@ -81,12 +80,6 @@ section {
 	width: 100%;
 	box-sizing: border-box;
 	margin-top: -240px;
-}
-.bg {
-	position: absolute;
-	width: 100%;
-	filter: contrast(50%);
-	z-index: 1;
 }
 .container {
 	position: relative;

@@ -1,6 +1,5 @@
 <template>
 	<section class="services">
-		<v-img aspect-ratio="1.8" src="/img/indexAssets/services.png" class="bg" />
 		<v-container>
 			<v-row class="section-title flex-center mb-10">
 				<h1>Our Services</h1>
@@ -54,19 +53,6 @@ export default {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-}
-
-section {
-	position: relative;
-	width: 100%;
-	box-sizing: border-box;
-}
-
-.bg {
-	position: absolute;
-	width: 100%;
-	filter: contrast(50%);
-	z-index: 1;
 }
 
 .container {
