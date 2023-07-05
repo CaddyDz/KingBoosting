@@ -93,7 +93,6 @@ export default {
 	// Vuetify module configuration (https://github.com/nuxt-community/vuetify-module#options)
 	vuetify: {
 		treeShake: true,
-		customVariables: ['@/assets/variables.scss'],
 		optionsPath: './vuetify.options.js',
 		defaultAssets: {
 			font: false

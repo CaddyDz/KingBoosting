@@ -3,24 +3,17 @@ html {
 	/* has to be scroll, not auto; */
 	-webkit-overflow-scrolling: touch;
 	scroll-behavior: smooth;
+	line-height: 1.5;
+	-webkit-text-size-adjust: 100%;
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+	font-feature-settings: normal;
+	font-variation-settings: normal
 }
 
-
-.v-application,
-.v-application .text-h1,
-.v-application .text-h2,
-.v-application .text-h3,
-.v-application .text-h4,
-.v-application .text-h5,
-.v-application .text-h6,
-.v-application .text-overline {
-	font-family: Evogria !important;
-	font-weight: normal;
-}
-
-* {
-	font-family: Evogria !important;
-	font-weight: normal;
+.v-application {
+	font-family: Open Sans, sans-serif;
 }
 
 .services-section {

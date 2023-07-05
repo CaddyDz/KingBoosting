@@ -85,4 +85,7 @@ export default {
 	top: 0;
 	left: 0;
 }
+.v-tab {
+	font-size: 16px;
+}
 </style>
