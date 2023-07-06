@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use Exception;
 use App\Mail\ContactMail;
-use Illuminate\Http\Response;
-use Swift_TransportException;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\ContactRequest;
 
@@ -17,38 +17,19 @@ class ContactController extends Controller
 	 *
 	 * @param App\Http\Requests\ContactRequest $request
 	 *
-	 * @return \Illuminate\Http\Response
+	 * @return \Illuminate\Http\JsonResponse
 	 */
-	public function send(ContactRequest $request): Response
+	public function send(ContactRequest $request): JsonResponse
 	{
 		try {
-			Mail::to(config('mail.address'))->send(new ContactMail($this->trimRequest($request->all())));
-		} catch (Swift_TransportException $exception) {
+			Mail::to(config('mail.address'))->send(new ContactMail($request->validated()));
+		} catch (Exception $exception) {
 			logger()->error($exception->getMessage());
-			return response([
-				'message' => __('No internet connection detected'),
-			], 599);
+			report($exception);
+			throw $exception;
 		}
-		return response([
+		return response()->json([
 			'message' => __('You message has been sent'),
-		]);
-	}
-
-	/**
-	 * Remove any additional data on the request
-	 * Merely a security measure.
-	 *
-	 * @return array $details
-	 */
-	public function trimRequest(array $data): array
-	{
-		$details = [
-			'name' => $data['name'],
-			'email' => $data['email'],
-			'subject' => $data['subject'],
-			'message' => $data['message'],
-		];
-
-		return $details;
+		], 201);
 	}
 }

@@ -11,7 +11,7 @@ export default function ({
 		config.httpsAgent = agent;
 	});
 	$axios.onError((error) => {
-		if (error.response.status === 404) {
+		if (error.response?.status === 404) {
 			redirect('/404/');
 		}
 	});

@@ -4,7 +4,7 @@
 
 @lang('From'): {{ $details['name'] }}
 
-@lang('Subject'): {{ $details['subject'] }}
+@lang('Subject'): {{ $details['category'] }}
 
 @lang('Message'): {{ $details['message'] }}
 

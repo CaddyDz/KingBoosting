@@ -9,7 +9,7 @@
 			</v-row>
 		</div>
 		<v-row v-else>
-			<h1>{{ otherError }}</h1>
+			<h1 class="d-flex justify-center mt-6">{{ otherError }}</h1>
 		</v-row>
 		<v-row align="start" justify="center" class="mb-16">
 			<v-btn color="primary" elevation="2" outlined x-large nuxt to="/">Home page</v-btn>

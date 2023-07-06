@@ -36,7 +36,7 @@ class ContactMail extends Mailable implements ShouldQueue
 		$this->from([
 			'address' => $this->details['email'],
 			'name' => $this->details['name'],
-		])->subject($this->details['subject'])
+		])->subject($this->details['category'])
 			->markdown('emails.contact')
 			->with('details', $this->details);
 	}
