@@ -11,6 +11,19 @@
 		<v-container>
 			<v-row>
 				<v-col>
+					<v-form ref="form" v-model="valid">
+						<v-select v-model="form.category" label="Category"
+							:rules="[(v) => !!v || 'Category is required']" :items="categories"></v-select>
+						<v-text-field v-model="form.name" label="Name" :rules="nameRules"></v-text-field>
+						<v-text-field v-model="form.email" label="E-mail address"
+							:rules="[(v) => /.+@.+\..+/.test(v) || 'E-mail must be valid']"></v-text-field>
+						<v-textarea v-model="form.message" outlined placeholder="Your Message"></v-textarea>
+						<v-btn :disabled="!valid" color="primary" class="mr-4" @click="submit">Send Message</v-btn>
+					</v-form>
+				</v-col>
+			</v-row>
+			<v-row>
+				<v-col>
 					<a href="https://facebook.com/kingboosting">
 						<v-card>
 							<v-card-title>Facebook</v-card-title>
@@ -44,19 +57,6 @@
 					</a>
 				</v-col>
 			</v-row>
-			<v-row>
-				<v-col>
-					<v-form ref="form" v-model="valid">
-						<v-select v-model="category" name="Category" label="Category"
-							:rules="[(v) => !!v || 'Category is required']" :items="categories"></v-select>
-						<v-text-field name="name" label="Name" :rules="nameRules"></v-text-field>
-						<v-text-field name="email" label="E-mail address"
-							:rules="[(v) => /.+@.+\..+/.test(v) || 'E-mail must be valid']"></v-text-field>
-						<v-textarea outlined name="message" placeholder="Your Message"></v-textarea>
-						<v-btn :disabled="!valid" color="primary" class="mr-4" @click="submit">Send Message</v-btn>
-					</v-form>
-				</v-col>
-			</v-row>
 		</v-container>
 	</div>
 </template>
@@ -77,6 +77,12 @@ export default {
 			(v) =>
 				(v && v.length <= 10) || "Name must be less than 10 characters",
 		],
+		form: {
+			category: 'General Question',
+			name: '',
+			email: '',
+			message: '',
+		}
 	}),
 	watch: {
 		category(value) {
@@ -89,24 +95,19 @@ export default {
 		submit() {
 			this.validate();
 			if (this.valid) {
-				const formData = new FormData(this.$refs.form.$el); // reference to form element
-				const data = {}; // need to convert it before using not with XMLHttpRequest
-				for (let [key, val] of formData.entries()) {
-					Object.assign(data, { [key]: val });
-				}
 				this.$axios
-					.post("api/contact", data)
+					.post("api/contact", this.form)
 					.then((response) => {
 						this.$notify(response.data.message, "success");
 						this.$refs.form.reset();
 					})
-					.catch((errors) => {
+					.catch((error) =>
 						this.$notify(
-							errors.response.data.message,
+							error.response?.data.message || error.message,
 							"error",
-							errors.response.data.errors
-						);
-					});
+							error.response?.data.errors || [],
+						)
+					);
 			}
 		},
 		validate() {

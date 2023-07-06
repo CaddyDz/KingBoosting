@@ -1,4 +1,4 @@
-cd /home/forge/dashboard.eloboost.app
+cd /home/forge/kingboosting.dsalim.dev
 git checkout -- . && git reset --hard HEAD && git clean -df
 git pull origin develop
 composer install --optimize-autoloader
