@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 use PhpCsFixer\{Config, Finder};
 
 return (new Config())
@@ -11,6 +9,7 @@ return (new Config())
 		],
 		'blank_line_after_namespace' => true,
 		'blank_line_after_opening_tag' => true,
+		'blank_lines_before_namespace' => true,
 		'cast_spaces' => ['space' => 'single'],
 		'declare_strict_types' => true,
 		'group_import' => true,
@@ -29,7 +28,6 @@ return (new Config())
 			->name('*.php')
 			->notPath('bootstrap/cache')
 			->notPath('node_modules')
-			->notPath('nova')
 			->notPath('storage')
 			->notPath('vendor')
 			->notName('*.blade.php')
