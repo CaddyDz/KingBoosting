@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use PhpCsFixer\{Config, Finder};
 
 return (new Config())
@@ -18,10 +20,10 @@ return (new Config())
 		'no_unused_imports' => true,
 		'ordered_imports' => ['sort_algorithm' => 'length'],
 		'ordered_traits' => true,
-		'single_blank_line_before_namespace' => true,
 		'single_line_after_imports' => true,
 		'use_arrow_functions' => true,
 	])->setIndent("\t")
+	->setRiskyAllowed(true)
 	->setFinder(
 		(new Finder())
 			->in(__DIR__)
