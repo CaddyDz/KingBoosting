@@ -16,3 +16,4 @@ _ide_helper.php
 # Generated Swagger API docs
 storage/api-docs
 .php-cs-fixer.cache
+.idea
