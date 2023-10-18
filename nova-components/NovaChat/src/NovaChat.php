@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Sitando\NovaChat;
 
 use Laravel\Nova\ResourceTool;

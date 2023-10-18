@@ -3,11 +3,8 @@
 declare(strict_types=1);
 
 use Laravel\Nova\Actions\ActionResource;
-use Laravel\Nova\Http\Middleware\Authorize;
-use Laravel\Nova\Http\Middleware\BootTools;
-use Laravel\Nova\Http\Middleware\Authenticate;
 use \Vyuldashev\NovaPermission\ForgetCachedPermissions;
-use Laravel\Nova\Http\Middleware\DispatchServingNovaEvent;
+use Laravel\Nova\Http\Middleware\{Authenticate, Authorize, BootTools, DispatchServingNovaEvent};
 
 return [
 
