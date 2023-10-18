@@ -19,18 +19,25 @@ class ContactTest extends TestCase
 	public function test_api_emails_can_be_sent(): void
 	{
 		$response = $this->post('/api/contact', $this->message());
-		$response->assertOk();
+		$response->assertCreated();
 	}
 
 	/**
 	 * Message array.
 	 *
-	 * Returns a fake array of data for a contact message
+	 * Returns a fake array of data for a contact message.
 	 *
-	 **/
+	 * @return array
+	 */
 	private function message(): array
 	{
 		return [
+			'category' => $this->faker->randomElement([
+				'General Question',
+				'Order Issue',
+				'Bug Report',
+				'Other',
+			]),
 			'name' => $this->faker->name,
 			'email' => $this->faker->email,
 			'subject' => $this->faker->realText(20),
@@ -40,17 +47,19 @@ class ContactTest extends TestCase
 	}
 
 	/**
-	 * Test no internet error.
+	 * Assert exception thrown
 	 *
 	 * Assert that an error message is displayed
-	 * in case no internet connection is detected
+	 * in case of an exception being thrown
+	 * when sending an email.
 	 *
-	 **/
-	public function test_no_internet_exception(): void
+	 * @return void
+	 */
+	public function test_exception(): void
 	{
+		$this->expectExceptionCode(530);
 		config(['mail.default' => 'smtp']);
 		config(['mail.mailers.smtp.username' => null]);
-		$response = $this->post('/api/contact', $this->message());
-		$response->assertStatus(599);
+		$this->post('/api/contact', $this->message());
 	}
 }
