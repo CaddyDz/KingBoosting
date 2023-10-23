@@ -12,7 +12,7 @@
 -   Node version: 14.x
 -   NPM version: 6.x
 -   Composer version: 2.x
--   PHP version: ^8.0
+-   PHP version: 8.0
 -   Laravel Nova license: ~3.0
 -   MySQL version: ^8.0
 

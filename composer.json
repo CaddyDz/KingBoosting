@@ -2,7 +2,7 @@
 	"name": "caddydz/kingboosting",
 	"type": "project",
 	"require": {
-		"php": "^8.0",
+		"php": "8.0.*",
 		"awesome-nova/filter-card": "^1.0",
 		"bolechen/nova-activitylog": "^0.2.2",
 		"coreproc/nova-echo": "^0.2.0",
@@ -93,14 +93,12 @@
 			"@php artisan key:generate --ansi"
 		],
 		"post-update-cmd": [
-			"Illuminate\\Foundation\\ComposerScripts::postUpdate",
-			"@composer ide"
+			"Illuminate\\Foundation\\ComposerScripts::postUpdate"
 		],
 		"ide": [
 			"@php artisan clear-compiled",
 			"@php artisan ide-helper:generate",
-			"@php artisan ide-helper:meta",
-			"@php artisan ide-helper:models -W"
+			"@php artisan ide-helper:meta"
 		]
 	},
 	"repositories": [
