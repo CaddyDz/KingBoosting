@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1a0d6cefe92ea9f91c50aed0cee2fec9",
+    "content-hash": "ae886ff565b34402d4cf0a9bb78ba054",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -5631,7 +5631,7 @@
         },
         {
             "name": "sitando/nova-chat",
-            "version": "dev-main",
+            "version": "dev-composer",
             "dist": {
                 "type": "path",
                 "url": "./nova-components/NovaChat",
@@ -12525,7 +12525,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^8.0"
+        "php": "8.0.*"
     },
     "platform-dev": [],
     "plugin-api-version": "2.3.0"
