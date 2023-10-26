@@ -5631,7 +5631,7 @@
         },
         {
             "name": "sitando/nova-chat",
-            "version": "dev-composer",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "./nova-components/NovaChat",
@@ -6132,16 +6132,16 @@
         },
         {
             "name": "swagger-api/swagger-ui",
-            "version": "v5.9.0",
+            "version": "v5.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swagger-api/swagger-ui.git",
-                "reference": "cbfc3e949d3d9e2b71d566fb722cb3970036f593"
+                "reference": "bb59bcf36dff8b6476299ab7d45cc87957999d36"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swagger-api/swagger-ui/zipball/cbfc3e949d3d9e2b71d566fb722cb3970036f593",
-                "reference": "cbfc3e949d3d9e2b71d566fb722cb3970036f593",
+                "url": "https://api.github.com/repos/swagger-api/swagger-ui/zipball/bb59bcf36dff8b6476299ab7d45cc87957999d36",
+                "reference": "bb59bcf36dff8b6476299ab7d45cc87957999d36",
                 "shasum": ""
             },
             "type": "library",
@@ -6187,9 +6187,9 @@
             ],
             "support": {
                 "issues": "https://github.com/swagger-api/swagger-ui/issues",
-                "source": "https://github.com/swagger-api/swagger-ui/tree/v5.9.0"
+                "source": "https://github.com/swagger-api/swagger-ui/tree/v5.9.1"
             },
-            "time": "2023-09-29T12:27:07+00:00"
+            "time": "2023-10-25T08:21:35+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
