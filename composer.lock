@@ -283,16 +283,16 @@
         },
         {
             "name": "cakephp/chronos",
-            "version": "2.4.3",
+            "version": "2.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/chronos.git",
-                "reference": "96f28ddfceba2ff56e0d2405c28d789bd546ff55"
+                "reference": "03208c18eb3267490662e68671bb9c22aa804492"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/chronos/zipball/96f28ddfceba2ff56e0d2405c28d789bd546ff55",
-                "reference": "96f28ddfceba2ff56e0d2405c28d789bd546ff55",
+                "url": "https://api.github.com/repos/cakephp/chronos/zipball/03208c18eb3267490662e68671bb9c22aa804492",
+                "reference": "03208c18eb3267490662e68671bb9c22aa804492",
                 "shasum": ""
             },
             "require": {
@@ -337,7 +337,7 @@
                 "issues": "https://github.com/cakephp/chronos/issues",
                 "source": "https://github.com/cakephp/chronos"
             },
-            "time": "2023-10-17T08:00:24+00:00"
+            "time": "2023-11-03T05:26:08+00:00"
         },
         {
             "name": "clue/stream-filter",
