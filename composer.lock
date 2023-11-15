@@ -7029,16 +7029,16 @@
         },
         {
             "name": "symfony/http-kernel",
-            "version": "v5.4.29",
+            "version": "v5.4.31",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-kernel.git",
-                "reference": "f53265fc6bd2a7f3a4ed4e443b76e750348ac3f7"
+                "reference": "d2fad58d32a7b4864d205a7289602a27ce75018c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-kernel/zipball/f53265fc6bd2a7f3a4ed4e443b76e750348ac3f7",
-                "reference": "f53265fc6bd2a7f3a4ed4e443b76e750348ac3f7",
+                "url": "https://api.github.com/repos/symfony/http-kernel/zipball/d2fad58d32a7b4864d205a7289602a27ce75018c",
+                "reference": "d2fad58d32a7b4864d205a7289602a27ce75018c",
                 "shasum": ""
             },
             "require": {
@@ -7121,7 +7121,7 @@
             "description": "Provides a structured process for converting a Request into a Response",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/http-kernel/tree/v5.4.29"
+                "source": "https://github.com/symfony/http-kernel/tree/v5.4.31"
             },
             "funding": [
                 {
@@ -7137,7 +7137,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-09-30T06:31:17+00:00"
+            "time": "2023-11-10T13:39:09+00:00"
         },
         {
             "name": "symfony/intl",
