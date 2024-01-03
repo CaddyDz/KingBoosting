@@ -42,7 +42,7 @@
 		"barryvdh/laravel-ide-helper": "^2.8",
 		"brianium/paratest": "^6.11",
 		"facade/ignition": "^2.5",
-		"fakerphp/faker": "^1.9.1",
+		"fakerphp/faker": "^1.23.1",
 		"mockery/mockery": "^1.6.7",
 		"nunomaduro/collision": "^5.0",
 		"phpunit/phpunit": "^9.6.15"
