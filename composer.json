@@ -22,7 +22,7 @@
 		"laravel/helpers": "^1.7",
 		"laravel/nova": "~3.0",
 		"laravel/sanctum": "^2.8",
-		"laravel/tinker": "^2.8",
+		"laravel/tinker": "^2.9",
 		"mirovit/nova-notifications": "^1.0",
 		"pusher/pusher-php-server": "^7.2",
 		"scadini/nova-icon": "^0.2.1",
