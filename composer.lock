@@ -5623,16 +5623,16 @@
         },
         {
             "name": "swagger-api/swagger-ui",
-            "version": "v5.11.1",
+            "version": "v5.11.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swagger-api/swagger-ui.git",
-                "reference": "8a53e7c6ec3d43a3d9600a80bb99a9aa3364f06d"
+                "reference": "0eddc1563b387fb15bf3bb56b7916128d728554b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swagger-api/swagger-ui/zipball/8a53e7c6ec3d43a3d9600a80bb99a9aa3364f06d",
-                "reference": "8a53e7c6ec3d43a3d9600a80bb99a9aa3364f06d",
+                "url": "https://api.github.com/repos/swagger-api/swagger-ui/zipball/0eddc1563b387fb15bf3bb56b7916128d728554b",
+                "reference": "0eddc1563b387fb15bf3bb56b7916128d728554b",
                 "shasum": ""
             },
             "type": "library",
@@ -5678,9 +5678,9 @@
             ],
             "support": {
                 "issues": "https://github.com/swagger-api/swagger-ui/issues",
-                "source": "https://github.com/swagger-api/swagger-ui/tree/v5.11.1"
+                "source": "https://github.com/swagger-api/swagger-ui/tree/v5.11.2"
             },
-            "time": "2024-01-26T12:43:52+00:00"
+            "time": "2024-01-29T08:56:01+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
