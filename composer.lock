@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f1031d6b983cf8c51669aed788c79e32",
+    "content-hash": "af369e9e20620d666d0afc6a73d08ae3",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -9883,7 +9883,7 @@
         },
         {
             "name": "mockery/mockery",
-            "version": "1.6.7",
+            "version": "1.6.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mockery/mockery.git",
