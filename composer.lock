@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f1031d6b983cf8c51669aed788c79e32",
+    "content-hash": "bd2b8a22cc97ba58a374e0d53e44e6fe",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -5513,16 +5513,16 @@
         },
         {
             "name": "stripe/stripe-php",
-            "version": "v13.12.0",
+            "version": "v14.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/stripe/stripe-php.git",
-                "reference": "8052da9058caae10c7297f85821f652b38e31d85"
+                "reference": "b9308aea15e5cdad3d906c3bba726ff95079554c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/8052da9058caae10c7297f85821f652b38e31d85",
-                "reference": "8052da9058caae10c7297f85821f652b38e31d85",
+                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/b9308aea15e5cdad3d906c3bba726ff95079554c",
+                "reference": "b9308aea15e5cdad3d906c3bba726ff95079554c",
                 "shasum": ""
             },
             "require": {
@@ -5566,9 +5566,9 @@
             ],
             "support": {
                 "issues": "https://github.com/stripe/stripe-php/issues",
-                "source": "https://github.com/stripe/stripe-php/tree/v13.12.0"
+                "source": "https://github.com/stripe/stripe-php/tree/v14.1.0"
             },
-            "time": "2024-02-22T22:19:58+00:00"
+            "time": "2024-04-11T23:07:41+00:00"
         },
         {
             "name": "superlatif/nova-tag-input",
