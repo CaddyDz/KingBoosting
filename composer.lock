@@ -5328,16 +5328,16 @@
         },
         {
             "name": "spatie/once",
-            "version": "3.1.0",
+            "version": "3.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/once.git",
-                "reference": "aab3fc8694e7caec98b2d330c4a8420391c7559d"
+                "reference": "25252b821765d72566be17c52ea05b35329f0f8f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/once/zipball/aab3fc8694e7caec98b2d330c4a8420391c7559d",
-                "reference": "aab3fc8694e7caec98b2d330c4a8420391c7559d",
+                "url": "https://api.github.com/repos/spatie/once/zipball/25252b821765d72566be17c52ea05b35329f0f8f",
+                "reference": "25252b821765d72566be17c52ea05b35329f0f8f",
                 "shasum": ""
             },
             "require": {
@@ -5378,7 +5378,7 @@
                 "spatie"
             ],
             "support": {
-                "source": "https://github.com/spatie/once/tree/3.1.0"
+                "source": "https://github.com/spatie/once/tree/3.1.1"
             },
             "funding": [
                 {
@@ -5386,7 +5386,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2022-04-21T12:23:20+00:00"
+            "time": "2024-05-27T09:17:58+00:00"
         },
         {
             "name": "stidges/country-flags",
