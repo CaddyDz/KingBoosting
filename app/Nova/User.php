@@ -7,8 +7,8 @@ namespace App\Nova;
 use Illuminate\Http\Request;
 use Vyuldashev\NovaPermission\{Permission, PermissionBooleanGroup, Role, RoleSelect};
 use App\Nova\Actions\{AllowChangingVisibility, DisallowChangingVisibility, NotifyAction};
+use Laravel\Nova\Fields\{BelongsToMany, Boolean, HasMany, ID, MorphToMany, Password, Text};
 use DigitalCreative\ResourceNavigationTab\{HasResourceNavigationTabTrait, ResourceNavigationTab};
-use Laravel\Nova\Fields\{BelongsToMany, Boolean, HasMany, ID, MorphToMany, Password, Text, Textarea};
 
 class User extends Resource
 {
