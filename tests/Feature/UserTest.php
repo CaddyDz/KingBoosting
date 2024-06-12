@@ -7,7 +7,6 @@ namespace Tests\Feature;
 use Tests\TestCase;
 use App\Models\User;
 use Laravel\Sanctum\Sanctum;
-use Illuminate\Foundation\Testing\{RefreshDatabase, WithFaker};
 
 class UserTest extends TestCase
 {

@@ -7,7 +7,7 @@ namespace App\Events;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
-use Illuminate\Broadcasting\{Channel, InteractsWithSockets, PresenceChannel, PrivateChannel};
+use Illuminate\Broadcasting\{InteractsWithSockets, PrivateChannel};
 
 class SendMessage implements ShouldBroadcast
 {
