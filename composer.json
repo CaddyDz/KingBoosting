@@ -29,7 +29,7 @@
 		"sentry/sentry-laravel": "^4.8",
 		"sitando/nova-chat": "*",
 		"stidges/laravel-country-flags": "^2.0",
-		"stripe/stripe-php": "^15.8",
+		"stripe/stripe-php": "^15.9",
 		"superlatif/nova-tag-input": "^1.4",
 		"tightenco/nova-stripe": "^0.2.4",
 		"timothyasp/nova-badge-field": "^1.0",
