@@ -1,0 +1,13 @@
+node_modules
+.nuxt
+dist
+.env
+.env.*
+!.env.example
+*.log
+**/.DS_Store
+.idea
+nginx.conf
+deploy.sh
+Dockerfile
+.dockerignore
