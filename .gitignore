@@ -17,3 +17,5 @@ _ide_helper.php
 storage/api-docs
 .php-cs-fixer.cache
 .idea
+auth.json
+.env.production

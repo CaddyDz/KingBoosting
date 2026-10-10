@@ -6,6 +6,10 @@ import plugins from "./config/plugins";
 
 export default {
 	server: { port: 3301, },
+	// Exposes HOST_URL to client code; an environment variable takes precedence over .env
+	env: {
+		HOST_URL: process.env.HOST_URL,
+	},
 	vue: {
 		config: {
 			productionTip: false,

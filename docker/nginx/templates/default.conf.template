@@ -1,0 +1,80 @@
+# Serves Laravel's public/ directory and passes PHP requests to php-fpm.
+# The nginx image fills in ${NGINX_*} and ${PHP_FPM_*} from the environment at startup.
+
+# Behind a TLS-terminating proxy, tell PHP the original request was https.
+map $http_x_forwarded_proto $forwarded_https {
+	default "";
+	https on;
+}
+
+server {
+	listen ${NGINX_PORT} default_server;
+	server_name _;
+
+	root /var/www/html/public;
+	index index.php;
+	charset utf-8;
+
+	client_max_body_size 20m;
+	server_tokens off;
+
+	add_header X-Frame-Options "SAMEORIGIN" always;
+	add_header X-Content-Type-Options "nosniff" always;
+
+	gzip on;
+	gzip_vary on;
+	gzip_min_length 1024;
+	gzip_types text/css text/plain application/javascript application/json image/svg+xml;
+
+	# Take the client address from a proxy on a private network. Only that proxy should
+	# be able to reach this port (compose files publish it on 127.0.0.1).
+	set_real_ip_from 10.0.0.0/8;
+	set_real_ip_from 172.16.0.0/12;
+	set_real_ip_from 192.168.0.0/16;
+	set_real_ip_from 127.0.0.1;
+	real_ip_header X-Forwarded-For;
+	real_ip_recursive on;
+
+	# Resolve php-fpm per request, so recreating the app container doesn't leave nginx
+	# holding a stale IP.
+	resolver ${NGINX_RESOLVER} valid=10s ipv6=off;
+	set $php_fpm ${PHP_FPM_HOST}:${PHP_FPM_PORT};
+
+	location / {
+		try_files $uri $uri/ /index.php?$query_string;
+	}
+
+	location = /favicon.ico { access_log off; log_not_found off; }
+	location = /robots.txt  { access_log off; log_not_found off; }
+
+	location = /nginx-health {
+		access_log off;
+		default_type text/plain;
+		return 200 "ok\n";
+	}
+
+	error_page 404 /index.php;
+
+	location ~ ^/index\.php(/|$) {
+		fastcgi_pass $php_fpm;
+		fastcgi_split_path_info ^(.+\.php)(/.*)$;
+		include fastcgi_params;
+		fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
+		fastcgi_param DOCUMENT_ROOT $realpath_root;
+		fastcgi_param HTTPS $forwarded_https if_not_empty;
+		fastcgi_hide_header X-Powered-By;
+		# The app sets its own X-Frame-Options; keep only the one added above.
+		fastcgi_hide_header X-Frame-Options;
+		fastcgi_buffer_size 32k;
+		fastcgi_buffers 16 16k;
+		fastcgi_read_timeout ${NGINX_FASTCGI_READ_TIMEOUT};
+	}
+
+	location ~ \.php$ {
+		return 404;
+	}
+
+	location ~ /\.(?!well-known).* {
+		deny all;
+	}
+}
