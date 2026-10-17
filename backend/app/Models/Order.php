@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-use App\Enums\{Game, OrderStatus};
+use App\Events\OrderEventRecorded;
+use App\Enums\{Game, OrderEventType, OrderStatus};
 use Database\Factories\OrderFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -73,6 +74,26 @@ class Order extends Model
 	public function boosterShareCents(): int
 	{
 		return (int) round($this->price_cents * $this->booster_share_pct / 100);
+	}
+
+	/**
+	 * Write a row to the order's timeline and let listeners know once the transaction commits.
+	 *
+	 * @param  array<string, mixed>  $meta
+	 */
+	public function recordEvent(OrderEventType $type, ?User $actor = null, ?OrderStatus $from = null, ?OrderStatus $to = null, array $meta = []): OrderEvent
+	{
+		$event = $this->events()->create([
+			'actor_id' => $actor?->getKey(),
+			'type' => $type,
+			'from_status' => $from,
+			'to_status' => $to,
+			'meta' => $meta === [] ? null : $meta,
+		]);
+
+		OrderEventRecorded::dispatch($event);
+
+		return $event;
 	}
 
 	/**
