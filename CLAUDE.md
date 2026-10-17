@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-King Boosting is a multi-role order marketplace for game-boosting services. This is the `v2` rebuild: a Laravel 13 JSON API in `backend/` (PHP 8.4) and a Nuxt 4 app in `frontend/` (the storefront plus every role's dashboard). The legacy app (Laravel 8 + Nova 3, and a Nuxt 2 storefront) lives on `develop` and the `v1.*` tags. Read it with `git show develop:<path>` when porting.
+King Boosting is a multi-role order marketplace for game-boosting services. This is the `v2` rebuild: a Laravel 13 JSON API in `backend/` (PHP 8.4) and a Nuxt 4 app in `frontend/` (the storefront plus every role's dashboard). The legacy app (Laravel 8 + Nova 3, and a Nuxt 2 storefront) is on `develop` until `v2` merges, and stays on the `v1.0-delivered` and `v1.9-legacy` tags. `docs/order-rules.md` holds the rules the rebuild enforces, and `README.md` lists what changed from the legacy app.
 
 Decisions are recorded in `docs/adr/`. Read the relevant one before changing routing, roles, pricing, art, error tracking or style.
 
@@ -83,6 +83,7 @@ So Sanctum's SPA cookie auth needs no CORS and no shared cookie domain: `SANCTUM
 - `scheduler` runs `schedule:work`.
 - `db` is MySQL 8.4; `mailpit` catches mail.
 - `stripe` sits behind the `stripe` profile and forwards test webhooks.
+- `e2e` sits behind the `e2e` profile: Playwright on the proxy's network.
 
 ### Production (`compose.prod.yaml`, `docs/deploy.md`)
 
@@ -116,8 +117,17 @@ A new third-party script, frame or connection needs a CSP entry.
 - `useAsyncData` returns a shallow ref in Nuxt 4. To change one row, assign a new `data.value`; mutating inside it doesn't re-render.
 - Amounts from the API are euro cents; format them with `formatCents()` (`app/utils/money.ts`).
 - One page, `pages/[service].vue`, is the order builder for every service, at the legacy URLs (`/division-boosting`). It's drawn from `GET /api/catalog/{service}`, so a new service needs only `config/pricing`. `utils/orderBuilder.ts` turns the builder's state into quote input, and the `order` store asks `POST /api/quotes` for prices, from the browser only.
-- Checkout is two pages. `/checkout` signs the customer in and places the order. `/checkout/{order}` takes the payment with Stripe's Payment Element, and Stripe sends 3-D Secure returns back there. It then polls the order until the webhook has moved it on. Without `STRIPE_KEY` and `STRIPE_SECRET`, orders are saved unpaid and the page says payments are off.
+- Checkout is two pages. `/checkout` signs the customer in and places the order. `/checkout/{order}` takes the payment with Stripe's Payment Element, and Stripe sends 3-D Secure returns back there. It then polls the order until the webhook has moved it on. Without Stripe keys, a local stack pays offline ("Simulate a successful payment"), while production saves the order unpaid and says payments are off.
 - Charts are plain HTML and CSS (`components/overview/`), with no chart library. Marks use the theme's `chart` colour, which is checked for contrast and lightness against each theme's surface.
+
+### Backend map
+
+- **Order actions** are classes in `app/Actions/Orders`: Claim, Assign, Pause, Resume, Release, Complete, MarkOrderPaidOut, and so on. Each runs through `OrderTransition`, which locks the order's row, authorises against the locked row, changes the status and records an `OrderEvent`. Claiming is a single conditional `UPDATE`, so two boosters can't both win.
+- **Events.** `OrderEventRecorded` (dispatched after commit) feeds two listeners. `PostSystemMessage` adds the chat line, and `SendOrderNotifications` sends the notifications (database, broadcast and mail).
+- **Checkout.** `PlaceOrder` prices the order, saves it as `awaiting_payment` and opens a PaymentIntent through `PaymentGateway`. The gateway is Stripe, Offline (local only) or Unconfigured (production without keys). The signed webhook (`routes/stripe.php`) is the only path to `ConfirmPayment` in production.
+- **Pricing** lives in `app/Pricing`: `QuoteEngine` plus one strategy per pricing model, configured by `config/pricing/services.php`.
+- **Money and metrics.** `app/Support` has `Earnings` (shares minus unpaid fines) and `Metrics` (the admin overview). `app/Actions/Payouts/PayOutBooster` settles a booster's orders and fines in one payout.
+- **Channels** (`routes/channels.php`): `orders.{id}` carries chat and status changes, authorised by the `chat` ability. `App.Models.User.{id}` carries notifications.
 
 ### Backend conventions
 

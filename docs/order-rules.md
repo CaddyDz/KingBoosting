@@ -39,6 +39,7 @@ awaiting_payment ──► pending ──► in_progress ⇄ paused ──► co
 | `complete` | | | holder, `in_progress` | |
 | `markPaidOut` | `completed` | | | |
 | `updateCredentials` | | | | owner, until `completed` |
+| `pay` | | | | owner, while `awaiting_payment` |
 | `chat` | paid orders | paid orders | orders they hold | own, once paid |
 
 When a user could take an action but the order's status doesn't allow it (it was claimed a moment ago, say), the policy answers **409** with a reason. Every other refusal is a **403**.

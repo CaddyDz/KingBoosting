@@ -35,6 +35,7 @@ function orderPolicyRules(): array
 		'complete' => ['admin' => [], 'moderator' => [], 'holder' => [$ip], 'booster' => [], 'owner' => [], 'customer' => []],
 		'markPaidOut' => ['admin' => [$c], 'moderator' => [], 'holder' => [], 'booster' => [], 'owner' => [], 'customer' => []],
 		'updateCredentials' => ['admin' => [], 'moderator' => [], 'holder' => [], 'booster' => [], 'owner' => [$ap, $p, $ip, $pa], 'customer' => []],
+		'pay' => ['admin' => [], 'moderator' => [], 'holder' => [], 'booster' => [], 'owner' => [$ap], 'customer' => []],
 		'chat' => ['admin' => $paid, 'moderator' => $paid, 'holder' => $claimed, 'booster' => [], 'owner' => $paid, 'customer' => []],
 	];
 }
