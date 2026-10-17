@@ -92,3 +92,13 @@ export interface CatalogGame {
 	label: string
 	services: { key: string, label: string }[]
 }
+
+export interface ChatMessage {
+	id: number
+	order_id: number
+	body: string
+	system: boolean
+	sender: { id: number, name: string, role: Role | 'support' } | null
+	read_at: string | null
+	created_at: string
+}

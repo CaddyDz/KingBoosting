@@ -42,6 +42,7 @@ onBeforeUnmount(() => useEcho().leave(`orders.${id}`))
 			<v-col cols="12" lg="4" class="d-flex flex-column ga-4">
 				<OrdersOrderActionsCard :order="order" @updated="replace" @stale="refresh()" />
 				<OrdersOrderPeopleCard :order="order" />
+				<ChatOrderChat v-if="order.can_chat" :order="order" />
 			</v-col>
 		</v-row>
 

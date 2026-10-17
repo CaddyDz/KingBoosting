@@ -23,6 +23,10 @@ class ResetDemo extends Command
 
 		$this->call('migrate:fresh', ['--force' => true, '--seed' => true, '--seeder' => DemoSeeder::class]);
 
+		// The wipe dropped the cache table the queue worker and Reverb poll; restart them cleanly
+		$this->callSilently('queue:restart');
+		$this->callSilently('reverb:restart');
+
 		$this->components->info('The demo has been reset. Every account uses DEMO_PASSWORD.');
 
 		return self::SUCCESS;

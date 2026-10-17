@@ -135,6 +135,8 @@ services:
   queue:
     <<: *backend
     command: ["php", "artisan", "queue:listen", "--tries=3", "--backoff=5"]
+    # Long-running: demo:reset and queue:restart make it exit, and it comes straight back
+    restart: unless-stopped
     depends_on:
       app:
         condition: service_healthy
@@ -143,6 +145,7 @@ services:
   reverb:
     <<: *backend
     command: ["php", "artisan", "reverb:start", "--host=0.0.0.0", "--port=8080", "--debug"]
+    restart: unless-stopped
     depends_on:
       app:
         condition: service_healthy
@@ -151,6 +154,7 @@ services:
   scheduler:
     <<: *backend
     command: ["php", "artisan", "schedule:work"]
+    restart: unless-stopped
     depends_on:
       app:
         condition: service_healthy
