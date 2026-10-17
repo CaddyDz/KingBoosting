@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 use App\Pricing\QuoteEngine;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
 use App\Enums\{OrderEventType, OrderStatus};
 use App\Models\{Application, Fine, Message, Order, User};
@@ -73,8 +74,8 @@ class DemoSeeder extends Seeder
 
 	public function run(): void
 	{
-		// The seeded history shouldn't reach anyone: no live broadcasts and no queued jobs left behind
-		config(['broadcasting.default' => 'null', 'queue.default' => 'sync']);
+		// The seeded history shouldn't reach anyone: no emails, no live broadcasts, no queued jobs left behind
+		config(['broadcasting.default' => 'null', 'queue.default' => 'sync', 'mail.default' => 'array']);
 
 		$this->startedAt = now();
 		$this->seedUsers();
@@ -82,6 +83,9 @@ class DemoSeeder extends Seeder
 		$this->seedFines();
 		Application::factory()->count(2)->create();
 		Application::factory()->reviewed()->create();
+
+		// Only the last two days' notifications are new, so the bell shows a few, not the whole history
+		DB::table('notifications')->where('created_at', '<', $this->startedAt->copy()->subDays(2))->update(['read_at' => $this->startedAt]);
 	}
 
 	private function seedUsers(): void

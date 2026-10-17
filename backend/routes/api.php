@@ -3,7 +3,8 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\MeController;
-use App\Http\Controllers\BoosterController;
+use App\Http\Controllers\Admin\NoticeController;
+use App\Http\Controllers\{BoosterController, NotificationController};
 use App\Http\Controllers\Chat\MessageController;
 use App\Http\Controllers\Pricing\{CatalogController, QuoteController};
 use App\Http\Controllers\Orders\{JobController, OrderActionController, OrderController};
@@ -27,6 +28,12 @@ Route::get('boosters', [BoosterController::class, 'index'])->name('boosters.inde
 Route::middleware('auth:sanctum')->group(function (): void {
 	Route::post('logout', [AuthenticatedSessionController::class, 'destroy']);
 	Route::get('me', MeController::class);
+
+	Route::get('notifications', [NotificationController::class, 'index'])->name('notifications.index');
+	Route::post('notifications/read', [NotificationController::class, 'readAll'])->name('notifications.read-all');
+	Route::post('notifications/{notification}/read', [NotificationController::class, 'read'])->name('notifications.read');
+
+	Route::post('users/{user}/notices', [NoticeController::class, 'store'])->name('users.notices.store');
 
 	Route::get('orders', [OrderController::class, 'index'])->name('orders.index');
 	Route::post('orders', [OrderController::class, 'store'])->middleware('throttle:checkout')->name('orders.store');
