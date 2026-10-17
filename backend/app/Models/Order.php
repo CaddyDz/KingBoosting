@@ -146,6 +146,14 @@ class Order extends Model
 	}
 
 	/**
+	 * @return BelongsTo<Payout, $this>
+	 */
+	public function payout(): BelongsTo
+	{
+		return $this->belongsTo(Payout::class);
+	}
+
+	/**
 	 * @return HasMany<Message, $this>
 	 */
 	public function messages(): HasMany

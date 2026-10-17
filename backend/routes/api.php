@@ -3,8 +3,8 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\MeController;
-use App\Http\Controllers\Admin\NoticeController;
-use App\Http\Controllers\{BoosterController, NotificationController};
+use App\Http\Controllers\Admin\{FineController, NoticeController, PayoutController};
+use App\Http\Controllers\{BoosterController, EarningsController, NotificationController};
 use App\Http\Controllers\Chat\MessageController;
 use App\Http\Controllers\Pricing\{CatalogController, QuoteController};
 use App\Http\Controllers\Orders\{JobController, OrderActionController, OrderController};
@@ -34,6 +34,12 @@ Route::middleware('auth:sanctum')->group(function (): void {
 	Route::post('notifications/{notification}/read', [NotificationController::class, 'read'])->name('notifications.read');
 
 	Route::post('users/{user}/notices', [NoticeController::class, 'store'])->name('users.notices.store');
+
+	Route::get('earnings', EarningsController::class)->name('earnings');
+	Route::get('payouts', [PayoutController::class, 'index'])->name('payouts.index');
+	Route::get('payouts/owed', [PayoutController::class, 'owed'])->name('payouts.owed');
+	Route::post('payouts', [PayoutController::class, 'store'])->name('payouts.store');
+	Route::apiResource('fines', FineController::class)->except('show');
 
 	Route::get('orders', [OrderController::class, 'index'])->name('orders.index');
 	Route::post('orders', [OrderController::class, 'store'])->middleware('throttle:checkout')->name('orders.store');

@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
 use App\Enums\{OrderEventType, OrderStatus};
 use App\Models\{Application, Fine, Message, Order, User};
-use App\Actions\Orders\{AssignOrder, ClaimOrder, CompleteOrder, MarkOrderPaidOut, PauseOrder, ReleaseOrder};
+use App\Actions\Payouts\PayOutBooster;
+use App\Actions\Orders\{AssignOrder, ClaimOrder, CompleteOrder, PauseOrder, ReleaseOrder};
 
 /**
  * The public demo: named accounts for every role and about 40 orders in every status, game and service,
@@ -206,7 +207,7 @@ class DemoSeeder extends Seeder
 
 		if ($status === OrderStatus::PaidOut) {
 			$this->at($at->addDays(7));
-			app(MarkOrderPaidOut::class)->handle($this->admin, $order->fresh());
+			app(PayOutBooster::class)->handle($this->admin, $booster, [$order->id]);
 		}
 	}
 

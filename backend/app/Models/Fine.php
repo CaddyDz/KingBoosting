@@ -40,6 +40,16 @@ class Fine extends Model
 	}
 
 	/**
+	 * The payout that deducted it; none while it's still owed.
+	 *
+	 * @return BelongsTo<Payout, $this>
+	 */
+	public function payout(): BelongsTo
+	{
+		return $this->belongsTo(Payout::class);
+	}
+
+	/**
 	 * @return BelongsTo<User, $this>
 	 */
 	public function issuer(): BelongsTo

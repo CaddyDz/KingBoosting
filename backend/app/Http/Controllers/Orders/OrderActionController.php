@@ -9,7 +9,8 @@ use App\Models\{Order, User};
 use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\OrderResource;
-use App\Actions\Orders\{AssignOrder, ClaimOrder, CompleteOrder, MarkOrderPaidOut, PauseOrder, ReleaseOrder, ResumeOrder, UpdateOrderCredentials};
+use App\Actions\Payouts\PayOutBooster;
+use App\Actions\Orders\{AssignOrder, ClaimOrder, CompleteOrder, PauseOrder, ReleaseOrder, ResumeOrder, UpdateOrderCredentials};
 
 /**
  * One endpoint per order action. The action classes check OrderPolicy: 403 when the user may never
@@ -54,9 +55,18 @@ class OrderActionController extends Controller
 		return $this->respond($action->handle($this->user($request), $order));
 	}
 
-	public function markPaidOut(Request $request, Order $order, MarkOrderPaidOut $action): OrderResource
+	/**
+	 * Pay out one completed order on its own: it still gets a Payout, so the booster's history is complete.
+	 */
+	public function markPaidOut(Request $request, Order $order, PayOutBooster $payOut): OrderResource
 	{
-		return $this->respond($action->handle($this->user($request), $order));
+		$this->authorize('markPaidOut', $order);
+
+		/** @var User $booster */
+		$booster = $order->booster;
+		$payOut->handle($this->user($request), $booster, [$order->id]);
+
+		return $this->respond($order->refresh());
 	}
 
 	public function updateCredentials(Request $request, Order $order, UpdateOrderCredentials $action): OrderResource

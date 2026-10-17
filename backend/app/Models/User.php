@@ -115,4 +115,12 @@ class User extends Authenticatable
 	{
 		return $this->hasMany(Fine::class, 'booster_id');
 	}
+
+	/**
+	 * @return HasMany<Payout, $this>
+	 */
+	public function payouts(): HasMany
+	{
+		return $this->hasMany(Payout::class, 'booster_id');
+	}
 }
