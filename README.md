@@ -42,4 +42,7 @@ docker compose exec app ./vendor/bin/phpstan analyse
 docker compose exec frontend npm run lint
 docker compose exec frontend npm run typecheck
 docker compose exec frontend npm test
+docker compose --profile e2e run --rm e2e   # Playwright against the running stack; resets the demo data first
 ```
+
+Without Stripe keys, a local stack still takes orders: payments run offline, and the payment page offers to simulate Stripe's answer.

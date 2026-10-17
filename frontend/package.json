@@ -10,7 +10,8 @@
 		"lint": "eslint . --max-warnings 0",
 		"lint:fix": "eslint . --fix",
 		"typecheck": "nuxt typecheck",
-		"test": "vitest run"
+		"test": "vitest run",
+		"test:e2e": "playwright test"
 	},
 	"dependencies": {
 		"@mdi/js": "^7.4.47",
@@ -28,6 +29,7 @@
 	"devDependencies": {
 		"@nuxt/eslint": "^1.17.0",
 		"@nuxt/test-utils": "^4.3.4",
+		"@playwright/test": "1.56.1",
 		"@vue/test-utils": "^2.5.1",
 		"eslint": "^10.13.0",
 		"happy-dom": "^21.0.3",

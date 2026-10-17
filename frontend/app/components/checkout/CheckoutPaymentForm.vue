@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import type { Stripe, StripeElements, StripePaymentElement } from '@stripe/stripe-js'
+import { errorMessage } from '~/utils/api'
 
 /**
  * Stripe's Payment Element for one order. Card details go from the browser to Stripe, never to our API.
  * Cards that need 3-D Secure leave for the bank's page and come back to /checkout/{order}.
  */
-const props = defineProps<{ orderId: number, clientSecret: string, amountCents: number }>()
+const props = defineProps<{ orderId: number, clientSecret: string, amountCents: number, offline?: boolean }>()
 const emit = defineEmits<{ paid: [] }>()
 
 const config = useRuntimeConfig()
@@ -14,14 +15,30 @@ const mount = ref<HTMLElement | null>(null)
 const ready = ref(false)
 const submitting = ref(false)
 const failure = ref<string | null>(null)
-const unavailable = ref(!config.public.stripeKey)
+const unavailable = ref(!props.offline && !config.public.stripeKey)
+
+// A local stack without Stripe keys: the API offers a stand-in for Stripe's confirmation
+async function simulate(): Promise<void> {
+	submitting.value = true
+	failure.value = null
+	try {
+		await useApi()(`/api/testing/orders/${props.orderId}/pay`, { method: 'POST' })
+		emit('paid')
+	}
+	catch (error) {
+		failure.value = errorMessage(error)
+	}
+	finally {
+		submitting.value = false
+	}
+}
 
 let stripe: Stripe | null = null
 let elements: StripeElements | null = null
 let paymentElement: StripePaymentElement | null = null
 
 onMounted(async () => {
-	if (unavailable.value || !mount.value) {
+	if (props.offline || unavailable.value || !mount.value) {
 		return
 	}
 	try {
@@ -78,7 +95,16 @@ async function pay(): Promise<void> {
 
 <template>
 	<div>
-		<v-alert v-if="unavailable" type="info" variant="tonal" data-testid="payments-off">
+		<template v-if="offline">
+			<v-alert type="info" variant="tonal" data-testid="payments-offline">
+				This local stack has no Stripe keys, so payments run offline. Simulate what Stripe would answer:
+			</v-alert>
+			<v-alert v-if="failure" type="error" variant="tonal" class="mt-4" :text="failure" />
+			<v-btn block color="primary" variant="flat" size="large" class="mt-6" :loading="submitting" data-testid="simulate-payment" @click="simulate">
+				Simulate a successful payment of {{ formatCents(amountCents) }}
+			</v-btn>
+		</template>
+		<v-alert v-else-if="unavailable" type="info" variant="tonal" data-testid="payments-off">
 			Payments are off in this environment: it has no Stripe test keys. The order is saved and waits for payment.
 		</v-alert>
 		<template v-else>

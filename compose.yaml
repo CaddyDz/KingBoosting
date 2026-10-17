@@ -193,6 +193,27 @@ services:
       web:
         condition: service_started
 
+  # End-to-end tests against this stack: docker compose --profile e2e run --rm e2e
+  # It shares the proxy's network, so its browser opens the app at localhost like you do. The image's
+  # Playwright version matches @playwright/test in frontend/package.json.
+  e2e:
+    image: mcr.microsoft.com/playwright:v1.56.1-noble
+    profiles: [e2e]
+    network_mode: service:proxy
+    working_dir: /app
+    user: "${HOST_UID:-1000}:${HOST_GID:-1000}"
+    environment:
+      HOME: /tmp
+      CI: ${CI:-}
+      E2E_BASE_URL: http://localhost:${APP_PORT:-8000}
+    volumes:
+      - ./frontend:/app
+      - frontend_node_modules:/app/node_modules
+    command: npx playwright test
+    depends_on:
+      proxy:
+        condition: service_started
+
 volumes:
   db_data:
   frontend_node_modules:

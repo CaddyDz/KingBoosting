@@ -13,7 +13,7 @@ use Illuminate\Validation\Rules\Password;
 use Illuminate\Support\{ServiceProvider, Str};
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Support\Facades\{Gate, RateLimiter};
-use App\Payments\{PaymentGateway, StripePaymentGateway, UnconfiguredPaymentGateway};
+use App\Payments\{OfflinePaymentGateway, PaymentGateway, StripePaymentGateway, UnconfiguredPaymentGateway};
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -22,12 +22,15 @@ class AppServiceProvider extends ServiceProvider
 	 */
 	public function register(): void
 	{
-		$this->app->bind(PaymentGateway::class, fn (): PaymentGateway => filled(config('services.stripe.secret'))
-			? new StripePaymentGateway(new StripeClient([
+		$this->app->bind(PaymentGateway::class, fn (): PaymentGateway => match (true) {
+			filled(config('services.stripe.secret')) => new StripePaymentGateway(new StripeClient([
 				'api_key' => (string) config('services.stripe.secret'),
 				'max_network_retries' => 2,
-			]))
-			: new UnconfiguredPaymentGateway);
+			])),
+			// A local stack without keys still takes orders end to end; payments are then simulated
+			$this->app->environment('local') => new OfflinePaymentGateway,
+			default => new UnconfiguredPaymentGateway,
+		});
 	}
 
 	/**

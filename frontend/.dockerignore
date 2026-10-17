@@ -12,3 +12,5 @@ playwright-report
 .env.*
 Dockerfile
 .dockerignore
+test-results
+playwright-report

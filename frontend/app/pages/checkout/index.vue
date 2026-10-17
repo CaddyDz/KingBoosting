@@ -149,7 +149,8 @@ async function placeOrder(): Promise<void> {
 					<p class="text-body-medium text-medium-emphasis mb-4">
 						Use made-up details: this is a demo. Only the booster playing your order sees the login, and only while they play.
 					</p>
-					<v-form @submit.prevent="placeOrder">
+					<!-- Disabled for guests and staff: the card only greys out, the form also blocks the keyboard -->
+					<v-form :disabled="!isCustomer" @submit.prevent="placeOrder">
 						<v-text-field v-model="details.account_name" label="In-game name" maxlength="64" :error-messages="errors.account_name" data-testid="account-name" />
 						<v-row density="compact">
 							<v-col cols="12" sm="6">
@@ -162,7 +163,7 @@ async function placeOrder(): Promise<void> {
 						<v-select v-model="details.booster_id" :items="boosterChoices" label="Booster" class="mt-4" :error-messages="errors.booster_id" data-testid="booster" />
 						<v-textarea v-model="details.comment" label="Anything your booster should know?" rows="2" counter="1000" maxlength="1000" :error-messages="errors.comment" />
 						<v-alert v-if="failure" type="error" variant="tonal" class="mb-4" :text="failure" data-testid="checkout-error" />
-						<v-btn type="submit" color="primary" variant="flat" size="large" block :disabled="!order.canCheckout" :loading="placing" data-testid="place-order">
+						<v-btn type="submit" color="primary" variant="flat" size="large" block :disabled="!isCustomer || !order.canCheckout" :loading="placing" data-testid="place-order">
 							Continue to payment
 						</v-btn>
 					</v-form>

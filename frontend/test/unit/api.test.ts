@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest'
-import { createApiClient, validationErrors } from '../../app/utils/api'
+import { createApiClient, readCookie, validationErrors } from '../../app/utils/api'
 
 function httpError(status: number, data: unknown = {}): Error & { status: number, data: unknown } {
 	return Object.assign(new Error(`HTTP ${status}`), { status, data })
@@ -71,5 +71,17 @@ describe('validationErrors', () => {
 	it('keeps the first message per field', () => {
 		expect(validationErrors(httpError(422, { errors: { email: ['Taken.', 'Other.'] } }))).toEqual({ email: 'Taken.' })
 		expect(validationErrors(httpError(500))).toEqual({})
+	})
+})
+
+describe('readCookie', () => {
+	it('finds a cookie among others and decodes it, the way Laravel encodes XSRF-TOKEN', () => {
+		expect(readCookie('theme=dark; XSRF-TOKEN=eyJpdiI6%3D%3D; other=1', 'XSRF-TOKEN')).toBe('eyJpdiI6==')
+		expect(readCookie('XSRF-TOKEN=abc', 'XSRF-TOKEN')).toBe('abc')
+	})
+
+	it('is null when the cookie isn\'t set, even if another name contains it', () => {
+		expect(readCookie('', 'XSRF-TOKEN')).toBeNull()
+		expect(readCookie('OLD-XSRF-TOKEN=abc', 'XSRF-TOKEN')).toBeNull()
 	})
 })

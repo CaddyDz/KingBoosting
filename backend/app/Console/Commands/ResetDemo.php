@@ -22,9 +22,10 @@ class ResetDemo extends Command
 
 		$this->call('migrate:fresh', ['--force' => true, '--seed' => true, '--seeder' => DemoSeeder::class]);
 
-		// The wipe dropped the cache table the queue worker and Reverb poll; restart them cleanly
+		// The wipe dropped the cache table the queue worker polls; restart it cleanly. Reverb keeps no database
+		// state: if it fell over while the table was missing, its restart policy has already brought it back, and
+		// an explicit reverb:restart would only drop every connection again ten seconds later.
 		$this->callSilently('queue:restart');
-		$this->callSilently('reverb:restart');
 
 		$this->components->info('The demo has been reset. Every account uses DEMO_PASSWORD.');
 

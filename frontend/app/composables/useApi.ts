@@ -1,4 +1,4 @@
-import { createApiClient, type ApiFetch } from '~/utils/api'
+import { createApiClient, readCookie, type ApiFetch } from '~/utils/api'
 
 /**
  * The Laravel API client. In the browser it talks to /api on the same origin (docs/adr/0001); during
@@ -13,14 +13,7 @@ export function useApi(): ApiFetch {
 	const config = useRuntimeConfig()
 	const client = createApiClient({
 		fetch: (path, options) => $fetch(path, options as Parameters<typeof $fetch>[1]),
-		xsrfToken: () => {
-			if (import.meta.server) {
-				return null
-			}
-			const cookie = document.cookie.split('; ').find(entry => entry.startsWith('XSRF-TOKEN='))
-
-			return cookie ? decodeURIComponent(cookie.slice('XSRF-TOKEN='.length)) : null
-		},
+		xsrfToken: () => (import.meta.server ? null : readCookie(document.cookie, 'XSRF-TOKEN')),
 		refreshCsrf: async () => {
 			await $fetch('/sanctum/csrf-cookie', { credentials: 'include' })
 		},

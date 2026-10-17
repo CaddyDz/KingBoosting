@@ -148,7 +148,7 @@ it('gives the customer the client secret of an unpaid order, so checkout can tak
 	$this->getJson("/api/orders/{$order->id}")->assertJsonPath('data.allowed_actions', ['update-credentials', 'pay']);
 	$this->getJson("/api/orders/{$order->id}/payment")
 		->assertOk()
-		->assertExactJson(['data' => ['client_secret' => "pi_fake_{$order->id}_secret_test", 'amount_cents' => 13425]]);
+		->assertExactJson(['data' => ['client_secret' => "pi_fake_{$order->id}_secret_test", 'amount_cents' => 13425, 'offline' => false]]);
 });
 
 it('keeps the payment of an order to its customer, until it is paid', function (): void {

@@ -16,6 +16,7 @@ const snackbar = useSnackbar()
 
 const order = ref<Order | null>(null)
 const clientSecret = ref<string | null>(null)
+const offline = ref(false)
 const phase = ref<'loading' | 'paying' | 'confirming' | 'slow' | 'error'>('loading')
 const problem = ref<string | null>(null)
 
@@ -47,7 +48,9 @@ async function confirm(): Promise<void> {
 }
 
 async function startPayment(): Promise<void> {
-	clientSecret.value = (await useApi()<Wrapped<{ client_secret: string, amount_cents: number }>>(`/api/orders/${id}/payment`)).data.client_secret
+	const payment = (await useApi()<Wrapped<{ client_secret: string, amount_cents: number, offline: boolean }>>(`/api/orders/${id}/payment`)).data
+	clientSecret.value = payment.client_secret
+	offline.value = payment.offline
 	phase.value = 'paying'
 }
 
@@ -126,8 +129,8 @@ onMounted(async () => {
 				<span class="text-title-medium">To pay</span>
 				<span class="text-headline-medium font-weight-bold">{{ formatCents(order.price_cents ?? 0) }}</span>
 			</div>
-			<CheckoutPaymentForm :order-id="order.id" :client-secret="clientSecret" :amount-cents="order.price_cents ?? 0" @paid="confirm" />
-			<p class="text-body-small text-medium-emphasis mt-4 text-center">
+			<CheckoutPaymentForm :order-id="order.id" :client-secret="clientSecret" :amount-cents="order.price_cents ?? 0" :offline="offline" @paid="confirm" />
+			<p v-if="!offline" class="text-body-small text-medium-emphasis mt-4 text-center">
 				Test mode: <code>4242 4242 4242 4242</code>, or <code>4000 0027 6000 3184</code> for 3-D Secure. Any future date and CVC.
 			</p>
 		</v-card>

@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { statusOf } from '~/utils/api'
+import { readCookie, statusOf } from '~/utils/api'
 import type { Role, User, Wrapped } from '~/types/api'
 
 /**
@@ -45,7 +45,7 @@ export const useAuthStore = defineStore('auth', () => {
 	 * so nobody is signed in, and the request would only log a 401 in the browser console.
 	 */
 	async function loadIfSignedIn(): Promise<User | null> {
-		if (!document.cookie.split('; ').some(cookie => cookie.startsWith('XSRF-TOKEN='))) {
+		if (readCookie(document.cookie, 'XSRF-TOKEN') === null) {
 			return null
 		}
 

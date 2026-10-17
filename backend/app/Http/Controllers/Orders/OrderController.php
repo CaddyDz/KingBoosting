@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Orders;
 
 use App\Models\{Order, User};
-use App\Payments\PaymentGateway;
 use Illuminate\Http\JsonResponse;
 use App\Actions\Orders\PlaceOrder;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\OrderResource;
 use Illuminate\Database\Eloquent\Builder;
+use App\Payments\{OfflinePaymentGateway, PaymentGateway};
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use App\Http\Requests\Orders\{ListOrdersRequest, StoreOrderRequest};
 
@@ -74,6 +74,8 @@ class OrderController extends Controller
 		return response()->json(['data' => [
 			'client_secret' => $payments->clientSecret($order),
 			'amount_cents' => $order->price_cents,
+			// Paid by simulation on a local stack without Stripe keys
+			'offline' => OfflinePaymentGateway::handles($order),
 		]]);
 	}
 

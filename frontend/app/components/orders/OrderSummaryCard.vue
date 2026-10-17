@@ -29,7 +29,7 @@ const dates = computed(() => [
 				{{ order.game.label }} · {{ serviceLabel(order.service) }} · server {{ order.server.toUpperCase() }} · in-game name {{ order.account_name }}
 			</v-card-subtitle>
 			<template #append>
-				<OrdersOrderStatusChip :status="order.status" size="default" />
+				<OrdersOrderStatusChip :status="order.status" size="default" data-testid="order-status" />
 			</template>
 		</v-card-item>
 		<v-card-text>

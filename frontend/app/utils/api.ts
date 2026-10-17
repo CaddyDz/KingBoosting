@@ -52,6 +52,15 @@ export function createApiClient({ fetch, xsrfToken, refreshCsrf, baseURL = '' }:
 }
 
 /**
+ * A cookie's value from `document.cookie`, decoded, or null. Laravel URL-encodes the XSRF-TOKEN cookie.
+ */
+export function readCookie(cookies: string, name: string): string | null {
+	const cookie = cookies.split('; ').find(entry => entry.startsWith(`${name}=`))
+
+	return cookie ? decodeURIComponent(cookie.slice(name.length + 1)) : null
+}
+
+/**
  * The HTTP status of a failed request, if it got an answer.
  */
 export function statusOf(error: unknown): number | undefined {

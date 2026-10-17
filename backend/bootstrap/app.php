@@ -15,7 +15,13 @@ return Application::configure(basePath: dirname(__DIR__))
 		channels: __DIR__.'/../routes/channels.php',
 		health: '/up',
 		// Outside the web and api groups: Stripe has no session or CSRF token
-		then: fn () => Route::middleware([])->group(__DIR__.'/../routes/stripe.php'),
+		then: function (): void {
+			Route::middleware([])->group(__DIR__.'/../routes/stripe.php');
+			// Shortcuts for end-to-end tests and keyless checkout: never in production
+			if (app()->environment(['local', 'testing'])) {
+				Route::middleware('api')->prefix('api/testing')->group(__DIR__.'/../routes/testing.php');
+			}
+		},
 	)
 	->withMiddleware(function (Middleware $middleware): void {
 		// Sanctum SPA auth: requests from SANCTUM_STATEFUL_DOMAINS get the session and CSRF checks

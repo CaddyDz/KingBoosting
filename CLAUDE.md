@@ -48,6 +48,12 @@ Static analysis: `docker compose exec app ./vendor/bin/phpstan analyse` (Larasta
 
 Frontend checks: `docker compose exec frontend npm run lint` (ESLint with tabs, single quotes, no semicolons), `npm run typecheck`, and `npm test` (Vitest: `test/unit` in Node, `test/nuxt` in a Nuxt environment).
 
+End-to-end tests: `docker compose --profile e2e run --rm e2e` runs Playwright (`frontend/e2e`) against the running stack.
+- They start by resetting the demo through `POST /api/testing/reset`, so they wipe your local data.
+- `routes/testing.php` only exists when `APP_ENV` is `local` or `testing`.
+- Without Stripe keys, a local stack pays orders through `OfflinePaymentGateway`. The payment page then offers "Simulate a successful payment", which does what Stripe's webhook would.
+- On Linux, the container runs as `HOST_UID`/`HOST_GID` (see the README).
+
 npm 11 refuses dependency install scripts unless `package.json`'s `allowScripts` approves them. When adding a package that needs one, run `npx npm@11 install-scripts approve <pkg>`, or `deny` it when a prebuilt binary covers it.
 
 ### CI (`.github/workflows`)

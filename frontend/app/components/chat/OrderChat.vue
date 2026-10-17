@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { mdiAlertCircleOutline, mdiSend } from '@mdi/js'
+import { mdiAlertCircleOutline, mdiCircleMedium, mdiSend } from '@mdi/js'
 import { confirmMessage, markReadUpTo, mergeMessages, type ChatEntry } from '~/utils/chat'
 import { formatDateTime } from '~/utils/orders'
 import type { ChatMessage, Order, Wrapped } from '~/types/api'
@@ -113,12 +113,20 @@ function onEnter(event: KeyboardEvent): void {
 	}
 }
 
+// True once the order's channel is subscribed: new messages then arrive without a reload
+const live = ref(false)
+
 onMounted(async () => {
 	messages.value = mergeMessages([], await loadPage())
 	scrollToBottom()
 	markRead()
 
-	useEcho().private(`orders.${props.order.id}`)
+	const channel = useEcho().private(`orders.${props.order.id}`)
+	// The order page joins this channel first, so its subscription may already have succeeded
+	live.value = channel.subscription.subscribed
+	channel
+		.subscribed(() => (live.value = true))
+		.error(() => (live.value = false))
 		.listen('.message.sent', (message: ChatMessage) => {
 			const atBottom = !list.value || list.value.scrollHeight - list.value.scrollTop - list.value.clientHeight < 80
 			messages.value = mergeMessages(messages.value, [message])
@@ -134,8 +142,13 @@ onMounted(async () => {
 </script>
 
 <template>
-	<v-card class="d-flex flex-column" data-testid="chat">
+	<v-card class="d-flex flex-column" data-testid="chat" :data-live="live">
 		<v-card-item title="Chat">
+			<template #append>
+				<v-chip v-if="live" size="x-small" color="success" variant="tonal" :prepend-icon="mdiCircleMedium">
+					Live
+				</v-chip>
+			</template>
 			<template #subtitle>
 				<span class="text-wrap">With {{ counterpart }}. Never share your password here.</span>
 			</template>
