@@ -37,10 +37,10 @@ async function submit(): Promise<void> {
 
 <template>
 	<v-card class="pa-6">
-		<h1 class="text-h5 font-weight-bold mb-1">
+		<h1 class="text-headline-small font-weight-bold mb-1">
 			Log in
 		</h1>
-		<p class="text-body-2 text-medium-emphasis mb-6">
+		<p class="text-body-medium text-medium-emphasis mb-6">
 			Demo accounts: admin@, moderator@, booster@ or customer@kingboosting.test, password <code>password</code>.
 		</p>
 		<v-alert v-if="message" type="error" variant="tonal" class="mb-4" :text="message" />
@@ -50,7 +50,7 @@ async function submit(): Promise<void> {
 			<v-text-field v-model="form.password" label="Password" type="password" autocomplete="current-password" :error-messages="errors.password" required />
 			<div class="d-flex align-center justify-space-between mb-4">
 				<v-checkbox v-model="form.remember" label="Remember me" density="compact" hide-details />
-				<NuxtLink to="/forgot-password" class="text-body-2 text-primary">
+				<NuxtLink to="/forgot-password" class="text-body-medium text-primary">
 					Forgot your password?
 				</NuxtLink>
 			</div>
@@ -58,7 +58,7 @@ async function submit(): Promise<void> {
 				Log in
 			</v-btn>
 		</v-form>
-		<p class="text-body-2 text-center mt-6">
+		<p class="text-body-medium text-center mt-6">
 			New here?
 			<NuxtLink to="/register" class="text-primary">
 				Create an account

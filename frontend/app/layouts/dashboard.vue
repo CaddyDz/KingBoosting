@@ -37,7 +37,7 @@ async function logout(): Promise<void> {
 		<v-navigation-drawer v-model="drawer" :permanent="mdAndUp" width="248">
 			<NuxtLink to="/" class="d-flex align-center ga-2 pa-4 text-decoration-none">
 				<img src="/favicon.svg" alt="" width="32" height="32">
-				<span class="text-subtitle-1 font-weight-bold">King Boosting</span>
+				<span class="text-title-medium font-weight-bold">King Boosting</span>
 			</NuxtLink>
 			<v-divider />
 			<v-list nav density="comfortable">

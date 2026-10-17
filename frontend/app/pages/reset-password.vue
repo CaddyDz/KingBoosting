@@ -35,7 +35,7 @@ async function submit(): Promise<void> {
 
 <template>
 	<v-card class="pa-6">
-		<h1 class="text-h5 font-weight-bold mb-6">
+		<h1 class="text-headline-small font-weight-bold mb-6">
 			Choose a new password
 		</h1>
 		<v-alert v-if="failure" type="error" variant="tonal" class="mb-4" :text="failure" />

@@ -18,10 +18,10 @@ const cards = computed(() => data.value
 
 <template>
 	<div>
-		<h1 class="text-h5 font-weight-bold mb-1">
+		<h1 class="text-headline-small font-weight-bold mb-1">
 			Earnings
 		</h1>
-		<p class="text-body-2 text-medium-emphasis mb-6">
+		<p class="text-body-medium text-medium-emphasis mb-6">
 			Your share of every completed order, minus fines. Admins pay out in batches.
 		</p>
 		<v-alert v-if="error" type="error" variant="tonal" text="Your earnings couldn't be loaded." />
@@ -30,10 +30,10 @@ const cards = computed(() => data.value
 			<v-row class="mb-2">
 				<v-col v-for="card in cards" :key="card.label" cols="12" md="4">
 					<v-card class="pa-4">
-						<div class="text-body-2 text-medium-emphasis">
+						<div class="text-body-medium text-medium-emphasis">
 							{{ card.label }}
 						</div>
-						<div class="text-h4 font-weight-bold mt-1" :class="card.color ? `text-${card.color}` : ''" :data-testid="card.testid">
+						<div class="text-headline-large font-weight-bold mt-1" :class="card.color ? `text-${card.color}` : ''" :data-testid="card.testid">
 							{{ formatCents(card.value) }}
 						</div>
 					</v-card>
@@ -59,7 +59,7 @@ const cards = computed(() => data.value
 										<NuxtLink :to="`/dashboard/orders/${order.id}`" class="text-decoration-none">
 											#{{ order.id }} {{ order.title }}
 										</NuxtLink>
-										<div class="text-caption text-medium-emphasis">
+										<div class="text-body-small text-medium-emphasis">
 											{{ order.game }}
 										</div>
 									</td>

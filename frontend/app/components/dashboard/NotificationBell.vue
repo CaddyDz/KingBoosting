@@ -49,7 +49,7 @@ async function open(notification: AppNotification): Promise<void> {
 					</v-list-item-title>
 					<v-list-item-subtitle>{{ item.body }}</v-list-item-subtitle>
 					<template #append>
-						<span class="text-caption text-medium-emphasis">{{ timeAgo(item.created_at) }}</span>
+						<span class="text-body-small text-medium-emphasis">{{ timeAgo(item.created_at) }}</span>
 					</template>
 				</v-list-item>
 			</v-list>

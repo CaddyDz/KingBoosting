@@ -32,7 +32,7 @@ async function submit(): Promise<void> {
 
 <template>
 	<v-card class="pa-6">
-		<h1 class="text-h5 font-weight-bold mb-6">
+		<h1 class="text-headline-small font-weight-bold mb-6">
 			Create an account
 		</h1>
 		<v-alert v-if="message" type="error" variant="tonal" class="mb-4" :text="message" />
@@ -45,7 +45,7 @@ async function submit(): Promise<void> {
 				Create my account
 			</v-btn>
 		</v-form>
-		<p class="text-body-2 text-center mt-6">
+		<p class="text-body-medium text-center mt-6">
 			Already have an account?
 			<NuxtLink to="/login" class="text-primary">
 				Log in

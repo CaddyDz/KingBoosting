@@ -142,19 +142,19 @@ onMounted(async () => {
 		</v-card-item>
 		<v-divider />
 		<div ref="list" class="chat-list pa-3" data-testid="chat-messages" @scroll.passive="onScroll">
-			<div v-if="hasMore" class="text-center text-caption text-medium-emphasis py-2">
+			<div v-if="hasMore" class="text-center text-body-small text-medium-emphasis py-2">
 				{{ loadingOlder ? 'Loading…' : 'Scroll up for older messages' }}
 			</div>
 			<template v-for="entry in messages" :key="entry.id">
 				<div v-if="entry.system" class="text-center my-3" data-testid="chat-system">
-					<span class="system-line text-caption px-3 py-1">{{ entry.body }}</span>
+					<span class="system-line text-body-small px-3 py-1">{{ entry.body }}</span>
 				</div>
 				<div v-else class="d-flex flex-column my-2" :class="entry.sender?.id === user?.id ? 'align-end' : 'align-start'">
-					<span v-if="entry.sender?.id !== user?.id" class="text-caption text-medium-emphasis mb-1">{{ entry.sender?.name }}</span>
+					<span v-if="entry.sender?.id !== user?.id" class="text-body-small text-medium-emphasis mb-1">{{ entry.sender?.name }}</span>
 					<div class="bubble px-3 py-2" :class="entry.sender?.id === user?.id ? 'bubble--mine' : 'bubble--theirs'" data-testid="chat-message">
 						{{ entry.body }}
 					</div>
-					<span class="text-caption text-medium-emphasis mt-1">
+					<span class="text-body-small text-medium-emphasis mt-1">
 						<template v-if="entry.state === 'sending'">Sending…</template>
 						<v-btn v-else-if="entry.state === 'failed'" variant="text" size="x-small" color="error" :prepend-icon="mdiAlertCircleOutline" @click="retry(entry)">Not sent, retry</v-btn>
 						<template v-else>

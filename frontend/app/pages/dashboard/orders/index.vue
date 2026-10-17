@@ -80,7 +80,7 @@ const title = computed(() => (isStaff.value ? 'Orders' : 'My orders'))
 <template>
 	<div>
 		<div class="d-flex flex-wrap align-center ga-4 mb-4">
-			<h1 class="text-h5 font-weight-bold">
+			<h1 class="text-headline-small font-weight-bold">
 				{{ title }}
 			</h1>
 			<v-spacer />
@@ -130,7 +130,7 @@ const title = computed(() => (isStaff.value ? 'Orders' : 'My orders'))
 						<div class="font-weight-medium">
 							{{ item.title }}
 						</div>
-						<div class="text-caption text-medium-emphasis">
+						<div class="text-body-small text-medium-emphasis">
 							{{ item.game.label }} · {{ serviceLabel(item.service) }} · {{ item.server.toUpperCase() }}
 						</div>
 					</div>

@@ -45,10 +45,10 @@ async function claim(order: Order): Promise<void> {
 	<div>
 		<div class="d-flex flex-wrap align-center ga-4 mb-6">
 			<div>
-				<h1 class="text-h5 font-weight-bold">
+				<h1 class="text-headline-small font-weight-bold">
 					Jobs board
 				</h1>
-				<p class="text-body-2 text-medium-emphasis">
+				<p class="text-body-medium text-medium-emphasis">
 					{{ role === 'booster' ? 'Paid orders waiting for a booster, oldest first. Claim one you can start today.' : 'Paid orders waiting for a booster. Open one to assign it.' }}
 				</p>
 			</div>
@@ -62,7 +62,7 @@ async function claim(order: Order): Promise<void> {
 				<v-card class="h-100 d-flex flex-column" data-testid="job">
 					<v-card-item :title="job.title" :subtitle="`${job.game.label} · ${serviceLabel(job.service)} · ${job.server.toUpperCase()}`">
 						<template #append>
-							<span class="text-h6 font-weight-bold text-success">{{ formatCents(job.booster_share_cents ?? 0) }}</span>
+							<span class="text-title-large font-weight-bold text-success">{{ formatCents(job.booster_share_cents ?? 0) }}</span>
 						</template>
 					</v-card-item>
 					<v-card-text class="flex-grow-1">
@@ -71,7 +71,7 @@ async function claim(order: Order): Promise<void> {
 								{{ option }}
 							</v-chip>
 						</div>
-						<div class="text-caption text-medium-emphasis">
+						<div class="text-body-small text-medium-emphasis">
 							Paid {{ job.paid_at ? timeAgo(job.paid_at) : '' }} · order #{{ job.id }}
 						</div>
 					</v-card-text>

@@ -29,10 +29,10 @@ async function submit(): Promise<void> {
 
 <template>
 	<v-card class="pa-6">
-		<h1 class="text-h5 font-weight-bold mb-1">
+		<h1 class="text-headline-small font-weight-bold mb-1">
 			Reset your password
 		</h1>
-		<p class="text-body-2 text-medium-emphasis mb-6">
+		<p class="text-body-medium text-medium-emphasis mb-6">
 			We'll email you a link to choose a new one.
 		</p>
 		<v-alert v-if="sent" type="success" variant="tonal" class="mb-4" :text="sent" />
@@ -43,7 +43,7 @@ async function submit(): Promise<void> {
 				Send the link
 			</v-btn>
 		</v-form>
-		<p class="text-body-2 text-center mt-6">
+		<p class="text-body-medium text-center mt-6">
 			<NuxtLink to="/login" class="text-primary">
 				Back to log in
 			</NuxtLink>

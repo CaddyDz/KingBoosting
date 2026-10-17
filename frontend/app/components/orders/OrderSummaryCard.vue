@@ -22,7 +22,7 @@ const dates = computed(() => [
 					#{{ order.id }}
 				</v-avatar>
 			</template>
-			<v-card-title class="text-h6 text-wrap">
+			<v-card-title class="text-title-large text-wrap">
 				{{ order.title }}
 			</v-card-title>
 			<v-card-subtitle>
@@ -55,10 +55,10 @@ const dates = computed(() => [
 
 			<template v-if="order.quote">
 				<v-divider class="my-4" />
-				<div class="text-subtitle-2 mb-2">
+				<div class="text-title-small mb-2">
 					Price
 				</div>
-				<div v-for="line in order.quote.lines" :key="line.label" class="d-flex justify-space-between text-body-2 py-1">
+				<div v-for="line in order.quote.lines" :key="line.label" class="d-flex justify-space-between text-body-medium py-1">
 					<span>{{ line.label }}</span>
 					<span>{{ formatCents(line.cents) }}</span>
 				</div>

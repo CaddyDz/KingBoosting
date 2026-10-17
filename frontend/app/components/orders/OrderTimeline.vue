@@ -16,10 +16,10 @@ defineProps<{ events: OrderEvent[] }>()
 					:dot-color="event.type === 'payment_failed' ? 'error' : event.to_status ? statusColor(event.to_status) : 'grey'"
 					size="x-small"
 				>
-					<div class="text-body-2 font-weight-medium">
+					<div class="text-body-medium font-weight-medium">
 						{{ eventText(event.type, event.actor) }}
 					</div>
-					<div class="text-caption text-medium-emphasis">
+					<div class="text-body-small text-medium-emphasis">
 						{{ formatDateTime(event.created_at) }}
 					</div>
 				</v-timeline-item>
