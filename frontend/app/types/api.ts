@@ -176,3 +176,49 @@ export interface Metrics {
 	orders_by_status: Record<OrderStatus, number>
 	average_completion_hours: number | null
 }
+
+export type PricingStrategy = 'division-ladder' | 'per-game' | 'per-win' | 'mastery' | 'unrated'
+
+export interface CatalogRank {
+	key: string
+	name: string
+	divisions: string[]
+}
+
+export interface CatalogOption {
+	key: string
+	label: string
+	description: string
+	percent: number
+}
+
+/**
+ * GET /api/catalog/{service}: what the order builder needs to draw a service. Prices only come from quotes.
+ */
+export interface CatalogEntry {
+	key: string
+	game: Labelled
+	label: string
+	strategy: PricingStrategy
+	ranks: CatalogRank[] | null
+	lp: string[] | null
+	mmr: string[] | null
+	amount: { label: string, min: number, max: number, default: number } | null
+	mastery: { max_level: number, tokens: Record<string, { min: number, max: number }> } | null
+	champions: string[] | null
+	servers: { key: string, label: string }[]
+	options: CatalogOption[]
+	defaults: Record<string, unknown>
+}
+
+export interface Quote {
+	version: number
+	game: string
+	service: string
+	title: string
+	inputs: Record<string, unknown>
+	lines: QuoteLine[]
+	options: { key: string, label: string, percent: number }[]
+	total_cents: number
+	currency: string
+}

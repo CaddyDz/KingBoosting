@@ -50,8 +50,9 @@ export default defineNuxtConfig({
 		'/register': { ssr: false, swr: false },
 		'/reset-password': { ssr: false, swr: false },
 		'/forgot-password': { ssr: false, swr: false },
-		// The legacy footer's link
+		// Legacy URLs: the footer's terms link, and a Wild Rift page that crashed but was linked
 		'/terms-of-use': { redirect: { to: '/terms', statusCode: 301 } },
+		'/wild-rift-boosting': { redirect: { to: '/wildrift-rank-boosting', statusCode: 301 } },
 	},
 
 	compatibilityDate: '2026-10-01',

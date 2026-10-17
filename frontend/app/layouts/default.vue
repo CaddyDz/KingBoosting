@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { mdiMenu } from '@mdi/js'
 
+// The root is a plain div, not a v-layout: v-app already is the layout, and a v-layout's overflow: hidden would
+// break the order builder's sticky summary
 const drawer = ref(false)
 
 onMounted(() => useAuthStore().loadIfSignedIn())
@@ -14,7 +16,7 @@ const links = [
 </script>
 
 <template>
-	<v-layout>
+	<div>
 		<v-system-bar class="justify-center" height="28" color="surface-variant">
 			<SiteDemoNotice compact class="text-truncate" />
 		</v-system-bar>
@@ -51,7 +53,7 @@ const links = [
 			<slot />
 			<SiteFooter />
 		</v-main>
-	</v-layout>
+	</div>
 </template>
 
 <style scoped>
