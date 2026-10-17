@@ -60,6 +60,8 @@ class AppServiceProvider extends ServiceProvider
 
 		RateLimiter::for('checkout', fn (Request $request): Limit => Limit::perMinute(10)->by($request->user()?->getAuthIdentifier() ?? $request->ip()));
 
+		RateLimiter::for('messages', fn (Request $request): Limit => Limit::perMinute(30)->by($request->user()?->getAuthIdentifier() ?? $request->ip()));
+
 		// The order builder re-quotes as the customer changes options, debounced on the client
 		RateLimiter::for('quotes', fn (Request $request): Limit => Limit::perMinute(120)->by($request->user()?->getAuthIdentifier() ?? $request->ip()));
 	}

@@ -73,6 +73,9 @@ class DemoSeeder extends Seeder
 
 	public function run(): void
 	{
+		// The seeded history shouldn't reach anyone: no live broadcasts and no queued jobs left behind
+		config(['broadcasting.default' => 'null', 'queue.default' => 'sync']);
+
 		$this->startedAt = now();
 		$this->seedUsers();
 		$this->seedOrders();

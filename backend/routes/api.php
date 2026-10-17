@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use App\Http\Controllers\MeController;
 use App\Http\Controllers\BoosterController;
+use App\Http\Controllers\Chat\MessageController;
 use App\Http\Controllers\Pricing\{CatalogController, QuoteController};
 use App\Http\Controllers\Orders\{JobController, OrderActionController, OrderController};
 use Illuminate\Support\Facades\Route;
@@ -31,6 +32,10 @@ Route::middleware('auth:sanctum')->group(function (): void {
 	Route::post('orders', [OrderController::class, 'store'])->middleware('throttle:checkout')->name('orders.store');
 	Route::get('orders/{order}', [OrderController::class, 'show'])->name('orders.show');
 	Route::get('jobs', [JobController::class, 'index'])->name('jobs.index');
+
+	Route::get('orders/{order}/messages', [MessageController::class, 'index'])->name('orders.messages.index');
+	Route::post('orders/{order}/messages', [MessageController::class, 'store'])->middleware('throttle:messages')->name('orders.messages.store');
+	Route::post('orders/{order}/messages/read', [MessageController::class, 'read'])->name('orders.messages.read');
 
 	Route::controller(OrderActionController::class)->prefix('orders/{order}')->name('orders.')->group(function (): void {
 		Route::post('claim', 'claim')->name('claim');
