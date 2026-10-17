@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Resources;
 
 use App\Models\{Order, User};
+use App\Enums\{OrderEventType, OrderStatus};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -61,7 +62,8 @@ class OrderResource extends JsonResource
 			'game' => ['value' => $this->game->value, 'label' => $this->game->label()],
 			'service' => $this->service,
 			'server' => $this->server,
-			'status' => ['value' => $this->status->value, 'label' => $this->status->label()],
+			// Paying the booster is between them and King Boosting: to the customer, the order is simply completed
+			'status' => ['value' => $this->status->value, 'label' => $user->isCustomer() && $this->status === OrderStatus::PaidOut ? OrderStatus::Completed->label() : $this->status->label()],
 			'account_name' => $this->account_name,
 			'options' => array_values(array_map(
 				fn (array $option): string => (string) $option['label'],
@@ -85,7 +87,11 @@ class OrderResource extends JsonResource
 				$this->withDetails && $gate->allows('viewCredentials', $this->resource),
 				fn (): array => ['login' => $this->account_login, 'password' => $this->account_password],
 			),
-			'events' => $this->when($this->withDetails, fn () => OrderEventResource::collection($this->events()->with('actor')->oldest('id')->get())),
+			'events' => $this->when($this->withDetails, fn () => OrderEventResource::collection($this->events()
+				->with('actor')
+				->when($user->isCustomer(), fn ($query) => $query->where('type', '!=', OrderEventType::PaidOut))
+				->oldest('id')
+				->get())),
 			'allowed_actions' => array_values(array_filter(
 				self::ACTIONS,
 				fn (string $action, string $ability): bool => $gate->allows($ability, $this->resource),
@@ -96,7 +102,7 @@ class OrderResource extends JsonResource
 			'paid_at' => $this->paid_at,
 			'claimed_at' => $this->claimed_at,
 			'completed_at' => $this->completed_at,
-			'paid_out_at' => $this->paid_out_at,
+			'paid_out_at' => $this->when(! $user->isCustomer(), $this->paid_out_at),
 		];
 	}
 }

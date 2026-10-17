@@ -172,3 +172,14 @@ it('refuses guests', function (): void {
 	$this->getJson('/api/orders')->assertUnauthorized();
 	$this->getJson('/api/jobs')->assertUnauthorized();
 });
+
+it('shows the customer a paid-out order as completed, without the payout', function (): void {
+	$order = Order::factory()->paidOut()->create();
+	$order->recordEvent(\App\Enums\OrderEventType::PaidOut, User::factory()->admin()->create(), \App\Enums\OrderStatus::Completed, \App\Enums\OrderStatus::PaidOut);
+
+	$this->actingAs($order->customer)->getJson("/api/orders/{$order->id}")
+		->assertOk()
+		->assertJsonPath('data.status', ['value' => 'paid_out', 'label' => 'Completed'])
+		->assertJsonMissingPath('data.paid_out_at')
+		->assertJsonCount(0, 'data.events');
+});

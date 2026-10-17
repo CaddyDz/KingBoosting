@@ -4,5 +4,6 @@
 		<NuxtLayout>
 			<NuxtPage />
 		</NuxtLayout>
+		<AppSnackbar />
 	</v-app>
 </template>

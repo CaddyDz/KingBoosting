@@ -46,6 +46,9 @@ const { data, status, error } = useAsyncData('dashboard-orders', () => useApi()<
 	query: { ...query.value, page: filters.page, per_page: filters.perPage },
 }), { watch: [query] })
 
+// Customers never see the payout step
+const statusOptions = computed(() => ORDER_STATUSES.filter(status => role.value !== 'customer' || status.value !== 'paid_out'))
+
 const serviceOptions = computed(() => games.value
 	.filter(game => !filters.game || game.value === filters.game)
 	.flatMap(game => game.services.map(service => ({ title: `${game.label} · ${service.label}`, value: service.key }))))
@@ -86,7 +89,7 @@ const title = computed(() => (isStaff.value ? 'Orders' : 'My orders'))
 
 		<v-row dense class="mb-2">
 			<v-col cols="12" md="4">
-				<v-select v-model="filters.status" :items="ORDER_STATUSES" label="Status" multiple chips closable-chips clearable density="compact" hide-details @update:model-value="filters.page = 1" />
+				<v-select v-model="filters.status" :items="statusOptions" label="Status" multiple chips closable-chips clearable density="compact" hide-details @update:model-value="filters.page = 1" />
 			</v-col>
 			<v-col cols="6" md="3">
 				<v-select v-model="filters.game" :items="games" item-title="label" item-value="value" label="Game" clearable density="compact" hide-details @update:model-value="filters.service = null; filters.page = 1" />

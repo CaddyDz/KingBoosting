@@ -74,7 +74,7 @@ export interface Order {
 	paid_at: string | null
 	claimed_at: string | null
 	completed_at: string | null
-	paid_out_at: string | null
+	paid_out_at?: string | null
 }
 
 export interface AppNotification {
