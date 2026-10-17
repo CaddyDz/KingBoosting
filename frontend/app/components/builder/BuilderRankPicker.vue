@@ -13,17 +13,27 @@ const divisions = computed(() => props.ranks.find(tier => tier.key === model.val
 		<legend class="text-title-small mb-2">
 			{{ label }}
 		</legend>
-		<v-select
-			:model-value="model.tier"
-			:items="ranks"
-			item-title="name"
-			item-value="key"
-			label="Tier"
-			hide-details
-			class="mb-3"
-			:data-testid="`${testid}-tier`"
-			@update:model-value="tier => model = validRank(ranks, { tier, division: model.division })"
-		/>
+		<div class="d-flex align-center ga-3 mb-3">
+			<RankBadge :tier="model.tier" :size="44" />
+			<v-select
+				:model-value="model.tier"
+				:items="ranks"
+				item-title="name"
+				item-value="key"
+				label="Tier"
+				hide-details
+				:data-testid="`${testid}-tier`"
+				@update:model-value="tier => model = validRank(ranks, { tier, division: model.division })"
+			>
+				<template #item="{ props: itemProps, item }">
+					<v-list-item v-bind="itemProps">
+						<template #prepend>
+							<RankBadge :tier="item.key" :size="24" class="me-3" />
+						</template>
+					</v-list-item>
+				</template>
+			</v-select>
+		</div>
 		<v-btn-toggle
 			v-if="divisions.length"
 			:model-value="model.division"
