@@ -68,8 +68,7 @@ RUN --mount=type=secret,id=composer_auth,target=/tmp/composer/auth.json \
 
 # -----------------------------------------------------------------------------
 # Application build: optimized autoloader, package discovery, and Nova's assets
-# republished from the installed version (the copies tracked in public/vendor/nova
-# don't match the locked Nova release).
+# published from the installed version (public/vendor/nova is gitignored).
 # -----------------------------------------------------------------------------
 FROM vendor AS build
 

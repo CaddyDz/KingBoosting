@@ -92,7 +92,7 @@ docker build --secret id=composer_auth,src=auth.json --target web -t kingboostin
 docker build --build-arg HOST_URL=https://api.example.com --build-arg STRIPE_KEY=pk_live_... -t kingboosting-frontend frontend
 ```
 
--   `kingboosting-app` runs php-fpm as `www-data`. On start it caches config, routes and views; set `RUN_MIGRATIONS=true` to also run `migrate --force`. A new database also needs `php artisan db:seed --force` once (roles, permissions and an admin account whose password you should change).
+-   `kingboosting-app` runs php-fpm as `www-data`. On start it caches config, routes and views; set `RUN_MIGRATIONS=true` to also run `migrate --force`. A new database also needs `php artisan db:seed --force` once (roles, permissions and an admin account; set `ADMIN_PASSWORD` first).
 -   `kingboosting-web` is nginx serving `public/` and passing PHP requests to `PHP_FPM_HOST` (default `app`), resolved through `NGINX_RESOLVER` (default `127.0.0.11`, Docker's DNS). Mount the app's storage volume at `/var/www/html/storage` so `/storage/*` URLs work.
 -   The storefront compiles `HOST_URL`, `STRIPE_KEY` and `SENTRY_DSN` into its bundles, so they're build args and changing them needs a rebuild.
 -   Outside `APP_ENV=local` the app generates `https://` URLs, so put a TLS-terminating proxy in front. It must pass the original `Host` header (nginx: `proxy_set_header Host $host;`) and set `X-Forwarded-For`/`X-Forwarded-Proto`.

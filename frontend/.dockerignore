@@ -8,6 +8,5 @@ dist
 **/.DS_Store
 .idea
 nginx.conf
-deploy.sh
 Dockerfile
 .dockerignore

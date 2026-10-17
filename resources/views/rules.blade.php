@@ -193,7 +193,6 @@
 <p><strong>Account selling</strong></p>
 
 <ul>
-	<li><a href="https://www.kingboosting.com/buy-lol-account" target="_blank" title="https://www.kingboosting.com/buy-lol-account">https://www.kingboosting.com/buy-lol-account</a></li>
 	<li>For current instructions on account, selling check the relevant channel on the discord server.</li>
 	<li>Once you uploaded an account you’ll have to ask the responsible <strong>admins for approval</strong>.</li>
 	<li>To be able to sell accounts you'll have to <strong>provide proof of your identity</strong> to our admins. Once done your cut on accounts&nbsp;<strong>sold will be 80%</strong> (70% is the standard for unverified sellers, however accounts of unverified people are generally not being approved for sale.)&nbsp;Sellers with verified identity may ask for 85% on master+ accounts as well as accounts above 500$ and 95% above 1000$&nbsp;<strong>once purchased.</strong><br>
