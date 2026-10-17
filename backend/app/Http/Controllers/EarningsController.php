@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-use App\Models\{Order, Payout, User};
 use App\Support\Earnings;
+use App\Models\{Order, Payout, User};
 use Illuminate\Http\{JsonResponse, Request};
 use App\Http\Resources\{FineResource, PayoutResource};
 

@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace App\Events;
 
-use Illuminate\Broadcasting\PrivateChannel;
-use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use Illuminate\Broadcasting\{InteractsWithSockets, PrivateChannel};
 
 /**
  * The customer or the booster read the order's chat up to a message: the other side can show it as seen.

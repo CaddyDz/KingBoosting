@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Http\Resources;
 
-use App\Models\{Order, User};
-use App\Enums\{OrderEventType, OrderStatus};
 use Illuminate\Http\Request;
+use App\Models\{Order, User};
 use Illuminate\Support\Facades\Gate;
+use App\Enums\{OrderEventType, OrderStatus};
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /**

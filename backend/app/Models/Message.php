@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use Illuminate\Support\Carbon;
 use Database\Factories\MessageFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
@@ -13,7 +14,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 /**
  * A chat message on an order. There's no recipient: everyone who may chat on the order sees it.
  *
- * @property \Illuminate\Support\Carbon|null $read_at
+ * @property Carbon|null $read_at
  */
 #[Fillable(['body'])]
 class Message extends Model

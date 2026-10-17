@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-use App\Enums\{OrderEventType, OrderStatus};
 use Illuminate\Database\Eloquent\Model;
 use Database\Factories\OrderEventFactory;
+use App\Enums\{OrderEventType, OrderStatus};
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 

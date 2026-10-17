@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-use App\Models\{Message, Order, User};
-use Illuminate\Support\Facades\DB;
 use App\Enums\{OrderStatus, Role};
+use Illuminate\Support\Facades\DB;
+use App\Models\{Message, Order, User};
 
 it('builds an order in every status', function (string $state, OrderStatus $status, bool $hasBooster): void {
 	$order = Order::factory()->{$state}()->create();

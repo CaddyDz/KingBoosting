@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-use App\Models\{Message, Order, User};
 use Illuminate\Support\Facades\Event;
-use App\Actions\Orders\{ClaimOrder, PauseOrder};
+use App\Models\{Message, Order, User};
 use App\Events\{MessageSent, MessagesRead};
+use App\Actions\Orders\{ClaimOrder, PauseOrder};
 
 /**
  * @return array{0: Order, 1: array<string, User>}

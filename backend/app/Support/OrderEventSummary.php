@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Support;
 
-use App\Models\{OrderEvent, User};
 use App\Enums\OrderEventType;
+use App\Models\{OrderEvent, User};
 
 /**
  * One line saying what happened to an order, for its chat and for notifications.

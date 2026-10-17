@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Pricing;
 
 use App\Pricing\QuoteEngine;
-use Illuminate\Http\{JsonResponse, Request};
 use App\Http\Controllers\Controller;
+use Illuminate\Http\{JsonResponse, Request};
 
 class QuoteController extends Controller
 {

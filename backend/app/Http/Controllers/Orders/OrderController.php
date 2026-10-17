@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Orders;
 
 use App\Models\{Order, User};
+use Illuminate\Http\JsonResponse;
+use App\Actions\Orders\PlaceOrder;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\OrderResource;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Http\JsonResponse;
-use App\Actions\Orders\PlaceOrder;
-use App\Http\Requests\Orders\{ListOrdersRequest, StoreOrderRequest};
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+use App\Http\Requests\Orders\{ListOrdersRequest, StoreOrderRequest};
 
 class OrderController extends Controller
 {

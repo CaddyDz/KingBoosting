@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Actions\Chat;
 
 use App\Events\MessageSent;
-use App\Models\{Message, Order, User};
 use Illuminate\Support\Facades\Gate;
+use App\Models\{Message, Order, User};
 
 class PostMessage
 {

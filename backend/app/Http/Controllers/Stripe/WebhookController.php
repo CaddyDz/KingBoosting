@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Stripe;
 
-use Stripe\{Event, PaymentIntent};
 use Stripe\Webhook;
 use App\Models\Order;
 use UnexpectedValueException;
-use Illuminate\Http\{Request, Response};
+use Stripe\{Event, PaymentIntent};
 use App\Http\Controllers\Controller;
+use Illuminate\Http\{Request, Response};
 use Illuminate\Support\Facades\{DB, Log};
-use Illuminate\Database\UniqueConstraintViolationException;
 use Stripe\Exception\SignatureVerificationException;
+use Illuminate\Database\UniqueConstraintViolationException;
 use App\Actions\Orders\{ConfirmPayment, RecordPaymentFailure};
 
 class WebhookController extends Controller

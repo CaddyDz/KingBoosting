@@ -6,9 +6,9 @@ namespace App\Http\Controllers\Pricing;
 
 use Closure;
 use Illuminate\Http\JsonResponse;
-use App\Pricing\{Catalog, CatalogEntry};
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cache;
+use App\Pricing\{Catalog, CatalogEntry};
 
 class CatalogController extends Controller
 {

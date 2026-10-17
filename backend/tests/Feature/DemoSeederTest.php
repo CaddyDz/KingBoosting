@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 use Database\Seeders\DemoSeeder;
 use Illuminate\Support\Facades\Hash;
-use App\Models\{Order, OrderEvent, User};
 use App\Enums\{Game, OrderStatus, Role};
+use App\Models\{Order, OrderEvent, User};
 
 it('seeds a browsable demo for every role, status and game', function (): void {
 	config(['demo.password' => 'demo-secret']);

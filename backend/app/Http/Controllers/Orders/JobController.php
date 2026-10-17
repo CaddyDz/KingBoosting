@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Orders;
 
 use App\Models\Order;
-use App\Enums\{Game, OrderStatus};
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use App\Enums\{Game, OrderStatus};
 use App\Http\Controllers\Controller;
 use App\Http\Resources\OrderResource;
 use Illuminate\Database\Eloquent\Builder;

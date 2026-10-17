@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\{JsonResponse, Request};
 use App\Http\Resources\UserResource;
+use Illuminate\Http\{JsonResponse, Request};
 
 class MeController extends Controller
 {

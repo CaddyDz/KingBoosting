@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-use App\Events\OrderEventRecorded;
-use Illuminate\Database\Eloquent\{Builder, MassPrunable};
-use Illuminate\Database\Eloquent\Attributes\Scope;
-use App\Enums\{Game, OrderEventType, OrderStatus, Role};
-use Database\Factories\OrderFactory;
 use Illuminate\Support\Carbon;
+use App\Events\OrderEventRecorded;
+use Database\Factories\OrderFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Attributes\Scope;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Enums\{Game, OrderEventType, OrderStatus, Role};
+use Illuminate\Database\Eloquent\{Builder, MassPrunable};
 use Illuminate\Database\Eloquent\Attributes\{Fillable, Hidden};
 use Illuminate\Database\Eloquent\Relations\{BelongsTo, HasMany};
 

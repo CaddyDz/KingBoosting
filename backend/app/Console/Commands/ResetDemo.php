@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace App\Console\Commands;
 
-use Illuminate\Console\Command;
 use Database\Seeders\DemoSeeder;
-use Illuminate\Console\ConfirmableTrait;
+use Illuminate\Console\{Command, ConfirmableTrait};
 use Illuminate\Console\Attributes\{Description, Signature};
 
 #[Signature('demo:reset {--force : Run in production without asking}')]

@@ -8,8 +8,8 @@ use App\Support\Earnings;
 use App\Exceptions\OrderConflict;
 use App\Notifications\PayoutSettled;
 use App\Actions\Orders\MarkOrderPaidOut;
-use App\Models\{Fine, Order, Payout, User};
 use Illuminate\Support\Facades\{DB, Gate};
+use App\Models\{Fine, Order, Payout, User};
 use Illuminate\Database\Eloquent\Collection;
 
 /**

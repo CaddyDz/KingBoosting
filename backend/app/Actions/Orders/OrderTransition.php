@@ -6,9 +6,9 @@ namespace App\Actions\Orders;
 
 use Closure;
 use LogicException;
+use App\Enums\OrderEventType;
 use App\Models\{Order, User};
 use Illuminate\Support\Facades\{DB, Gate};
-use App\Enums\OrderEventType;
 
 /**
  * Runs one order action: lock the row, check the policy against it, apply the change and record the event,
@@ -40,5 +40,4 @@ class OrderTransition
 			return $locked;
 		});
 	}
-
 }

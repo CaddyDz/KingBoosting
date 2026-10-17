@@ -4,10 +4,8 @@ declare(strict_types=1);
 
 namespace App\Pricing;
 
-use Illuminate\Validation\Rule;
-use Illuminate\Validation\Validator;
-use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Validator as ValidatorFactory;
+use Illuminate\Validation\{Rule, ValidationException, Validator};
 use App\Pricing\Strategies\{DivisionLadder, Mastery, PerGame, PerWin, PricingStrategy, Unrated};
 
 /**

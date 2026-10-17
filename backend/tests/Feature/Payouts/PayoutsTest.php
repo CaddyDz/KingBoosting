@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 use App\Enums\OrderStatus;
 use App\Notifications\PayoutSettled;
-use Illuminate\Support\Facades\Notification;
 use App\Models\{Fine, Order, Payout, User};
+use Illuminate\Support\Facades\Notification;
 
 /**
  * A booster with three completed, unpaid orders and two unpaid fines, plus things that must not count.

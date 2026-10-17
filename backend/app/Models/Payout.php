@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use Illuminate\Support\Carbon;
 use Database\Factories\PayoutFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -12,7 +13,7 @@ use Illuminate\Database\Eloquent\Relations\{BelongsTo, HasMany};
 /**
  * A payment to a booster: the shares of the completed orders it covers, minus the fines it settles.
  *
- * @property \Illuminate\Support\Carbon $paid_at
+ * @property Carbon $paid_at
  */
 class Payout extends Model
 {

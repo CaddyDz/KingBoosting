@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Listeners;
 
 use App\Actions\Chat\PostMessage;
-use App\Support\OrderEventSummary;
 use App\Events\OrderEventRecorded;
+use App\Support\OrderEventSummary;
 
 /**
  * Every order action leaves a line in the order's chat, so both sides see what happened and when.

@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
-use Illuminate\Http\{Request, Response};
-use App\Http\Controllers\Controller;
 use App\Notifications\AdminNotice;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\{Request, Response};
 
 class NoticeController extends Controller
 {

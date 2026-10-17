@@ -3,12 +3,14 @@
 declare(strict_types=1);
 
 use App\Models\{Order, User};
-use App\Actions\Orders\ClaimOrder;
+use Illuminate\Testing\TestResponse;
+use App\Enums\{OrderEventType, OrderStatus};
+use App\Actions\Orders\{AssignOrder, ClaimOrder};
 
 /**
  * @return list<int>
  */
-function listedIds(\Illuminate\Testing\TestResponse $response): array
+function listedIds(TestResponse $response): array
 {
 	return collect($response->json('data'))->pluck('id')->sort()->values()->all();
 }
@@ -121,7 +123,7 @@ it('tells the customer what they can do to their order', function (): void {
 
 it('shows the timeline with staff as Support', function (): void {
 	$order = Order::factory()->pending()->create();
-	app(\App\Actions\Orders\AssignOrder::class)->handle(User::factory()->admin()->create(), $order, $booster = User::factory()->booster()->create());
+	app(AssignOrder::class)->handle(User::factory()->admin()->create(), $order, $booster = User::factory()->booster()->create());
 
 	$this->actingAs($order->customer)->getJson("/api/orders/{$order->id}")
 		->assertOk()
@@ -175,7 +177,7 @@ it('refuses guests', function (): void {
 
 it('shows the customer a paid-out order as completed, without the payout', function (): void {
 	$order = Order::factory()->paidOut()->create();
-	$order->recordEvent(\App\Enums\OrderEventType::PaidOut, User::factory()->admin()->create(), \App\Enums\OrderStatus::Completed, \App\Enums\OrderStatus::PaidOut);
+	$order->recordEvent(OrderEventType::PaidOut, User::factory()->admin()->create(), OrderStatus::Completed, OrderStatus::PaidOut);
 
 	$this->actingAs($order->customer)->getJson("/api/orders/{$order->id}")
 		->assertOk()

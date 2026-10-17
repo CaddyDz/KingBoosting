@@ -3,8 +3,8 @@
 declare(strict_types=1);
 
 use App\Models\{Order, User};
-use Tests\Fakes\FakePaymentGateway;
 use App\Payments\PaymentGateway;
+use Tests\Fakes\FakePaymentGateway;
 use App\Enums\{OrderEventType, OrderStatus};
 
 beforeEach(function (): void {

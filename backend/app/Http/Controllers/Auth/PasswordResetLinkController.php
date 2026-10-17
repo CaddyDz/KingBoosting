@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Auth;
 
-use Illuminate\Http\{JsonResponse, Request};
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Password;
+use Illuminate\Http\{JsonResponse, Request};
 
 class PasswordResetLinkController extends Controller
 {

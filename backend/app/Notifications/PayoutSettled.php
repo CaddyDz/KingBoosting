@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Notifications;
 
-use App\Models\{Payout, User};
 use Illuminate\Bus\Queueable;
+use App\Models\{Payout, User};
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\{BroadcastMessage, MailMessage};

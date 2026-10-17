@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Listeners;
 
-use App\Models\{OrderEvent, User};
 use App\Enums\OrderEventType;
-use Illuminate\Support\Collection;
-use App\Support\OrderEventSummary;
 use App\Events\OrderEventRecorded;
+use App\Models\{OrderEvent, User};
+use App\Support\OrderEventSummary;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\{NewOrderAvailable, OrderAssigned, OrderStatusChanged, PaymentFailed};
 

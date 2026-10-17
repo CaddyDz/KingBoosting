@@ -7,10 +7,9 @@ namespace App\Events;
 use App\Models\Message;
 use Illuminate\Queue\SerializesModels;
 use App\Http\Resources\MessageResource;
-use Illuminate\Broadcasting\PrivateChannel;
-use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use Illuminate\Broadcasting\{InteractsWithSockets, PrivateChannel};
 
 /**
  * A new message in an order's chat, pushed to everyone on the order's private channel.

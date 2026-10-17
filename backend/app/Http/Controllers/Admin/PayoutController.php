@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Admin;
 
-use App\Enums\OrderStatus;
 use App\Support\Earnings;
+use App\Enums\OrderStatus;
 use App\Models\{Payout, User};
+use Illuminate\Validation\Rule;
 use App\Exceptions\OrderConflict;
 use App\Http\Controllers\Controller;
-use App\Http\Resources\PayoutResource;
 use App\Actions\Payouts\PayOutBooster;
-use Illuminate\Validation\Rule;
+use App\Http\Resources\PayoutResource;
 use Illuminate\Http\{JsonResponse, Request};
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
