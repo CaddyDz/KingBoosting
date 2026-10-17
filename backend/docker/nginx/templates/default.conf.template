@@ -18,8 +18,12 @@ server {
 	client_max_body_size 20m;
 	server_tokens off;
 
-	add_header X-Frame-Options "SAMEORIGIN" always;
+	# The API answers JSON, never pages: nothing may run, frame or index it
+	add_header Content-Security-Policy "default-src 'none'; frame-ancestors 'none'" always;
+	add_header X-Frame-Options "DENY" always;
 	add_header X-Content-Type-Options "nosniff" always;
+	add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+	add_header X-Robots-Tag "noindex, nofollow" always;
 
 	gzip on;
 	gzip_vary on;

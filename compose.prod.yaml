@@ -43,6 +43,7 @@ services:
       traefik.http.routers.kingboosting-api.priority: "30"
       traefik.http.routers.kingboosting-api.entrypoints: ${TRAEFIK_ENTRYPOINT:-websecure}
       traefik.http.routers.kingboosting-api.tls.certresolver: ${TRAEFIK_CERTRESOLVER:-letsencrypt}
+      traefik.http.routers.kingboosting-api.middlewares: kingboosting-hsts
       traefik.http.routers.kingboosting-api.service: kingboosting-api
       traefik.http.services.kingboosting-api.loadbalancer.server.port: "8080"
 
@@ -64,6 +65,7 @@ services:
       traefik.http.routers.kingboosting-reverb.priority: "30"
       traefik.http.routers.kingboosting-reverb.entrypoints: ${TRAEFIK_ENTRYPOINT:-websecure}
       traefik.http.routers.kingboosting-reverb.tls.certresolver: ${TRAEFIK_CERTRESOLVER:-letsencrypt}
+      traefik.http.routers.kingboosting-reverb.middlewares: kingboosting-hsts
       traefik.http.routers.kingboosting-reverb.service: kingboosting-reverb
       traefik.http.services.kingboosting-reverb.loadbalancer.server.port: "8080"
 
@@ -100,6 +102,10 @@ services:
       traefik.http.routers.kingboosting.priority: "10"
       traefik.http.routers.kingboosting.entrypoints: ${TRAEFIK_ENTRYPOINT:-websecure}
       traefik.http.routers.kingboosting.tls.certresolver: ${TRAEFIK_CERTRESOLVER:-letsencrypt}
+      traefik.http.routers.kingboosting.middlewares: kingboosting-hsts
+      # HTTPS only, for a year: set at the edge, where TLS ends
+      traefik.http.middlewares.kingboosting-hsts.headers.stsSeconds: "31536000"
+      traefik.http.middlewares.kingboosting-hsts.headers.stsIncludeSubdomains: "true"
       traefik.http.routers.kingboosting.service: kingboosting
       traefik.http.services.kingboosting.loadbalancer.server.port: "3000"
 

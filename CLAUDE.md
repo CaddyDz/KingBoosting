@@ -97,6 +97,14 @@ Things production relies on:
 - The app refuses live Stripe keys.
 - Guests on `/api/*` always get a 401 JSON response, never a redirect.
 
+Security headers live with each server:
+
+- **Nuxt** (`routeRules` in `nuxt.config.ts`): `X-Robots-Tag`, `Referrer-Policy`, `Permissions-Policy`, `nosniff` and the frame policy on every page. In production it also sends the CSP, which allows only Stripe as a third party. Development has no CSP, because Nuxt's devtools need more.
+- **nginx**: a `default-src 'none'` CSP on the API.
+- **Traefik**: HSTS.
+
+A new third-party script, frame or connection needs a CSP entry.
+
 `REVERB_ALLOWED_ORIGINS` takes hostnames only: Reverb compares the Origin's host without its port.
 
 ### Frontend conventions

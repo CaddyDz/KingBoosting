@@ -1,2 +1,3 @@
-User-Agent: *
-Disallow:
+# A portfolio demo, not a real store
+User-agent: *
+Disallow: /

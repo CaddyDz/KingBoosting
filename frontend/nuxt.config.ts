@@ -7,6 +7,31 @@ export default defineNuxtConfig({
 		routeRules: { '/**': { swr: false } },
 	},
 
+	$production: {
+		routeRules: {
+			'/**': {
+				headers: {
+					// Stripe.js and its frames are the only third party (Stripe's documented CSP). Nuxt's runtime
+					// config is an inline script and Vuetify sets inline styles; pages are cached and shared, so
+					// per-request nonces can't replace 'unsafe-inline'.
+					'Content-Security-Policy': [
+						'default-src \'self\'',
+						'script-src \'self\' \'unsafe-inline\' https://js.stripe.com https://*.js.stripe.com',
+						'style-src \'self\' \'unsafe-inline\'',
+						'img-src \'self\' data: https://*.stripe.com',
+						'font-src \'self\' data:',
+						'connect-src \'self\' https://api.stripe.com',
+						'frame-src https://js.stripe.com https://*.js.stripe.com https://hooks.stripe.com',
+						'frame-ancestors \'self\'',
+						'form-action \'self\'',
+						'base-uri \'self\'',
+						'object-src \'none\'',
+					].join('; '),
+				},
+			},
+		},
+	},
+
 	devtools: { enabled: true },
 
 	app: {
@@ -41,8 +66,18 @@ export default defineNuxtConfig({
 	},
 
 	routeRules: {
-		// The storefront is the same for everyone, so its HTML can be cached and refreshed in the background
-		'/**': { swr: 600 },
+		// The storefront is the same for everyone, so its HTML can be cached and refreshed in the background.
+		// It's a demo store: no search engine should list it.
+		'/**': {
+			swr: 600,
+			headers: {
+				'X-Robots-Tag': 'noindex, nofollow',
+				'X-Content-Type-Options': 'nosniff',
+				'X-Frame-Options': 'SAMEORIGIN',
+				'Referrer-Policy': 'strict-origin-when-cross-origin',
+				'Permissions-Policy': 'camera=(), microphone=(), geolocation=(), payment=(self "https://js.stripe.com")',
+			},
+		},
 		// Signed-in pages render in the browser only, so server-side rendering never handles a session cookie
 		'/dashboard/**': { ssr: false, swr: false },
 		'/checkout': { ssr: false, swr: false },
