@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\MeController;
-use App\Http\Controllers\Orders\{JobController, OrderController};
+use App\Http\Controllers\Orders\{JobController, OrderActionController, OrderController};
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\{AuthenticatedSessionController, NewPasswordController, PasswordResetLinkController, RegisteredUserController};
 
@@ -23,4 +23,15 @@ Route::middleware('auth:sanctum')->group(function (): void {
 	Route::get('orders', [OrderController::class, 'index'])->name('orders.index');
 	Route::get('orders/{order}', [OrderController::class, 'show'])->name('orders.show');
 	Route::get('jobs', [JobController::class, 'index'])->name('jobs.index');
+
+	Route::controller(OrderActionController::class)->prefix('orders/{order}')->name('orders.')->group(function (): void {
+		Route::post('claim', 'claim')->name('claim');
+		Route::post('assign', 'assign')->name('assign');
+		Route::post('pause', 'pause')->name('pause');
+		Route::post('resume', 'resume')->name('resume');
+		Route::post('release', 'release')->name('release');
+		Route::post('complete', 'complete')->name('complete');
+		Route::post('mark-paid-out', 'markPaidOut')->name('mark-paid-out');
+		Route::put('credentials', 'updateCredentials')->name('credentials');
+	});
 });
