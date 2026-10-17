@@ -46,3 +46,7 @@ docker compose --profile e2e run --rm e2e   # Playwright against the running sta
 ```
 
 Without Stripe keys, a local stack still takes orders: payments run offline, and the payment page offers to simulate Stripe's answer.
+
+## Deploying
+
+The public demo at https://kingboosting.dsalim.dev runs `compose.prod.yaml` behind Traefik: see [docs/deploy.md](docs/deploy.md).

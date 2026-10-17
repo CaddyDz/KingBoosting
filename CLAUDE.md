@@ -84,6 +84,19 @@ So Sanctum's SPA cookie auth needs no CORS and no shared cookie domain: `SANCTUM
 - `db` is MySQL 8.4; `mailpit` catches mail.
 - `stripe` sits behind the `stripe` profile and forwards test webhooks.
 
+### Production (`compose.prod.yaml`, `docs/deploy.md`)
+
+The public demo runs the GHCR images behind the VPS's Traefik. The routes are the same as in development, with two differences:
+
+- Reverb's router matches `/app/` with the trailing slash, so its `/apps` HTTP API stays internal.
+- The `reverb`, `queue` and `scheduler` services override the app image's php-fpm healthcheck, because Traefik skips unhealthy containers.
+
+Things production relies on:
+
+- `demo:reset` seeds with model factories, so Faker is a production dependency, not a dev one.
+- The app refuses live Stripe keys.
+- Guests on `/api/*` always get a 401 JSON response, never a redirect.
+
 `REVERB_ALLOWED_ORIGINS` takes hostnames only: Reverb compares the Origin's host without its port.
 
 ### Frontend conventions

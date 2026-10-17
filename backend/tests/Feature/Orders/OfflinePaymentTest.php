@@ -19,6 +19,12 @@ it('pays offline on a local stack without Stripe keys, and never in production',
 	expect(app(PaymentGateway::class))->toBeInstanceOf(StripePaymentGateway::class);
 });
 
+it('never takes live Stripe keys', function (string $secret): void {
+	config(['services.stripe.secret' => $secret]);
+
+	expect(fn () => app(PaymentGateway::class))->toThrow(LogicException::class, 'only takes Stripe test keys');
+})->with(['sk_live_123', 'rk_live_123', 'not-a-key']);
+
 it('takes an order end to end without Stripe: checkout, then a simulated payment', function (): void {
 	$this->app->instance(PaymentGateway::class, new OfflinePaymentGateway);
 	$customer = User::factory()->customer()->create();

@@ -28,6 +28,8 @@ return Application::configure(basePath: dirname(__DIR__))
 		$middleware->statefulApi();
 		// Traefik (or the dev proxy) terminates TLS in front of nginx
 		$middleware->trustProxies(at: ['10.0.0.0/8', '172.16.0.0/12', '192.168.0.0/16']);
+		// Guests get a 401 from the API, never a redirect: the login page belongs to Nuxt
+		$middleware->redirectGuestsTo(fn (Request $request): ?string => $request->is('api/*') ? null : '/login');
 	})
 	->withExceptions(function (Exceptions $exceptions): void {
 		$exceptions->shouldRenderJsonWhen(

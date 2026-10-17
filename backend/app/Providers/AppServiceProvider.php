@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
+use LogicException;
 use App\Models\User;
 use Stripe\StripeClient;
 use Illuminate\Http\Request;
@@ -23,14 +24,23 @@ class AppServiceProvider extends ServiceProvider
 	public function register(): void
 	{
 		$this->app->bind(PaymentGateway::class, fn (): PaymentGateway => match (true) {
-			filled(config('services.stripe.secret')) => new StripePaymentGateway(new StripeClient([
-				'api_key' => (string) config('services.stripe.secret'),
-				'max_network_retries' => 2,
-			])),
+			filled(config('services.stripe.secret')) => $this->stripeGateway((string) config('services.stripe.secret')),
 			// A local stack without keys still takes orders end to end; payments are then simulated
 			$this->app->environment('local') => new OfflinePaymentGateway,
 			default => new UnconfiguredPaymentGateway,
 		});
+	}
+
+	/**
+	 * Stripe in test mode. The demo must never take a real payment, so a live key fails every checkout loudly.
+	 */
+	private function stripeGateway(string $secret): StripePaymentGateway
+	{
+		if (! str_starts_with($secret, 'sk_test_') && ! str_starts_with($secret, 'rk_test_')) {
+			throw new LogicException('King Boosting is a demo: it only takes Stripe test keys (sk_test_...).');
+		}
+
+		return new StripePaymentGateway(new StripeClient(['api_key' => $secret, 'max_network_retries' => 2]));
 	}
 
 	/**

@@ -1,0 +1,150 @@
+# The public demo at https://kingboosting.dsalim.dev, behind the Traefik that already runs on the VPS.
+# One origin, routed by path (docs/adr/0001); images come from GHCR, built by CI. Setup: docs/deploy.md.
+#
+#   docker compose -f compose.prod.yaml --env-file .env.production up -d
+
+name: kingboosting
+
+x-app: &app
+  image: ghcr.io/caddydz/kingboosting-app:${IMAGE_TAG:-latest}
+  restart: unless-stopped
+  env_file: .env.production
+  networks: [internal]
+  depends_on:
+    app:
+      condition: service_healthy
+
+# The app image's healthcheck pings php-fpm; the services running another artisan command replace it
+x-no-fpm: &no-fpm
+  disable: true
+
+services:
+  # php-fpm. It runs the migrations when it starts; everything else waits for it.
+  app:
+    <<: *app
+    environment:
+      RUN_MIGRATIONS: "true"
+    depends_on:
+      db:
+        condition: service_healthy
+
+  # nginx in front of php-fpm: the API, Sanctum's cookie, channel auth, Stripe's webhook and the health check
+  web:
+    image: ghcr.io/caddydz/kingboosting-web:${IMAGE_TAG:-latest}
+    restart: unless-stopped
+    networks: [internal, traefik]
+    depends_on:
+      app:
+        condition: service_healthy
+    labels:
+      traefik.enable: "true"
+      traefik.docker.network: ${TRAEFIK_NETWORK:-traefik}
+      traefik.http.routers.kingboosting-api.rule: Host(`${APP_HOST}`) && (PathPrefix(`/api/`) || PathPrefix(`/sanctum/`) || PathPrefix(`/broadcasting/`) || PathPrefix(`/stripe/`) || Path(`/up`))
+      traefik.http.routers.kingboosting-api.priority: "30"
+      traefik.http.routers.kingboosting-api.entrypoints: ${TRAEFIK_ENTRYPOINT:-websecure}
+      traefik.http.routers.kingboosting-api.tls.certresolver: ${TRAEFIK_CERTRESOLVER:-letsencrypt}
+      traefik.http.routers.kingboosting-api.service: kingboosting-api
+      traefik.http.services.kingboosting-api.loadbalancer.server.port: "8080"
+
+  # WebSockets. Only /app/ is public: Laravel reaches Reverb's /apps API on the internal network.
+  reverb:
+    <<: *app
+    command: ["php", "artisan", "reverb:start", "--host=0.0.0.0", "--port=8080"]
+    networks: [internal, traefik]
+    healthcheck:
+      test: ["CMD", "php", "-r", "exit(@fsockopen('127.0.0.1', 8080) ? 0 : 1);"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    labels:
+      traefik.enable: "true"
+      traefik.docker.network: ${TRAEFIK_NETWORK:-traefik}
+      traefik.http.routers.kingboosting-reverb.rule: Host(`${APP_HOST}`) && PathPrefix(`/app/`)
+      traefik.http.routers.kingboosting-reverb.priority: "30"
+      traefik.http.routers.kingboosting-reverb.entrypoints: ${TRAEFIK_ENTRYPOINT:-websecure}
+      traefik.http.routers.kingboosting-reverb.tls.certresolver: ${TRAEFIK_CERTRESOLVER:-letsencrypt}
+      traefik.http.routers.kingboosting-reverb.service: kingboosting-reverb
+      traefik.http.services.kingboosting-reverb.loadbalancer.server.port: "8080"
+
+  # Notifications and broadcasts
+  queue:
+    <<: *app
+    command: ["php", "artisan", "queue:work", "--tries=3", "--backoff=5", "--max-time=3600"]
+    healthcheck: *no-fpm
+
+  # Pruning unpaid orders, and the nightly demo:reset when DEMO_RESET_NIGHTLY is true (routes/console.php)
+  scheduler:
+    <<: *app
+    command: ["php", "artisan", "schedule:work"]
+    healthcheck: *no-fpm
+
+  # Nuxt: the storefront and the dashboards; everything Laravel and Reverb don't answer
+  frontend:
+    image: ghcr.io/caddydz/kingboosting-frontend:${IMAGE_TAG:-latest}
+    restart: unless-stopped
+    networks: [internal, traefik]
+    environment:
+      # Server-side rendering reaches Laravel on the internal network
+      NUXT_API_BASE: http://web:8080
+      NUXT_PUBLIC_STRIPE_KEY: ${STRIPE_KEY:-}
+      # Echo connects back to the page's own host and port, so only the key is needed
+      NUXT_PUBLIC_REVERB_KEY: ${REVERB_APP_KEY}
+    depends_on:
+      web:
+        condition: service_healthy
+    labels:
+      traefik.enable: "true"
+      traefik.docker.network: ${TRAEFIK_NETWORK:-traefik}
+      traefik.http.routers.kingboosting.rule: Host(`${APP_HOST}`)
+      traefik.http.routers.kingboosting.priority: "10"
+      traefik.http.routers.kingboosting.entrypoints: ${TRAEFIK_ENTRYPOINT:-websecure}
+      traefik.http.routers.kingboosting.tls.certresolver: ${TRAEFIK_CERTRESOLVER:-letsencrypt}
+      traefik.http.routers.kingboosting.service: kingboosting
+      traefik.http.services.kingboosting.loadbalancer.server.port: "3000"
+
+  db:
+    image: mysql:8.4
+    restart: unless-stopped
+    networks: [internal]
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+    volumes:
+      - db_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -uroot -p\"$$MYSQL_ROOT_PASSWORD\" --silent"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 30s
+
+  # A dump of the database every night at 03:30, before the 04:00 demo reset. The last week stays in ./backups.
+  backup:
+    image: mysql:8.4
+    restart: unless-stopped
+    networks: [internal]
+    entrypoint: ["/bin/sh", "/backup.sh"]
+    environment:
+      DB_HOST: db
+      DB_DATABASE: ${DB_DATABASE}
+      MYSQL_PWD: ${DB_ROOT_PASSWORD}
+      BACKUP_AT: "03:30"
+      BACKUP_KEEP_DAYS: "7"
+    volumes:
+      - ./docker/backup/backup.sh:/backup.sh:ro
+      - ./backups:/backups
+    depends_on:
+      db:
+        condition: service_healthy
+
+networks:
+  internal:
+  traefik:
+    external: true
+    name: ${TRAEFIK_NETWORK:-traefik}
+
+volumes:
+  db_data:

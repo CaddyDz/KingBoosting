@@ -106,3 +106,8 @@ it('resets a forgotten password through a link to the Nuxt app', function (): vo
 
 	$this->postJson('/api/login', ['email' => 'customer@kingboosting.test', 'password' => 'a-new-password'])->assertOk();
 });
+
+it('answers guests with a 401 on the API, whatever they accept', function (): void {
+	$this->get('/api/me')->assertUnauthorized()->assertExactJson(['message' => 'Unauthenticated.']);
+	$this->get('/api/orders', ['Accept' => 'text/html'])->assertUnauthorized();
+});

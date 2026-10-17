@@ -4,3 +4,7 @@
 .env
 .env.production
 auth.json
+
+# Production secrets and database dumps (compose.prod.yaml)
+.env.production
+backups/
