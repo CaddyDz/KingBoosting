@@ -15,10 +15,13 @@ return new class extends Migration
 	{
 		Schema::create('users', function (Blueprint $table) {
 			$table->id();
-			$table->string('name');
+			$table->string('username', 32)->unique();
 			$table->string('email')->unique();
 			$table->timestamp('email_verified_at')->nullable();
 			$table->string('password');
+			$table->enum('role', ['admin', 'moderator', 'booster', 'customer'])->default('customer')->index();
+			// Boosters only: whether customers can pick them at checkout and see them in the booster list
+			$table->boolean('visible')->default(true);
 			$table->rememberToken();
 			$table->timestamps();
 		});
