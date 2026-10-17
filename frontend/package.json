@@ -7,7 +7,7 @@
 		"dev": "nuxt dev",
 		"preview": "nuxt preview",
 		"postinstall": "nuxt prepare",
-		"lint": "eslint .",
+		"lint": "eslint . --max-warnings 0",
 		"lint:fix": "eslint . --fix",
 		"typecheck": "nuxt typecheck",
 		"test": "vitest run"
@@ -15,8 +15,10 @@
 	"dependencies": {
 		"@mdi/js": "^7.4.47",
 		"@pinia/nuxt": "^1.0.3",
+		"laravel-echo": "^2.6.1",
 		"nuxt": "^4.6.2",
 		"pinia": "^4.1.0",
+		"pusher-js": "^8.6.0",
 		"vue": "^3.5.43",
 		"vue-router": "^5.4.0",
 		"vuetify": "^4.2.6"
