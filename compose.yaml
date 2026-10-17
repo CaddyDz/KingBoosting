@@ -53,6 +53,8 @@ x-backend: &backend
     - host.docker.internal:host-gateway
   volumes:
     - ./backend:/var/www/html
+    # The tests read docs/pricing-golden.json; this keeps docs/ next to the app, as in the repository
+    - ./docs:/var/www/docs:ro
   depends_on:
     db:
       condition: service_healthy

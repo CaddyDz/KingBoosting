@@ -50,5 +50,8 @@ class AppServiceProvider extends ServiceProvider
 		RateLimiter::for('register', fn (Request $request): Limit => Limit::perHour(10)->by($request->ip()));
 
 		RateLimiter::for('password-reset', fn (Request $request): Limit => Limit::perMinute(3)->by($request->ip()));
+
+		// The order builder re-quotes as the customer changes options, debounced on the client
+		RateLimiter::for('quotes', fn (Request $request): Limit => Limit::perMinute(120)->by($request->user()?->getAuthIdentifier() ?? $request->ip()));
 	}
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Database\Seeders;
 
+use App\Pricing\QuoteEngine;
 use Illuminate\Support\Carbon;
 use Illuminate\Database\Seeder;
 use App\Enums\{OrderEventType, OrderStatus};
@@ -17,23 +18,23 @@ use App\Actions\Orders\{AssignOrder, ClaimOrder, CompleteOrder, MarkOrderPaidOut
 class DemoSeeder extends Seeder
 {
 	/**
-	 * What customers bought: one entry per service, priced like the legacy storefront (docs/pricing-golden.json).
+	 * What customers bought: one order builder input per service, priced by the quote engine.
 	 *
-	 * @var list<array{game: string, service: string, title: string, server: string, cents: int, options: list<array{key: string, label: string, percent: int}>}>
+	 * @var list<array{service: string, server: string, input: array<string, mixed>}>
 	 */
 	private const PURCHASES = [
-		['game' => 'lol', 'service' => 'division-boosting', 'title' => 'Bronze I → Gold III', 'server' => 'euw', 'cents' => 13425, 'options' => []],
-		['game' => 'lol', 'service' => 'division-boosting', 'title' => 'Platinum II → Diamond IV', 'server' => 'eune', 'cents' => 22200, 'options' => [['key' => 'priority', 'label' => 'Priority order (2x speed)', 'percent' => 20]]],
-		['game' => 'lol', 'service' => 'duoqueue-boosting', 'title' => 'Silver IV → Gold IV, duo', 'server' => 'euw', 'cents' => 12090, 'options' => [['key' => 'coaching', 'label' => 'With coaching', 'percent' => 30]]],
-		['game' => 'lol', 'service' => 'placement-boosting', 'title' => '6 placement games (Gold II)', 'server' => 'na', 'cents' => 3078, 'options' => [['key' => 'play-with-booster', 'label' => 'Play with booster', 'percent' => 35]]],
-		['game' => 'lol', 'service' => 'ranked-wins-boosting', 'title' => '6 ranked wins (Gold II)', 'server' => 'euw', 'cents' => 4872, 'options' => [['key' => 'play-with-booster', 'label' => 'Play with booster', 'percent' => 40]]],
-		['game' => 'lol', 'service' => 'champion-mastery', 'title' => 'Ahri mastery 5 → 7', 'server' => 'euw', 'cents' => 5000, 'options' => []],
-		['game' => 'valorant', 'service' => 'valorant-boosting', 'title' => 'Bronze I → Gold III', 'server' => 'eu', 'cents' => 12480, 'options' => []],
-		['game' => 'valorant', 'service' => 'valorant-placement-boosting', 'title' => '3 placement games (Platinum II)', 'server' => 'eu', 'cents' => 10350, 'options' => [['key' => 'streaming', 'label' => 'With streaming', 'percent' => 15]]],
-		['game' => 'valorant', 'service' => 'unrated-matches', 'title' => '15 unrated matches', 'server' => 'na', 'cents' => 7140, 'options' => [['key' => 'net-wins', 'label' => 'Net wins', 'percent' => 40]]],
-		['game' => 'wildrift', 'service' => 'wildrift-rank-boosting', 'title' => 'Gold IV → Platinum IV', 'server' => 'europe', 'cents' => 12180, 'options' => [['key' => 'priority', 'label' => 'Priority order (2x speed)', 'percent' => 20]]],
-		['game' => 'wildrift', 'service' => 'wildrift-placement-boosting', 'title' => '3 placement games (Silver III)', 'server' => 'europe', 'cents' => 5256, 'options' => [['key' => 'priority', 'label' => 'Priority order', 'percent' => 20]]],
-		['game' => 'wildrift', 'service' => 'wildrift-ranked-wins-boosting', 'title' => '8 ranked wins (Platinum IV)', 'server' => 'americas', 'cents' => 6200, 'options' => []],
+		['service' => 'division-boosting', 'server' => 'euw', 'input' => ['current' => ['tier' => 'bronze', 'division' => 'I'], 'desired' => ['tier' => 'gold', 'division' => 'III'], 'lp' => '21-40', 'mmr' => '15-17']],
+		['service' => 'division-boosting', 'server' => 'eune', 'input' => ['current' => ['tier' => 'platinum', 'division' => 'II'], 'desired' => ['tier' => 'diamond', 'division' => 'IV'], 'lp' => '41-60', 'mmr' => '13-15', 'options' => ['priority']]],
+		['service' => 'duoqueue-boosting', 'server' => 'euw', 'input' => ['current' => ['tier' => 'silver', 'division' => 'IV'], 'desired' => ['tier' => 'gold', 'division' => 'IV'], 'lp' => '0-20', 'mmr' => '21+', 'options' => ['coaching']]],
+		['service' => 'placement-boosting', 'server' => 'na', 'input' => ['current' => ['tier' => 'gold', 'division' => 'II'], 'amount' => 6, 'options' => ['play-with-booster']]],
+		['service' => 'ranked-wins-boosting', 'server' => 'euw', 'input' => ['current' => ['tier' => 'gold', 'division' => 'II'], 'amount' => 6, 'options' => ['play-with-booster']]],
+		['service' => 'champion-mastery', 'server' => 'euw', 'input' => ['champion' => 'Ahri', 'level' => ['current' => 5, 'desired' => 7], 'tokens' => 5]],
+		['service' => 'valorant-boosting', 'server' => 'eu', 'input' => ['current' => ['tier' => 'bronze', 'division' => 'I'], 'desired' => ['tier' => 'gold', 'division' => 'III']]],
+		['service' => 'valorant-placement-boosting', 'server' => 'eu', 'input' => ['current' => ['tier' => 'platinum', 'division' => 'II'], 'amount' => 3, 'options' => ['streaming']]],
+		['service' => 'unrated-matches', 'server' => 'na', 'input' => ['amount' => 15, 'options' => ['net-wins']]],
+		['service' => 'wildrift-rank-boosting', 'server' => 'europe', 'input' => ['current' => ['tier' => 'gold', 'division' => 'IV'], 'desired' => ['tier' => 'platinum', 'division' => 'IV'], 'options' => ['priority']]],
+		['service' => 'wildrift-placement-boosting', 'server' => 'europe', 'input' => ['current' => ['tier' => 'silver', 'division' => 'III'], 'amount' => 5, 'options' => ['priority']]],
+		['service' => 'wildrift-ranked-wins-boosting', 'server' => 'americas', 'input' => ['current' => ['tier' => 'platinum', 'division' => 'IV'], 'amount' => 8]],
 	];
 
 	/**
@@ -138,24 +139,19 @@ class DemoSeeder extends Seeder
 			$at = $this->startedAt->copy()->subHours(6 + $index % 5);
 		}
 
+		$quote = app(QuoteEngine::class)->quote($purchase['service'], $purchase['input']);
+
 		$this->at($at);
 		$order = Order::factory()->awaitingPayment()->for($customer, 'customer')->create([
-			'game' => $purchase['game'],
-			'service' => $purchase['service'],
-			'title' => $purchase['title'],
+			'game' => $quote->service->game,
+			'service' => $quote->service->key,
+			'title' => $quote->title,
 			'server' => $purchase['server'],
 			'account_name' => $customer->username.'_main',
 			'account_login' => $customer->username.'.riot',
 			'account_password' => 'demo-'.$customer->username,
-			'price_cents' => $purchase['cents'],
-			'quote' => [
-				'game' => $purchase['game'],
-				'service' => $purchase['service'],
-				'title' => $purchase['title'],
-				'lines' => [['label' => $purchase['title'], 'cents' => $purchase['cents']]],
-				'options' => $purchase['options'],
-				'total_cents' => $purchase['cents'],
-			],
+			'price_cents' => $quote->totalCents,
+			'quote' => $quote->toArray(),
 			'comment' => $index % 4 === 0 ? 'Please play only in the evenings, CET.' : null,
 		]);
 		$order->recordEvent(OrderEventType::Created, $customer, null, OrderStatus::AwaitingPayment);

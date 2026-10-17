@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\MeController;
+use App\Http\Controllers\Pricing\QuoteController;
 use App\Http\Controllers\Orders\{JobController, OrderActionController, OrderController};
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\{AuthenticatedSessionController, NewPasswordController, PasswordResetLinkController, RegisteredUserController};
@@ -15,6 +16,8 @@ Route::post('register', [RegisteredUserController::class, 'store'])->middleware(
 Route::post('login', [AuthenticatedSessionController::class, 'store'])->middleware('throttle:login');
 Route::post('forgot-password', [PasswordResetLinkController::class, 'store'])->middleware('throttle:password-reset');
 Route::post('reset-password', [NewPasswordController::class, 'store'])->middleware('throttle:password-reset');
+
+Route::post('quotes', [QuoteController::class, 'store'])->middleware('throttle:quotes')->name('quotes.store');
 
 Route::middleware('auth:sanctum')->group(function (): void {
 	Route::post('logout', [AuthenticatedSessionController::class, 'destroy']);

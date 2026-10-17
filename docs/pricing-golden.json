@@ -1,0 +1,1090 @@
+{
+	"_about": "Golden quotes recorded from the legacy Nuxt 2 storefront (develop @ a3831ab). The v2 quote engine must reproduce every entry in `quotes` exactly, in cents (backend/tests/Feature/Pricing/GoldenQuotesTest.php).",
+	"captured": "2026-10-17",
+	"method": "Each quote loads its page fresh, sets the inputs through the same component setters the UI uses (Current, Desired, Slider, Checkout), calls the page's own changePrice(), and reads the Vuex getter price/price. Calling changePrice() directly matters: some pages never re-price when an input changes (see docs/domain.md).",
+	"formula": "price = base_price * amount * (1 + percent / 100), where base_price comes from the page changePrice() and percent is the sum of the checked options. The order was charged in EUR as round(price * 100) cents; the checkout displayed the same number as USD next to a converted EUR amount.",
+	"rounding": "cents = round half up of price * 100 (PHP round()). Several prices land on half a cent, e.g. 201.375.",
+	"quotes": [
+		{
+			"page": "/division-boosting",
+			"service": "Division Boosting",
+			"game": "lol",
+			"inputs": {
+				"current": {
+					"tier": "Bronze",
+					"division": "I",
+					"lp": "21-40",
+					"mmr": "15-17"
+				},
+				"desired": {
+					"tier": "Gold",
+					"division": "III"
+				},
+				"options": []
+			},
+			"base_price": 134.25,
+			"amount": 1,
+			"percent": 0,
+			"price": 134.25,
+			"cents": 13425
+		},
+		{
+			"page": "/division-boosting",
+			"service": "Division Boosting",
+			"game": "lol",
+			"inputs": {
+				"current": {
+					"tier": "Silver",
+					"division": "IV",
+					"lp": "0-20",
+					"mmr": "21+"
+				},
+				"desired": {
+					"tier": "Gold",
+					"division": "IV"
+				},
+				"options": []
+			},
+			"base_price": 62,
+			"amount": 1,
+			"percent": 0,
+			"price": 62,
+			"cents": 6200
+		},
+		{
+			"page": "/division-boosting",
+			"service": "Division Boosting",
+			"game": "lol",
+			"inputs": {
+				"current": {
+					"tier": "Platinum",
+					"division": "II",
+					"lp": "41-60",
+					"mmr": "13-15"
+				},
+				"desired": {
+					"tier": "Diamond",
+					"division": "IV"
+				},
+				"options": [
+					"Priority order (2x speed) at"
+				]
+			},
+			"base_price": 185,
+			"amount": 1,
+			"percent": 20,
+			"price": 222,
+			"cents": 22200
+		},
+		{
+			"page": "/division-boosting",
+			"service": "Division Boosting",
+			"game": "lol",
+			"inputs": {
+				"current": {
+					"tier": "Diamond",
+					"division": "IV",
+					"lp": "81-100",
+					"mmr": "19-21"
+				},
+				"desired": {
+					"tier": "Diamond",
+					"division": "I"
+				},
+				"options": [
+					"Priority order (2x speed) at",
+					"With Streaming at"
+				]
+			},
+			"base_price": 371,
+			"amount": 1,
+			"percent": 35,
+			"price": 500.85,
+			"cents": 50085
+		},
+		{
+			"page": "/division-boosting",
+			"service": "Division Boosting",
+			"game": "lol",
+			"inputs": {
+				"current": {
+					"tier": "Iron",
+					"division": "IV",
+					"lp": "61-80",
+					"mmr": "1-6"
+				},
+				"desired": {
+					"tier": "Iron",
+					"division": "I"
+				},
+				"options": [
+					"Appear offline on chat"
+				]
+			},
+			"base_price": 84.75,
+			"amount": 1,
+			"percent": 0,
+			"price": 84.75,
+			"cents": 8475
+		},
+		{
+			"page": "/duoqueue-boosting",
+			"service": "Duo Queue Boosting",
+			"game": "lol",
+			"inputs": {
+				"current": {
+					"tier": "Bronze",
+					"division": "I",
+					"lp": "21-40",
+					"mmr": "15-17"
+				},
+				"desired": {
+					"tier": "Gold",
+					"division": "III"
+				},
+				"options": []
+			},
+			"base_price": 201.375,
+			"amount": 1,
+			"percent": 0,
+			"price": 201.375,
+			"cents": 20138
+		},
+		{
+			"page": "/duoqueue-boosting",
+			"service": "Duo Queue Boosting",
+			"game": "lol",
+			"inputs": {
+				"current": {
+					"tier": "Silver",
+					"division": "IV",
+					"lp": "0-20",
+					"mmr": "21+"
+				},
+				"desired": {
+					"tier": "Gold",
+					"division": "IV"
+				},
+				"options": [
+					"With coaching at"
+				]
+			},
+			"base_price": 93,
+			"amount": 1,
+			"percent": 30,
+			"price": 120.9,
+			"cents": 12090
+		},
+		{
+			"page": "/duoqueue-boosting",
+			"service": "Duo Queue Boosting",
+			"game": "lol",
+			"inputs": {
+				"current": {
+					"tier": "Platinum",
+					"division": "II",
+					"lp": "41-60",
+					"mmr": "13-15"
+				},
+				"desired": {
+					"tier": "Diamond",
+					"division": "IV"
+				},
+				"options": [
+					"Priority order at",
+					"HIGH-MMR account at"
+				]
+			},
+			"base_price": 277.5,
+			"amount": 1,
+			"percent": 40,
+			"price": 388.5,
+			"cents": 38850
+		},
+		{
+			"page": "/duoqueue-boosting",
+			"service": "Duo Queue Boosting",
+			"game": "lol",
+			"inputs": {
+				"current": {
+					"tier": "Gold",
+					"division": "I",
+					"lp": "61-80",
+					"mmr": "9-11"
+				},
+				"desired": {
+					"tier": "Platinum",
+					"division": "I"
+				},
+				"options": []
+			},
+			"base_price": 641.625,
+			"amount": 1,
+			"percent": 0,
+			"price": 641.625,
+			"cents": 64163
+		},
+		{
+			"page": "/placement-boosting",
+			"service": "Placement Matches",
+			"game": "lol",
+			"inputs": {
+				"current": {
+					"tier": "Bronze",
+					"division": "I"
+				},
+				"amount": 10,
+				"options": []
+			},
+			"base_price": 1.9,
+			"amount": 10,
+			"percent": 0,
+			"price": 19,
+			"cents": 1900
+		},
+		{
+			"page": "/placement-boosting",
+			"service": "Placement Matches",
+			"game": "lol",
+			"inputs": {
+				"current": {
+					"tier": "Gold",
+					"division": "II"
+				},
+				"amount": 6,
+				"options": [
+					"Play with booster at"
+				]
+			},
+			"base_price": 3.8,
+			"amount": 6,
+			"percent": 35,
+			"price": 30.779999999999994,
+			"cents": 3078
+		},
+		{
+			"page": "/placement-boosting",
+			"service": "Placement Matches",
+			"game": "lol",
+			"inputs": {
+				"current": {
+					"tier": "Silver",
+					"division": "III"
+				},
+				"amount": 10,
+				"options": [
+					"Appear offline on chat"
+				]
+			},
+			"base_price": 2.85,
+			"amount": 10,
+			"percent": 0,
+			"price": 28.5,
+			"cents": 2850
+		},
+		{
+			"page": "/placement-boosting",
+			"service": "Placement Matches",
+			"game": "lol",
+			"inputs": {
+				"current": {
+					"tier": "Diamond",
+					"division": "I"
+				},
+				"amount": 2,
+				"options": [
+					"Priority order at"
+				]
+			},
+			"base_price": 7.75,
+			"amount": 2,
+			"percent": 20,
+			"price": 18.6,
+			"cents": 1860
+		},
+		{
+			"page": "/ranked-wins-boosting",
+			"service": "Ranked Wins",
+			"game": "lol",
+			"inputs": {
+				"current": {
+					"tier": "Bronze",
+					"division": "I"
+				},
+				"amount": 4,
+				"options": []
+			},
+			"base_price": 1.9,
+			"amount": 4,
+			"percent": 0,
+			"price": 7.6,
+			"cents": 760
+		},
+		{
+			"page": "/ranked-wins-boosting",
+			"service": "Ranked Wins",
+			"game": "lol",
+			"inputs": {
+				"current": {
+					"tier": "Gold",
+					"division": "II"
+				},
+				"amount": 6,
+				"options": [
+					"Play with booster at"
+				]
+			},
+			"base_price": 5.8,
+			"amount": 6,
+			"percent": 40,
+			"price": 48.72,
+			"cents": 4872
+		},
+		{
+			"page": "/ranked-wins-boosting",
+			"service": "Ranked Wins",
+			"game": "lol",
+			"inputs": {
+				"current": {
+					"tier": "Diamond",
+					"division": "III"
+				},
+				"amount": 2,
+				"options": [
+					"Games instead of wins at"
+				]
+			},
+			"base_price": 15.6,
+			"amount": 2,
+			"percent": -30,
+			"price": 21.84,
+			"cents": 2184
+		},
+		{
+			"page": "/ranked-wins-boosting",
+			"service": "Ranked Wins",
+			"game": "lol",
+			"inputs": {
+				"current": {
+					"tier": "Platinum",
+					"division": "I"
+				},
+				"amount": 3,
+				"options": [
+					"Priority order at",
+					"With Streaming at"
+				]
+			},
+			"base_price": 9.7,
+			"amount": 3,
+			"percent": 35,
+			"price": 39.285,
+			"cents": 3929
+		},
+		{
+			"page": "/champion-mastery",
+			"service": "Champion Mastery",
+			"game": "lol",
+			"inputs": {
+				"currentTier": 5,
+				"desiredTier": 7,
+				"options": [],
+				"tokens": 5
+			},
+			"base_price": 50,
+			"amount": 1,
+			"percent": 0,
+			"price": 50,
+			"cents": 5000
+		},
+		{
+			"page": "/champion-mastery",
+			"service": "Champion Mastery",
+			"game": "lol",
+			"inputs": {
+				"currentTier": 0,
+				"desiredTier": 5,
+				"options": [],
+				"tokens": 1
+			},
+			"base_price": 53.85,
+			"amount": 1,
+			"percent": 0,
+			"price": 53.85,
+			"cents": 5385
+		},
+		{
+			"page": "/champion-mastery",
+			"service": "Champion Mastery",
+			"game": "lol",
+			"inputs": {
+				"currentTier": 2,
+				"desiredTier": 4,
+				"options": [
+					"Priority order at"
+				],
+				"tokens": 1
+			},
+			"base_price": 25.5,
+			"amount": 1,
+			"percent": 20,
+			"price": 30.6,
+			"cents": 3060
+		},
+		{
+			"page": "/champion-mastery",
+			"service": "Champion Mastery",
+			"game": "lol",
+			"inputs": {
+				"currentTier": 5,
+				"desiredTier": 6,
+				"options": [
+					"With Streaming at"
+				],
+				"tokens": 2
+			},
+			"base_price": 30,
+			"amount": 1,
+			"percent": 15,
+			"price": 34.5,
+			"cents": 3450
+		},
+		{
+			"page": "/champion-mastery",
+			"service": "Champion Mastery",
+			"game": "lol",
+			"inputs": {
+				"currentTier": 6,
+				"desiredTier": 7,
+				"options": [],
+				"tokens": 3
+			},
+			"base_price": 42,
+			"amount": 1,
+			"percent": 0,
+			"price": 42,
+			"cents": 4200
+		},
+		{
+			"page": "/valorant-boosting",
+			"service": "Valorant Rank Boosting",
+			"game": "valorant",
+			"inputs": {
+				"current": {
+					"tier": "Bronze",
+					"division": "I",
+					"lp": "21-40"
+				},
+				"desired": {
+					"tier": "Gold",
+					"division": "III"
+				},
+				"options": []
+			},
+			"base_price": 124.79999999999998,
+			"amount": 1,
+			"percent": 0,
+			"price": 124.79999999999998,
+			"cents": 12480
+		},
+		{
+			"page": "/valorant-boosting",
+			"service": "Valorant Rank Boosting",
+			"game": "valorant",
+			"inputs": {
+				"current": {
+					"tier": "Iron",
+					"division": "I",
+					"lp": "0-20"
+				},
+				"desired": {
+					"tier": "Iron",
+					"division": "III"
+				},
+				"options": []
+			},
+			"base_price": 19.4,
+			"amount": 1,
+			"percent": 0,
+			"price": 19.4,
+			"cents": 1940
+		},
+		{
+			"page": "/valorant-boosting",
+			"service": "Valorant Rank Boosting",
+			"game": "valorant",
+			"inputs": {
+				"current": {
+					"tier": "Platinum",
+					"division": "II",
+					"lp": "41-60"
+				},
+				"desired": {
+					"tier": "Diamond",
+					"division": "II"
+				},
+				"options": [
+					"Priority order (2x speed) at"
+				]
+			},
+			"base_price": 96,
+			"amount": 1,
+			"percent": 20,
+			"price": 115.2,
+			"cents": 11520
+		},
+		{
+			"page": "/valorant-boosting",
+			"service": "Valorant Rank Boosting",
+			"game": "valorant",
+			"inputs": {
+				"current": {
+					"tier": "Gold",
+					"division": "II",
+					"lp": "61-80"
+				},
+				"desired": {
+					"tier": "Platinum",
+					"division": "III"
+				},
+				"options": [
+					"With Streaming at"
+				]
+			},
+			"base_price": 107,
+			"amount": 1,
+			"percent": 15,
+			"price": 123.05,
+			"cents": 12305
+		},
+		{
+			"page": "/valorant-placement-boosting",
+			"service": "Valorant Placement Matches",
+			"game": "valorant",
+			"inputs": {
+				"current": {
+					"tier": "Bronze",
+					"division": "I"
+				},
+				"amount": 3,
+				"options": []
+			},
+			"base_price": 11.6,
+			"amount": 3,
+			"percent": 0,
+			"price": 34.8,
+			"cents": 3480
+		},
+		{
+			"page": "/valorant-placement-boosting",
+			"service": "Valorant Placement Matches",
+			"game": "valorant",
+			"inputs": {
+				"current": {
+					"tier": "Gold",
+					"division": "II"
+				},
+				"amount": 1,
+				"options": []
+			},
+			"base_price": 19.6,
+			"amount": 1,
+			"percent": 0,
+			"price": 19.6,
+			"cents": 1960
+		},
+		{
+			"page": "/valorant-placement-boosting",
+			"service": "Valorant Placement Matches",
+			"game": "valorant",
+			"inputs": {
+				"current": {
+					"tier": "Diamond",
+					"division": "III"
+				},
+				"amount": 2,
+				"options": [
+					"Play with booster at"
+				]
+			},
+			"base_price": 36,
+			"amount": 2,
+			"percent": 50,
+			"price": 108,
+			"cents": 10800
+		},
+		{
+			"page": "/valorant-placement-boosting",
+			"service": "Valorant Placement Matches",
+			"game": "valorant",
+			"inputs": {
+				"current": {
+					"tier": "Platinum",
+					"division": "II"
+				},
+				"amount": 3,
+				"options": [
+					"With Streaming at"
+				]
+			},
+			"base_price": 30,
+			"amount": 3,
+			"percent": 15,
+			"price": 103.5,
+			"cents": 10350
+		},
+		{
+			"page": "/unrated-matches",
+			"service": "Valorant Unrated Matches",
+			"game": "valorant",
+			"inputs": {
+				"amount": 5,
+				"options": []
+			},
+			"base_price": 3.8,
+			"amount": 5,
+			"percent": 0,
+			"price": 19,
+			"cents": 1900
+		},
+		{
+			"page": "/unrated-matches",
+			"service": "Valorant Unrated Matches",
+			"game": "valorant",
+			"inputs": {
+				"amount": 1,
+				"options": []
+			},
+			"base_price": 3.96,
+			"amount": 1,
+			"percent": 0,
+			"price": 3.96,
+			"cents": 396
+		},
+		{
+			"page": "/unrated-matches",
+			"service": "Valorant Unrated Matches",
+			"game": "valorant",
+			"inputs": {
+				"amount": 15,
+				"options": [
+					"Net wins at"
+				]
+			},
+			"base_price": 3.4,
+			"amount": 15,
+			"percent": 40,
+			"price": 71.4,
+			"cents": 7140
+		},
+		{
+			"page": "/unrated-matches",
+			"service": "Valorant Unrated Matches",
+			"game": "valorant",
+			"inputs": {
+				"amount": 30,
+				"options": [
+					"Play with booster at",
+					"Priority order at"
+				]
+			},
+			"base_price": 2.8,
+			"amount": 30,
+			"percent": 60,
+			"price": 134.4,
+			"cents": 13440
+		},
+		{
+			"page": "/wildrift-rank-boosting",
+			"service": "Wild Rift Rank Boosting",
+			"game": "wildrift",
+			"inputs": {
+				"current": {
+					"tier": "Bronze",
+					"division": "I"
+				},
+				"desired": {
+					"tier": "Gold",
+					"division": "III"
+				},
+				"options": []
+			},
+			"base_price": 96,
+			"amount": 1,
+			"percent": 0,
+			"price": 96,
+			"cents": 9600
+		},
+		{
+			"page": "/wildrift-rank-boosting",
+			"service": "Wild Rift Rank Boosting",
+			"game": "wildrift",
+			"inputs": {
+				"current": {
+					"tier": "Gold",
+					"division": "IV"
+				},
+				"desired": {
+					"tier": "Platinum",
+					"division": "IV"
+				},
+				"options": [
+					"Priority order (2x speed) at"
+				]
+			},
+			"base_price": 101.5,
+			"amount": 1,
+			"percent": 20,
+			"price": 121.8,
+			"cents": 12180
+		},
+		{
+			"page": "/wildrift-rank-boosting",
+			"service": "Wild Rift Rank Boosting",
+			"game": "wildrift",
+			"inputs": {
+				"current": {
+					"tier": "Iron",
+					"division": "IV"
+				},
+				"desired": {
+					"tier": "Iron",
+					"division": "I"
+				},
+				"options": []
+			},
+			"base_price": 27,
+			"amount": 1,
+			"percent": 0,
+			"price": 27,
+			"cents": 2700
+		},
+		{
+			"page": "/wildrift-rank-boosting",
+			"service": "Wild Rift Rank Boosting",
+			"game": "wildrift",
+			"inputs": {
+				"current": {
+					"tier": "Diamond",
+					"division": "IV"
+				},
+				"desired": {
+					"tier": "Diamond",
+					"division": "I"
+				},
+				"options": [
+					"With Streaming at"
+				]
+			},
+			"base_price": 376,
+			"amount": 1,
+			"percent": 15,
+			"price": 432.4,
+			"cents": 43240
+		},
+		{
+			"page": "/wildrift-ranked-wins-boosting",
+			"service": "Wild Rift Ranked Wins",
+			"game": "wildrift",
+			"inputs": {
+				"current": {
+					"tier": "Bronze",
+					"division": "I"
+				},
+				"amount": 4,
+				"options": []
+			},
+			"legacy_data_mixup": "The page imported the League of Legends ranked-wins tiers. v2 keeps those prices on the Wild Rift ladder, so these quotes still hold.",
+			"base_price": 1.9,
+			"amount": 4,
+			"percent": 0,
+			"price": 7.6,
+			"cents": 760
+		},
+		{
+			"page": "/wildrift-ranked-wins-boosting",
+			"service": "Wild Rift Ranked Wins",
+			"game": "wildrift",
+			"inputs": {
+				"current": {
+					"tier": "Gold",
+					"division": "II"
+				},
+				"amount": 6,
+				"options": [
+					"Play with booster at"
+				]
+			},
+			"legacy_data_mixup": "The page imported the League of Legends ranked-wins tiers. v2 keeps those prices on the Wild Rift ladder, so these quotes still hold.",
+			"base_price": 5.8,
+			"amount": 6,
+			"percent": 40,
+			"price": 48.72,
+			"cents": 4872
+		},
+		{
+			"page": "/wildrift-ranked-wins-boosting",
+			"service": "Wild Rift Ranked Wins",
+			"game": "wildrift",
+			"inputs": {
+				"current": {
+					"tier": "Diamond",
+					"division": "III"
+				},
+				"amount": 2,
+				"options": [
+					"Games instead of wins at"
+				]
+			},
+			"legacy_data_mixup": "The page imported the League of Legends ranked-wins tiers. v2 keeps those prices on the Wild Rift ladder, so these quotes still hold.",
+			"base_price": 15.6,
+			"amount": 2,
+			"percent": -30,
+			"price": 21.84,
+			"cents": 2184
+		},
+		{
+			"page": "/wildrift-ranked-wins-boosting",
+			"service": "Wild Rift Ranked Wins",
+			"game": "wildrift",
+			"inputs": {
+				"current": {
+					"tier": "Platinum",
+					"division": "IV"
+				},
+				"amount": 8,
+				"options": []
+			},
+			"legacy_data_mixup": "The page imported the League of Legends ranked-wins tiers. v2 keeps those prices on the Wild Rift ladder, so these quotes still hold.",
+			"base_price": 7.75,
+			"amount": 8,
+			"percent": 0,
+			"price": 62,
+			"cents": 6200
+		}
+	],
+	"legacy_bugs": [
+		{
+			"page": "/division-boosting",
+			"service": "Division Boosting",
+			"game": "lol",
+			"inputs": {
+				"current": {
+					"tier": "Diamond",
+					"division": "I",
+					"lp": "81-100",
+					"mmr": "19-21"
+				},
+				"desired": {
+					"tier": "Master+"
+				},
+				"options": [
+					"Priority order (2x speed) at",
+					"With Streaming at"
+				]
+			},
+			"observed_price": null,
+			"bug": "Master+ has no mmr in the flattened price list, so division.price + division.mmr is NaN"
+		},
+		{
+			"page": "/duoqueue-boosting",
+			"service": "Duo Queue Boosting",
+			"game": "lol",
+			"inputs": {
+				"current": {
+					"tier": "Diamond",
+					"division": "I",
+					"lp": "81-100",
+					"mmr": "19-21"
+				},
+				"desired": {
+					"tier": "Master+"
+				},
+				"options": []
+			},
+			"observed_price": null,
+			"bug": "Master+ has no mmr in the flattened price list, so the total is NaN"
+		},
+		{
+			"page": "/placement-boosting",
+			"service": "Placement Matches",
+			"game": "lol",
+			"inputs": {
+				"current": {
+					"tier": "Unranked"
+				},
+				"amount": 10,
+				"options": []
+			},
+			"observed_price": 19,
+			"bug": "Unranked has no divisions; changePrice() reads the stale division (Bronze I) instead of the tier price"
+		},
+		{
+			"page": "/placement-boosting",
+			"service": "Placement Matches",
+			"game": "lol",
+			"inputs": {
+				"current": {
+					"tier": "Master+"
+				},
+				"amount": 4,
+				"options": [
+					"Priority order at",
+					"With Streaming at"
+				]
+			},
+			"observed_price": 10.26,
+			"bug": "Master+ has no divisions; changePrice() reads the stale division instead of the tier price"
+		},
+		{
+			"page": "/ranked-wins-boosting",
+			"service": "Ranked Wins",
+			"game": "lol",
+			"inputs": {
+				"current": {
+					"tier": "Master+"
+				},
+				"amount": 10,
+				"options": [
+					"Priority order at",
+					"With Streaming at"
+				]
+			},
+			"observed_price": 25.65,
+			"bug": "Master+ has no divisions; changePrice() reads the stale division instead of the tier price"
+		},
+		{
+			"page": "/valorant-boosting",
+			"service": "Valorant Rank Boosting",
+			"game": "valorant",
+			"inputs": {
+				"current": {
+					"tier": "Diamond",
+					"division": "III",
+					"lp": "81-100"
+				},
+				"desired": {
+					"tier": "Immortal"
+				},
+				"options": [
+					"With Streaming at"
+				]
+			},
+			"observed_price": 299.92,
+			"bug": "Immortal's price is a bare number with no id, and its rank id (7) is lower than Diamond III's division id (18), so lodash's descending range sums Silver III to Diamond III instead"
+		},
+		{
+			"page": "/valorant-placement-boosting",
+			"service": "Valorant Placement Matches",
+			"game": "valorant",
+			"inputs": {
+				"current": {
+					"tier": "Immortal"
+				},
+				"amount": 3,
+				"options": [
+					"Priority order at",
+					"With Streaming at"
+				]
+			},
+			"observed_price": 46.98,
+			"bug": "Immortal has no divisions; changePrice() reads the stale division instead of the tier price"
+		},
+		{
+			"page": "/wildrift-placement-boosting",
+			"service": "Wild Rift Placement Matches",
+			"game": "wildrift",
+			"inputs": {
+				"current": {
+					"tier": "Immortal"
+				},
+				"amount": 3,
+				"options": [
+					"Priority order at"
+				]
+			},
+			"legacy_data_mixup": "imports the Valorant placement ranks and prices",
+			"observed_price": 41.76,
+			"bug": "Immortal has no divisions; changePrice() reads the stale division instead of the tier price"
+		},
+		{
+			"page": "/wildrift-ranked-wins-boosting",
+			"service": "Wild Rift Ranked Wins",
+			"game": "wildrift",
+			"inputs": {
+				"current": {
+					"tier": "Master+"
+				},
+				"amount": 8,
+				"options": []
+			},
+			"legacy_data_mixup": "imports the League of Legends ranked-wins tiers and prices",
+			"observed_price": 15.2,
+			"bug": "Master+ has no divisions; changePrice() reads the stale division instead of the tier price"
+		},
+		{
+			"page": "/wildrift-placement-boosting",
+			"service": "Wild Rift Placement Matches",
+			"game": "wildrift",
+			"inputs": {
+				"current": {
+					"tier": "Bronze",
+					"division": "I"
+				},
+				"amount": 3,
+				"options": []
+			},
+			"observed_price": 34.8,
+			"bug": "Priced with the Valorant placement table, which the page imported by mistake. v2 prices Wild Rift placements on the Wild Rift ladder with the League placement prices (backend/config/pricing/wildrift/placements.php)."
+		},
+		{
+			"page": "/wildrift-placement-boosting",
+			"service": "Wild Rift Placement Matches",
+			"game": "wildrift",
+			"inputs": {
+				"current": {
+					"tier": "Gold",
+					"division": "II"
+				},
+				"amount": 2,
+				"options": [
+					"Play with booster at"
+				]
+			},
+			"observed_price": 58.800000000000004,
+			"bug": "Priced with the Valorant placement table, which the page imported by mistake. v2 prices Wild Rift placements on the Wild Rift ladder with the League placement prices (backend/config/pricing/wildrift/placements.php)."
+		},
+		{
+			"page": "/wildrift-placement-boosting",
+			"service": "Wild Rift Placement Matches",
+			"game": "wildrift",
+			"inputs": {
+				"current": {
+					"tier": "Diamond",
+					"division": "III"
+				},
+				"amount": 1,
+				"options": []
+			},
+			"observed_price": 36,
+			"bug": "Priced with the Valorant placement table, which the page imported by mistake. v2 prices Wild Rift placements on the Wild Rift ladder with the League placement prices (backend/config/pricing/wildrift/placements.php)."
+		},
+		{
+			"page": "/wildrift-placement-boosting",
+			"service": "Wild Rift Placement Matches",
+			"game": "wildrift",
+			"inputs": {
+				"current": {
+					"tier": "Silver",
+					"division": "III"
+				},
+				"amount": 3,
+				"options": [
+					"Priority order at"
+				]
+			},
+			"observed_price": 52.559999999999995,
+			"bug": "Priced with the Valorant placement table, which the page imported by mistake. v2 prices Wild Rift placements on the Wild Rift ladder with the League placement prices (backend/config/pricing/wildrift/placements.php)."
+		}
+	]
+}
