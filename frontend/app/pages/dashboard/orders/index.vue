@@ -87,7 +87,7 @@ const title = computed(() => (isStaff.value ? 'Orders' : 'My orders'))
 			<v-text-field v-model="search" :prepend-inner-icon="mdiMagnify" :placeholder="isStaff ? 'Order #, purchase, customer, booster' : 'Order #, purchase'" density="compact" hide-details clearable style="max-width: 340px" />
 		</div>
 
-		<v-row dense class="mb-2">
+		<v-row density="compact" class="mb-2">
 			<v-col cols="12" md="4">
 				<v-select v-model="filters.status" :items="statusOptions" label="Status" multiple chips closable-chips clearable density="compact" hide-details @update:model-value="filters.page = 1" />
 			</v-col>

@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MeController;
-use App\Http\Controllers\Admin\{FineController, MetricsController, NoticeController, PayoutController, UserController};
-use App\Http\Controllers\{ApplicationController, BoosterController, EarningsController, NotificationController, VisibilityController};
 use App\Http\Controllers\Chat\MessageController;
 use App\Http\Controllers\Pricing\{CatalogController, QuoteController};
 use App\Http\Controllers\Orders\{JobController, OrderActionController, OrderController};
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\{FineController, MetricsController, NoticeController, PayoutController, UserController};
 use App\Http\Controllers\Auth\{AuthenticatedSessionController, NewPasswordController, PasswordResetLinkController, RegisteredUserController};
+use App\Http\Controllers\{ApplicationController, BoosterController, ContactController, EarningsController, NotificationController, VisibilityController};
 
 /*
  * Everything here runs on Sanctum's stateful SPA auth: session cookie plus CSRF (docs/adr/0001).
@@ -25,6 +25,7 @@ Route::get('catalog', [CatalogController::class, 'index'])->name('catalog.index'
 Route::get('catalog/{service}', [CatalogController::class, 'show'])->name('catalog.show');
 Route::get('boosters', [BoosterController::class, 'index'])->name('boosters.index');
 Route::post('applications', [ApplicationController::class, 'store'])->middleware('throttle:applications')->name('applications.store');
+Route::post('contact', [ContactController::class, 'store'])->middleware('throttle:contact')->name('contact.store');
 
 Route::middleware('auth:sanctum')->group(function (): void {
 	Route::post('logout', [AuthenticatedSessionController::class, 'destroy']);

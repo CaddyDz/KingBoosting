@@ -83,7 +83,7 @@ So Sanctum's SPA cookie auth needs no CORS and no shared cookie domain: `SANCTUM
 ### Frontend conventions
 
 - `runtimeConfig` carries everything environment-specific (`NUXT_API_BASE`, `NUXT_PUBLIC_STRIPE_KEY`, `NUXT_PUBLIC_REVERB_*`). Nothing is baked in at build time.
-- `/dashboard/**`, `/checkout/**` and the auth pages render on the client only. The storefront is server-rendered with SWR caching, so it must never render anything user-specific on the server.
+- `/dashboard/**`, `/checkout/**` and the auth pages render on the client only. The storefront is server-rendered with SWR caching, so it must never render anything user-specific on the server. Signed-in bits (the header's account buttons) render in `<ClientOnly>`, and `useAuthStore().loadIfSignedIn()` skips the `/api/me` call when there's no session cookie. The cache is off in development, because Nitro keeps it on disk across restarts.
 - Vuetify's composables are auto-imported with a `V` prefix (`useVDisplay`, `useVTheme`), because its `useLayout` collides with Nuxt's.
 - Vuetify 4 uses the Material 3 type scale (`text-headline-small`, `text-body-medium`, `text-body-small`). The Material 2 classes (`text-h5`, `text-body-2`, `text-caption`) match nothing, and ESLint rejects them.
 - `useAsyncData` returns a shallow ref in Nuxt 4. To change one row, assign a new `data.value`; mutating inside it doesn't re-render.

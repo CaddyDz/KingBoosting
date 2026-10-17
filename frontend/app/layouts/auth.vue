@@ -6,6 +6,7 @@
 				<span class="text-headline-small font-weight-bold">King Boosting</span>
 			</NuxtLink>
 			<slot />
+			<SiteDemoNotice class="text-center mt-8" />
 		</div>
 	</v-main>
 </template>

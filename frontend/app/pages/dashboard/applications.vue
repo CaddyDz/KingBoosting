@@ -81,7 +81,7 @@ async function markReviewed(application: BoosterApplication): Promise<void> {
 					</div>
 				</v-expansion-panel-title>
 				<v-expansion-panel-text>
-					<v-row dense class="mb-2">
+					<v-row density="compact" class="mb-2">
 						<v-col v-for="detail in details(application)" :key="detail.label" cols="12" sm="6" md="3">
 							<div class="text-body-small text-medium-emphasis">
 								{{ detail.label }}

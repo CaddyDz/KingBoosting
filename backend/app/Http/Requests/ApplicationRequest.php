@@ -35,4 +35,18 @@ class ApplicationRequest extends FormRequest
 			'motivation' => ['required', 'string', 'min:25', 'max:5000'],
 		];
 	}
+
+	/**
+	 * Field names as the form shows them, for the error messages.
+	 *
+	 * @return array<string, string>
+	 */
+	public function attributes(): array
+	{
+		return [
+			'in_game_name' => 'in-game name',
+			'discord_skype' => 'Discord or Skype',
+			'hours' => 'availability',
+		];
+	}
 }

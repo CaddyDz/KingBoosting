@@ -28,8 +28,28 @@ export const useAuthStore = defineStore('auth', () => {
 		return user.value
 	}
 
+	// Pages and layouts ask at the same time on first load: share one request
+	let pending: Promise<User | null> | null = null
+
 	async function ensureLoaded(): Promise<User | null> {
-		return loaded.value ? user.value : await fetchUser()
+		if (loaded.value) {
+			return user.value
+		}
+		pending ??= fetchUser().finally(() => (pending = null))
+
+		return await pending
+	}
+
+	/**
+	 * For public pages: ask the API only when Laravel has set its CSRF cookie. Without it there's no session,
+	 * so nobody is signed in, and the request would only log a 401 in the browser console.
+	 */
+	async function loadIfSignedIn(): Promise<User | null> {
+		if (!document.cookie.split('; ').some(cookie => cookie.startsWith('XSRF-TOKEN='))) {
+			return null
+		}
+
+		return await ensureLoaded()
 	}
 
 	async function login(email: string, password: string, remember = false): Promise<User> {
@@ -54,5 +74,5 @@ export const useAuthStore = defineStore('auth', () => {
 		user.value = null
 	}
 
-	return { user, loaded, loggedIn, role, isStaff, fetchUser, ensureLoaded, login, register, logout }
+	return { user, loaded, loggedIn, role, isStaff, fetchUser, ensureLoaded, loadIfSignedIn, login, register, logout }
 })

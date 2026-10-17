@@ -2,6 +2,11 @@
 export default defineNuxtConfig({
 	modules: ['@nuxt/eslint', '@pinia/nuxt', '@nuxt/test-utils/module', 'vuetify-nuxt-module'],
 
+	$development: {
+		// Nitro keeps cached pages on disk across restarts, so in development they'd hide code changes
+		routeRules: { '/**': { swr: false } },
+	},
+
 	devtools: { enabled: true },
 
 	app: {
@@ -45,6 +50,8 @@ export default defineNuxtConfig({
 		'/register': { ssr: false, swr: false },
 		'/reset-password': { ssr: false, swr: false },
 		'/forgot-password': { ssr: false, swr: false },
+		// The legacy footer's link
+		'/terms-of-use': { redirect: { to: '/terms', statusCode: 301 } },
 	},
 
 	compatibilityDate: '2026-10-01',

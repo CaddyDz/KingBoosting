@@ -43,6 +43,9 @@ async function logout(): Promise<void> {
 			<v-list nav density="comfortable">
 				<v-list-item v-for="item in nav" :key="item.to" :to="item.to" :prepend-icon="item.icon" :title="item.title" color="primary" />
 			</v-list>
+			<template #append>
+				<SiteDemoNotice class="pa-4" />
+			</template>
 		</v-navigation-drawer>
 
 		<v-app-bar flat border="b">
