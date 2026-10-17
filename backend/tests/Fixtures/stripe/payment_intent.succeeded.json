@@ -1,0 +1,27 @@
+{
+	"id": "evt_3QfixtureSucceeded",
+	"object": "event",
+	"api_version": "2025-09-30.clover",
+	"created": 1760700000,
+	"livemode": false,
+	"pending_webhooks": 1,
+	"request": {"id": null, "idempotency_key": "order-1-payment-intent"},
+	"type": "payment_intent.succeeded",
+	"data": {
+		"object": {
+			"id": "pi_fixture",
+			"object": "payment_intent",
+			"amount": 13425,
+			"amount_capturable": 0,
+			"amount_received": 13425,
+			"automatic_payment_methods": {"allow_redirects": "always", "enabled": true},
+			"currency": "eur",
+			"description": "King Boosting order #1: Bronze I → Gold III",
+			"last_payment_error": null,
+			"livemode": false,
+			"metadata": {"order_id": "1"},
+			"payment_method": "pm_card_visa",
+			"status": "succeeded"
+		}
+	}
+}

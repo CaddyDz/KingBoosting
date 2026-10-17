@@ -1,0 +1,28 @@
+{
+	"id": "evt_3QfixtureFailed",
+	"object": "event",
+	"api_version": "2025-09-30.clover",
+	"created": 1760700000,
+	"livemode": false,
+	"pending_webhooks": 1,
+	"request": {"id": "req_fixture", "idempotency_key": null},
+	"type": "payment_intent.payment_failed",
+	"data": {
+		"object": {
+			"id": "pi_fixture",
+			"object": "payment_intent",
+			"amount": 13425,
+			"amount_received": 0,
+			"currency": "eur",
+			"last_payment_error": {
+				"code": "card_declined",
+				"decline_code": "insufficient_funds",
+				"message": "Your card has insufficient funds.",
+				"type": "card_error"
+			},
+			"livemode": false,
+			"metadata": {"order_id": "1"},
+			"status": "requires_payment_method"
+		}
+	}
+}

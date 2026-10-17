@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\{Exceptions, Middleware};
 
@@ -13,6 +14,8 @@ return Application::configure(basePath: dirname(__DIR__))
 		commands: __DIR__.'/../routes/console.php',
 		channels: __DIR__.'/../routes/channels.php',
 		health: '/up',
+		// Outside the web and api groups: Stripe has no session or CSRF token
+		then: fn () => Route::middleware([])->group(__DIR__.'/../routes/stripe.php'),
 	)
 	->withMiddleware(function (Middleware $middleware): void {
 		// Sanctum SPA auth: requests from SANCTUM_STATEFUL_DOMAINS get the session and CSRF checks

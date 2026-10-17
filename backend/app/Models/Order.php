@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Models;
 
 use App\Events\OrderEventRecorded;
-use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\{Builder, MassPrunable};
 use Illuminate\Database\Eloquent\Attributes\Scope;
 use App\Enums\{Game, OrderEventType, OrderStatus, Role};
 use Database\Factories\OrderFactory;
@@ -38,7 +38,7 @@ use Illuminate\Database\Eloquent\Relations\{BelongsTo, HasMany};
 class Order extends Model
 {
 	/** @use HasFactory<OrderFactory> */
-	use HasFactory;
+	use HasFactory, MassPrunable;
 
 	/**
 	 * @var array<string, mixed>
@@ -68,6 +68,18 @@ class Order extends Model
 			'completed_at' => 'datetime',
 			'paid_out_at' => 'datetime',
 		];
+	}
+
+	/**
+	 * Checkouts nobody paid for within a day (`php artisan model:prune`, scheduled daily).
+	 *
+	 * @return Builder<self>
+	 */
+	public function prunable(): Builder
+	{
+		return self::query()
+			->where('status', OrderStatus::AwaitingPayment)
+			->where('created_at', '<=', now()->subDay());
 	}
 
 	/**
