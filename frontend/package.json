@@ -16,6 +16,7 @@
 		"@mdi/js": "^7.4.47",
 		"@pinia/nuxt": "^1.0.3",
 		"laravel-echo": "^2.6.1",
+		"marked": "^16.4.2",
 		"nuxt": "^4.6.2",
 		"pinia": "^4.1.0",
 		"pusher-js": "^8.6.0",

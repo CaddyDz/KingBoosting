@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { mdiAccountCircleOutline, mdiLogout, mdiThemeLightDark } from '@mdi/js'
+import type { User, Wrapped } from '~/types/api'
 
 const nav = useDashboardNav()
 const { user } = useUser()
@@ -9,6 +10,20 @@ const drawer = ref<boolean | null>(null)
 
 function toggleTheme(): void {
 	theme.change(theme.global.current.value.dark ? 'light' : 'dark')
+}
+
+// Boosters choose whether customers can see and pick them
+const savingVisibility = ref(false)
+async function setVisible(visible: boolean | null): Promise<void> {
+	savingVisibility.value = true
+	try {
+		const response = await useApi()<Wrapped<User>>('/api/me/visibility', { method: 'PUT', body: { visible: Boolean(visible) } })
+		useAuthStore().user = response.data
+		useSnackbar().success(response.data.visible ? 'Customers can see and pick you again.' : 'You\'re hidden from customers.')
+	}
+	finally {
+		savingVisibility.value = false
+	}
 }
 
 async function logout(): Promise<void> {
@@ -34,7 +49,7 @@ async function logout(): Promise<void> {
 			<v-app-bar-nav-icon v-if="!mdAndUp" aria-label="Menu" @click="drawer = !drawer" />
 			<v-spacer />
 			<DashboardNotificationBell />
-			<v-menu location="bottom end">
+			<v-menu location="bottom end" :close-on-content-click="false">
 				<template #activator="{ props }">
 					<v-btn v-bind="props" variant="text" :prepend-icon="mdiAccountCircleOutline" class="text-none">
 						{{ user?.username }}
@@ -42,6 +57,9 @@ async function logout(): Promise<void> {
 				</template>
 				<v-list density="compact">
 					<v-list-item :subtitle="user?.email" :title="`Signed in as ${user?.role}`" />
+					<v-list-item v-if="user?.role === 'booster'">
+						<v-switch :model-value="user.visible" :loading="savingVisibility" label="Visible to customers" color="primary" density="compact" hide-details data-testid="visibility" @update:model-value="setVisible" />
+					</v-list-item>
 					<v-divider />
 					<v-list-item :prepend-icon="mdiThemeLightDark" title="Switch theme" @click="toggleTheme" />
 					<v-list-item :prepend-icon="mdiLogout" title="Log out" @click="logout" />

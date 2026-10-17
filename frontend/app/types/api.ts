@@ -102,3 +102,37 @@ export interface ChatMessage {
 	read_at: string | null
 	created_at: string
 }
+
+export interface Fine {
+	id: number
+	booster?: { id: number, username: string }
+	amount_cents: number
+	reason: string
+	settled: boolean
+	payout_id: number | null
+	created_at: string
+}
+
+export interface Payout {
+	id: number
+	booster?: { id: number, username: string }
+	gross_cents: number
+	fines_cents: number
+	amount_cents: number
+	orders_count: number
+	paid_at: string
+}
+
+export interface EarningsSummary {
+	orders_count: number
+	share_cents: number
+	fines_cents: number
+	owed_cents: number
+}
+
+export interface Earnings {
+	summary: EarningsSummary
+	orders: { id: number, title: string, game: string, completed_at: string, share_cents: number }[]
+	fines: Fine[]
+	payouts: Payout[]
+}
