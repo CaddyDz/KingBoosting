@@ -15,6 +15,29 @@ A multi-role order marketplace with server-side pricing, Stripe PaymentIntents, 
 
 Every rule is enforced on the server: one policy layer decides what each role can see and do, and the dashboard shows only the actions the API allows. Prices come from rate tables kept in config, in whole cents, so the browser never sets one.
 
+## Screenshots
+
+| | |
+| --- | --- |
+| ![The storefront](docs/screenshots/storefront.png) | ![The order builder, with a live price](docs/screenshots/order-builder.png) |
+| **Storefront** | **Order builder.** The price comes from the server. |
+| ![Checkout](docs/screenshots/checkout.png) | ![A customer's order page](docs/screenshots/customer-order-dark.png) |
+| **Checkout**, with sign-in on the page | **A customer's order**: price, login, timeline and chat |
+| ![The admin overview](docs/screenshots/admin-overview-dark.png) | ![The admin overview in the light theme](docs/screenshots/admin-overview-light.png) |
+| **Admin overview**, dark | **Admin overview**, light |
+| ![Payouts](docs/screenshots/admin-payouts.png) | ![The moderator's order list](docs/screenshots/moderator-orders.png) |
+| **Payouts in batches** (admin) | **Every order** (moderator) |
+| ![The jobs board](docs/screenshots/booster-jobs.png) | ![A booster's earnings](docs/screenshots/booster-earnings.png) |
+| **Jobs board** (booster) | **Earnings and fines** (booster) |
+
+**Real-time chat.** The customer is on the left and the booster on the right, each in their own browser. Messages arrive over Reverb, and the sender sees "Seen" once the other side has read them.
+
+![Two browsers chatting](docs/screenshots/chat.gif)
+
+**Two boosters claim the same order at the same moment.** The claim is one conditional update, so exactly one wins. The other gets a 409 and a message instead of a corrupted order.
+
+![Two boosters racing to claim one order](docs/screenshots/claim-race.gif)
+
 ## Architecture
 
 One origin, routed by path ([ADR 0001](docs/adr/0001-single-origin-routing.md)). Sanctum's session cookie therefore works everywhere with no CORS, and Echo reaches Reverb on the same host.
