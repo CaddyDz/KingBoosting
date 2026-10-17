@@ -89,6 +89,7 @@ So Sanctum's SPA cookie auth needs no CORS and no shared cookie domain: `SANCTUM
 - `useAsyncData` returns a shallow ref in Nuxt 4. To change one row, assign a new `data.value`; mutating inside it doesn't re-render.
 - Amounts from the API are euro cents; format them with `formatCents()` (`app/utils/money.ts`).
 - One page, `pages/[service].vue`, is the order builder for every service, at the legacy URLs (`/division-boosting`). It's drawn from `GET /api/catalog/{service}`, so a new service needs only `config/pricing`. `utils/orderBuilder.ts` turns the builder's state into quote input, and the `order` store asks `POST /api/quotes` for prices, from the browser only.
+- Checkout is two pages. `/checkout` signs the customer in and places the order. `/checkout/{order}` takes the payment with Stripe's Payment Element, and Stripe sends 3-D Secure returns back there. It then polls the order until the webhook has moved it on. Without `STRIPE_KEY` and `STRIPE_SECRET`, orders are saved unpaid and the page says payments are off.
 - Charts are plain HTML and CSS (`components/overview/`), with no chart library. Marks use the theme's `chart` colour, which is checked for contrast and lightness against each theme's surface.
 
 ### Backend conventions

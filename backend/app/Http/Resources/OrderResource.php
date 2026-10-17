@@ -30,6 +30,7 @@ class OrderResource extends JsonResource
 		'complete' => 'complete',
 		'markPaidOut' => 'mark-paid-out',
 		'updateCredentials' => 'update-credentials',
+		'pay' => 'pay',
 	];
 
 	private bool $withDetails = false;

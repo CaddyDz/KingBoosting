@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Orders;
 
 use App\Models\{Order, User};
+use App\Payments\PaymentGateway;
 use Illuminate\Http\JsonResponse;
 use App\Actions\Orders\PlaceOrder;
 use App\Http\Controllers\Controller;
@@ -61,6 +62,19 @@ class OrderController extends Controller
 		$this->authorize('view', $order);
 
 		return (new OrderResource($order->load(['customer', 'booster'])))->withDetails();
+	}
+
+	/**
+	 * The order's Stripe client secret, so checkout can take (or retry) the payment for an unpaid order.
+	 */
+	public function payment(Order $order, PaymentGateway $payments): JsonResponse
+	{
+		$this->authorize('pay', $order);
+
+		return response()->json(['data' => [
+			'client_secret' => $payments->clientSecret($order),
+			'amount_cents' => $order->price_cents,
+		]]);
 	}
 
 	/**

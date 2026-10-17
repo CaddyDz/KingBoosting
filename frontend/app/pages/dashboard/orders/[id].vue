@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { mdiArrowLeft } from '@mdi/js'
+import { mdiAlertCircleOutline, mdiArrowLeft } from '@mdi/js'
 import { statusOf } from '~/utils/api'
 import type { Order, Wrapped } from '~/types/api'
 
@@ -34,6 +34,22 @@ onBeforeUnmount(() => useEcho().leave(`orders.${id}`))
 		<v-alert v-if="error" type="error" variant="tonal" :text="statusOf(error) === 403 ? 'This order isn\'t yours to see.' : statusOf(error) === 404 ? 'This order doesn\'t exist.' : 'The order couldn\'t be loaded.'" />
 
 		<v-row v-else-if="order">
+			<v-col v-if="order.allowed_actions.includes('pay')" cols="12">
+				<v-card class="pa-4 d-flex flex-wrap align-center ga-4 unpaid" data-testid="unpaid">
+					<v-icon :icon="mdiAlertCircleOutline" color="warning" size="28" />
+					<div class="flex-grow-1">
+						<div class="text-title-medium">
+							This order isn't paid yet
+						</div>
+						<div class="text-body-medium text-medium-emphasis">
+							Boosters only see it once it's paid. Unpaid orders are deleted after a day.
+						</div>
+					</div>
+					<v-btn :to="`/checkout/${order.id}`" color="primary" variant="flat" data-testid="complete-payment">
+						Complete payment
+					</v-btn>
+				</v-card>
+			</v-col>
 			<v-col cols="12" lg="8" class="d-flex flex-column ga-4">
 				<OrdersOrderSummaryCard :order="order" />
 				<OrdersOrderCredentialsCard :order="order" @updated="replace" />
@@ -51,3 +67,9 @@ onBeforeUnmount(() => useEcho().leave(`orders.${id}`))
 		</div>
 	</div>
 </template>
+
+<style scoped>
+.unpaid {
+	border-left: 4px solid rgb(var(--v-theme-warning));
+}
+</style>

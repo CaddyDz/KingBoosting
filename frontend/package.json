@@ -15,6 +15,7 @@
 	"dependencies": {
 		"@mdi/js": "^7.4.47",
 		"@pinia/nuxt": "^1.0.3",
+		"@stripe/stripe-js": "^10.0.0",
 		"laravel-echo": "^2.6.1",
 		"marked": "^16.4.2",
 		"nuxt": "^4.6.2",

@@ -114,7 +114,7 @@ it('lets the customer add credentials later', function (): void {
 	$this->actingAs(User::factory()->customer()->create())
 		->postJson('/api/orders', divisionOrder(['account_login' => null, 'account_password' => null]))
 		->assertCreated()
-		->assertJsonPath('data.allowed_actions', ['update-credentials']);
+		->assertJsonPath('data.allowed_actions', ['update-credentials', 'pay']);
 });
 
 it('only lets customers place orders', function (User $user): void {
@@ -139,4 +139,26 @@ it('answers 503 and keeps nothing payable when Stripe is down', function (): voi
 
 it('refuses guests', function (): void {
 	$this->postJson('/api/orders', divisionOrder())->assertUnauthorized();
+});
+
+it('gives the customer the client secret of an unpaid order, so checkout can take the payment again', function (): void {
+	$customer = User::factory()->customer()->create();
+	$order = Order::query()->findOrFail($this->actingAs($customer)->postJson('/api/orders', divisionOrder())->json('data.id'));
+
+	$this->getJson("/api/orders/{$order->id}")->assertJsonPath('data.allowed_actions', ['update-credentials', 'pay']);
+	$this->getJson("/api/orders/{$order->id}/payment")
+		->assertOk()
+		->assertExactJson(['data' => ['client_secret' => "pi_fake_{$order->id}_secret_test", 'amount_cents' => 13425]]);
+});
+
+it('keeps the payment of an order to its customer, until it is paid', function (): void {
+	$unpaid = Order::factory()->awaitingPayment()->create(['payment_intent_id' => 'pi_fake_1']);
+	$paid = Order::factory()->pending()->create(['payment_intent_id' => 'pi_fake_2']);
+
+	$this->actingAs(User::factory()->customer()->create())->getJson("/api/orders/{$unpaid->id}/payment")->assertForbidden();
+	$this->actingAs(User::factory()->admin()->create())->getJson("/api/orders/{$unpaid->id}/payment")->assertForbidden();
+	$this->actingAs($paid->customer)->getJson("/api/orders/{$paid->id}/payment")
+		->assertConflict()
+		->assertJsonPath('message', 'This order is already paid.');
+	$this->actingAs($paid->customer)->getJson("/api/orders/{$paid->id}")->assertJsonPath('data.allowed_actions', ['update-credentials']);
 });

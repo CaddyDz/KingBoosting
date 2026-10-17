@@ -147,6 +147,14 @@ class OrderPolicy
 	}
 
 	/**
+	 * The customer pays for their own order until it's paid, including after a declined card.
+	 */
+	public function pay(User $user, Order $order): Response
+	{
+		return $this->decide($this->owns($user, $order), $order->status === OrderStatus::AwaitingPayment, 'This order is already paid.');
+	}
+
+	/**
 	 * The customer can change their Riot credentials until the order is done.
 	 */
 	public function updateCredentials(User $user, Order $order): Response

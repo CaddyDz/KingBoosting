@@ -32,6 +32,65 @@ export const useOrderStore = defineStore('order', () => {
 
 	const input = computed(() => (entry.value && state.value ? quoteInput(entry.value, state.value) : null))
 
+	// The choices survive a reload of checkout: kept in this tab's session storage, which may be unavailable
+	const STORAGE_KEY = 'kingboosting.order'
+	watch([entry, state, server], () => {
+		if (!import.meta.client) {
+			return
+		}
+		try {
+			if (entry.value && state.value) {
+				sessionStorage.setItem(STORAGE_KEY, JSON.stringify({ service: entry.value.key, state: state.value, server: server.value }))
+			}
+			else {
+				sessionStorage.removeItem(STORAGE_KEY)
+			}
+		}
+		catch {
+			// Private windows can refuse storage; the order then lasts as long as the page
+		}
+	}, { deep: true })
+
+	/**
+	 * Bring back the order this tab was building after a reload. False when there's none.
+	 */
+	async function restore(): Promise<boolean> {
+		if (entry.value && state.value) {
+			return true
+		}
+		let saved: { service: string, state: BuilderState, server: string | null } | null
+		try {
+			saved = JSON.parse(sessionStorage.getItem(STORAGE_KEY) ?? 'null')
+		}
+		catch {
+			return false
+		}
+		if (!saved) {
+			return false
+		}
+		try {
+			entry.value = (await useApi()<Wrapped<CatalogEntry>>(`/api/catalog/${saved.service}`)).data
+		}
+		catch {
+			return false
+		}
+		state.value = saved.state
+		server.value = saved.server
+
+		return true
+	}
+
+	/**
+	 * Forget the order once it's placed: the next visit to the builder starts fresh.
+	 */
+	function clear(): void {
+		entry.value = null
+		state.value = null
+		server.value = null
+		quote.value = null
+		error.value = null
+	}
+
 	// Checkout takes the order only with a current, valid price and a server
 	const canCheckout = computed(() => quote.value !== null && error.value === null && server.value !== null && !quoting.value)
 
@@ -73,5 +132,5 @@ export const useOrderStore = defineStore('order', () => {
 		}
 	}
 
-	return { entry, state, server, quote, quoting, error, input, canCheckout, start, requestQuote }
+	return { entry, state, server, quote, quoting, error, input, canCheckout, start, requestQuote, restore, clear }
 })

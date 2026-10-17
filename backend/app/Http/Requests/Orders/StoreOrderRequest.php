@@ -43,6 +43,21 @@ class StoreOrderRequest extends FormRequest
 	}
 
 	/**
+	 * Field names as checkout shows them, for the error messages.
+	 *
+	 * @return array<string, string>
+	 */
+	public function attributes(): array
+	{
+		return [
+			'account_name' => 'in-game name',
+			'account_login' => 'account login',
+			'account_password' => 'account password',
+			'booster_id' => 'booster',
+		];
+	}
+
+	/**
 	 * What goes to the quote engine: everything but the order details above.
 	 *
 	 * @return array<string, mixed>

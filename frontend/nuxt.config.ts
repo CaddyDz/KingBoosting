@@ -45,6 +45,7 @@ export default defineNuxtConfig({
 		'/**': { swr: 600 },
 		// Signed-in pages render in the browser only, so server-side rendering never handles a session cookie
 		'/dashboard/**': { ssr: false, swr: false },
+		'/checkout': { ssr: false, swr: false },
 		'/checkout/**': { ssr: false, swr: false },
 		'/login': { ssr: false, swr: false },
 		'/register': { ssr: false, swr: false },

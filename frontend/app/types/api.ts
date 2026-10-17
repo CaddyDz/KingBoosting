@@ -26,7 +26,7 @@ export interface Paginated<T> {
 
 export type OrderStatus = 'awaiting_payment' | 'pending' | 'in_progress' | 'paused' | 'completed' | 'paid_out'
 
-export type OrderAction = 'claim' | 'assign' | 'pause' | 'resume' | 'release' | 'complete' | 'mark-paid-out' | 'update-credentials'
+export type OrderAction = 'claim' | 'assign' | 'pause' | 'resume' | 'release' | 'complete' | 'mark-paid-out' | 'update-credentials' | 'pay'
 
 export interface Labelled<T extends string = string> {
 	value: T
