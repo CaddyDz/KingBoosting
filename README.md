@@ -9,11 +9,11 @@ The full README comes with the rebuild (#44). Until then, this is how to run wha
 | Path | What it is |
 | --- | --- |
 | `backend/` | Laravel 13 JSON API on PHP 8.4: Sanctum SPA auth, Reverb, Stripe |
-| `frontend/` | The storefront. Still the legacy Nuxt 2 app until the Nuxt 4 rewrite replaces it |
+| `frontend/` | Nuxt 4 + Vuetify: the storefront and every role's dashboard |
 | `docs/adr/` | Decision records for the rebuild |
 | `compose.yaml` | The local stack |
 
-The legacy Laravel 8 + Nova 3 app is on `develop` and will be tagged `v1.0-delivered` and `v1.9-legacy`.
+The legacy Laravel 8 + Nova 3 app and its Nuxt 2 storefront are on `develop` and will be tagged `v1.0-delivered` and `v1.9-legacy`.
 
 ## Running it
 
@@ -39,4 +39,7 @@ If you ran the legacy stack before, its database volume has the old schema: `doc
 docker compose exec app php artisan test
 docker compose exec app ./vendor/bin/pint --test
 docker compose exec app ./vendor/bin/phpstan analyse
+docker compose exec frontend npm run lint
+docker compose exec frontend npm run typecheck
+docker compose exec frontend npm test
 ```

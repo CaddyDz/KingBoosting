@@ -22,6 +22,9 @@ server {
 	proxy_set_header X-Forwarded-Proto $scheme;
 	proxy_set_header X-Forwarded-Host $http_host;
 	proxy_set_header X-Forwarded-Port $server_port;
+	# Set here, once: a location with its own proxy_set_header would drop every header above
+	proxy_set_header Upgrade $http_upgrade;
+	proxy_set_header Connection $connection_upgrade;
 
 	# Laravel: the API, Sanctum's CSRF cookie, channel auth, Stripe webhooks, the health check
 	location ~ ^/(api|sanctum|broadcasting|stripe|up)(/|$) {
@@ -34,8 +37,6 @@ server {
 	location /app/ {
 		set $reverb http://reverb:8080;
 		proxy_pass $reverb;
-		proxy_set_header Upgrade $http_upgrade;
-		proxy_set_header Connection $connection_upgrade;
 		proxy_read_timeout 3600s;
 	}
 
@@ -43,7 +44,5 @@ server {
 	location / {
 		set $nuxt http://frontend:3000;
 		proxy_pass $nuxt;
-		proxy_set_header Upgrade $http_upgrade;
-		proxy_set_header Connection $connection_upgrade;
 	}
 }

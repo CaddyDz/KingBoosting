@@ -1,12 +1,14 @@
+# Build context for the web app images. Dependencies are installed inside the image.
 node_modules
 .nuxt
+.output
+.data
+.cache
 dist
+coverage
+test-results
+playwright-report
 .env
 .env.*
-!.env.example
-*.log
-**/.DS_Store
-.idea
-nginx.conf
 Dockerfile
 .dockerignore

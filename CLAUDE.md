@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-King Boosting is a multi-role order marketplace for game-boosting services. This is the `v2` rebuild: a Laravel 13 JSON API in `backend/` (PHP 8.4) and a Nuxt app in `frontend/`. Until the Nuxt 4 rewrite lands, `frontend/` is still the legacy Nuxt 2 storefront, kept as the source for porting the price tables. The legacy Laravel 8 + Nova 3 app lives on `develop` (and the `v1.*` tags); read it with `git show develop:<path>` when porting.
+King Boosting is a multi-role order marketplace for game-boosting services. This is the `v2` rebuild: a Laravel 13 JSON API in `backend/` (PHP 8.4) and a Nuxt 4 app in `frontend/` (the storefront plus every role's dashboard). The legacy app (Laravel 8 + Nova 3, and a Nuxt 2 storefront) lives on `develop` and the `v1.*` tags. Read it with `git show develop:<path>` when porting.
 
 Decisions are recorded in `docs/adr/`. Read the relevant one before changing routing, roles, pricing, art, error tracking or style.
 
@@ -15,6 +15,7 @@ docker compose up -d --build --wait
 docker compose exec app php artisan migrate --seed
 docker compose exec app php artisan tinker
 docker compose exec app composer require <package>
+docker compose exec frontend npm install <package>      # npm 11: npm 10 crashes on this lockfile
 ```
 
 The Docker VM is shared with other projects' stacks, so don't run `docker system prune` or similar.
@@ -43,7 +44,11 @@ Pint, configured in `backend/pint.json` (see `docs/adr/0006`). The house style:
 
 The `make:*` stubs in `backend/stubs/` are published with tabs and strict types, so generated files already match. Run `docker compose exec app ./vendor/bin/pint --dirty` after editing PHP.
 
-Static analysis: `docker compose exec app ./vendor/bin/phpstan analyse` (Larastan, level 6).
+Static analysis: `docker compose exec app ./vendor/bin/phpstan analyse` (Larastan, level 6). Larastan ignores the models' `casts()` here, so enum and date columns carry `@property` hints.
+
+Frontend checks: `docker compose exec frontend npm run lint` (ESLint with tabs, single quotes, no semicolons), `npm run typecheck`, and `npm test` (Vitest: `test/unit` in Node, `test/nuxt` in a Nuxt environment).
+
+npm 11 refuses dependency install scripts unless `package.json`'s `allowScripts` approves them. When adding a package that needs one, run `npx npm@11 install-scripts approve <pkg>`, or `deny` it when a prebuilt binary covers it.
 
 ### CI (`.github/workflows`)
 
@@ -74,6 +79,13 @@ So Sanctum's SPA cookie auth needs no CORS and no shared cookie domain: `SANCTUM
 - `stripe` sits behind the `stripe` profile and forwards test webhooks.
 
 `REVERB_ALLOWED_ORIGINS` takes hostnames only: Reverb compares the Origin's host without its port.
+
+### Frontend conventions
+
+- `runtimeConfig` carries everything environment-specific (`NUXT_API_BASE`, `NUXT_PUBLIC_STRIPE_KEY`, `NUXT_PUBLIC_REVERB_*`). Nothing is baked in at build time.
+- `/dashboard/**`, `/checkout/**` and the auth pages render on the client only. The storefront is server-rendered with SWR caching, so it must never render anything user-specific on the server.
+- Vuetify's composables are auto-imported with a `V` prefix (`useVDisplay`, `useVTheme`), because its `useLayout` collides with Nuxt's.
+- Amounts from the API are euro cents; format them with `formatCents()` (`app/utils/money.ts`).
 
 ### Backend conventions
 
