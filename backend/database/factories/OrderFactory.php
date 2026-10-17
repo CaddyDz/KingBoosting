@@ -41,12 +41,13 @@ class OrderFactory extends Factory
 			'account_name' => Str::limit(fake()->userName(), 16, ''),
 			'account_login' => fake()->userName(),
 			'account_password' => fake()->password(10, 16),
-			'quote' => [
-				'service' => 'division-boosting',
-				'title' => $title,
-				'lines' => [['label' => $title, 'cents' => $cents]],
+			// Built from the final attributes, so a test that overrides the price gets a matching quote
+			'quote' => fn (array $attributes): array => [
+				'service' => $attributes['service'],
+				'title' => $attributes['title'],
+				'lines' => [['label' => $attributes['title'], 'cents' => $attributes['price_cents']]],
 				'options' => [],
-				'total_cents' => $cents,
+				'total_cents' => $attributes['price_cents'],
 			],
 			'price_cents' => $cents,
 			'booster_share_pct' => 50,

@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace App\Models;
 
 use App\Events\OrderEventRecorded;
-use App\Enums\{Game, OrderEventType, OrderStatus};
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Attributes\Scope;
+use App\Enums\{Game, OrderEventType, OrderStatus, Role};
 use Database\Factories\OrderFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -66,6 +68,25 @@ class Order extends Model
 			'completed_at' => 'datetime',
 			'paid_out_at' => 'datetime',
 		];
+	}
+
+	/**
+	 * The orders the user may see: the same rule as OrderPolicy::view, as one grouped query.
+	 *
+	 * @param  Builder<self>  $query
+	 */
+	#[Scope]
+	protected function visibleTo(Builder $query, User $user): void
+	{
+		match ($user->role) {
+			Role::Admin, Role::Moderator => null,
+			Role::Booster => $query->where(fn (Builder $query) => $query
+				->where('status', OrderStatus::Pending)
+				->orWhere(fn (Builder $query) => $query
+					->where('booster_id', $user->getKey())
+					->whereNotIn('status', [OrderStatus::AwaitingPayment, OrderStatus::Pending]))),
+			Role::Customer => $query->where('customer_id', $user->getKey()),
+		};
 	}
 
 	/**

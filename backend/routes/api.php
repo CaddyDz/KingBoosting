@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\MeController;
+use App\Http\Controllers\Orders\{JobController, OrderController};
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\{AuthenticatedSessionController, NewPasswordController, PasswordResetLinkController, RegisteredUserController};
 
@@ -18,4 +19,8 @@ Route::post('reset-password', [NewPasswordController::class, 'store'])->middlewa
 Route::middleware('auth:sanctum')->group(function (): void {
 	Route::post('logout', [AuthenticatedSessionController::class, 'destroy']);
 	Route::get('me', MeController::class);
+
+	Route::get('orders', [OrderController::class, 'index'])->name('orders.index');
+	Route::get('orders/{order}', [OrderController::class, 'show'])->name('orders.show');
+	Route::get('jobs', [JobController::class, 'index'])->name('jobs.index');
 });

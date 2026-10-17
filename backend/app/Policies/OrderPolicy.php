@@ -21,6 +21,14 @@ class OrderPolicy
 		return true;
 	}
 
+	/**
+	 * The jobs board of pending orders.
+	 */
+	public function viewJobs(User $user): bool
+	{
+		return $user->isBooster() || $user->isStaff();
+	}
+
 	public function view(User $user, Order $order): bool
 	{
 		return match ($user->role) {

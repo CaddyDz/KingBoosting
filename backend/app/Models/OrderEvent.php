@@ -13,6 +13,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 /**
  * One row per thing that happened to an order. Rows are written by the order actions and never updated.
  *
+ * @property OrderEventType $type
+ * @property OrderStatus|null $from_status
+ * @property OrderStatus|null $to_status
  * @property array<string, mixed>|null $meta
  */
 class OrderEvent extends Model
