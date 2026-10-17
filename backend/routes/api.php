@@ -3,8 +3,8 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\MeController;
-use App\Http\Controllers\Admin\{FineController, NoticeController, PayoutController};
-use App\Http\Controllers\{BoosterController, EarningsController, NotificationController};
+use App\Http\Controllers\Admin\{FineController, MetricsController, NoticeController, PayoutController, UserController};
+use App\Http\Controllers\{ApplicationController, BoosterController, EarningsController, NotificationController, VisibilityController};
 use App\Http\Controllers\Chat\MessageController;
 use App\Http\Controllers\Pricing\{CatalogController, QuoteController};
 use App\Http\Controllers\Orders\{JobController, OrderActionController, OrderController};
@@ -24,10 +24,12 @@ Route::post('quotes', [QuoteController::class, 'store'])->middleware('throttle:q
 Route::get('catalog', [CatalogController::class, 'index'])->name('catalog.index');
 Route::get('catalog/{service}', [CatalogController::class, 'show'])->name('catalog.show');
 Route::get('boosters', [BoosterController::class, 'index'])->name('boosters.index');
+Route::post('applications', [ApplicationController::class, 'store'])->middleware('throttle:applications')->name('applications.store');
 
 Route::middleware('auth:sanctum')->group(function (): void {
 	Route::post('logout', [AuthenticatedSessionController::class, 'destroy']);
 	Route::get('me', MeController::class);
+	Route::put('me/visibility', VisibilityController::class)->name('me.visibility');
 
 	Route::get('notifications', [NotificationController::class, 'index'])->name('notifications.index');
 	Route::post('notifications/read', [NotificationController::class, 'readAll'])->name('notifications.read-all');
@@ -40,6 +42,12 @@ Route::middleware('auth:sanctum')->group(function (): void {
 	Route::get('payouts/owed', [PayoutController::class, 'owed'])->name('payouts.owed');
 	Route::post('payouts', [PayoutController::class, 'store'])->name('payouts.store');
 	Route::apiResource('fines', FineController::class)->except('show');
+
+	Route::get('users', [UserController::class, 'index'])->name('users.index');
+	Route::patch('users/{user}', [UserController::class, 'update'])->name('users.update');
+	Route::get('applications', [ApplicationController::class, 'index'])->name('applications.index');
+	Route::post('applications/{application}/review', [ApplicationController::class, 'review'])->name('applications.review');
+	Route::get('metrics', MetricsController::class)->name('metrics');
 
 	Route::get('orders', [OrderController::class, 'index'])->name('orders.index');
 	Route::post('orders', [OrderController::class, 'store'])->middleware('throttle:checkout')->name('orders.store');

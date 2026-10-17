@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\{Builder, MassPrunable};
 use Illuminate\Database\Eloquent\Attributes\Scope;
 use App\Enums\{Game, OrderEventType, OrderStatus, Role};
 use Database\Factories\OrderFactory;
+use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Attributes\{Fillable, Hidden};
@@ -20,6 +21,10 @@ use Illuminate\Database\Eloquent\Relations\{BelongsTo, HasMany};
  * @property OrderStatus $status
  * @property Game $game
  * @property array<string, mixed> $quote
+ * @property Carbon|null $paid_at
+ * @property Carbon|null $claimed_at
+ * @property Carbon|null $completed_at
+ * @property Carbon|null $paid_out_at
  */
 #[Fillable([
 	'game',

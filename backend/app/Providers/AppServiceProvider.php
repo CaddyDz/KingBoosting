@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Providers;
 
 use App\Models\User;
+use App\Policies\MetricsPolicy;
+use Illuminate\Support\Facades\Gate;
 use Stripe\StripeClient;
 use App\Payments\{PaymentGateway, StripePaymentGateway, UnconfiguredPaymentGateway};
 use Illuminate\Http\Request;
@@ -44,6 +46,9 @@ class AppServiceProvider extends ServiceProvider
 			'email' => $user->email,
 		]));
 
+		// Abilities without a model still live in a policy class (docs/adr/0002)
+		Gate::define('viewMetrics', [MetricsPolicy::class, 'view']);
+
 		$this->configureRateLimiting();
 	}
 
@@ -57,6 +62,8 @@ class AppServiceProvider extends ServiceProvider
 		RateLimiter::for('register', fn (Request $request): Limit => Limit::perHour(10)->by($request->ip()));
 
 		RateLimiter::for('password-reset', fn (Request $request): Limit => Limit::perMinute(3)->by($request->ip()));
+
+		RateLimiter::for('applications', fn (Request $request): Limit => Limit::perHour(3)->by($request->ip()));
 
 		RateLimiter::for('checkout', fn (Request $request): Limit => Limit::perMinute(10)->by($request->user()?->getAuthIdentifier() ?? $request->ip()));
 
