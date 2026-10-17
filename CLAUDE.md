@@ -65,7 +65,15 @@ So Sanctum's SPA cookie auth needs no CORS and no shared cookie domain: `SANCTUM
 
 ### Compose services
 
-`app` (php-fpm, code bind-mounted), `web` (nginx for `backend/public`), `proxy`, `db` (MySQL 8.4), `mailpit`, and `stripe` (behind the `stripe` profile, forwards test webhooks). The dev entrypoint runs `composer install` when `composer.lock` changes.
+- `app` is php-fpm with the code bind-mounted. Its entrypoint runs `composer install` when `composer.lock` changes.
+- `web` is nginx for `backend/public`, and `proxy` routes by path. The proxy listens on `APP_PORT` (8000) inside the network too, so a container sharing its network sees the same origin as your browser.
+- `queue` runs `queue:listen`, so it picks up code changes. Notifications and broadcasts are queued, and nothing reaches Mailpit or the browser without it.
+- `reverb` is the WebSocket server, started with `--debug`.
+- `scheduler` runs `schedule:work`.
+- `db` is MySQL 8.4; `mailpit` catches mail.
+- `stripe` sits behind the `stripe` profile and forwards test webhooks.
+
+`REVERB_ALLOWED_ORIGINS` takes hostnames only: Reverb compares the Origin's host without its port.
 
 ### Backend conventions
 

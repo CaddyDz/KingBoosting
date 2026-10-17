@@ -36,7 +36,8 @@ x-backend-env: &backend-env
   REVERB_HOST: reverb
   REVERB_PORT: "8080"
   REVERB_SCHEME: http
-  REVERB_ALLOWED_ORIGINS: localhost:${APP_PORT:-8000}
+  # Hostnames only: Reverb compares the Origin's host, without the port
+  REVERB_ALLOWED_ORIGINS: localhost
   QUEUE_CONNECTION: database
   XDEBUG_MODE: ${XDEBUG_MODE:-off}
 
@@ -88,18 +89,44 @@ services:
       app:
         condition: service_healthy
 
-  # Stands in for Traefik: one origin, routed by path.
+  # Stands in for Traefik: one origin, routed by path. It listens on the same port inside the
+  # network as on your machine, so http://localhost:8000 also works from a container sharing it.
   proxy:
     image: nginx:1.30-alpine
     environment:
+      NGINX_PORT: ${APP_PORT:-8000}
       NGINX_RESOLVER: 127.0.0.11
     ports:
-      - 127.0.0.1:${APP_PORT:-8000}:80
+      - 127.0.0.1:${APP_PORT:-8000}:${APP_PORT:-8000}
     volumes:
       - ./docker/proxy/templates:/etc/nginx/templates:ro
     depends_on:
       web:
         condition: service_started
+
+  # Runs queued jobs: notifications and broadcasts. queue:listen reloads your code for every job.
+  queue:
+    <<: *backend
+    command: ["php", "artisan", "queue:listen", "--tries=3", "--backoff=5"]
+    depends_on:
+      app:
+        condition: service_healthy
+
+  # The WebSocket server; the proxy sends /app here.
+  reverb:
+    <<: *backend
+    command: ["php", "artisan", "reverb:start", "--host=0.0.0.0", "--port=8080", "--debug"]
+    depends_on:
+      app:
+        condition: service_healthy
+
+  # Runs routes/console.php's schedule: the daily prune of unpaid checkouts, and the demo reset when enabled.
+  scheduler:
+    <<: *backend
+    command: ["php", "artisan", "schedule:work"]
+    depends_on:
+      app:
+        condition: service_healthy
 
   db:
     image: mysql:8.4
