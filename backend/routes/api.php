@@ -28,6 +28,7 @@ Route::middleware('auth:sanctum')->group(function (): void {
 	Route::get('me', MeController::class);
 
 	Route::get('orders', [OrderController::class, 'index'])->name('orders.index');
+	Route::post('orders', [OrderController::class, 'store'])->middleware('throttle:checkout')->name('orders.store');
 	Route::get('orders/{order}', [OrderController::class, 'show'])->name('orders.show');
 	Route::get('jobs', [JobController::class, 'index'])->name('jobs.index');
 

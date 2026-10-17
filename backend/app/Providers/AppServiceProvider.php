@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Providers;
 
 use App\Models\User;
+use Stripe\StripeClient;
+use App\Payments\{PaymentGateway, StripePaymentGateway, UnconfiguredPaymentGateway};
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\ServiceProvider;
@@ -20,7 +22,12 @@ class AppServiceProvider extends ServiceProvider
 	 */
 	public function register(): void
 	{
-		//
+		$this->app->bind(PaymentGateway::class, fn (): PaymentGateway => filled(config('services.stripe.secret'))
+			? new StripePaymentGateway(new StripeClient([
+				'api_key' => (string) config('services.stripe.secret'),
+				'max_network_retries' => 2,
+			]))
+			: new UnconfiguredPaymentGateway);
 	}
 
 	/**
@@ -50,6 +57,8 @@ class AppServiceProvider extends ServiceProvider
 		RateLimiter::for('register', fn (Request $request): Limit => Limit::perHour(10)->by($request->ip()));
 
 		RateLimiter::for('password-reset', fn (Request $request): Limit => Limit::perMinute(3)->by($request->ip()));
+
+		RateLimiter::for('checkout', fn (Request $request): Limit => Limit::perMinute(10)->by($request->user()?->getAuthIdentifier() ?? $request->ip()));
 
 		// The order builder re-quotes as the customer changes options, debounced on the client
 		RateLimiter::for('quotes', fn (Request $request): Limit => Limit::perMinute(120)->by($request->user()?->getAuthIdentifier() ?? $request->ip()));

@@ -22,6 +22,14 @@ class OrderPolicy
 	}
 
 	/**
+	 * Only customers buy. Staff and boosters use a customer account for that.
+	 */
+	public function create(User $user): bool
+	{
+		return $user->isCustomer();
+	}
+
+	/**
 	 * The jobs board of pending orders.
 	 */
 	public function viewJobs(User $user): bool

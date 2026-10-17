@@ -8,7 +8,9 @@ use App\Models\{Order, User};
 use App\Http\Controllers\Controller;
 use App\Http\Resources\OrderResource;
 use Illuminate\Database\Eloquent\Builder;
-use App\Http\Requests\Orders\ListOrdersRequest;
+use Illuminate\Http\JsonResponse;
+use App\Actions\Orders\PlaceOrder;
+use App\Http\Requests\Orders\{ListOrdersRequest, StoreOrderRequest};
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class OrderController extends Controller
@@ -35,6 +37,22 @@ class OrderController extends Controller
 			->withQueryString();
 
 		return OrderResource::collection($orders);
+	}
+
+	/**
+	 * Checkout: the order is priced on the server and returned with the client secret the Payment Element confirms.
+	 */
+	public function store(StoreOrderRequest $request, PlaceOrder $placeOrder): JsonResponse
+	{
+		/** @var User $customer */
+		$customer = $request->user();
+		[$order, $intent] = $placeOrder->handle($customer, $request->validated(), $request->quoteInput());
+
+		return (new OrderResource($order->load(['customer', 'booster'])))
+			->withDetails()
+			->additional(['client_secret' => $intent->clientSecret])
+			->response()
+			->setStatusCode(201);
 	}
 
 	public function show(Order $order): OrderResource
