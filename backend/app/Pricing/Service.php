@@ -14,6 +14,7 @@ final readonly class Service
 	/**
 	 * @param  array{label: string, min: int, max: int, default: int}|null  $amount  the wins or games slider
 	 * @param  list<array{key: string, label: string, description: string, percent: int}>  $options
+	 * @param  array<string, mixed>  $defaults  the order builder's starting input
 	 */
 	public function __construct(
 		public string $key,
@@ -24,6 +25,7 @@ final readonly class Service
 		public int $multiplierPct,
 		public ?array $amount,
 		public array $options,
+		public array $defaults,
 	) {}
 
 	/**
@@ -40,6 +42,7 @@ final readonly class Service
 			multiplierPct: $config['multiplier_pct'] ?? 100,
 			amount: $config['amount'] ?? null,
 			options: $config['options'],
+			defaults: $config['defaults'],
 		);
 	}
 

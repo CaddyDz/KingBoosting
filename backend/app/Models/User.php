@@ -24,6 +24,8 @@ class User extends Authenticatable
 	/** @use HasFactory<UserFactory> */
 	use HasFactory, Notifiable;
 
+	public const VISIBLE_BOOSTERS_CACHE = 'boosters.visible';
+
 	/**
 	 * Registration always creates a customer (docs/adr/0002).
 	 *
@@ -33,6 +35,18 @@ class User extends Authenticatable
 		'role' => 'customer',
 		'visible' => true,
 	];
+
+	protected static function booted(): void
+	{
+		// GET /api/boosters is cached; any change to a booster (or someone becoming or leaving one) refreshes it
+		$forget = function (self $user): void {
+			if ($user->isBooster() || $user->getOriginal('role') === Role::Booster) {
+				cache()->forget(self::VISIBLE_BOOSTERS_CACHE);
+			}
+		};
+		static::saved($forget);
+		static::deleted($forget);
+	}
 
 	/**
 	 * Get the attributes that should be cast.

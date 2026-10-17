@@ -5,8 +5,8 @@ declare(strict_types=1);
 /*
  * Every service the storefront sells: one list for the catalog, the quote engine and order validation.
  *
- * `strategy` picks how App\Pricing prices it, `table` is the price table under config/pricing, and `amount`
- * bounds the wins or games slider when the strategy has one. Options add (or remove) a percentage of the
+ * `strategy` picks how App\Pricing prices it, `table` is the price table under config/pricing, `amount`
+ * bounds the wins or games slider when the strategy has one, and `defaults` is what the order builder starts on. Options add (or remove) a percentage of the
  * price. Their percentages come from frontend/assets/js/<service>/options.js (legacy).
  *
  * The keys are the legacy URLs (frontend/config/router.js), so /division-boosting keeps working.
@@ -36,6 +36,7 @@ return [
 		'label' => 'Division boosting',
 		'strategy' => 'division-ladder',
 		'table' => 'lol.ladder',
+		'defaults' => ['current' => ['tier' => 'bronze', 'division' => 'I'], 'desired' => ['tier' => 'gold', 'division' => 'III'], 'lp' => '21-40', 'mmr' => '15-17'],
 		'options' => [$option('appear-offline', 0), $option('specific-champions', 0), $option('priority', 20), $option('streaming', 15), $option('extra-win', 0)],
 	],
 	'duoqueue-boosting' => [
@@ -45,6 +46,7 @@ return [
 		'table' => 'lol.ladder',
 		// The booster plays with you, which takes longer
 		'multiplier_pct' => 150,
+		'defaults' => ['current' => ['tier' => 'bronze', 'division' => 'I'], 'desired' => ['tier' => 'gold', 'division' => 'III'], 'lp' => '21-40', 'mmr' => '15-17'],
 		'options' => [$option('coaching', 30), $option('priority', 20), $option('high-mmr', 20)],
 	],
 	'placement-boosting' => [
@@ -53,6 +55,7 @@ return [
 		'strategy' => 'per-game',
 		'table' => 'lol.placements',
 		'amount' => ['label' => 'games', 'min' => 1, 'max' => 10, 'default' => 10],
+		'defaults' => ['current' => ['tier' => 'bronze', 'division' => 'I'], 'amount' => 10],
 		'options' => [$option('play-with-booster', 35), $option('appear-offline', 0), $option('specific-champions', 0), $option('priority', 20), $option('streaming', 15)],
 	],
 	'ranked-wins-boosting' => [
@@ -61,6 +64,7 @@ return [
 		'strategy' => 'per-win',
 		'table' => 'lol.wins',
 		'amount' => ['label' => 'wins', 'min' => 1, 'max' => 10, 'default' => 4],
+		'defaults' => ['current' => ['tier' => 'bronze', 'division' => 'I'], 'amount' => 4],
 		'options' => [$option('play-with-booster', 40), $option('appear-offline', 0), $option('specific-champions', 0), $option('games-instead-of-wins', -30), $option('priority', 20), $option('streaming', 15)],
 	],
 	'champion-mastery' => [
@@ -68,6 +72,7 @@ return [
 		'label' => 'Champion mastery',
 		'strategy' => 'mastery',
 		'table' => 'lol.mastery',
+		'defaults' => ['champion' => 'Aatrox', 'level' => ['current' => 5, 'desired' => 7], 'tokens' => 5],
 		'options' => [$option('appear-offline', 0), $option('priority', 20), $option('streaming', 15)],
 	],
 	'valorant-boosting' => [
@@ -75,6 +80,7 @@ return [
 		'label' => 'Rank boosting',
 		'strategy' => 'division-ladder',
 		'table' => 'valorant.ladder',
+		'defaults' => ['current' => ['tier' => 'bronze', 'division' => 'I'], 'desired' => ['tier' => 'gold', 'division' => 'III']],
 		'options' => [$option('appear-offline', 0), $option('specific-agents', 0), $option('priority', 20), $option('streaming', 15), $option('extra-win', 0)],
 	],
 	'valorant-placement-boosting' => [
@@ -83,6 +89,7 @@ return [
 		'strategy' => 'per-game',
 		'table' => 'valorant.placements',
 		'amount' => ['label' => 'games', 'min' => 1, 'max' => 3, 'default' => 3],
+		'defaults' => ['current' => ['tier' => 'bronze', 'division' => 'I'], 'amount' => 3],
 		'options' => [$option('appear-offline', 0), $option('specific-agents', 0), $option('play-with-booster', 50), $option('priority', 20), $option('streaming', 15)],
 	],
 	'unrated-matches' => [
@@ -91,6 +98,7 @@ return [
 		'strategy' => 'unrated',
 		'table' => 'valorant.unrated',
 		'amount' => ['label' => 'games', 'min' => 1, 'max' => 30, 'default' => 5],
+		'defaults' => ['amount' => 5],
 		'options' => [$option('appear-offline', 0), $option('specific-agents', 0), $option('net-wins', 40), $option('play-with-booster', 40), $option('priority', 20), $option('streaming', 15)],
 	],
 	'wildrift-rank-boosting' => [
@@ -98,6 +106,7 @@ return [
 		'label' => 'Rank boosting',
 		'strategy' => 'division-ladder',
 		'table' => 'wildrift.ladder',
+		'defaults' => ['current' => ['tier' => 'bronze', 'division' => 'I'], 'desired' => ['tier' => 'gold', 'division' => 'III']],
 		'options' => [$option('appear-offline', 0), $option('specific-champions', 0), $option('priority', 20), $option('streaming', 15), $option('extra-win', 0)],
 	],
 	'wildrift-placement-boosting' => [
@@ -106,6 +115,7 @@ return [
 		'strategy' => 'per-game',
 		'table' => 'wildrift.placements',
 		'amount' => ['label' => 'games', 'min' => 1, 'max' => 10, 'default' => 5],
+		'defaults' => ['current' => ['tier' => 'bronze', 'division' => 'I'], 'amount' => 5],
 		'options' => [$option('play-with-booster', 35), $option('appear-offline', 0), $option('specific-champions', 0), $option('priority', 20), $option('streaming', 15)],
 	],
 	'wildrift-ranked-wins-boosting' => [
@@ -114,6 +124,7 @@ return [
 		'strategy' => 'per-win',
 		'table' => 'wildrift.wins',
 		'amount' => ['label' => 'wins', 'min' => 1, 'max' => 10, 'default' => 4],
+		'defaults' => ['current' => ['tier' => 'bronze', 'division' => 'I'], 'amount' => 4],
 		'options' => [$option('play-with-booster', 40), $option('appear-offline', 0), $option('specific-champions', 0), $option('games-instead-of-wins', -30), $option('priority', 20), $option('streaming', 15)],
 	],
 ];

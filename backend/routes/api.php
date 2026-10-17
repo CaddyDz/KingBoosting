@@ -3,7 +3,8 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\MeController;
-use App\Http\Controllers\Pricing\QuoteController;
+use App\Http\Controllers\BoosterController;
+use App\Http\Controllers\Pricing\{CatalogController, QuoteController};
 use App\Http\Controllers\Orders\{JobController, OrderActionController, OrderController};
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\{AuthenticatedSessionController, NewPasswordController, PasswordResetLinkController, RegisteredUserController};
@@ -18,6 +19,9 @@ Route::post('forgot-password', [PasswordResetLinkController::class, 'store'])->m
 Route::post('reset-password', [NewPasswordController::class, 'store'])->middleware('throttle:password-reset');
 
 Route::post('quotes', [QuoteController::class, 'store'])->middleware('throttle:quotes')->name('quotes.store');
+Route::get('catalog', [CatalogController::class, 'index'])->name('catalog.index');
+Route::get('catalog/{service}', [CatalogController::class, 'show'])->name('catalog.show');
+Route::get('boosters', [BoosterController::class, 'index'])->name('boosters.index');
 
 Route::middleware('auth:sanctum')->group(function (): void {
 	Route::post('logout', [AuthenticatedSessionController::class, 'destroy']);
