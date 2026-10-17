@@ -1,44 +1,52 @@
+# Weekly, grouped updates: one pull request per ecosystem for minor and patch versions, majors on their own.
 version: 2
-registries:
-  composer-repository-nova-laravel-com:
-    type: composer-repository
-    url: https://nova.laravel.com
-    username: ${{ secrets.NOVA_USERNAME }}
-    password: ${{ secrets.NOVA_API_TOKEN }}
 updates:
-- package-ecosystem: composer
-  directory: "/"
-  schedule:
-    interval: daily
-    time: "04:00"
-  open-pull-requests-limit: 99
-  registries:
-  - composer-repository-nova-laravel-com
-  reviewers:
-  - CaddyDz
-  assignees:
-  - CaddyDz
-  labels:
-  - dependencies
-  - php
-  versioning-strategy: increase
-  allow:
-  - dependency-type: direct
-  - dependency-type: indirect
-- package-ecosystem: npm
-  directory: "/"
-  schedule:
-    interval: daily
-    time: "04:00"
-  open-pull-requests-limit: 99
-  reviewers:
-  - CaddyDz
-  assignees:
-  - CaddyDz
-  labels:
-  - dependencies
-  - javascript
-  versioning-strategy: increase
-  allow:
-  - dependency-type: direct
-  - dependency-type: indirect
+  - package-ecosystem: composer
+    directory: /backend
+    schedule:
+      interval: weekly
+      day: monday
+      time: "04:00"
+    assignees: [CaddyDz]
+    labels: [dependencies, php]
+    versioning-strategy: increase
+    groups:
+      backend:
+        update-types: [minor, patch]
+
+  - package-ecosystem: npm
+    directory: /frontend
+    schedule:
+      interval: weekly
+      day: monday
+      time: "04:00"
+    assignees: [CaddyDz]
+    labels: [dependencies, javascript]
+    versioning-strategy: increase
+    ignore:
+      # Must match the mcr.microsoft.com/playwright image in compose.yaml; update both together
+      - dependency-name: "@playwright/test"
+    groups:
+      frontend:
+        update-types: [minor, patch]
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: "04:00"
+    assignees: [CaddyDz]
+    labels: [dependencies, github-actions]
+    groups:
+      actions:
+        update-types: [minor, patch]
+
+  - package-ecosystem: docker
+    directories: [/backend, /frontend]
+    schedule:
+      interval: weekly
+      day: monday
+      time: "04:00"
+    assignees: [CaddyDz]
+    labels: [dependencies, docker]
