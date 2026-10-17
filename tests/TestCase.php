@@ -15,6 +15,8 @@ abstract class TestCase extends BaseTestCase
 	{
 		parent::setUp();
 		$this->withoutExceptionHandling();
+		// Nova's compiled assets aren't tracked, so views must not need their mix manifest
+		$this->withoutMix();
 	}
 
 	/**
