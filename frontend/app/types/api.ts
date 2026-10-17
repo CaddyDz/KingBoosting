@@ -136,3 +136,43 @@ export interface Earnings {
 	fines: Fine[]
 	payouts: Payout[]
 }
+
+export interface AdminUser {
+	id: number
+	username: string
+	email: string
+	role: Role
+	visible: boolean
+	orders_count: number
+	jobs_count: number
+	created_at: string
+}
+
+/**
+ * A booster application from the storefront's /apply page.
+ */
+export interface BoosterApplication {
+	id: number
+	in_game_name: string
+	email: string
+	country: string
+	discord_skype: string
+	rank: string
+	languages: string
+	games: string
+	servers: string
+	hours: string
+	motivation: string
+	reviewed_at: string | null
+	created_at: string
+}
+
+export interface OwedBooster extends EarningsSummary {
+	booster: { id: number, username: string }
+}
+
+export interface Metrics {
+	revenue_per_week: { week: string, revenue_cents: number, orders: number }[]
+	orders_by_status: Record<OrderStatus, number>
+	average_completion_hours: number | null
+}

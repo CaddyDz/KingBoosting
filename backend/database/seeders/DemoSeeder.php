@@ -6,16 +6,16 @@ namespace Database\Seeders;
 
 use App\Pricing\QuoteEngine;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use App\Actions\Payouts\PayOutBooster;
 use App\Enums\{OrderEventType, OrderStatus};
 use App\Models\{Application, Fine, Message, Order, User};
-use App\Actions\Payouts\PayOutBooster;
 use App\Actions\Orders\{AssignOrder, ClaimOrder, CompleteOrder, PauseOrder, ReleaseOrder};
 
 /**
  * The public demo: named accounts for every role and about 40 orders in every status, game and service,
- * spread over the last eight weeks. Orders go through the real action classes, so their timelines exist.
+ * spread over the last ten weeks. Orders go through the real action classes, so their timelines exist.
  */
 class DemoSeeder extends Seeder
 {
@@ -51,6 +51,51 @@ class DemoSeeder extends Seeder
 		'paid_out' => 8,
 	];
 
+	/**
+	 * Booster applications in the admin's inbox, and how many days ago each arrived.
+	 *
+	 * @var list<array{days_ago: float, reviewed: bool, attributes: array<string, string>}>
+	 */
+	private const APPLICATIONS = [
+		['days_ago' => 0.15, 'reviewed' => false, 'attributes' => [
+			'in_game_name' => 'Velvet Comet',
+			'email' => 'velvetcomet@kingboosting.test',
+			'country' => 'Germany',
+			'discord_skype' => 'velvetcomet',
+			'rank' => 'Grandmaster',
+			'languages' => 'German, English',
+			'games' => 'League of Legends',
+			'servers' => 'EUW, EUNE',
+			'hours' => '25 per week, mostly evenings CET',
+			'motivation' => "I've been Grandmaster on EUW for three seasons and I coach two friends every split.
+I'm careful with accounts: chat off, no risky plays on someone else's main, and a short note after every session so the customer knows what happened.",
+		]],
+		['days_ago' => 1.2, 'reviewed' => false, 'attributes' => [
+			'in_game_name' => 'lowground',
+			'email' => 'lowground@kingboosting.test',
+			'country' => 'Brazil',
+			'discord_skype' => 'lowground.val',
+			'rank' => 'Immortal 3',
+			'languages' => 'Portuguese, Spanish, English',
+			'games' => 'Valorant',
+			'servers' => 'NA, BR',
+			'hours' => 'Weekends, 12 hours or more',
+			'motivation' => "I'd like to take duo orders. I talk through my decisions while we play, so customers improve instead of only getting a rank.",
+		]],
+		['days_ago' => 6.4, 'reviewed' => true, 'attributes' => [
+			'in_game_name' => 'Mossback',
+			'email' => 'mossback@kingboosting.test',
+			'country' => 'Canada',
+			'discord_skype' => 'mossback#2207',
+			'rank' => 'Master',
+			'languages' => 'English, French',
+			'games' => 'League of Legends, Wild Rift',
+			'servers' => 'NA',
+			'hours' => '20 per week',
+			'motivation' => 'Master on PC and Grandmaster in Wild Rift. I boosted for a small team until it closed last year and can share references.',
+		]],
+	];
+
 	private const CHAT = [
 		['customer', 'Hi! I can leave the account to you from 8pm CET tonight.'],
 		['booster', 'Perfect, I will start at 8pm and message you when I log off.'],
@@ -82,8 +127,7 @@ class DemoSeeder extends Seeder
 		$this->seedUsers();
 		$this->seedOrders();
 		$this->seedFines();
-		Application::factory()->count(2)->create();
-		Application::factory()->reviewed()->create();
+		$this->seedApplications();
 
 		// Only the last two days' notifications are new, so the bell shows a few, not the whole history
 		DB::table('notifications')->where('created_at', '<', $this->startedAt->copy()->subDays(2))->update(['read_at' => $this->startedAt]);
@@ -132,14 +176,14 @@ class DemoSeeder extends Seeder
 	private function seedOrder(int $index, OrderStatus $status, int $rank): void
 	{
 		$purchase = self::PURCHASES[$index % count(self::PURCHASES)];
-		// The seeded customer and booster get the most orders, so their screens are the fullest
+		// The seeded customer and booster get the most orders, so their screens are the fullest; the other two boosters take turns
 		$customer = $index % 3 === 0 ? $this->customers[0] : $this->customers[$index % count($this->customers)];
-		$booster = $index % 2 === 0 ? $this->boosters[0] : $this->boosters[1 + ($index % 2)];
-		// Finished orders are older; the jobs board and unpaid checkouts are recent
+		$booster = $index % 2 === 0 ? $this->boosters[0] : $this->boosters[1 + intdiv($index, 2) % 2];
+		// Finished orders are older and big boosts run for weeks; the jobs board and unpaid checkouts are recent
 		$daysAgo = match ($status) {
-			OrderStatus::PaidOut => 24 + $rank * 4,
+			OrderStatus::PaidOut => 24 + $rank * 6,
 			OrderStatus::Completed => 6 + $rank * 2,
-			OrderStatus::InProgress, OrderStatus::Paused => 1 + $rank % 6,
+			OrderStatus::InProgress, OrderStatus::Paused => 1 + $rank * 2,
 			OrderStatus::Pending, OrderStatus::AwaitingPayment => $rank % 3,
 		};
 		$at = $this->startedAt->copy()->subDays($daysAgo)->setTime(10 + ($index % 10), ($index * 7) % 60);
@@ -227,11 +271,25 @@ class DemoSeeder extends Seeder
 		Fine::factory()->for($this->boosters[0], 'booster')->for($this->admin, 'issuer')->create([
 			'amount_cents' => 500,
 			'reason' => 'Started an order a day later than agreed',
+			'created_at' => $this->startedAt->copy()->subDays(4),
 		]);
 		Fine::factory()->for($this->boosters[1], 'booster')->for($this->admin, 'issuer')->create([
 			'amount_cents' => 1000,
 			'reason' => 'No message to the customer for 48 hours',
+			'created_at' => $this->startedAt->copy()->subDays(9),
 		]);
+	}
+
+	private function seedApplications(): void
+	{
+		foreach (self::APPLICATIONS as $application) {
+			$sentAt = $this->startedAt->copy()->subMinutes((int) ($application['days_ago'] * 24 * 60));
+			Application::factory()->create([
+				...$application['attributes'],
+				'created_at' => $sentAt,
+				'reviewed_at' => $application['reviewed'] ? $sentAt->copy()->addHours(20) : null,
+			]);
+		}
 	}
 
 	/**

@@ -93,6 +93,8 @@ export default defineNuxtConfig({
 							'success': '#4cc38a',
 							'warning': '#f0a43a',
 							'info': '#5aa9f0',
+							// Chart marks: one hue, checked for contrast and lightness against the surface
+							'chart': '#8f5bd6',
 						},
 					},
 					light: {
@@ -107,6 +109,7 @@ export default defineNuxtConfig({
 							'success': '#1f8a5b',
 							'warning': '#b8650b',
 							'info': '#1f6fbf',
+							'chart': '#6a3fb5',
 						},
 					},
 				},
@@ -116,6 +119,7 @@ export default defineNuxtConfig({
 				VCard: { rounded: 'lg' },
 				VTextField: { variant: 'outlined', density: 'comfortable' },
 				VSelect: { variant: 'outlined', density: 'comfortable' },
+				VAutocomplete: { variant: 'outlined', density: 'comfortable' },
 				VTextarea: { variant: 'outlined', density: 'comfortable' },
 			},
 		},
