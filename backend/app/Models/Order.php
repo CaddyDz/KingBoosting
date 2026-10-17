@@ -14,6 +14,8 @@ use Illuminate\Database\Eloquent\Relations\{BelongsTo, HasMany};
 /**
  * Status, customer and booster aren't fillable: only the order actions change them.
  *
+ * @property OrderStatus $status
+ * @property Game $game
  * @property array<string, mixed> $quote
  */
 #[Fillable([

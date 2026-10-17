@@ -14,6 +14,8 @@ use Illuminate\Database\Eloquent\Attributes\{Fillable, Hidden};
 
 /**
  * `role` and `visible` aren't fillable: only an admin (role) or the booster themselves (visible) change them.
+ *
+ * @property Role $role
  */
 #[Fillable(['username', 'email', 'password'])]
 #[Hidden(['password', 'remember_token'])]
