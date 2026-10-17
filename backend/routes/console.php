@@ -2,9 +2,7 @@
 
 declare(strict_types=1);
 
-use Illuminate\Foundation\Inspiring;
-use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Schedule;
 
-Artisan::command('inspire', function () {
-	$this->comment(Inspiring::quote());
-})->purpose('Display an inspiring quote');
+// The public demo starts from a clean slate every night
+Schedule::command('demo:reset --force')->dailyAt('04:00')->when(fn (): bool => (bool) config('demo.reset_nightly'));
