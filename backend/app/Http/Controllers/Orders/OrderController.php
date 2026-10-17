@@ -31,7 +31,8 @@ class OrderController extends Controller
 			->when($request->validated('game'), fn (Builder $query, string $game) => $query->where('game', $game))
 			->when($request->validated('service'), fn (Builder $query, string $service) => $query->where('service', $service))
 			->when($request->validated('search'), fn (Builder $query, string $search) => $this->search($query, $search, $user))
-			->orderBy('id', $request->validated('sort') === 'oldest' ? 'asc' : 'desc')
+			->orderBy('created_at', $direction = $request->validated('sort') === 'oldest' ? 'asc' : 'desc')
+			->orderBy('id', $direction)
 			->with(['customer', 'booster'])
 			->paginate($request->integer('per_page', 15))
 			->withQueryString();
