@@ -1,21 +1,6 @@
-/public/storage
-/public/vendor/nova
-/storage/*.key
-/vendor
-.env
-.env.backup
-.phpunit.result.cache
-Homestead.json
-Homestead.yaml
-npm-debug.log
-yarn-error.log
-_ide_helper.php
-.phpstorm.meta.php
-/storage/api-docs
 .DS_Store
-# Generated Swagger API docs
-storage/api-docs
-.php-cs-fixer.cache
 .idea
-auth.json
+.vscode
+.env
 .env.production
+auth.json

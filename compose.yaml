@@ -3,52 +3,63 @@
 #   docker compose up -d --build --wait
 #   docker compose exec app php artisan migrate --seed
 #
-# API + Nova http://localhost:8000 · storefront http://localhost:3301 · Mailpit http://localhost:8025
+# Everything is served from one origin, http://localhost:8000 (see docs/adr/0001):
+# the proxy sends /api, /sanctum, /broadcasting, /stripe and /up to Laravel, /app
+# (the WebSocket) to Reverb, and the rest to Nuxt. Mailpit is on http://localhost:8025.
 #
-# Compose reads the project .env (Laravel's) for ${...} substitution, so only
-# port/tooling variables are substituted here; nothing comes from your app settings.
-# Ports are published on 127.0.0.1 only.
+# Compose reads the project .env for ${...} substitution, so only port/tooling
+# variables are substituted here. Ports are published on 127.0.0.1 only.
 
 name: kingboosting
 
+x-backend-env: &backend-env
+  # Real environment variables win over backend/.env in Laravel, so these replace the
+  # host-specific values in your .env without editing it.
+  APP_ENV: local
+  APP_URL: http://localhost:${APP_PORT:-8000}
+  FRONTEND_URL: http://localhost:${APP_PORT:-8000}
+  SANCTUM_STATEFUL_DOMAINS: localhost:${APP_PORT:-8000}
+  DB_CONNECTION: mysql
+  DB_HOST: db
+  DB_PORT: "3306"
+  DB_DATABASE: kingboosting
+  DB_USERNAME: kingboosting
+  DB_PASSWORD: secret
+  MAIL_MAILER: smtp
+  MAIL_HOST: mailpit
+  MAIL_PORT: "1025"
+  BROADCAST_CONNECTION: reverb
+  REVERB_APP_ID: kingboosting
+  # Development-only Reverb credentials
+  REVERB_APP_KEY: kingboosting-dev-key
+  REVERB_APP_SECRET: kingboosting-dev-secret
+  REVERB_HOST: reverb
+  REVERB_PORT: "8080"
+  REVERB_SCHEME: http
+  REVERB_ALLOWED_ORIGINS: localhost:${APP_PORT:-8000}
+  QUEUE_CONNECTION: database
+  XDEBUG_MODE: ${XDEBUG_MODE:-off}
+
+x-backend: &backend
+  build:
+    context: ./backend
+    target: dev
+    args:
+      UID: ${HOST_UID:-1000}
+      GID: ${HOST_GID:-1000}
+  image: kingboosting-app:dev
+  environment: *backend-env
+  extra_hosts:
+    - host.docker.internal:host-gateway
+  volumes:
+    - ./backend:/var/www/html
+  depends_on:
+    db:
+      condition: service_healthy
+
 services:
   app:
-    build:
-      context: .
-      target: dev
-      args:
-        UID: ${HOST_UID:-1000}
-        GID: ${HOST_GID:-1000}
-    image: kingboosting-app:dev
-    # Real environment variables win over .env in Laravel, so these replace the
-    # host-specific values in your .env without editing it.
-    environment:
-      APP_ENV: local
-      APP_URL: http://localhost:${APP_PORT:-8000}
-      DB_CONNECTION: mysql
-      DB_HOST: db
-      DB_PORT: "3306"
-      DB_SOCKET: ""
-      DB_DATABASE: kingboosting
-      DB_USERNAME: kingboosting
-      DB_PASSWORD: secret
-      MAIL_MAILER: smtp
-      MAIL_HOST: mailpit
-      MAIL_PORT: "1025"
-      MAIL_USERNAME: "null"
-      MAIL_PASSWORD: "null"
-      MAIL_ENCRYPTION: "null"
-      # Pusher keys are empty in .env.example; switch to pusher once you have real ones.
-      # Quoted twice on purpose: env() turns a bare null into PHP null, which leaves Nova's
-      # Echo without a broadcaster. With the quotes it stays the string "null".
-      BROADCAST_DRIVER: '"null"'
-      SANCTUM_STATEFUL_DOMAINS: localhost:${FRONTEND_PORT:-3301}
-      FRONTEND_URL: http://localhost:${FRONTEND_PORT:-3301}
-      XDEBUG_MODE: ${XDEBUG_MODE:-off}
-    extra_hosts:
-      - host.docker.internal:host-gateway
-    volumes:
-      - .:/var/www/html
+    <<: *backend
     healthcheck:
       test: ["CMD-SHELL", "SCRIPT_NAME=/fpm-ping SCRIPT_FILENAME=/fpm-ping REQUEST_METHOD=GET cgi-fcgi -bind -connect 127.0.0.1:9000 | grep -q pong"]
       interval: 10s
@@ -57,53 +68,36 @@ services:
       # A fresh clone runs composer install before php-fpm starts.
       start_period: 10m
       start_interval: 2s
-    depends_on:
-      db:
-        condition: service_healthy
 
+  # Laravel's nginx: serves backend/public and passes PHP requests to `app`.
   web:
     image: nginx:1.30-alpine
     environment:
-      # nginx listens on the same port it's published on, so the URL works from the
-      # storefront container too (see `frontend`).
-      NGINX_PORT: ${APP_PORT:-8000}
+      NGINX_PORT: "8080"
       NGINX_RESOLVER: 127.0.0.11
       # Long enough to sit on an Xdebug breakpoint.
       NGINX_FASTCGI_READ_TIMEOUT: 3600s
       PHP_FPM_HOST: app
       PHP_FPM_PORT: "9000"
-    ports:
-      - 127.0.0.1:${APP_PORT:-8000}:${APP_PORT:-8000}
-      # The storefront shares this container's network, so its port is published here.
-      - 127.0.0.1:${FRONTEND_PORT:-3301}:3301
     volumes:
-      - .:/var/www/html:ro
-      - ./docker/nginx/templates:/etc/nginx/templates:ro
+      - ./backend:/var/www/html:ro
+      - ./backend/docker/nginx/templates:/etc/nginx/templates:ro
     depends_on:
       app:
         condition: service_healthy
 
-  frontend:
-    build:
-      context: ./frontend
-      target: dev
-      args:
-        UID: ${HOST_UID:-1000}
-        GID: ${HOST_GID:-1000}
-    image: kingboosting-frontend:dev
-    # Shares nginx's network namespace, so http://localhost:8000 reaches the API both
-    # from your browser and from Nuxt's server-side rendering.
-    network_mode: service:web
+  # Stands in for Traefik: one origin, routed by path.
+  proxy:
+    image: nginx:1.30-alpine
     environment:
-      HOST_URL: http://localhost:${APP_PORT:-8000}
+      NGINX_RESOLVER: 127.0.0.11
+    ports:
+      - 127.0.0.1:${APP_PORT:-8000}:80
     volumes:
-      - ./frontend:/app
-      - frontend_node_modules:/app/node_modules
+      - ./docker/proxy/templates:/etc/nginx/templates:ro
     depends_on:
       web:
         condition: service_started
-        # Rejoin web's network namespace whenever web restarts.
-        restart: true
 
   db:
     image: mysql:8.4
@@ -128,6 +122,16 @@ services:
     ports:
       - 127.0.0.1:${FORWARD_MAILPIT_DASHBOARD_PORT:-8025}:8025
 
+  # Forwards Stripe test-mode webhooks to Laravel. Needs STRIPE_SECRET in your shell or
+  # the project .env:  STRIPE_SECRET=sk_test_... docker compose --profile stripe up -d stripe
+  # Put the whsec_... secret it prints into backend/.env as STRIPE_WEBHOOK_SECRET.
+  stripe:
+    image: stripe/stripe-cli:v1.54.0
+    profiles: [stripe]
+    command: listen --api-key ${STRIPE_SECRET:-} --forward-to http://web:8080/stripe/webhook
+    depends_on:
+      web:
+        condition: service_started
+
 volumes:
   db_data:
-  frontend_node_modules:

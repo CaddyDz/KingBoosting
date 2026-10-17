@@ -1,0 +1,12 @@
+{
+    "cloud": false,
+    "guidelines": true,
+    "mcp": false,
+    "nightwatch": false,
+    "sail": false,
+    "skills": [
+        "infer-conventions",
+        "laravel-best-practices",
+        "testing-best-practices"
+    ]
+}

@@ -1,0 +1,49 @@
+# Build context for the API images (Dockerfile). Keep it small and free of secrets.
+
+.git
+.idea
+.vscode
+**/.DS_Store
+
+# Secrets and local config: production config comes from the environment
+.env
+.env.*
+!.env.example
+auth.json
+storage/*.key
+
+# Dependencies are installed inside the image
+vendor
+node_modules
+
+# Generated at runtime. bootstrap/cache was generated with dev packages and
+# would break a --no-dev image if copied in.
+bootstrap/cache/*.php
+public/storage
+public/hot
+storage/logs/*
+storage/pail
+storage/app/public/*
+storage/app/private/*
+storage/framework/cache/data/*
+storage/framework/sessions/*
+storage/framework/testing/*
+storage/framework/views/*
+database/*.sqlite
+
+# Not needed at runtime
+tests
+phpunit.xml
+.phpunit.cache
+.phpunit.result.cache
+phpstan.neon
+pint.json
+_ide_helper.php
+.phpstorm.meta.php
+AGENTS.md
+CLAUDE.md
+.mcp.json
+.ai
+README.md
+Dockerfile
+.dockerignore

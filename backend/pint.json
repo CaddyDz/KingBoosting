@@ -1,0 +1,25 @@
+{
+	"preset": "laravel",
+	"rules": {
+		"declare_strict_types": true,
+		"ordered_imports": {
+			"sort_algorithm": "length",
+			"imports_order": [
+				"class",
+				"function",
+				"const"
+			]
+		},
+		"indentation_type": false,
+		"statement_indentation": false,
+		"array_indentation": false,
+		"method_chaining_indentation": false,
+		"group_import": true,
+		"use_arrow_functions": true,
+		"ordered_traits": true,
+		"cast_spaces": {
+			"space": "single"
+		},
+		"single_import_per_statement": false
+	}
+}
