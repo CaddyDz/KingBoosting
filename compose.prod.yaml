@@ -7,7 +7,7 @@
 #   docker compose exec app php artisan db:seed --force   # once, on a new database
 #
 # db:seed creates the roles and permissions the app needs plus an admin account
-# (see database/seeders/BaseSeeder.php); change that password right away.
+# whose password is ADMIN_PASSWORD (see database/seeders/BaseSeeder.php).
 # Building needs your Nova credentials in auth.json (see README).
 #
 # `web` (API + Nova) and `frontend` (storefront) are published on 127.0.0.1 only.
