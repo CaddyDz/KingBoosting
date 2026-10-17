@@ -21,7 +21,7 @@ dataset('golden quotes', function (): Generator {
 
 /**
  * @param  array<string, mixed>  $quote  one golden quote
- * @return array{0: string, 1: array<string, mixed>}  the service key and the v2 input
+ * @return array{0: string, 1: array<string, mixed>} the service key and the v2 input
  */
 function goldenInput(array $quote): array
 {
