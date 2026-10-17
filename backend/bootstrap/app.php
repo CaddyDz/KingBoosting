@@ -15,7 +15,10 @@ return Application::configure(basePath: dirname(__DIR__))
 		health: '/up',
 	)
 	->withMiddleware(function (Middleware $middleware): void {
-		//
+		// Sanctum SPA auth: requests from SANCTUM_STATEFUL_DOMAINS get the session and CSRF checks
+		$middleware->statefulApi();
+		// Traefik (or the dev proxy) terminates TLS in front of nginx
+		$middleware->trustProxies(at: ['10.0.0.0/8', '172.16.0.0/12', '192.168.0.0/16']);
 	})
 	->withExceptions(function (Exceptions $exceptions): void {
 		$exceptions->shouldRenderJsonWhen(

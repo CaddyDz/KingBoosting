@@ -56,6 +56,9 @@ return [
 
 	'url' => env('APP_URL', 'http://localhost'),
 
+	// The Nuxt app. On the one-origin setup (docs/adr/0001) it's the same as APP_URL.
+	'frontend_url' => env('FRONTEND_URL', env('APP_URL', 'http://localhost')),
+
 	/*
 	|--------------------------------------------------------------------------
 	| Application Timezone
