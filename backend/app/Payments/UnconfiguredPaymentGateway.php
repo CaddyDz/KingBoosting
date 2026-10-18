@@ -11,13 +11,25 @@ use App\Models\Order;
  */
 class UnconfiguredPaymentGateway implements PaymentGateway
 {
+	private const MESSAGE = 'Stripe isn\'t configured: set STRIPE_KEY and STRIPE_SECRET.';
+
 	public function createPaymentIntent(Order $order): PaymentIntent
 	{
-		throw new PaymentProviderUnavailable('Stripe isn\'t configured: set STRIPE_KEY and STRIPE_SECRET.');
+		throw new PaymentProviderUnavailable(self::MESSAGE);
 	}
 
 	public function clientSecret(Order $order): string
 	{
-		throw new PaymentProviderUnavailable('Stripe isn\'t configured: set STRIPE_KEY and STRIPE_SECRET.');
+		throw new PaymentProviderUnavailable(self::MESSAGE);
+	}
+
+	public function cancelPaymentIntent(Order $order): void
+	{
+		throw new PaymentProviderUnavailable(self::MESSAGE);
+	}
+
+	public function refundPayment(Order $order): void
+	{
+		throw new PaymentProviderUnavailable(self::MESSAGE);
 	}
 }

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Console\Commands;
 
 use Database\Seeders\DemoSeeder;
+use App\Actions\Orders\CloseOpenCheckouts;
 use Illuminate\Console\{Command, ConfirmableTrait};
 use Illuminate\Console\Attributes\{Description, Signature};
 
@@ -14,10 +15,14 @@ class ResetDemo extends Command
 {
 	use ConfirmableTrait;
 
-	public function handle(): int
+	public function handle(CloseOpenCheckouts $closeCheckouts): int
 	{
 		if (! $this->confirmToProceed()) {
 			return self::FAILURE;
+		}
+
+		foreach ($closeCheckouts->handle() as $problem) {
+			$this->components->warn($problem);
 		}
 
 		$this->call('migrate:fresh', ['--force' => true, '--seed' => true, '--seeder' => DemoSeeder::class]);

@@ -4,11 +4,16 @@ declare(strict_types=1);
 
 use Illuminate\Support\Str;
 use App\Models\{Order, User};
+use App\Payments\PaymentGateway;
+use Tests\Fakes\FakePaymentGateway;
 use Illuminate\Testing\TestResponse;
+use Illuminate\Support\Facades\Exceptions;
 use App\Enums\{OrderEventType, OrderStatus};
+use App\Payments\{PaymentAlreadyTaken, PaymentProviderUnavailable};
 
 beforeEach(function (): void {
 	config(['services.stripe.webhook_secret' => 'whsec_test_secret']);
+	$this->app->instance(PaymentGateway::class, $this->payments = new FakePaymentGateway);
 });
 
 /**
@@ -119,12 +124,32 @@ it('rejects a bad or stale signature', function (string $secret, int $age): void
 	'replayed after 10 minutes' => ['whsec_test_secret', 600],
 ]);
 
-it('refuses a payment that doesn’t match the order price', function (): void {
+it('refunds a payment that doesn’t match the order price and keeps the order unpaid', function (array $intent): void {
 	$order = Order::factory()->awaitingPayment()->create(['price_cents' => 13425]);
 
-	sendStripeEvent(stripeEvent('payment_intent.succeeded', $order, ['amount_received' => 100]))->assertOk();
+	sendStripeEvent(stripeEvent('payment_intent.succeeded', $order, $intent))->assertOk()->assertSeeText('Amount mismatch, refunded');
 
-	expect($order->fresh()->status)->toBe(OrderStatus::AwaitingPayment);
+	expect($order->fresh()->status)->toBe(OrderStatus::AwaitingPayment)
+		->and($this->payments->refunded)->toBe([$order->payment_intent_id]);
+	expect($order->events()->sole())
+		->type->toBe(OrderEventType::PaymentFailed)
+		->meta->toBe(['reason' => "The amount charged didn't match the order price, so we refunded it."]);
+})->with([
+	'amount' => [['amount_received' => 100]],
+	'currency' => [['currency' => 'usd']],
+]);
+
+it('asks Stripe to send a mismatched payment again when the refund fails', function (): void {
+	$order = Order::factory()->awaitingPayment()->create(['price_cents' => 13425]);
+	$event = stripeEvent('payment_intent.succeeded', $order, ['amount_received' => 100]);
+	$this->payments->failing = true;
+
+	sendStripeEvent($event)->assertServiceUnavailable();
+
+	$this->payments->failing = false;
+	sendStripeEvent($event)->assertOk()->assertSeeText('Amount mismatch, refunded');
+
+	expect($this->payments->refunded)->toBe([$order->payment_intent_id]);
 });
 
 it('records a failed payment and keeps the order unpaid', function (): void {
@@ -157,5 +182,32 @@ it('prunes checkouts nobody paid for within a day', function (): void {
 	$this->artisan('model:prune', ['--model' => [Order::class]])->assertSuccessful();
 
 	expect(Order::query()->pluck('id')->all())->toEqualCanonicalizing([$fresh->id, $paid->id])
-		->and(Order::query()->find($stale->id))->toBeNull();
+		->and(Order::query()->find($stale->id))->toBeNull()
+		->and($this->payments->cancelled)->toBe([$stale->payment_intent_id]);
 });
+
+it('prunes a checkout that never got a PaymentIntent without asking Stripe', function (): void {
+	$order = Order::factory()->awaitingPayment()->create(['payment_intent_id' => null, 'created_at' => now()->subDays(2)]);
+	$this->payments->failing = true;
+
+	$this->artisan('model:prune', ['--model' => [Order::class]])->assertSuccessful();
+
+	expect(Order::query()->find($order->id))->toBeNull();
+});
+
+it('keeps an unpaid checkout and reports it when its PaymentIntent can’t be closed', function (string $problem, string $exception): void {
+	Exceptions::fake();
+	$order = Order::factory()->awaitingPayment()->create(['created_at' => now()->subDays(2)]);
+	match ($problem) {
+		'paid' => $this->payments->taken[] = $order->payment_intent_id,
+		'stripe down' => $this->payments->failing = true,
+	};
+
+	$this->artisan('model:prune', ['--model' => [Order::class]])->assertSuccessful();
+
+	expect(Order::query()->find($order->id))->not->toBeNull();
+	Exceptions::assertReported($exception);
+})->with([
+	'Stripe took the payment' => ['paid', PaymentAlreadyTaken::class],
+	'Stripe is down' => ['stripe down', PaymentProviderUnavailable::class],
+]);
