@@ -5332,16 +5332,16 @@
         },
         {
             "name": "spatie/once",
-            "version": "3.1.1",
+            "version": "3.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/once.git",
-                "reference": "25252b821765d72566be17c52ea05b35329f0f8f"
+                "reference": "54c9908aff00913e82422da6938fba7bd2bf6c08"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/once/zipball/25252b821765d72566be17c52ea05b35329f0f8f",
-                "reference": "25252b821765d72566be17c52ea05b35329f0f8f",
+                "url": "https://api.github.com/repos/spatie/once/zipball/54c9908aff00913e82422da6938fba7bd2bf6c08",
+                "reference": "54c9908aff00913e82422da6938fba7bd2bf6c08",
                 "shasum": ""
             },
             "require": {
@@ -5349,7 +5349,7 @@
             },
             "require-dev": {
                 "pestphp/pest": "^1.21",
-                "symfony/var-dumper": "^5.1"
+                "symfony/var-dumper": "^5.1|^6.0|^7.0|^8.0"
             },
             "type": "library",
             "autoload": {
@@ -5382,7 +5382,7 @@
                 "spatie"
             ],
             "support": {
-                "source": "https://github.com/spatie/once/tree/3.1.1"
+                "source": "https://github.com/spatie/once/tree/3.1.2"
             },
             "funding": [
                 {
@@ -5390,7 +5390,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2024-05-27T09:17:58+00:00"
+            "time": "2025-11-25T15:44:06+00:00"
         },
         {
             "name": "stidges/country-flags",
@@ -11763,12 +11763,12 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {},
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": "8.0.*"
     },
-    "platform-dev": [],
-    "plugin-api-version": "2.6.0"
+    "platform-dev": {},
+    "plugin-api-version": "2.9.0"
 }
