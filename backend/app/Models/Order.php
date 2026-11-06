@@ -5,13 +5,14 @@ declare(strict_types=1);
 namespace App\Models;
 
 use Illuminate\Support\Carbon;
+use App\Payments\PaymentGateway;
 use App\Events\OrderEventRecorded;
 use Database\Factories\OrderFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Attributes\Scope;
+use Illuminate\Database\Eloquent\{Builder, Prunable};
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use App\Enums\{Game, OrderEventType, OrderStatus, Role};
-use Illuminate\Database\Eloquent\{Builder, MassPrunable};
 use Illuminate\Database\Eloquent\Attributes\{Fillable, Hidden};
 use Illuminate\Database\Eloquent\Relations\{BelongsTo, HasMany};
 
@@ -43,7 +44,7 @@ use Illuminate\Database\Eloquent\Relations\{BelongsTo, HasMany};
 class Order extends Model
 {
 	/** @use HasFactory<OrderFactory> */
-	use HasFactory, MassPrunable;
+	use HasFactory, Prunable;
 
 	/**
 	 * @var array<string, mixed>
@@ -85,6 +86,17 @@ class Order extends Model
 		return self::query()
 			->where('status', OrderStatus::AwaitingPayment)
 			->where('created_at', '<=', now()->subDay());
+	}
+
+	/**
+	 * Close the checkout's PaymentIntent first. If Stripe can't, or says it was paid, the exception keeps the
+	 * order and `model:prune` reports it.
+	 */
+	protected function pruning(): void
+	{
+		if ($this->payment_intent_id !== null) {
+			app(PaymentGateway::class)->cancelPaymentIntent($this);
+		}
 	}
 
 	/**

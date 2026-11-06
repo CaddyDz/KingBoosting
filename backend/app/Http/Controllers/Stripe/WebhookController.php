@@ -13,11 +13,15 @@ use Illuminate\Http\{Request, Response};
 use Illuminate\Support\Facades\{DB, Log};
 use Stripe\Exception\SignatureVerificationException;
 use Illuminate\Database\UniqueConstraintViolationException;
-use App\Actions\Orders\{ConfirmPayment, RecordPaymentFailure};
+use App\Actions\Orders\{ConfirmPayment, RecordPaymentFailure, RefundMismatchedPayment};
 
 class WebhookController extends Controller
 {
-	public function __construct(private ConfirmPayment $confirm, private RecordPaymentFailure $recordFailure) {}
+	public function __construct(
+		private ConfirmPayment $confirm,
+		private RecordPaymentFailure $recordFailure,
+		private RefundMismatchedPayment $refundMismatch,
+	) {}
 
 	/**
 	 * Stripe's events for the PaymentIntents created at checkout. The signature is checked against
@@ -69,11 +73,12 @@ class WebhookController extends Controller
 			return response('OK');
 		}
 
-		// Never trust a payment that doesn't match the order's server-side price
+		// Never trust a payment that doesn't match the order's server-side price. If the refund fails, the
+		// transaction rolls back and Stripe's retry tries it again.
 		if ($intent->amount_received !== $order->price_cents || $intent->currency !== 'eur') {
-			Log::error('Stripe payment amount differs from the order price', ['order' => $order->id, 'event' => $event->id]);
+			$this->refundMismatch->handle($order, (int) $intent->amount_received, (string) $intent->currency);
 
-			return response('Amount mismatch');
+			return response('Amount mismatch, refunded');
 		}
 
 		$this->confirm->handle($order);

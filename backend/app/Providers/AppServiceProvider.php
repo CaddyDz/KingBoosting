@@ -37,7 +37,7 @@ class AppServiceProvider extends ServiceProvider
 	private function stripeGateway(string $secret): StripePaymentGateway
 	{
 		if (! str_starts_with($secret, 'sk_test_') && ! str_starts_with($secret, 'rk_test_')) {
-			throw new LogicException('King Boosting is a demo: it only takes Stripe test keys (sk_test_...).');
+			throw new LogicException('King Boosting is a demo: it only takes Stripe test keys (rk_test_... or sk_test_...).');
 		}
 
 		return new StripePaymentGateway(new StripeClient(['api_key' => $secret, 'max_network_retries' => 2]));

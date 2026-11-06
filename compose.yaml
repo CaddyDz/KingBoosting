@@ -188,7 +188,7 @@ services:
   stripe:
     image: stripe/stripe-cli:v1.54.0
     profiles: [stripe]
-    command: listen --api-key ${STRIPE_SECRET:-} --forward-to http://web:8080/stripe/webhook
+    command: listen --api-key ${STRIPE_SECRET:-} --events payment_intent.succeeded,payment_intent.payment_failed --forward-to http://web:8080/stripe/webhook
     depends_on:
       web:
         condition: service_started

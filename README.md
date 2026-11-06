@@ -80,7 +80,7 @@ stateDiagram-v2
     [*] --> awaiting_payment: checkout
     awaiting_payment --> pending: paid (Stripe webhook)
     awaiting_payment --> in_progress: paid, booster picked at checkout
-    awaiting_payment --> [*]: unpaid, pruned after a day
+    awaiting_payment --> [*]: unpaid, pruned after a day (its PaymentIntent is cancelled first)
     pending --> in_progress: claim (booster) or assign (staff)
     in_progress --> paused: pause
     paused --> in_progress: resume
@@ -159,6 +159,8 @@ Every account's password is `password`. `docker compose exec app php artisan dem
 1. Put `STRIPE_KEY`, `STRIPE_SECRET` and `STRIPE_WEBHOOK_SECRET` in `backend/.env`.
 2. Put `STRIPE_KEY` and `STRIPE_SECRET` in a `.env` next to `compose.yaml`.
 3. Run `docker compose --profile stripe up -d stripe`. It forwards Stripe's test webhooks, and `docker compose logs stripe` shows the `whsec_...` secret for step 1.
+
+Locally, `STRIPE_SECRET` can be the sandbox's `sk_test_...` key, because the Stripe CLI that forwards webhooks needs it. The public demo uses a restricted key (see [`docs/deploy.md`](docs/deploy.md#stripe-in-test-mode)).
 
 These test cards work with any future expiry date and any CVC:
 

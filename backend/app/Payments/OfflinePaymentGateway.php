@@ -25,6 +25,16 @@ class OfflinePaymentGateway implements PaymentGateway
 	}
 
 	/**
+	 * An offline payment has nothing open anywhere to close.
+	 */
+	public function cancelPaymentIntent(Order $order): void {}
+
+	/**
+	 * Offline payments are simulated for the order's own price, so there's never one to give back.
+	 */
+	public function refundPayment(Order $order): void {}
+
+	/**
 	 * Whether the order's payment was opened offline, and so can only be paid by simulation.
 	 */
 	public static function handles(Order $order): bool

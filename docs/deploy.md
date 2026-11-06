@@ -45,10 +45,16 @@ docker compose -f compose.prod.yaml --env-file .env.production exec app php arti
 
 ## Stripe, in test mode
 
-1. In the Stripe dashboard, with **test mode** on, add a webhook endpoint for `https://kingboosting.dsalim.dev/stripe/webhook`.
-2. Subscribe it to `payment_intent.succeeded` and `payment_intent.payment_failed`.
-3. Put its signing secret (`whsec_...`) in `STRIPE_WEBHOOK_SECRET`.
-4. Run `up -d` again, so the containers pick up the new setting.
+1. In the Stripe dashboard, in the demo's sandbox, create a **restricted key** (`rk_test_...`) and put it in `STRIPE_SECRET`. It needs only these permissions; everything else stays at **None**:
+   - **PaymentIntents: Write**: checkout creates them, and pruning cancels the unpaid ones.
+   - **Refunds: Write**: a payment that doesn't match its order's price is refunded.
+   - **Charges: Read**: pruning checks whether a PaymentIntent's payment was refunded.
+
+   If a request fails with a permissions error, the key's request logs in the dashboard name the permission it's missing.
+2. Add a webhook endpoint for `https://kingboosting.dsalim.dev/stripe/webhook`.
+3. Subscribe it to `payment_intent.succeeded` and `payment_intent.payment_failed`.
+4. Put its signing secret (`whsec_...`) in `STRIPE_WEBHOOK_SECRET`.
+5. Run `up -d` again, so the containers pick up the new settings.
 
 ## Deploys from CI
 
