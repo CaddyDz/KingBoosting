@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
 	BoostersController,
-	CheckoutController,
 	ContactController
 };
 
@@ -26,6 +25,5 @@ Route::get('/user', fn (Request $request) => $request->user());
 Route::get('/getBoostersNames', [BoostersController::class, 'getBoostersNames']);
 // Get boosters
 Route::get('/boosters', [BoostersController::class, 'index']);
-Route::get('secret', [CheckoutController::class, 'intent']);
 Route::post('apply', [BoostersController::class, 'apply']);
 Route::post('contact', [ContactController::class, 'send']);

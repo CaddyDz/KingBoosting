@@ -32,22 +32,14 @@ class UserSeeder extends Seeder
 
 	public function seedAdmin(): void
 	{
-		User::create([
-			'username' => 'Admin',
-			'first_name' => 'King',
-			'last_name' => 'Boosting',
-			'email' => 'admin@kingboosting.com',
-			'email_verified_at' => now(),
-			'password' => bcrypt('*iUJA2m%Ey67'),
-			'country' => 'TR',
-		])->assignRole('Admin');
+		$this->call(BaseSeeder::class);
 	}
 
 	public function seedBooster(): void
 	{
 		$booster = User::factory()->create([
 			'username' => 'Booster',
-			'email' => 'booster@kingboosting.com'
+			'email' => 'booster@kingboosting.test'
 		]);
 		// Toss a coin whether or not the booster is also a coach
 		$booster->assignRole('Booster');
@@ -57,7 +49,7 @@ class UserSeeder extends Seeder
 	{
 		$member = User::factory()->create([
 			'username' => 'User',
-			'email' => 'user@kingboosting.com'
+			'email' => 'user@kingboosting.test'
 		]);
 		$member->assignRole('Member');
 	}

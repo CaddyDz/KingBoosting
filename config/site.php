@@ -16,6 +16,7 @@ return [
 	'owner' => env('OWNER_NAME', 'Ked'),
 	'admin' => [
 		'name' => env('ADMIN_NAME', 'Ked'),
-		'email' => env('ADMIN_EMAIL', 'admin@kingboosting.com'),
+		'email' => env('ADMIN_EMAIL', 'admin@kingboosting.test'),
+		'password' => env('ADMIN_PASSWORD'),
 	],
 ];

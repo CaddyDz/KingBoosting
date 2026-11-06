@@ -18,10 +18,12 @@ if [ "$1" = "php-fpm" ]; then
 		echo "entrypoint: vendor/ is missing, running composer install (Nova needs credentials in auth.json)"
 		composer install --no-interaction --no-progress
 		echo "$lock_hash" > "$stamp"
+		installed=1
 	elif [ "$(cat "$stamp" 2>/dev/null)" != "$lock_hash" ]; then
 		echo "entrypoint: composer.lock changed, running composer install"
 		if composer install --no-interaction --no-progress; then
 			echo "$lock_hash" > "$stamp"
+			installed=1
 		else
 			echo "entrypoint: composer install failed, starting with the existing vendor/" >&2
 		fi
@@ -29,6 +31,12 @@ if [ "$1" = "php-fpm" ]; then
 
 	if ! grep -Eq '^APP_KEY=.+' .env; then
 		php artisan key:generate --ansi
+	fi
+
+	# public/vendor/nova is gitignored, so publish Nova's assets on a fresh clone
+	# and again whenever composer install may have changed the Nova version.
+	if [ ! -f public/vendor/nova/mix-manifest.json ] || [ "${installed:-0}" = 1 ]; then
+		php artisan vendor:publish --tag=nova-assets --force
 	fi
 fi
 

@@ -12,8 +12,6 @@
 export default {
 	data: () => ({
 		valid: false,
-		// Declared in instance but not referenced during render, just outsourcing scope
-		client_secret: "",
 		stripeToken: "",
 	}),
 	methods: {
@@ -30,38 +28,6 @@ export default {
 		async tokenize(card) {
 			const { token, error } = await this.$stripe.createToken(card);
 			return token;
-		},
-		confirm(clientSecret, card) {
-			(async () => {
-				const response = await fetch("api/secret");
-				const { client_secret: clientSecret } = await response.json();
-				// Call stripe.confirmCardPayment() with the client secret.
-				this.$stripe
-					.confirmCardPayment(clientSecret, {
-						payment_method: {
-							card: card,
-						},
-					})
-					.then((result) => {
-						if (result.error) {
-							// Show error to your customer (e.g., insufficient funds)
-							this.$notify(result.error.message, "error");
-						} else {
-							// The payment has been processed!
-							if (result.paymentIntent.status === "succeeded") {
-								// Show a success message to your customer
-								// There's a risk of the customer closing the window before callback
-								// execution. Set up a webhook or plugin to listen for the
-								// payment_intent.succeeded event that handles any business critical
-								// post-payment actions.
-								this.$notify(
-									result.paymentIntent.status,
-									"success"
-								);
-							}
-						}
-					});
-			})();
 		},
 	},
 	mounted() {

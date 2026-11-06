@@ -87,8 +87,6 @@ The statuses are `pending → progress ⇄ paused → completed → paid`. Three
 
 Order creation (`OrdersController@store`) charges via Stripe, then notifies either the chosen booster or every Booster (`OrderPlaced`). The receipt email is commented out.
 
-`CheckoutController@intent` is a leftover with an inline test key. Don't build on it.
-
 Activity on orders is logged via `spatie/activitylog` and shown in Nova through `bolechen/nova-activitylog`.
 
 ### Chat
@@ -101,7 +99,7 @@ Docker dev sets the broadcaster to the string `"null"`, so real-time chat needs 
 
 ### Seeding
 
-`DatabaseSeeder` always seeds permissions and roles. In `local` it then adds demo users, games, servers and orders. Any other environment gets only `BaseSeeder`, which creates one admin account.
+`DatabaseSeeder` always seeds permissions and roles. In `local` it then adds demo users, games, servers and orders. Any other environment gets only `BaseSeeder`, which creates one admin account with the password from `ADMIN_PASSWORD` (required outside `local`).
 
 ### Frontend (`frontend/`)
 
@@ -113,5 +111,4 @@ Docker dev sets the broadcaster to the string `"null"`, so real-time chat needs 
 
 ### Stale / known-broken
 
-- `deploy.sh` targets an old Forge box (php7.4-fpm, `migrate:fresh`). The current deploy path is the Docker images described in the README.
 - API docs generation (`l5-swagger`, the annotations in `docs/`) fails under swagger-php 4 and is switched off.

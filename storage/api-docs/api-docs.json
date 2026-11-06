@@ -40,7 +40,7 @@
                                 },
                                 "type": "object",
                                 "example": {
-                                    "email": "user@kingboosting.com",
+                                    "email": "user@kingboosting.test",
                                     "password": "password"
                                 }
                             }
