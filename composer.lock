@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b0aa376af5199605dc2718d146df7de9",
+    "content-hash": "b68676d52523f95a9b11cd7adb5a22ab",
     "packages": [
         {
             "name": "awesome-nova/filter-card",
@@ -2440,16 +2440,16 @@
         },
         {
             "name": "laravel/helpers",
-            "version": "v1.8.3",
+            "version": "v1.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/helpers.git",
-                "reference": "5915be977c7cc05fe2498d561b8c026ee56567dd"
+                "reference": "5061d638d65f105b6bfeb3f2fdbd9e4317f09c9c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/helpers/zipball/5915be977c7cc05fe2498d561b8c026ee56567dd",
-                "reference": "5915be977c7cc05fe2498d561b8c026ee56567dd",
+                "url": "https://api.github.com/repos/laravel/helpers/zipball/5061d638d65f105b6bfeb3f2fdbd9e4317f09c9c",
+                "reference": "5061d638d65f105b6bfeb3f2fdbd9e4317f09c9c",
                 "shasum": ""
             },
             "require": {
@@ -2458,7 +2458,7 @@
             },
             "require-dev": {
                 "phpstan/phpstan": "^1.10",
-                "phpunit/phpunit": "^7.0|^8.0|^9.0|^10.0|^11.0|^12.0"
+                "phpunit/phpunit": "^8.5.52|^9.6.33|^10.5.62|^11.5.50|^12.5.8"
             },
             "type": "library",
             "extra": {
@@ -2491,9 +2491,9 @@
                 "laravel"
             ],
             "support": {
-                "source": "https://github.com/laravel/helpers/tree/v1.8.3"
+                "source": "https://github.com/laravel/helpers/tree/v1.9.0"
             },
-            "time": "2026-03-17T16:40:11+00:00"
+            "time": "2026-11-06T16:04:40+00:00"
         },
         {
             "name": "laravel/nova",
